@@ -1,0 +1,721 @@
+{
+  "pages": [
+    {
+      "name": "page1",
+      "title": "Discovery",
+      "description": "Phase 1 of your project.",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "1",
+          "startWithNewLine": true,
+          "title": "1. Have you consulted your organisation’s data protection officer (DPO) about your project?",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "1a",
+          "startWithNewLine": false,
+          "title": "1a. Have you received all the data processing advice that you need?",
+          "visibleIf": "{1} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{1} <> 'Yes'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "1b",
+          "startWithNewLine": false,
+          "title": "1b. Do you intend to follow all the advice that you've received?",
+          "visibleIf": "{1a} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{1a} <> 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "1S",
+          "startWithNewLine": true,
+          "title": "1 [action]",
+          "visibleIf": "{1} = 'No'"
+        },
+        {
+          "type": "text",
+          "name": "1aT",
+          "startWithNewLine": false,
+          "title": "Provide a brief summary of data processing advice that you received.",
+          "visibleIf": "{1a} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "1aS",
+          "startWithNewLine": false,
+          "title": "1a [action]",
+          "visibleIf": "{1a} = 'No' or {1a} = 'Unsure'"
+        },
+        {
+          "type": "text",
+          "name": "1bT",
+          "startWithNewLine": false,
+          "title": "Briefly explain what advice you won't follow and why.",
+          "visibleIf": "{1b} = 'No'"
+        },
+        {
+          "type": "expression",
+          "name": "1bS",
+          "startWithNewLine": false,
+          "title": "1b [action]",
+          "visibleIf": "{1b} = 'Unsure'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "2",
+          "startWithNewLine": true,
+          "title": "2. Have you consulted with your organisation’s data and information security teams?",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "2a",
+          "startWithNewLine": false,
+          "title": "2a. Have you received all the security advice that you need?",
+          "visibleIf": "{2} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{2} <> 'Yes'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "2b",
+          "startWithNewLine": false,
+          "title": "2b. Do you intend to follow all the advice that you've received?",
+          "visibleIf": "{2a} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{2a} <> 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "2S",
+          "startWithNewLine": true,
+          "title": "2 [action]",
+          "visibleIf": "{2} = 'No'"
+        },
+        {
+          "type": "text",
+          "name": "2aT",
+          "startWithNewLine": false,
+          "title": "Provide a brief summary of security advice that you received",
+          "visibleIf": "{2a} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "2aS",
+          "startWithNewLine": false,
+          "title": "2a [action]",
+          "visibleIf": "{2a} = 'No' or {2a} = 'Unsure'"
+        },
+        {
+          "type": "text",
+          "name": "2bT",
+          "startWithNewLine": false,
+          "title": "Brieflly explain what advice you won't follow and why.",
+          "visibleIf": "{2b} = 'No'"
+        },
+        {
+          "type": "expression",
+          "name": "2bS",
+          "startWithNewLine": false,
+          "title": "2b [action]",
+          "visibleIf": "{2b} = 'Unsure'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "3",
+          "startWithNewLine": true,
+          "title": "3. Will you complete a DPIA for this project?",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "3a",
+          "startWithNewLine": false,
+          "title": "3a. Have you conducted a full Data Protection Impact Assessment (DPIA)?",
+          "visibleIf": "{3} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{3} <> 'Yes'"
+        },
+        {
+          "type": "text",
+          "name": "3T",
+          "startWithNewLine": true,
+          "title": "Explain briefly why your project isn't ikely to result in a high risk to the rights and freedoms of individuals",
+          "visibleIf": "{3} = 'No'"
+        },
+        {
+          "type": "expression",
+          "name": "3S",
+          "startWithNewLine": false,
+          "title": "3 [action]",
+          "visibleIf": "{3} = 'Unsure'"
+        },
+        {
+          "type": "text",
+          "name": "3aT",
+          "startWithNewLine": false,
+          "title": "Provide a name, summary or link to your complete DPIA",
+          "visibleIf": "{3a} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "3aS",
+          "startWithNewLine": false,
+          "title": "3a [action]",
+          "visibleIf": "{3a} = 'No'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "4",
+          "startWithNewLine": true,
+          "title": "4. Will you share personal data with or receive personal data from other organisations as part of this project?",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "4a",
+          "startWithNewLine": false,
+          "title": "4a. Have you established a data sharing agreement with other organisations?",
+          "visibleIf": "{4} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{4} <> 'Yes'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "4b",
+          "startWithNewLine": false,
+          "title": "4b. Are you confident that the data sharing benefits are necessary and proportional to any privacy risks incurred?",
+          "visibleIf": "{4} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{4} <> 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "4S",
+          "startWithNewLine": true,
+          "title": "4 [action]",
+          "visibleIf": "{4} = 'No' or {4} = 'Unsure'"
+        },
+        {
+          "type": "text",
+          "name": "4aT",
+          "startWithNewLine": false,
+          "title": "Provide a summary or link to your complete data sharing agreement.",
+          "visibleIf": "{4a} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "4aS",
+          "startWithNewLine": false,
+          "title": "4a [action]",
+          "visibleIf": "{4a} = 'No'"
+        },
+        {
+          "type": "text",
+          "name": "4bT",
+          "startWithNewLine": false,
+          "title": "Briefly explain how data sharing achieves a benefit and is necessary.",
+          "visibleIf": "{4b} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "4bS",
+          "startWithNewLine": false,
+          "title": "4b [action]",
+          "visibleIf": "{4b} = 'No' or {4b} = 'Unsure'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "5",
+          "startWithNewLine": true,
+          "title": "5. Do you have governance structures to support the safe, effective and responsible implementation of the project?",
+          "choices": [
+            "Yes",
+            "Somewhat",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "text",
+          "name": "5T",
+          "startWithNewLine": true,
+          "title": "Briefly describe the governance structures that will support this project.",
+          "visibleIf": "{5} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "5S",
+          "startWithNewLine": false,
+          "title": "5 [action]",
+          "visibleIf": "{5} = 'Somewhat' or {5} = 'No'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "6",
+          "startWithNewLine": true,
+          "title": "6. How have you assigned responsibility for the project’s outcomes?",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "6a",
+          "startWithNewLine": false,
+          "title": "6a. Is the responsible owner able to oversee the project effectively and intervene quickly if in the case of harmful outcomes?",
+          "visibleIf": "{6} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{6} <> 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "6S",
+          "startWithNewLine": true,
+          "title": "6 [action]",
+          "visibleIf": "{6} = 'No'"
+        },
+        {
+          "type": "text",
+          "name": "6aT",
+          "startWithNewLine": false,
+          "title": "Briefly describe any barriers to responsible owner intervention that you foresee.",
+          "visibleIf": "{6a} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "6aS",
+          "startWithNewLine": false,
+          "title": "6a [action]",
+          "visibleIf": "{6a} = 'No' or {6a} = 'Unsure'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "7",
+          "startWithNewLine": true,
+          "title": "7. Are you confident in documenting key project decisions?",
+          "choices": [
+            "Yes",
+            "Somewhat",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "text",
+          "name": "7T",
+          "startWithNewLine": true,
+          "title": "Provide the types of key decisions that you'll document.",
+          "visibleIf": "{7} = 'Yes'"
+        },
+        {
+          "type": "text",
+          "name": "7Ta",
+          "startWithNewLine": false,
+          "title": "Provide the types of routines or processes that you'll use to document decisions.",
+          "visibleIf": "{7} = 'Yes'"
+        },
+        {
+          "type": "text",
+          "name": "7Tb",
+          "startWithNewLine": false,
+          "title": "Provide the ways in which people will be able to learn more about key decisions if needed.",
+          "visibleIf": "{7} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "7S",
+          "startWithNewLine": false,
+          "title": "7 [action]",
+          "visibleIf": "{7} = 'Somewhat' or {7} = 'No'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "8",
+          "startWithNewLine": true,
+          "title": "8. Will you conduct research as part of your project?",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "8a",
+          "startWithNewLine": false,
+          "title": "8a. Are you confident in protecting research participants from safety risks?",
+          "visibleIf": "{8} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{8} <> 'Yes'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "8b",
+          "startWithNewLine": false,
+          "title": "8b. Are you confident in protecting reseachers from safety risks?",
+          "visibleIf": "{8} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{8} <> 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "8S",
+          "startWithNewLine": true,
+          "title": "8 [action]",
+          "visibleIf": "{8} = 'No' or {8} = 'Unsure'"
+        },
+        {
+          "type": "text",
+          "name": "8aT",
+          "startWithNewLine": false,
+          "title": "Describe the measures you will take to protect research particpants.",
+          "visibleIf": "{8a} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "8aS",
+          "startWithNewLine": false,
+          "title": "8a [action]",
+          "visibleIf": "{8a} = 'No' or {8a} = 'Unsure'"
+        },
+        {
+          "type": "text",
+          "name": "8bT",
+          "startWithNewLine": false,
+          "title": "Describe the measures you will take to protect researchers.",
+          "visibleIf": "{8b} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "8bS",
+          "startWithNewLine": false,
+          "title": "8b [action]",
+          "visibleIf": "{8b} = 'No' or {8b} = 'Unsure'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "9",
+          "startWithNewLine": true,
+          "title": "9. Can you ensure that your project team is diverse and multidisciplinary?",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "9a",
+          "startWithNewLine": false,
+          "title": "9a. Have you considered how a lack of diversity might impact your project?",
+          "visibleIf": "{9} = 'No' or {9} = 'Unsure'",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{9} <> 'No' and {9} <> 'Unsure'"
+        },
+        {
+          "type": "text",
+          "name": "9T",
+          "startWithNewLine": true,
+          "title": "Briefly describe how you will ensure diversity across the team.",
+          "visibleIf": "{9} = 'Yes'"
+        },
+        {
+          "type": "text",
+          "name": "9aT",
+          "startWithNewLine": false,
+          "title": "Briefly describe any risks or blind spots you have identified.",
+          "visibleIf": "{9a} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "9aS",
+          "startWithNewLine": false,
+          "title": "9a [action]",
+          "visibleIf": "{9a} = 'No'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "10",
+          "startWithNewLine": true,
+          "title": "10. Do you have a clear picture of your target user groups?",
+          "choices": [
+            "Yes",
+            "Somewhat",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "10a",
+          "startWithNewLine": false,
+          "title": "10a. Have you considered how different groups could be impacted unequally by your project?",
+          "visibleIf": "{10} = 'Yes'",
+          "choices": [
+            "Yes",
+            "Somewhat",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{10} <> 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "10S",
+          "startWithNewLine": true,
+          "title": "10 [action]",
+          "visibleIf": "{10} = 'Somewhat' or {10} = 'No'"
+        },
+        {
+          "type": "text",
+          "name": "10aT",
+          "startWithNewLine": false,
+          "title": "Briefly describe how your user groups may be impacted differently.",
+          "visibleIf": "{10a} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "10aS",
+          "startWithNewLine": false,
+          "title": "10a [action]",
+          "visibleIf": "{10a} = 'Somewhat' or {10a} = 'No'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "11",
+          "startWithNewLine": true,
+          "title": "11. Do you have a clear picture of all your project stakeholders?",
+          "choices": [
+            "Yes",
+            "Somewhat",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "11a",
+          "startWithNewLine": false,
+          "title": "11a. Will you engage with a wide variety of stakeholders throughout the project lifecycle?",
+          "visibleIf": "{11} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{11} <> 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "11S",
+          "startWithNewLine": true,
+          "title": "11 [action]",
+          "visibleIf": "{11} = 'Somewhat' or {11} = 'No'"
+        },
+        {
+          "type": "text",
+          "name": "11aT",
+          "startWithNewLine": false,
+          "title": "Briefly describe the steps you will take to engage with a wide variety of stakeholders.",
+          "visibleIf": "{11a} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "11aS",
+          "startWithNewLine": false,
+          "title": "11a [action]",
+          "visibleIf": "{11a} = 'No' or {11a} = 'Unsure'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "12",
+          "startWithNewLine": true,
+          "title": "12. Will you work with civil society organisations or external domain experts to guide your project?",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "text",
+          "name": "12T",
+          "startWithNewLine": true,
+          "title": "Briefly describe how you'll engage with civil society organisations and external experts.",
+          "visibleIf": "{12} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "12S",
+          "startWithNewLine": false,
+          "title": "12 [action]",
+          "visibleIf": "{12} = 'No' or {12} = 'Unsure'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "13",
+          "startWithNewLine": true,
+          "title": "13. Have you considered the potential environmental impact and sustainability of your project?",
+          "choices": [
+            "Yes",
+            "Somewhat",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "13a",
+          "startWithNewLine": false,
+          "title": "13a. Will you monitor, evaluate and address environmental impact and sustainability challenges throughout the project lifecycle?",
+          "visibleIf": "{13} = 'Yes' or {13} = 'Somewhat'",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{13} <> 'Yes' and {13} <> 'Somewhat'"
+        },
+        {
+          "type": "text",
+          "name": "13T",
+          "startWithNewLine": true,
+          "title": "Briefly explain the environmental and sustainability implications of your project.",
+          "visibleIf": "{13} = 'Yes' or {13} = 'Somewhat'"
+        },
+        {
+          "type": "expression",
+          "name": "13S",
+          "startWithNewLine": false,
+          "title": "13 [action]",
+          "visibleIf": "{13} = 'No'"
+        },
+        {
+          "type": "text",
+          "name": "13aT",
+          "startWithNewLine": false,
+          "title": "Briefly describe how you intend to monitor, evaluate and address environmental impact and sustainability challenges.",
+          "visibleIf": "{13a} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "13aS",
+          "startWithNewLine": false,
+          "title": "13a [action]",
+          "visibleIf": "{13a} = 'No' or {13a} = 'Unsure'"
+        }
+      ]
+    }
+  ],
+  "headerView": "advanced"
+}

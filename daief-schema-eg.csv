@@ -1,0 +1,76 @@
+﻿Reference,Trigger,Field text,Component type,Option a,Option b,Option c
+1,None,Have you consulted your organisation’s data protection officer (DPO) about your project? ,radios,Yes,No,
+1a,1=Yes,Have you received all the data processing advice that you need?,radios,Yes,No,Unsure
+1b,1a=Yes,Do you intend to follow all the advice that you've received?,radios,Yes,No,Unsure
+1S,1=No,[action],suggestion,,,
+1aT,1a=Yes,Provide a brief summary of data processing advice that you received.,text,,,
+1aS,1a=No OR Unsure,[action],suggestion,,,
+1bT,1b=No,Briefly explain what advice you won't follow and why.,text,,,
+1bS,1b=Unsure,[action],suggestion,,,
+2,None,Have you consulted with your organisation’s data and information security teams? ,radios,Yes,No,
+2a,2=Yes,Have you received all the security advice that you need?,radios,Yes,No,Unsure
+2b,2a=Yes,Do you intend to follow all the advice that you've received?,radios,Yes,No,Unsure
+2S,2=No,[action],suggestion,,,
+2aT,2a=Yes,Provide a brief summary of security advice that you received,text,,,
+2aS,2a=No OR Unsure,[action],suggestion,,,
+2bT,2b=No,Brieflly explain what advice you won't follow and why.,text,,,
+2bS,2b=Unsure,[action],suggestion,,,
+3,None,Will you complete a DPIA for this project?,radios,Yes,No ,Unsure
+3a,3=Yes,Have you conducted a full Data Protection Impact Assessment (DPIA)? ,radios,Yes,No,
+3T,3=No,Explain briefly why your project isn't ikely to result in a high risk to the rights and freedoms of individuals,text,,,
+3S,3=Unsure,[action],suggestion,,,
+3aT,3a=Yes,"Provide a name, summary or link to your complete DPIA",text,,,
+3aS,3a=No,[action],suggestion,,,
+4,None,Will you share personal data with or receive personal data from other organisations as part of this project?,radios,Yes,No ,Unsure
+4a,4=Yes,Have you established a data sharing agreement with other organisations?,radios,Yes,No ,
+4b,4=Yes,Are you confident that the data sharing benefits are necessary and proportional to any privacy risks incurred?,radios,Yes,No ,Unsure
+4S,4=No OR Unsure,[action],suggestion,,,
+4aT,4a=Yes,Provide a summary or link to your complete data sharing agreement.,text,,,
+4aS,4a=No,[action],suggestion,,,
+4bT,4b=Yes,Briefly explain how data sharing achieves a benefit and is necessary.,text,,,
+4bS,4b=No OR Unsure,[action],suggestion,,,
+5,None,"Do you have governance structures to support the safe, effective and responsible implementation of the project?",radios,Yes,Somewhat,No
+5T,5=Yes,Briefly describe the governance structures that will support this project.,text,,,
+5S,5=Somewhat OR No,[action],suggestion,,,
+6,None,How have you assigned responsibility for the project’s outcomes?,radios,Yes,No,
+6a,6=Yes,Is the responsible owner able to oversee the project effectively and intervene quickly if in the case of harmful outcomes? ,radios,Yes,No,Unsure
+6S,6=No,[action],suggestion,,,
+6aT,6a=Yes,Briefly describe any barriers to responsible owner intervention that you foresee.,text,,,
+6aS,6a=No OR Unsure,[action],suggestion,,,
+7,None,Are you confident in documenting key project decisions?,radios,Yes,Somewhat,No
+7T,7=Yes,Provide the types of key decisions that you'll document.,text,,,
+7Ta,7=Yes,Provide the types of routines or processes that you'll use to document decisions.,text,,,
+7Tb,7=Yes,Provide the ways in which people will be able to learn more about key decisions if needed.,text,,,
+7S,7= Somewhat OR No,[action],suggestion,,,
+8,None,Will you conduct research as part of your project?,radios,Yes,No ,Unsure
+8a,8=Yes,Are you confident in protecting research participants from safety risks?,radios,Yes,No ,Unsure
+8b,8=Yes,Are you confident in protecting reseachers from safety risks?,radios,Yes,No ,Unsure
+8S,8=No OR Unsure,[action],suggestion,,,
+8aT,8a=Yes,Describe the measures you will take to protect research particpants.,text,,,
+8aS,8a=No or Unsure,[action],suggestion,,,
+8bT,8b=Yes,Describe the measures you will take to protect researchers.,text,,,
+8bS,8b=No OR Unsure,[action],suggestion,,,
+9,None,Can you ensure that your project team is diverse and multidisciplinary?,radios,Yes,No,Unsure
+9a,9=No OR Unsure,Have you considered how a lack of diversity might impact your project?,radios,Yes,No,
+9T,9=Yes,Briefly describe how you will ensure diversity across the team.,text,,,
+9aT,9a=Yes,Briefly describe any risks or blind spots you have identified.,text,,,
+9aS,9a=No,[action],suggestion,,,
+10,None,Do you have a clear picture of your target user groups?,radios,Yes,Somewhat,No
+10a,10=Yes,Have you considered how different groups could be impacted unequally by your project?,radios,Yes,Somewhat,No
+10S,10=Somewhat OR No,[action],suggestion,,,
+10aT,10a=Yes,Briefly describe how your user groups may be impacted differently.,text,,,
+10aS,10a=Somewhat OR No,[action],suggestion,,,
+11,None,Do you have a clear picture of all your project stakeholders?,radios,Yes,Somewhat,No
+11a,11=Yes,Will you engage with a wide variety of stakeholders throughout the project lifecycle?,radios,Yes,No,Unsure
+11S,11=Somewhat OR No,[action],suggestion,,,
+11aT,11a=Yes,Briefly describe the steps you will take to engage with a wide variety of stakeholders.,text,,,
+11aS,11a=No OR Unsure,[action],suggestion,,,
+12,None,Will you work with civil society organisations or external domain experts to guide your project?,radios,Yes,No,Unsure
+12T,12=Yes,Briefly describe how you'll engage with civil society organisations and external experts.,text,,,
+12S,12=No or Unsure,[action],suggestion,,,
+13,None,Have you considered the potential environmental impact and sustainability of your project?,radios,Yes,Somewhat,No
+13a,13=Yes Or Somewhat,"Will you monitor, evaluate and address environmental impact and sustainability challenges throughout the project lifecycle?",radios,Yes,No,Unsure
+13T,13=Yes Or Somewhat,Briefly explain the environmental and sustainability implications of your project.,text,,,
+13S,13=No,[action],suggestion,,,
+13aT,13a=Yes,"Briefly describe how you intend to monitor, evaluate and address environmental impact and sustainability challenges.",text,,,
+13aS,13a=No OR Unsure,[action],suggestion,,,
