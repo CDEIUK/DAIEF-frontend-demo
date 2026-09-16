@@ -5,6 +5,11 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react()],
   base: process.env.GITHUB_ACTIONS ? '/DAIEF-frontend-demo/' : '/',
+  css: {
+    lightningcss: {
+      errorRecovery: true,
+    },
+  },
   server: {
     proxy: {
       '/api': 'http://localhost:3001',

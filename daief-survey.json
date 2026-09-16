@@ -1,10 +1,6 @@
 {
   "pages": [
-    {
-      "name": "page1",
-      "title": "Discovery",
-      "description": "Phase 1 of your project.",
-      "elements": [
+    {"elements": [
         {
           "type": "radiogroup",
           "name": "1",
