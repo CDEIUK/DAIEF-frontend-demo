@@ -1,76 +1,123 @@
-ï»¿Reference,Trigger,Field text,Component type,Option a,Option b,Option c
-1,None,Have you consulted your organisationâ€™s data protection officer (DPO) about your project?Â ,radios,Yes,No,
-1a,1=Yes,Have you received all the data processing advice that you need?,radios,Yes,No,Unsure
-1b,1a=Yes,Do you intend to follow all the advice that you've received?,radios,Yes,No,Unsure
-1S,1=No,[action],suggestion,,,
-1aT,1a=Yes,Provide a brief summary of data processing advice that you received.,text,,,
-1aS,1a=No OR Unsure,[action],suggestion,,,
-1bT,1b=No,Briefly explain what advice you won't follow and why.,text,,,
-1bS,1b=Unsure,[action],suggestion,,,
-2,None,Have you consulted with your organisationâ€™s data and information security teams?Â ,radios,Yes,No,
-2a,2=Yes,Have you received all the security advice that you need?,radios,Yes,No,Unsure
-2b,2a=Yes,Do you intend to follow all the advice that you've received?,radios,Yes,No,Unsure
-2S,2=No,[action],suggestion,,,
-2aT,2a=Yes,Provide a brief summary of security advice that you received,text,,,
-2aS,2a=No OR Unsure,[action],suggestion,,,
-2bT,2b=No,Brieflly explain what advice you won't follow and why.,text,,,
-2bS,2b=Unsure,[action],suggestion,,,
-3,None,Will you complete a DPIA for this project?,radios,Yes,No ,Unsure
-3a,3=Yes,Have you conducted a full Data Protection Impact Assessment (DPIA)?Â ,radios,Yes,No,
-3T,3=No,Explain briefly why your project isn't ikely to result in a high risk to the rights and freedoms of individuals,text,,,
-3S,3=Unsure,[action],suggestion,,,
-3aT,3a=Yes,"Provide a name, summary or link to your complete DPIA",text,,,
-3aS,3a=No,[action],suggestion,,,
-4,None,Will you share personal data with or receive personal data from other organisations as part of this project?,radios,Yes,No ,Unsure
-4a,4=Yes,Have you established a data sharing agreement with other organisations?,radios,Yes,No ,
-4b,4=Yes,Are you confident that the data sharing benefits are necessary and proportional to any privacy risks incurred?,radios,Yes,No ,Unsure
-4S,4=No OR Unsure,[action],suggestion,,,
-4aT,4a=Yes,Provide a summary or link to your complete data sharing agreement.,text,,,
-4aS,4a=No,[action],suggestion,,,
-4bT,4b=Yes,Briefly explain how data sharing achieves a benefit and is necessary.,text,,,
-4bS,4b=No OR Unsure,[action],suggestion,,,
-5,None,"Do you have governance structures to support the safe, effective and responsible implementation of the project?",radios,Yes,Somewhat,No
-5T,5=Yes,Briefly describe the governance structures that will support this project.,text,,,
-5S,5=Somewhat OR No,[action],suggestion,,,
-6,None,How have you assigned responsibility for the projectâ€™s outcomes?,radios,Yes,No,
-6a,6=Yes,Is the responsible owner able to oversee the project effectively and intervene quickly if in the case of harmful outcomes? ,radios,Yes,No,Unsure
-6S,6=No,[action],suggestion,,,
-6aT,6a=Yes,Briefly describe any barriers to responsible owner intervention that you foresee.,text,,,
-6aS,6a=No OR Unsure,[action],suggestion,,,
-7,None,Are you confident in documenting key project decisions?,radios,Yes,Somewhat,No
-7T,7=Yes,Provide the types of key decisions that you'll document.,text,,,
-7Ta,7=Yes,Provide the types of routines or processes that you'll use to document decisions.,text,,,
-7Tb,7=Yes,Provide the ways in which people will be able to learn more about key decisions if needed.,text,,,
-7S,7= Somewhat OR No,[action],suggestion,,,
-8,None,Will you conduct research as part of your project?,radios,Yes,No ,Unsure
-8a,8=Yes,Are you confident in protecting research participants from safety risks?,radios,Yes,No ,Unsure
-8b,8=Yes,Are you confident in protecting reseachers from safety risks?,radios,Yes,No ,Unsure
-8S,8=No OR Unsure,[action],suggestion,,,
-8aT,8a=Yes,Describe the measures you will take to protect research particpants.,text,,,
-8aS,8a=No or Unsure,[action],suggestion,,,
-8bT,8b=Yes,Describe the measures you will take to protect researchers.,text,,,
-8bS,8b=No OR Unsure,[action],suggestion,,,
-9,None,Can you ensure that your project team is diverse and multidisciplinary?,radios,Yes,No,Unsure
-9a,9=No OR Unsure,Have you considered how a lack of diversity might impact your project?,radios,Yes,No,
-9T,9=Yes,Briefly describe how you will ensure diversity across the team.,text,,,
-9aT,9a=Yes,Briefly describe any risks or blind spots you have identified.,text,,,
-9aS,9a=No,[action],suggestion,,,
-10,None,Do you have a clear picture of your target user groups?,radios,Yes,Somewhat,No
-10a,10=Yes,Have you considered how different groups could be impacted unequally by your project?,radios,Yes,Somewhat,No
-10S,10=Somewhat OR No,[action],suggestion,,,
-10aT,10a=Yes,Briefly describe how your user groups may be impacted differently.,text,,,
-10aS,10a=Somewhat OR No,[action],suggestion,,,
-11,None,Do you have a clear picture of all your project stakeholders?,radios,Yes,Somewhat,No
-11a,11=Yes,Will you engage with a wide variety of stakeholders throughout the project lifecycle?,radios,Yes,No,Unsure
-11S,11=Somewhat OR No,[action],suggestion,,,
-11aT,11a=Yes,Briefly describe the steps you will take to engage with a wide variety of stakeholders.,text,,,
-11aS,11a=No OR Unsure,[action],suggestion,,,
-12,None,Will you work with civil society organisations or external domain experts to guide your project?,radios,Yes,No,Unsure
-12T,12=Yes,Briefly describe how you'll engage with civil society organisations and external experts.,text,,,
-12S,12=No or Unsure,[action],suggestion,,,
-13,None,Have you considered the potential environmental impact and sustainability of your project?,radios,Yes,Somewhat,No
-13a,13=Yes Or Somewhat,"Will you monitor, evaluate and address environmental impact and sustainability challenges throughout the project lifecycle?",radios,Yes,No,Unsure
-13T,13=Yes Or Somewhat,Briefly explain the environmental and sustainability implications of your project.,text,,,
-13S,13=No,[action],suggestion,,,
-13aT,13a=Yes,"Briefly describe how you intend to monitor, evaluate and address environmental impact and sustainability challenges.",text,,,
-13aS,13a=No OR Unsure,[action],suggestion,,,
+Section,Reference,Trigger,Field text,Component type,Option a,Option b,Option c
+Discovery,1,None,Have you consulted your organisationÕs data protection officer (DPO) about your project?,radios,Yes,No,
+Discovery,1a,1=Yes,Have you received all the data processing advice that you need?,radios,Yes,No,Unsure
+Discovery,1b,1a=Yes,Do you intend to follow all the advice that you've received?,radios,Yes,No,Unsure
+Discovery,1S,1=No,[action],suggestion,,,
+Discovery,1aT,1a=Yes,Provide a brief summary of data processing advice that you received.,text,,,
+Discovery,1aS,1a=No OR Unsure,[action],suggestion,,,
+Discovery,1bT,1b=No,Briefly explain what advice you won't follow and why.,text,,,
+Discovery,1bS,1b=Unsure,[action],suggestion,,,
+Discovery,2,None,Have you consulted with your organisationÕs data and information security teams?,radios,Yes,No,
+Discovery,2a,2=Yes,Have you received all the security advice that you need?,radios,Yes,No,Unsure
+Discovery,2b,2a=Yes,Do you intend to follow all the advice that you've received?,radios,Yes,No,Unsure
+Discovery,2S,2=No,[action],suggestion,,,
+Discovery,2aT,2a=Yes,Provide a brief summary of security advice that you received,text,,,
+Discovery,2aS,2a=No OR Unsure,[action],suggestion,,,
+Discovery,2bT,2b=No,Brieflly explain what advice you won't follow and why.,text,,,
+Discovery,2bS,2b=Unsure,[action],suggestion,,,
+Discovery,3,None,Will you complete a DPIA for this project?,radios,Yes,No ,Unsure
+Discovery,3a,3=Yes,Have you conducted a full Data Protection Impact Assessment (DPIA)?,radios,Yes,No,
+Discovery,3T,3=No,Explain briefly why your project isn't ikely to result in a high risk to the rights and freedoms of individuals,text,,,
+Discovery,3S,3=Unsure,[action],suggestion,,,
+Discovery,3aT,3a=Yes,"Provide a name, summary or link to your complete DPIA.",text,,,
+Discovery,3aS,3a=No,[action],suggestion,,,
+Discovery,4,None,Will you share personal data with or receive personal data from other organisations as part of this project?,radios,Yes,No ,Unsure
+Discovery,4a,4=Yes,Have you established a data sharing agreement with other organisations?,radios,Yes,No ,
+Discovery,4b,4=Yes,Are you confident that the data sharing benefits are necessary and proportional to any privacy risks incurred?,radios,Yes,No ,Unsure
+Discovery,4S,4=No OR Unsure,[action],suggestion,,,
+Discovery,4aT,4a=Yes,Provide a summary or link to your complete data sharing agreement.,text,,,
+Discovery,4aS,4a=No,[action],suggestion,,,
+Discovery,4bT,4b=Yes,Briefly explain how data sharing achieves a benefit and is necessary.,text,,,
+Discovery,4bS,4b=No OR Unsure,[action],suggestion,,,
+Discovery,5,None,"Do you have governance structures to support the safe, effective and responsible implementation of the project?",radios,Yes,Somewhat,No
+Discovery,5T,5=Yes,Briefly describe the governance structures that will support this project.,text,,,
+Discovery,5S,5=Somewhat OR No,[action],suggestion,,,
+Discovery,6,None,How have you assigned responsibility for the projectÕs outcomes?,radios,Yes,No,
+Discovery,6a,6=Yes,Is the responsible owner able to oversee the project effectively and intervene quickly if in the case of harmful outcomes? ,radios,Yes,No,Unsure
+Discovery,6S,6=No,[action],suggestion,,,
+Discovery,6aT,6a=Yes,Briefly describe any barriers to responsible owner intervention that you foresee.,text,,,
+Discovery,6aS,6a=No OR Unsure,[action],suggestion,,,
+Discovery,7,None,Are you confident in documenting key project decisions?,radios,Yes,Somewhat,No
+Discovery,7T,7=Yes,Provide the types of key decisions that you'll document.,text,,,
+Discovery,7Ta,7=Yes,Provide the types of routines or processes that you'll use to document decisions.,text,,,
+Discovery,7Tb,7=Yes,Provide the ways in which people will be able to learn more about key decisions if needed.,text,,,
+Discovery,7S,7= Somewhat OR No,[action],suggestion,,,
+Discovery,8,None,Will you conduct research as part of your project?,radios,Yes,No ,Unsure
+Discovery,8a,8=Yes,Are you confident in protecting research participants from safety risks?,radios,Yes,No ,Unsure
+Discovery,8b,8=Yes,Are you confident in protecting reseachers from safety risks?,radios,Yes,No ,Unsure
+Discovery,8S,8=No OR Unsure,[action],suggestion,,,
+Discovery,8aT,8a=Yes,Describe the measures you will take to protect research particpants.,text,,,
+Discovery,8aS,8a=No OR Unsure,[action],suggestion,,,
+Discovery,8bT,8b=Yes,Describe the measures you will take to protect researchers.,text,,,
+Discovery,8bS,8b=No OR Unsure,[action],suggestion,,,
+Discovery,9,None,Can you ensure that your project team is diverse and multidisciplinary?,radios,Yes,No,Unsure
+Discovery,9a,9=No OR Unsure,Have you considered how a lack of diversity might impact your project?,radios,Yes,No,
+Discovery,9T,9=Yes,Briefly describe how you will ensure diversity across the team.,text,,,
+Discovery,9aT,9a=Yes,Briefly describe any risks or blind spots you have identified.,text,,,
+Discovery,9aS,9a=No,[action],suggestion,,,
+Discovery,10,None,Do you have a clear picture of your target user groups?,radios,Yes,Somewhat,No
+Discovery,10a,10=Yes,Have you considered how different groups could be impacted unequally by your project?,radios,Yes,Somewhat,No
+Discovery,10S,10=Somewhat OR No,[action],suggestion,,,
+Discovery,10aT,10a=Yes,Briefly describe how your user groups may be impacted differently.,text,,,
+Discovery,10aS,10a=Somewhat OR No,[action],suggestion,,,
+Discovery,11,None,Do you have a clear picture of all your project stakeholders?,radios,Yes,Somewhat,No
+Discovery,11a,11=Yes,Will you engage with a wide variety of stakeholders throughout the project lifecycle?,radios,Yes,No,Unsure
+Discovery,11S,11=Somewhat OR No,[action],suggestion,,,
+Discovery,11aT,11a=Yes,Briefly describe the steps you will take to engage with a wide variety of stakeholders.,text,,,
+Discovery,11aS,11a=No OR Unsure,[action],suggestion,,,
+Discovery,12,None,Will you work with civil society organisations or external domain experts to guide your project?,radios,Yes,No,Unsure
+Discovery,12T,12=Yes,Briefly describe how you'll engage with civil society organisations and external experts.,text,,,
+Discovery,12S,12=No OR Unsure,[action],suggestion,,,
+Discovery,13,None,Have you considered the potential environmental impact and sustainability of your project?,radios,Yes,Somewhat,No
+Discovery,13a,13=Yes OR Somewhat,"Will you monitor, evaluate and address environmental impact and sustainability challenges throughout the project lifecycle?",radios,Yes,No,Unsure
+Discovery,13T,13=Yes OR Somewhat,Briefly explain the environmental and sustainability implications of your project.,text,,,
+Discovery,13S,13=No,[action],suggestion,,,
+Discovery,13aT,13a=Yes,"Briefly describe how you intend to monitor, evaluate and address environmental impact and sustainability challenges.",text,,,
+Discovery,13aS,13a=No OR Unsure,[action],suggestion,,,
+Alpha,1,None,Do you have a data quality action plan or acceptance criteria to ensure your data is fit for purpose?,radios,Yes,No,
+Alpha,1a,1=Yes,Have you performed an initial data quality assessment?,radios,Yes,No,
+Alpha,1b,1=Yes,Do you have a plan for checking and validating data quality across the data lifecycle?,radios,Yes,No,
+Alpha,1T,1=Yes,Provide a summary or link to your action plan or acceptance criteria.,text,,,
+Alpha,1S,1=No,[action],suggestion,,,
+Alpha,1aT,1a=Yes,Briefly describe the results of your data quality assessment and any actions you plan to take to improve data quality.,text,,,
+Alpha,1aS,1a=No,[action],suggestion,,,
+Alpha,1bT,1b=Yes,Briefly describe how you will maintain data quality in the future.,text,,,
+Alpha,1bS,1b=No,[action],suggestion,,,
+Alpha,2,None,"Is your project purpose, design and intended outcome clear to all your key stakeholders yet?",radios,Yes,No,Unsure
+Alpha,2a,2=No,"Do you have a plan to communicate project purpose, design and intended outcomes later?",radios,Yes,No,
+Alpha,2S,2=Unsure,[action],suggestion,,,
+Alpha,2aT,2a=Yes,Briefly describe the ways you will record and communicate information to your stakeholders.,text,,,
+Alpha,2aS,2a=No,[action],suggestion,,,
+Alpha,3,None,Are you processing or do you intend to process peopleÕs personal data as part of your project?,radios,Yes,No,
+Alpha,3a,3=Yes,Are you communicating with or informing users about how their data is being used?,radios,Yes,No,
+Alpha,3aT,3a=Yes,Describe how you are communicating your personal data processing activities to users.,text,,,
+Alpha,3aS,3a=No,[action],suggestion,,,
+Alpha,4,None,Have you integrated or do you intend to integrate any privacy-enhancing technologies into your project?,radios,Yes,No,
+Alpha,4T,4=Yes,Briefly describe the PETs you have used or will use in your project.,text,,,
+Alpha,4S,4=No,[action],suggestion,,,
+Alpha,5,None,Have you ensured that the systemÕs outputs can be clearly explained and understood by users and key stakeholders yet?,radios,Yes,No,
+Alpha,5T,5=Yes,Briefly describe how you have ensured explainability.,text,,,
+Alpha,5S,5=No,[action],suggestion,,,
+Alpha,6,None,Have you planned or started any fairness testing yet?,radios,Yes,No,
+Alpha,6T,6=Yes,Describe the fairness testing you have started or planned.,text,,,
+Alpha,6S,6=No,[action],suggestion,,,
+Alpha,7,None,Have you investigated representativeness and bias within your project datasets yet?,radios,Yes,Somewhat,No
+Alpha,7a,7=Yes OR Somewhat,Are you able to address any dataset limitations that you have found?,radios,Yes,No,Unsure
+Alpha,7S,7= Somewhat OR No,[action],suggestion,,,
+Alpha,7T,7=Yes OR Somewhat,Briefly describe or provide a link to your findings.,text,,,
+Alpha,7aT,7a=Yes,Describe how you will mitigate any representativeness or bias limitations in your dataset.,text,,,
+Alpha,7aS,7a=No OR Unsure,[action],suggestion,,,
+Alpha,8,None,Have you considered the diversity of needs within your target user group yet?,radios,Yes,Somewhat,No
+Alpha,8T,8=Yes,Briefly describe the various needs within your target user group that you will account for.,text,,,
+Alpha,8S,8=Somewhat OR No,[action],suggestion,,,
+Alpha,9,None,Have you considered the harms in not undertaking your project?,radios,Yes,Somewhat,No
+Alpha,9T,9=Yes,Briefly explain the harms that might be caused by not undertaking this project.,text,,,
+Alpha,9S,9=Somewhat OR No,[action],suggestion,,,
+Alpha,10,None,Have you identified any trade-offs between ethical principles and business or organisational goals within your project?,radios,Yes,No,
+Alpha,10a,10=Yes,Have you considered alternative solutions or project designs to meeting your intended outcomes that would achieve a better balance of trade-offs?,radios,Yes,Somewhat,No
+Alpha,10T,10=Yes,Briefly describe the trade-offs you've identified.,text,,,
+Alpha,10S,10=No,[action],suggestion,,,
+Alpha,10aT,10a=Yes OR Somewhat,Briefly explain how you will balance these trade-offs.,text,,,
+Alpha,10aS,10a=No,[action],suggestion,,,
+Beta,1,None,[todo 1],radios,Yes,No,
+Live,1,None,[todo 2,radios,Yes,No,

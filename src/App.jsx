@@ -1,8 +1,34 @@
+import { useState } from 'react'
 import SurveyPage from './SurveyPage.jsx'
 import './App.css'
 import 'govuk-frontend/dist/govuk/govuk-frontend.min.css'
+import surveyJson from '../translated-survey.json'
+
+const stages = [
+  { id: 'discovery', label: 'Discovery', pageIndex: 0 },
+  { id: 'alpha', label: 'Alpha', pageIndex: 1 },
+  { id: 'beta', label: 'Beta', pageIndex: 2 },
+  { id: 'live', label: 'Live', pageIndex: 3 },
+]
 
 function App() {
+  const [activeStage, setActiveStage] = useState('discovery')
+  const [stageData, setStageData] = useState({})
+
+  const currentStage = stages.find((stage) => stage.id === activeStage)
+
+  function handleStageChange(stageId) {
+    setActiveStage(stageId)
+    window.location.hash = stageId
+  }
+
+  function handleDataChange(data) {
+    setStageData((currentData) => ({
+      ...currentData,
+      [activeStage]: { ...data },
+    }))
+  }
+
   return (
     <div className="govuk-template__body app-shell">
       <div class="govuk-header">
@@ -50,44 +76,49 @@ function App() {
         <div className="govuk-grid-row">
           <div className="govuk-grid-column-full">
             <p className="govuk-caption-xl">Data and AI Ethics Framework</p>
-            <h1 className="govuk-heading-xl">Interactive Tool [Prototype]</h1>
-            <div class="govuk-service-navigation"
+            <h1 className="govuk-heading-xl">Interactive Guidance [Prototype]</h1>
+            <div className="govuk-service-navigation"
               data-module="govuk-service-navigation">
-              <div class="govuk-width-container">
-                <div class="govuk-service-navigation__container">
-                  <nav aria-label="Menu" class="govuk-service-navigation__wrapper">
-                    <button type="button" class="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
+              <div className="govuk-width-container">
+                <div className="govuk-service-navigation__container">
+                  <nav aria-label="Survey stages" className="govuk-service-navigation__wrapper">
+                    <button type="button" className="govuk-service-navigation__toggle govuk-js-service-navigation-toggle" aria-controls="navigation" hidden aria-hidden="true">
                       Menu
                     </button>
-                    <ul class="govuk-service-navigation__list" id="navigation">
-                      <li class="govuk-service-navigation__item govuk-service-navigation__item--active">
-                        <a class="govuk-service-navigation__link" href="#" aria-current="true">
-                          <strong class="govuk-service-navigation__active-fallback">Discovery</strong>
-                        </a>
-                      </li>
-                      <li class="govuk-service-navigation__item">
-                        <a class="govuk-service-navigation__link" href="#">
-                          Alpha
-                        </a>
-                      </li>
-                      <li class="govuk-service-navigation__item">
-                        <a class="govuk-service-navigation__link" href="#">
-                          Beta
-                        </a>
-                      </li>
-                      <li class="govuk-service-navigation__item">
-                        <a class="govuk-service-navigation__link" href="#">
-                          Live
-                        </a>
-                      </li>
+                    <ul className="govuk-service-navigation__list" id="navigation">
+                      {stages.map((stage) => {
+                        const isActive = stage.id === activeStage
+
+                        return (
+                          <li className={`govuk-service-navigation__item${isActive ? ' govuk-service-navigation__item--active' : ''}`} key={stage.id}>
+                            <a
+                              className="govuk-service-navigation__link"
+                              href={`#${stage.id}`}
+                              aria-current={isActive ? 'page' : undefined}
+                              onClick={(event) => {
+                                event.preventDefault()
+                                handleStageChange(stage.id)
+                              }}
+                            >
+                              {isActive ? <strong className="govuk-service-navigation__active-fallback">{stage.label}</strong> : stage.label}
+                            </a>
+                          </li>
+                        )
+                      })}
                     </ul>
                   </nav>
                 </div>
               </div>
             </div>
-            <div class="govuk-!-margin-bottom-4">
+            <div class="govuk-!-margin-bottom-7">
             </div>
-            <SurveyPage />
+            <SurveyPage
+              key={activeStage}
+              surveyJson={surveyJson}
+              initialData={stageData[activeStage]}
+              onDataChange={handleDataChange}
+              pageIndex={currentStage.pageIndex}
+            />
           </div>
         </div>
       </main>

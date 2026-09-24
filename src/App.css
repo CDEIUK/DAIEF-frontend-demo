@@ -32,6 +32,45 @@
 	background: #fff;
 }
 
+.app-shell .sd-page__description {
+	display: none;
+}
+
+.app-shell .sd-page__title {
+	display: none;
+}
+
+.app-shell .survey-page-title {
+	margin-bottom: 16px;
+	font-family: "GDS Transport", arial, sans-serif;
+}
+
+.app-shell .survey-page-description {
+	margin-bottom: 24px;
+	color: #0b0c0c;
+	font-family: "GDS Transport", arial, sans-serif;
+	font-size: 19px;
+	line-height: 1.31579;
+}
+
+.app-shell .survey-page-description a {
+	color: #1d70b8;
+	text-decoration: underline;
+}
+
+.app-shell .survey-page-description a:focus {
+	outline: 3px solid #ffdd00;
+	outline-offset: 0;
+}
+
+.app-shell .sd-progress-buttons__page-title,
+.app-shell .sd-progress-buttons__page-description,
+.app-shell .sd-clear-button,
+.app-shell .sd-selectlist__filter-clear-button,
+.app-shell .sv-list__filter-clear-button {
+	font-family: "GDS Transport", arial, sans-serif;
+}
+
 .app-shell .sd-question__title,
 .app-shell .sd-question__description,
 .app-shell .sd-element__title,
@@ -164,11 +203,11 @@
 	background-color: transparent;
 }
 
-.app-shell .sd-question:has(.sd-text) {
+.app-shell .sd-question:has(.sd-comment) {
 	background-color: #e0f0ff;
 	border-radius: 4px;
 }
 
-.app-shell .sd-question:has(.sd-text) .sd-text {
-	background-color: transparent;
+.app-shell .sd-question:has(.sd-comment) .sd-comment {
+	background-color: #ffffff;
 }
