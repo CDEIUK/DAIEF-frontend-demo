@@ -719,7 +719,7 @@
     {
       "name": "page2",
       "title": "Alpha",
-      "description": "Alpha is the initial solution development phase. You are building prototypes to test your ideas and assumptions, and to gather feedback from users. Follow the link to learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">alpha phase</a>.<br><br>\n\nThis section contains 10 question series.",
+      "description": "Alpha is the initial solution development phase. You are building prototypes to test your ideas and assumptions, and to gather feedback from users. Follow the link to learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">alpha phase</a>.<br><br>\n\nThis section contains 11 question series.",
       "elements": [
         {
           "type": "radiogroup",
@@ -1083,10 +1083,11 @@
           "type": "radiogroup",
           "name": "10",
           "startWithNewLine": true,
-          "title": "10. Have you identified any trade-offs between ethical principles and business or organisational goals within your project?",
+          "title": "10. Could your solution have an impact on employment, working conditions or required skills?",
           "choices": [
             "Yes",
-            "No"
+            "No",
+            "Unsure"
           ],
           "allowClear": true,
           "isRequired": true
@@ -1095,11 +1096,10 @@
           "type": "radiogroup",
           "name": "10a",
           "startWithNewLine": false,
-          "title": "10a. Have you considered alternative solutions or project designs to meeting your intended outcomes that would achieve a better balance of trade-offs?",
+          "title": "10a. Have you considered who is likely to be relatively advantaged and disadvantaged by this impact?",
           "visibleIf": "{10} = 'Yes'",
           "choices": [
             "Yes",
-            "Somewhat",
             "No"
           ],
           "allowClear": true,
@@ -1110,7 +1110,7 @@
           "type": "comment",
           "name": "10T",
           "startWithNewLine": true,
-          "title": "Briefly describe the trade-offs you've identified.",
+          "title": "Describe the likely or potential employment, working condition or required skill impacts of your solution?",
           "visibleIf": "{10} = 'Yes'"
         },
         {
@@ -1118,14 +1118,14 @@
           "name": "10S",
           "startWithNewLine": false,
           "title": "10 [action]",
-          "visibleIf": "{10} = 'No'"
+          "visibleIf": "{10} = 'Unsure'"
         },
         {
           "type": "comment",
           "name": "10aT",
           "startWithNewLine": false,
-          "title": "Briefly explain how you will balance these trade-offs.",
-          "visibleIf": "{10a} = 'Yes' or {10a} = 'Somewhat'"
+          "title": "Describe who is likely to be advantaged or disadvantaged by your solution, if anyone?",
+          "visibleIf": "{10a} = 'Yes'"
         },
         {
           "type": "expression",
@@ -1133,44 +1133,623 @@
           "startWithNewLine": false,
           "title": "10a [action]",
           "visibleIf": "{10a} = 'No'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "11",
+          "startWithNewLine": true,
+          "title": "11. Have you identified any trade-offs between ethical principles and business or organisational goals within your project?",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "11a",
+          "startWithNewLine": false,
+          "title": "11a. Have you considered alternative solutions or project designs to meeting your intended outcomes that would achieve a better balance of trade-offs?",
+          "visibleIf": "{11} = 'Yes'",
+          "choices": [
+            "Yes",
+            "Somewhat",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{11} <> 'Yes'"
+        },
+        {
+          "type": "comment",
+          "name": "11T",
+          "startWithNewLine": true,
+          "title": "Briefly describe the trade-offs you've identified.",
+          "visibleIf": "{11} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "11S",
+          "startWithNewLine": false,
+          "title": "11 [action]",
+          "visibleIf": "{11} = 'No'"
+        },
+        {
+          "type": "comment",
+          "name": "11aT",
+          "startWithNewLine": false,
+          "title": "Briefly explain how you will balance these trade-offs.",
+          "visibleIf": "{11a} = 'Yes' or {11a} = 'Somewhat'"
+        },
+        {
+          "type": "expression",
+          "name": "11aS",
+          "startWithNewLine": false,
+          "title": "11a [action]",
+          "visibleIf": "{11a} = 'No'"
         }
       ]
     },
     {
       "name": "page3",
       "title": "Beta",
-      "description": "Beta is the phase where you start building your solution that best solves your problem. You are refining your solution based on user feedback and preparing for launch. Follow the link to learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-beta-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">beta phase</a>.<br><br>\n\nThis section contains 1 question series.",
+      "description": "Beta is the phase where you are building the solution that best solves your problem. You are refining your solution based on user feedback and preparing for launch. Follow the link to learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-beta-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">beta phase</a>.<br><br>\n\nThis section contains 8 question series.",
       "elements": [
         {
           "type": "radiogroup",
           "name": "1",
           "startWithNewLine": true,
-          "title": "1. [todo 1]",
+          "title": "1. Are you confident in the accuracy, representativeness and completeness of the data that is shaping your solution design?",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "comment",
+          "name": "1T",
+          "startWithNewLine": true,
+          "title": "Briefly describe the data quality tests and/or results you've performed to give you confidence.",
+          "visibleIf": "{1} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "1S",
+          "startWithNewLine": false,
+          "title": "1 [action]",
+          "visibleIf": "{1} = 'No'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "2",
+          "startWithNewLine": true,
+          "title": "2. Have you performed fairness tests on your AI system?",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
           "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "2a",
+          "startWithNewLine": false,
+          "title": "2a. Are you confident that your AI system will lead to fair outcomes yet?",
+          "visibleIf": "{2} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{2} <> 'Yes'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "2b",
+          "startWithNewLine": false,
+          "title": "2b. Will you take any corrective action to address fairness issues before going live?",
+          "visibleIf": "{2a} = 'No' or {2a} = 'Unsure'",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{2a} <> 'No' and {2a} <> 'Unsure'"
+        },
+        {
+          "type": "expression",
+          "name": "2S",
+          "startWithNewLine": true,
+          "title": "2 [action]",
+          "visibleIf": "{2} = 'No'"
+        },
+        {
+          "type": "comment",
+          "name": "2aT",
+          "startWithNewLine": false,
+          "title": "Briefly describe the data fairness tests and/or results you've performed to give you confidence.",
+          "visibleIf": "{2a} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "2aS",
+          "startWithNewLine": false,
+          "title": "2a [action]",
+          "visibleIf": "{2a} = 'No'"
+        },
+        {
+          "type": "comment",
+          "name": "2bT",
+          "startWithNewLine": false,
+          "title": "Briefly describe the corrective action you will take to ensure fairness.",
+          "visibleIf": "{2b} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "2bS",
+          "startWithNewLine": false,
+          "title": "2b [action]",
+          "visibleIf": "{2b} = 'No'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "3",
+          "startWithNewLine": true,
+          "title": "3. Have you ensured accessibility for all users yet?",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "comment",
+          "name": "3T",
+          "startWithNewLine": true,
+          "title": "Briefly describe the accessibility measurs you've taken.",
+          "visibleIf": "{3} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "3S",
+          "startWithNewLine": false,
+          "title": "3 [action]",
+          "visibleIf": "{3} = 'No'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "4",
+          "startWithNewLine": true,
+          "title": "4. Have you established and tested human oversight mechanisms?",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "comment",
+          "name": "4T",
+          "startWithNewLine": true,
+          "title": "Briefly describe the governance checks and controls mechanisms that you've established for your solution.",
+          "visibleIf": "{4} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "4S",
+          "startWithNewLine": false,
+          "title": "4 [action]",
+          "visibleIf": "{4} = 'No'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "5",
+          "startWithNewLine": true,
+          "title": "5. Would others be able to reproduce your project process, results and outputs using your current project documentation?",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "comment",
+          "name": "5T",
+          "startWithNewLine": true,
+          "title": "List the main resources that would allow others to understand and reproduce your project.",
+          "visibleIf": "{5} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "5S",
+          "startWithNewLine": false,
+          "title": "5 [action]",
+          "visibleIf": "{5} = 'No' or {5} = 'Unsure'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "6",
+          "startWithNewLine": true,
+          "title": "6. Is your project within scope of the Algorithmic Transparency Recording Standard (ATRS)?",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "6a",
+          "startWithNewLine": false,
+          "title": "6a. Have you reviewed the ATRS for information you are required to publish?",
+          "visibleIf": "{6} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{6} <> 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "6S",
+          "startWithNewLine": true,
+          "title": "6 [action]",
+          "visibleIf": "{6} = 'Unsure'"
+        },
+        {
+          "type": "expression",
+          "name": "6aS",
+          "startWithNewLine": false,
+          "title": "6a [action]",
+          "visibleIf": "{6a} = 'No' or {6a} = 'Unsure'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "7",
+          "startWithNewLine": true,
+          "title": "7. Have you integrated environmental evaluation and monitoring processes into your project yet?",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "7a",
+          "startWithNewLine": false,
+          "title": "7a. Have you set environmental and sustainability thresholds that your project needs to adhere to?",
+          "visibleIf": "{7} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{7} <> 'Yes'"
+        },
+        {
+          "type": "comment",
+          "name": "7T",
+          "startWithNewLine": true,
+          "title": "Briefly describe how you've integrated these processes into your project.",
+          "visibleIf": "{7} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "7S",
+          "startWithNewLine": false,
+          "title": "7 [action]",
+          "visibleIf": "{7} = 'No'"
+        },
+        {
+          "type": "comment",
+          "name": "7aT",
+          "startWithNewLine": false,
+          "title": "Describe your environmental and sustainability thresholds, and the consequences of not adhering to them.",
+          "visibleIf": "{7a} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "7aS",
+          "startWithNewLine": false,
+          "title": "7a [action]",
+          "visibleIf": "{7a} = 'No'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "9",
+          "startWithNewLine": true,
+          "title": "9. Have you established Ôgo' or Ôno-go' criteria for your solution to go live?",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "9a",
+          "startWithNewLine": false,
+          "title": "9a. Do you have a plan for safely transitioning from development to live yet?",
+          "visibleIf": "{9} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{9} <> 'Yes'"
+        },
+        {
+          "type": "comment",
+          "name": "9T",
+          "startWithNewLine": true,
+          "title": "List or link the Ôgo' or Ôno-go' criteria for your solution to go live.",
+          "visibleIf": "{9} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "9S",
+          "startWithNewLine": false,
+          "title": "9 [action]",
+          "visibleIf": "{9} = 'No'"
+        },
+        {
+          "type": "comment",
+          "name": "9aT",
+          "startWithNewLine": false,
+          "title": "Briefly explain or link your plan for transitioning to live.",
+          "visibleIf": "{9a} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "9aS",
+          "startWithNewLine": false,
+          "title": "9a [action]",
+          "visibleIf": "{9a} = 'No'"
         }
       ]
     },
     {
       "name": "page4",
       "title": "Live",
-      "description": "Live is the phase where your solution is available to users. You are monitoring performance and gathering feedback to inform future improvements. Follow the link to learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-live-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">live phase</a>.<br><br>\n\nThis section contains 1 question series.",
+      "description": "Live is the phase where your solution is available to users. You are monitoring performance and gathering feedback to inform future improvements. Follow the link to learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-live-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">live phase</a>.<br><br>\n\nThis section contains 6 question series.",
       "elements": [
         {
           "type": "radiogroup",
           "name": "1",
           "startWithNewLine": true,
-          "title": "1. [todo 2",
+          "title": "1. Are you measuring and monitoring performance of your system?",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
           "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "1a",
+          "startWithNewLine": false,
+          "title": "1a. Do you have a response plan for if your system degrades or becomes unsafe?",
+          "visibleIf": "{1} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{1} <> 'Yes'"
+        },
+        {
+          "type": "comment",
+          "name": "1T",
+          "startWithNewLine": true,
+          "title": "List the ways in which you are measuring and monitoring system performance.",
+          "visibleIf": "{1} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "1S",
+          "startWithNewLine": false,
+          "title": "1 [action]",
+          "visibleIf": "{1} = 'No'"
+        },
+        {
+          "type": "comment",
+          "name": "1aT",
+          "startWithNewLine": false,
+          "title": "Describe or link your system degradation and safety plan.",
+          "visibleIf": "{1a} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "1aS",
+          "startWithNewLine": false,
+          "title": "1a [action]",
+          "visibleIf": "{1a} = 'No'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "2",
+          "startWithNewLine": true,
+          "title": "2. Have you established opportunities for users to submit feedback on system performance?",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "comment",
+          "name": "2T",
+          "startWithNewLine": true,
+          "title": "Briefly describe the opportunities you've established for users to submit feedback on system performance.",
+          "visibleIf": "{2} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "2S",
+          "startWithNewLine": false,
+          "title": "2 [action]",
+          "visibleIf": "{2} = 'No'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "3",
+          "startWithNewLine": true,
+          "title": "3. Are you maintaining logs and documentation while your system is live?",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "3a",
+          "startWithNewLine": false,
+          "title": "3a. Are you confident that these records are transparent enough and will support investigations if issues occur?",
+          "visibleIf": "{3} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{3} <> 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "3S",
+          "startWithNewLine": true,
+          "title": "3 [action]",
+          "visibleIf": "{3} = 'No'"
+        },
+        {
+          "type": "expression",
+          "name": "3aS",
+          "startWithNewLine": false,
+          "title": "3a [action]",
+          "visibleIf": "{3a} = 'No' or {3a} = 'Unsure'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "4",
+          "startWithNewLine": true,
+          "title": "4. Are your system outputs consistently understandable and explainable to users and key stakeholders?",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "comment",
+          "name": "4T",
+          "startWithNewLine": true,
+          "title": "Briefly describe the measures you've taken to ensure that users can rationalise system outputs.",
+          "visibleIf": "{4} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "4S",
+          "startWithNewLine": false,
+          "title": "4 [action]",
+          "visibleIf": "{4} = 'No' or {4} = 'Unsure'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "5",
+          "startWithNewLine": true,
+          "title": "5. Do your users know that an AI system is involved in producing outputs?",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "comment",
+          "name": "5T",
+          "startWithNewLine": true,
+          "title": "Describe the measures you've taken to ensure that users know that they are engaging with an AI-enabled solution.",
+          "visibleIf": "{5} = 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "5S",
+          "startWithNewLine": false,
+          "title": "5 [action]",
+          "visibleIf": "{5} = 'No'"
+        },
+        {
+          "type": "radiogroup",
+          "name": "6",
+          "startWithNewLine": true,
+          "title": "6. Are you required to publish a transparency record as part of the ATRS initiative?",
+          "choices": [
+            "Yes",
+            "No",
+            "Unsure"
+          ],
+          "allowClear": true,
+          "isRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "6a",
+          "startWithNewLine": false,
+          "title": "6a. Have you published a transparency record yet?",
+          "visibleIf": "{6} = 'Yes'",
+          "choices": [
+            "Yes",
+            "No"
+          ],
+          "allowClear": true,
+          "isRequired": true,
+          "resetValueIf": "{6} <> 'Yes'"
+        },
+        {
+          "type": "expression",
+          "name": "6S",
+          "startWithNewLine": true,
+          "title": "6 [action]",
+          "visibleIf": "{6} = 'Unsure'"
+        },
+        {
+          "type": "expression",
+          "name": "6aS",
+          "startWithNewLine": false,
+          "title": "6a [action]",
+          "visibleIf": "{6} = 'No'"
         }
       ]
     }
