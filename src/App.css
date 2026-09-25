@@ -63,6 +63,95 @@
 	outline-offset: 0;
 }
 
+.app-shell .survey-progress-panel {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 16px 32px;
+	margin: 0 0 0px;
+	padding: 16px 20px;
+	border: 1px solid #b1b4b6;
+	background: #fff;
+}
+
+.app-shell .survey-progress-label {
+	font-family: "GDS Transport", arial, sans-serif;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.app-shell .survey-progress-item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.app-shell .survey-progress-count {
+	font-family: "GDS Transport", arial, sans-serif;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 1;
+}
+
+.app-shell .govuk-service-navigation > .govuk-width-container {
+	max-width: none;
+	margin-right: 15px;
+	margin-left: 15px;
+}
+
+@media (min-width: 40.0625em) {
+	.app-shell .govuk-service-navigation > .govuk-width-container {
+		margin-right: 30px;
+		margin-left: 30px;
+	}
+}
+
+.app-shell .app-navigation__info-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	border: 1px solid currentcolor;
+	border-radius: 50%;
+	font-family: Georgia, serif;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.app-shell .save-panel {
+	margin: 0 0 24px;
+	padding: 16px 20px;
+	background: #e5e5e5;
+}
+
+.app-shell .save-panel p {
+	margin: 0;
+}
+
+.app-shell .save-panel__actions {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 24px;
+	margin-top: 16px;
+}
+
+.app-shell .save-panel__button {
+	margin: 0;
+}
+
+.app-shell .save-panel__input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	top: auto;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+}
+
 .app-shell .sd-progress-buttons__page-title,
 .app-shell .sd-progress-buttons__page-description,
 .app-shell .sd-clear-button,
@@ -81,7 +170,7 @@
 }
 
 .app-shell .sd-question__title {
-	font-size: 19px;
+	font-size: 18px;
 	font-weight: 700;
 	line-height: 1.31579;
 }
