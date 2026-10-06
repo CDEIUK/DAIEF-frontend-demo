@@ -1,15 +1,70 @@
 {
   "pages": [
-    {
+    
+        {
       "name": "page1",
+      "title": "Project detail",
+      "description": "Project detail contains the core information about your project. Use the filters below to show questions relevant to your project.",
+      "elements": [
+        {
+          "type": "text",
+          "name": "1",
+          "startWithNewLine": true,
+          "title": "Give your project a name."
+        },
+        {
+          "type": "checkbox",
+          "name": "0",
+          "startWithNewLine": true,
+          "title": "Tick all the filters  that apply to your project.",
+          "choices": [
+            {
+              "value": "Option a",
+              "text": "Does your project involve the collection, use, or sharing of data?"
+            },
+            {
+              "value": "Option b",
+              "text": "Does your project involve the use of AI or broader algorithmic tools?"
+            },
+            {
+              "value": "Option c",
+              "text": "Does your project interact directly with the public?"
+            },
+            {
+              "value": "Option d",
+              "text": "Does your project make decisions with a significant or legal effect?"
+            },
+            {
+              "value": "Option e",
+              "text": "Does your project work in a safety-critical area? (I.e., policing, healthcare, or working with vulnerable persons/groups)"
+            }
+          ]
+        },
+        
+        {
+          "type": "comment",
+          "name": "2",
+          "startWithNewLine": true,
+          "title": "Describe the problem you’re trying to solve in simple terms."
+        },
+        {
+          "type": "comment",
+          "name": "2a",
+          "startWithNewLine": true,
+          "title": "Describe the project purpose and user need."
+        }
+      ]
+    },
+    {
+      "name": "page2",
       "title": "Discovery",
-      "description": "Discovery is the project research and scoping phase. You are understanding the problem that needs to be solved and the opportunities for addressing them using data and AI. Follow the link to learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">discovery phase</a>.<br><br>\n\nThis section contains 13 question series.",
+      "description": "Discovery is the project research and scoping phase. You are understanding the problem that needs to be solved and the opportunities for addressing them using data and AI. Learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">discovery phase</a> in a new tab.<br><br>",
       "elements": [
         {
           "type": "radiogroup",
           "name": "1",
           "startWithNewLine": true,
-          "title": "1. Have you consulted your organisation's data protection officer (DPO) about your project?",
+          "title": "1. Have you consulted your organisation’s data protection officer (DPO) about your project?",
           "choices": [
             "Yes",
             "No"
@@ -57,7 +112,7 @@
         {
           "type": "comment",
           "name": "1aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Provide a brief summary of data processing advice that you received.",
           "visibleIf": "{1a} = 'Yes'"
         },
@@ -71,7 +126,7 @@
         {
           "type": "comment",
           "name": "1bT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Briefly explain what advice you won't follow and why.",
           "visibleIf": "{1b} = 'No'"
         },
@@ -86,7 +141,7 @@
           "type": "radiogroup",
           "name": "2",
           "startWithNewLine": true,
-          "title": "2. Have you consulted with your organisation's data and information security teams?",
+          "title": "2. Have you consulted with your organisation’s data and information security teams?",
           "choices": [
             "Yes",
             "No"
@@ -134,7 +189,7 @@
         {
           "type": "comment",
           "name": "2aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Provide a brief summary of security advice that you received",
           "visibleIf": "{2a} = 'Yes'"
         },
@@ -148,7 +203,7 @@
         {
           "type": "comment",
           "name": "2bT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Brieflly explain what advice you won't follow and why.",
           "visibleIf": "{2b} = 'No'"
         },
@@ -203,7 +258,7 @@
         {
           "type": "comment",
           "name": "3aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Provide a name, summary or link to your complete DPIA.",
           "visibleIf": "{3a} = 'Yes'"
         },
@@ -266,7 +321,7 @@
         {
           "type": "comment",
           "name": "4aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Provide a summary or link to your complete data sharing agreement.",
           "visibleIf": "{4a} = 'Yes'"
         },
@@ -280,7 +335,7 @@
         {
           "type": "comment",
           "name": "4bT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Briefly explain how data sharing achieves a benefit and is necessary.",
           "visibleIf": "{4b} = 'Yes'"
         },
@@ -322,7 +377,7 @@
           "type": "radiogroup",
           "name": "6",
           "startWithNewLine": true,
-          "title": "6. How have you assigned responsibility for the project's outcomes?",
+          "title": "6. How have you assigned responsibility for the project’s outcomes?",
           "choices": [
             "Yes",
             "No"
@@ -355,7 +410,7 @@
         {
           "type": "comment",
           "name": "6aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Briefly describe any barriers to responsible owner intervention that you foresee.",
           "visibleIf": "{6a} = 'Yes'"
         },
@@ -389,14 +444,14 @@
         {
           "type": "comment",
           "name": "7Ta",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Provide the types of routines or processes that you'll use to document decisions.",
           "visibleIf": "{7} = 'Yes'"
         },
         {
           "type": "comment",
           "name": "7Tb",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Provide the ways in which people will be able to learn more about key decisions if needed.",
           "visibleIf": "{7} = 'Yes'"
         },
@@ -460,7 +515,7 @@
         {
           "type": "comment",
           "name": "8aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Describe the measures you will take to protect research particpants.",
           "visibleIf": "{8a} = 'Yes'"
         },
@@ -474,7 +529,7 @@
         {
           "type": "comment",
           "name": "8bT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Describe the measures you will take to protect researchers.",
           "visibleIf": "{8b} = 'Yes'"
         },
@@ -522,7 +577,7 @@
         {
           "type": "comment",
           "name": "9aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Briefly describe any risks or blind spots you have identified.",
           "visibleIf": "{9a} = 'Yes'"
         },
@@ -571,7 +626,7 @@
         {
           "type": "comment",
           "name": "10aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Briefly describe how your user groups may be impacted differently.",
           "visibleIf": "{10a} = 'Yes'"
         },
@@ -620,7 +675,7 @@
         {
           "type": "comment",
           "name": "11aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Briefly describe the steps you will take to engage with a wide variety of stakeholders.",
           "visibleIf": "{11a} = 'Yes'"
         },
@@ -703,7 +758,7 @@
         {
           "type": "comment",
           "name": "13aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Briefly describe how you intend to monitor, evaluate and address environmental impact and sustainability challenges.",
           "visibleIf": "{13a} = 'Yes'"
         },
@@ -717,9 +772,9 @@
       ]
     },
     {
-      "name": "page2",
+      "name": "page3",
       "title": "Alpha",
-      "description": "Alpha is the initial solution development phase. You are building prototypes to test your ideas and assumptions, and to gather feedback from users. Follow the link to learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">alpha phase</a>.<br><br>\n\nThis section contains 11 question series.",
+      "description": "Alpha is the initial solution development phase. You are building prototypes to test your ideas and assumptions, and to gather feedback from users. Learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">alpha phase</a> in a new tab.<br><br>",
       "elements": [
         {
           "type": "radiogroup",
@@ -778,7 +833,7 @@
         {
           "type": "comment",
           "name": "1aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Briefly describe the results of your data quality assessment and any actions you plan to take to improve data quality.",
           "visibleIf": "{1a} = 'Yes'"
         },
@@ -792,7 +847,7 @@
         {
           "type": "comment",
           "name": "1bT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Briefly describe how you will maintain data quality in the future.",
           "visibleIf": "{1b} = 'Yes'"
         },
@@ -840,7 +895,7 @@
         {
           "type": "comment",
           "name": "2aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Briefly describe the ways you will record and communicate information to your stakeholders.",
           "visibleIf": "{2a} = 'Yes'"
         },
@@ -855,7 +910,7 @@
           "type": "radiogroup",
           "name": "3",
           "startWithNewLine": true,
-          "title": "3. Are you processing or do you intend to process people's personal data as part of your project?",
+          "title": "3. Are you processing or do you intend to process people’s personal data as part of your project?",
           "choices": [
             "Yes",
             "No"
@@ -921,7 +976,7 @@
           "type": "radiogroup",
           "name": "5",
           "startWithNewLine": true,
-          "title": "5. Have you ensured that the system's outputs can be clearly explained and understood by users and key stakeholders yet?",
+          "title": "5. Have you ensured that the system’s outputs can be clearly explained and understood by users and key stakeholders yet?",
           "choices": [
             "Yes",
             "No"
@@ -1007,14 +1062,14 @@
         {
           "type": "comment",
           "name": "7T",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Briefly describe or provide a link to your findings.",
           "visibleIf": "{7} = 'Yes' or {7} = 'Somewhat'"
         },
         {
           "type": "comment",
           "name": "7aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Describe how you will mitigate any representativeness or bias limitations in your dataset.",
           "visibleIf": "{7a} = 'Yes'"
         },
@@ -1123,7 +1178,7 @@
         {
           "type": "comment",
           "name": "10aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Describe who is likely to be advantaged or disadvantaged by your solution, if anyone?",
           "visibleIf": "{10a} = 'Yes'"
         },
@@ -1178,7 +1233,7 @@
         {
           "type": "comment",
           "name": "11aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Briefly explain how you will balance these trade-offs.",
           "visibleIf": "{11a} = 'Yes' or {11a} = 'Somewhat'"
         },
@@ -1192,9 +1247,9 @@
       ]
     },
     {
-      "name": "page3",
+      "name": "page4",
       "title": "Beta",
-      "description": "Beta is the phase where you are building the solution that best solves your problem. You are refining your solution based on user feedback and preparing for launch. Follow the link to learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-beta-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">beta phase</a>.<br><br>\n\nThis section contains 8 question series.",
+      "description": "Beta is the phase where you are building the solution that best solves your problem. You are refining your solution based on user feedback and preparing for launch. Learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-beta-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">beta phase</a> in a new tab.<br><br>",
       "elements": [
         {
           "type": "radiogroup",
@@ -1275,7 +1330,7 @@
         {
           "type": "comment",
           "name": "2aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Briefly describe the data fairness tests and/or results you've performed to give you confidence.",
           "visibleIf": "{2a} = 'Yes'"
         },
@@ -1289,7 +1344,7 @@
         {
           "type": "comment",
           "name": "2bT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Briefly describe the corrective action you will take to ensure fairness.",
           "visibleIf": "{2b} = 'Yes'"
         },
@@ -1418,7 +1473,7 @@
           "name": "6aS",
           "startWithNewLine": false,
           "title": "6a [action]",
-          "visibleIf": "{6a} = 'No' or {6a} = 'Unsure'"
+          "visibleIf": "{6a} = 'No'"
         },
         {
           "type": "radiogroup",
@@ -1463,7 +1518,7 @@
         {
           "type": "comment",
           "name": "7aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Describe your environmental and sustainability thresholds, and the consequences of not adhering to them.",
           "visibleIf": "{7a} = 'Yes'"
         },
@@ -1476,9 +1531,9 @@
         },
         {
           "type": "radiogroup",
-          "name": "9",
+          "name": "8",
           "startWithNewLine": true,
-          "title": "9. Have you established Ôgo' or Ôno-go' criteria for your solution to go live?",
+          "title": "8. Have you established ‘go’ or ‘no-go’ criteria for your solution to go live?",
           "choices": [
             "Yes",
             "No"
@@ -1488,9 +1543,9 @@
         },
         {
           "type": "radiogroup",
-          "name": "9a",
+          "name": "8a",
           "startWithNewLine": false,
-          "title": "9a. Do you have a plan for safely transitioning from development to live yet?",
+          "title": "8a. Do you have a plan for safely transitioning from development to live yet?",
           "visibleIf": "{9} = 'Yes'",
           "choices": [
             "Yes",
@@ -1502,38 +1557,38 @@
         },
         {
           "type": "comment",
-          "name": "9T",
+          "name": "8T",
           "startWithNewLine": true,
-          "title": "List or link the Ôgo' or Ôno-go' criteria for your solution to go live.",
-          "visibleIf": "{9} = 'Yes'"
+          "title": "List or link the ‘go’ or ‘no-go’ criteria for your solution to go live.",
+          "visibleIf": "{8} = 'Yes'"
         },
         {
           "type": "expression",
-          "name": "9S",
+          "name": "8S",
           "startWithNewLine": false,
-          "title": "9 [action]",
-          "visibleIf": "{9} = 'No'"
+          "title": "8 [action]",
+          "visibleIf": "{8} = 'No'"
         },
         {
           "type": "comment",
-          "name": "9aT",
-          "startWithNewLine": false,
+          "name": "8aT",
+          "startWithNewLine": true,
           "title": "Briefly explain or link your plan for transitioning to live.",
-          "visibleIf": "{9a} = 'Yes'"
+          "visibleIf": "{8a} = 'Yes'"
         },
         {
           "type": "expression",
-          "name": "9aS",
+          "name": "8aS",
           "startWithNewLine": false,
-          "title": "9a [action]",
-          "visibleIf": "{9a} = 'No'"
+          "title": "8a [action]",
+          "visibleIf": "{8a} = 'No'"
         }
       ]
     },
     {
-      "name": "page4",
+      "name": "page5",
       "title": "Live",
-      "description": "Live is the phase where your solution is available to users. You are monitoring performance and gathering feedback to inform future improvements. Follow the link to learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-live-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">live phase</a>.<br><br>\n\nThis section contains 6 question series.",
+      "description": "Live is the phase where your solution is available to users. You are monitoring performance and gathering feedback to inform future improvements. Learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-live-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">live phase</a> in a new tab.<br><br>",
       "elements": [
         {
           "type": "radiogroup",
@@ -1578,7 +1633,7 @@
         {
           "type": "comment",
           "name": "1aT",
-          "startWithNewLine": false,
+          "startWithNewLine": true,
           "title": "Describe or link your system degradation and safety plan.",
           "visibleIf": "{1a} = 'Yes'"
         },

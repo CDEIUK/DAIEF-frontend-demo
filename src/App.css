@@ -28,8 +28,31 @@
 	background: #fff;
 }
 
+.app-shell .survey-form .sd-body__navigation {
+	display: none;
+}
+
+.app-shell .survey-form .sd-page__content {
+	padding-right: 0;
+	padding-left: 0;
+}
+
+.app-shell .survey-form .sd-question__header-and-content-container {
+	padding-right: 24px;
+	padding-left: 24px;
+}
+
 .app-shell .sd-page {
 	background: #fff;
+}
+
+.app-shell .survey-form,
+.app-shell .survey-form .sd-container-modern,
+.app-shell .survey-form .sd-root-modern,
+.app-shell .survey-form .sd-body,
+.app-shell .survey-form .sd-page,
+.app-shell .survey-form .sd-page__content {
+	background-color: #fff !important;
 }
 
 .app-shell .sd-page__description {
@@ -43,6 +66,36 @@
 .app-shell .survey-page-title {
 	margin-bottom: 16px;
 	font-family: "GDS Transport", arial, sans-serif;
+}
+
+.app-shell .survey-metadata {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+	align-items: center;
+	column-gap: 12px;
+	margin-bottom: 16px;
+	padding: 0px 0px;
+	border: 1px solid #ffffff;
+	background: #ffffff;
+	color: #505a5f;
+	font-family: "GDS Transport", arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.25;
+}
+
+.app-shell .survey-metadata span:first-child {
+	min-width: 0;
+	text-align: left;
+	overflow-wrap: anywhere;
+}
+
+.app-shell .survey-metadata span:nth-child(2) {
+	text-align: center;
+}
+
+.app-shell .survey-metadata span:last-child {
+	min-width: 0;
+	text-align: right;
 }
 
 .app-shell .survey-page-description {
@@ -70,7 +123,7 @@
 	gap: 16px 32px;
 	margin: 0 0 0px;
 	padding: 16px 20px;
-	border: 1px solid #b1b4b6;
+	border: 3px solid #b1b4b6;
 	background: #fff;
 }
 
@@ -133,9 +186,21 @@
 .app-shell .save-panel__actions {
 	display: flex;
 	justify-content: space-between;
-	align-items: flex-start;
+	align-items: center;
+	flex-wrap: wrap;
 	gap: 24px;
 	margin-top: 16px;
+}
+
+.app-shell .save-panel__file-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.app-shell .comment-visibility-toggle {
+	min-width: 270px;
+	margin: 0;
 }
 
 .app-shell .save-panel__button {
@@ -150,6 +215,44 @@
 	overflow: hidden;
 	clip: rect(0 0 0 0);
 	white-space: nowrap;
+}
+
+.app-shell .filename-dialog-backdrop {
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+	background: rgba(11, 12, 12, 0.55);
+}
+
+.app-shell .filename-dialog {
+	width: min(100%, 480px);
+	padding: 24px;
+	border-top: 6px solid #1d70b8;
+	background: #fff;
+	box-shadow: 0 4px 16px rgba(11, 12, 12, 0.25);
+}
+
+.app-shell .filename-dialog .govuk-heading-m {
+	margin-bottom: 16px;
+}
+
+.app-shell .filename-dialog .govuk-input {
+	width: 100%;
+}
+
+.app-shell .filename-dialog__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-top: 24px;
+}
+
+.app-shell .filename-dialog__actions .govuk-button {
+	margin-bottom: 0;
 }
 
 .app-shell .sd-progress-buttons__page-title,
@@ -179,6 +282,12 @@
 	color: #505a5f;
 	font-size: 16px;
 	line-height: 1.31579;
+}
+
+.app-shell .survey-form .sd-question.sd-question--with-frame {
+	border: 1px solid #b1b4b6;
+	border-radius: 0;
+	box-shadow: none;
 }
 
 .app-shell .sd-formbox,
@@ -292,11 +401,98 @@
 	background-color: transparent;
 }
 
-.app-shell .sd-question:has(.sd-comment) {
+.app-shell .sd-question:has(.sd-comment),
+.app-shell .sd-question:has(.sd-text) {
 	background-color: #e0f0ff;
 	border-radius: 4px;
 }
 
 .app-shell .sd-question:has(.sd-comment) .sd-comment {
 	background-color: #ffffff;
+}
+
+.app-shell .survey-form--project-detail .sd-question,
+.app-shell .survey-form--project-detail .sd-question__content {
+	width: 100%;
+	max-width: none;
+}
+
+.app-shell .survey-form--project-detail .sd-row {
+	width: 100%;
+	max-width: none;
+}
+
+.app-shell .survey-form--project-detail .sd-row.sd-row--multiple {
+	width: calc(100% + 24px);
+}
+
+.app-shell .survey-form--project-detail .sd-question .sd-comment,
+.app-shell .survey-form--project-detail .sd-comment__input,
+.app-shell .survey-form--project-detail .sd-question .sd-formbox,
+.app-shell .survey-form--project-detail .sd-formbox__input {
+	width: 100% !important;
+	max-width: 100%;
+}
+
+@media print {
+	@page {
+		margin: 15mm;
+	}
+
+	.app-shell > * {
+		display: none !important;
+	}
+
+	.app-shell > #main-content,
+	.app-shell > #main-content > .govuk-grid-row,
+	.app-shell > #main-content > .govuk-grid-row > .govuk-grid-column-full {
+		display: block !important;
+		width: 100% !important;
+		max-width: none !important;
+		min-height: 0 !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	.app-shell > #main-content > .govuk-grid-row > .govuk-grid-column-full > * {
+		display: none !important;
+	}
+
+	.app-shell > #main-content > .govuk-grid-row > .govuk-grid-column-full > .printable-survey {
+		display: block !important;
+	}
+
+	.app-shell .printable-survey,
+	.app-shell .printable-survey * {
+		visibility: visible !important;
+	}
+
+	.app-shell .printable-survey {
+		display: block !important;
+		width: 100%;
+		background: #fff;
+		color: #000;
+		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
+	}
+
+	.app-shell .printable-survey .sd-checkbox--checked .sd-checkbox__decorator,
+	.app-shell .printable-survey .sd-radio--checked .sd-radio__decorator {
+		border-color: #1d70b8 !important;
+		background-color: #1d70b8 !important;
+	}
+
+	.app-shell .printable-survey .sd-question:has(.sd-expression) {
+		background-color: #fde2e2 !important;
+	}
+
+	.app-shell .printable-survey .sd-question:has(.sd-comment),
+	.app-shell .printable-survey .sd-question:has(.sd-text) {
+		background-color: #e0f0ff !important;
+	}
+
+	.app-shell .survey-progress-panel,
+	.app-shell .sd-question {
+		break-inside: avoid;
+	}
 }

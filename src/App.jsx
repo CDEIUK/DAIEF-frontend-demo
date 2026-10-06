@@ -1,21 +1,20 @@
 import { useState } from 'react'
 import SurveyPage from './SurveyPage.jsx'
-import ProjectInfo from './ProjectInfo.jsx'
 import HowToUse from './HowToUse.jsx'
 import './App.css'
 import 'govuk-frontend/dist/govuk/govuk-frontend.min.css'
 import surveyJson from '../translated-survey.json'
 
 const stages = [
-  { id: 'discovery', label: 'Discovery', pageIndex: 0 },
-  { id: 'alpha', label: 'Alpha', pageIndex: 1 },
-  { id: 'beta', label: 'Beta', pageIndex: 2 },
-  { id: 'live', label: 'Live', pageIndex: 3 },
+  { id: 'project-detail', label: 'Project detail', pageIndex: 0 },
+  { id: 'discovery', label: 'Discovery', pageIndex: 1 },
+  { id: 'alpha', label: 'Alpha', pageIndex: 2 },
+  { id: 'beta', label: 'Beta', pageIndex: 3 },
+  { id: 'live', label: 'Live', pageIndex: 4 },
 ]
 
 const navigationStart = [
   { id: 'how-to-use', label: 'How to use', component: HowToUse },
-  { id: 'project-info', label: 'Project detail', component: ProjectInfo },
 ]
 
 const navigationEnd = []
@@ -23,9 +22,12 @@ const navigationEnd = []
 const navigationItems = [...navigationStart, ...stages, ...navigationEnd]
 
 function App() {
-  const [activePageId, setActivePageId] = useState('discovery')
+  const [activePageId, setActivePageId] = useState('project-detail')
   const [stageData, setStageData] = useState({})
   const [surveyVersion, setSurveyVersion] = useState(0)
+  const [hideCommentQuestions, setHideCommentQuestions] = useState(false)
+  const [filenameDialogOpen, setFilenameDialogOpen] = useState(false)
+  const [filenameInput, setFilenameInput] = useState('')
 
   const currentStage = stages.find((stage) => stage.id === activePageId)
   const currentPage = navigationItems.find((item) => item.id === activePageId)
@@ -66,7 +68,33 @@ function App() {
     }
   }
 
-  function handleFileDownload() {
+  function getDefaultFileName() {
+    const projectName = String(stageData['project-detail']?.['1'] ?? '').trim() || 'Project'
+    const today = new Date()
+    const currentDate = [
+      today.getFullYear(),
+      String(today.getMonth() + 1).padStart(2, '0'),
+      String(today.getDate()).padStart(2, '0'),
+    ].join('-')
+    return `DAIEF Interactive Guidance - ${projectName} ${currentDate}.json`
+  }
+
+  function handleSaveProgress() {
+    setFilenameInput(getDefaultFileName())
+    setFilenameDialogOpen(true)
+  }
+
+  function handleFileDownload(event) {
+    event.preventDefault()
+    const safeFileName = [...filenameInput]
+      .filter((character) => character.charCodeAt(0) >= 32 && character.charCodeAt(0) !== 127)
+      .join('')
+      .trim()
+      .replace(/[<>:"/\\|?*]/g, '-')
+      .replace(/[. ]+$/, '') || getDefaultFileName()
+    const downloadFileName = safeFileName.toLowerCase().endsWith('.json')
+      ? safeFileName
+      : `${safeFileName}.json`
     const responseFile = new Blob([
       JSON.stringify({ stageData }, null, 2),
     ], { type: 'application/json' })
@@ -74,9 +102,18 @@ function App() {
     const downloadLink = document.createElement('a')
 
     downloadLink.href = downloadUrl
-    downloadLink.download = 'daief-survey-responses.json'
+    downloadLink.download = downloadFileName
     downloadLink.click()
     URL.revokeObjectURL(downloadUrl)
+    setFilenameDialogOpen(false)
+  }
+
+  function handlePrintCurrentSection() {
+    if (!currentStage) {
+      return
+    }
+
+    window.print()
   }
 
   return (
@@ -92,7 +129,7 @@ function App() {
                 <circle cx="4.2135" cy="20.3932" r="4.21349" />
                 <circle cx="22.8963" cy="20.3932" r="4.21349" />
                 <circle cx="4.21351" cy="9.60674" r="4.21349" />
-              </svg> Data and AI Ethics Framework: Interactive Guidance
+              </svg> Data and AI Ethics Framework
             </a>
           </div>
         </div>
@@ -111,28 +148,86 @@ function App() {
         <div className="govuk-grid-row">
           <div className="govuk-grid-column-full">
             <p className="govuk-caption-xl">Data and AI Ethics Framework</p>
-            <h1 className="govuk-heading-xl">Interactive Guidance [Demo]</h1>
+            <h1 className="govuk-heading-xl">Interactive Guidance</h1>
             <section className="save-panel" aria-labelledby="save-panel-heading">
-              <p id="save-panel-heading" className="govuk-body">[Save and return instructions]</p>
+              <p id="save-panel-heading" className="govuk-body">Information that you enter on this site is stored locally on your computer and isn't shared with the UK government. Use the Restore and Save buttons to upload and download your form as a JSON file between sessions. You can print your answers as a formatted page for the active section using the Print button.</p>
             </section>
               <div className="save-panel__actions">
-                <div>
-                  <label className="govuk-button save-panel__button" htmlFor="response-file-upload">
-                    Upload JSON File
-                  </label>
-                  <input
-                    id="response-file-upload"
-                    className="save-panel__input"
-                    type="file"
-                    accept="application/json,.json"
-                    onChange={handleFileUpload}
-                  />
+                <div className="save-panel__file-actions">
+                  <div>
+                    <label className="govuk-button save-panel__button" htmlFor="response-file-upload">
+                      Restore progress
+                    </label>
+                    <input
+                      id="response-file-upload"
+                      className="save-panel__input"
+                      type="file"
+                      accept="application/json,.json"
+                      onChange={handleFileUpload}
+                    />
+                  </div>
+                  <button type="button" className="govuk-button save-panel__button" onClick={handleSaveProgress}>
+                    Save progress
+                  </button>
+                  <button
+                    type="button"
+                    className="govuk-button save-panel__button"
+                    onClick={handlePrintCurrentSection}
+                    disabled={!currentStage}
+                  >
+                    Print active section
+                  </button>
                 </div>
-                <button type="button" className="govuk-button save-panel__button" onClick={handleFileDownload}>
-                  Download JSON File
-                </button>
+                <div className="govuk-checkboxes govuk-checkboxes--small comment-visibility-toggle">
+                  <div className="govuk-checkboxes__item">
+                    <input
+                      className="govuk-checkboxes__input"
+                      id="hide-comment-questions"
+                      name="hide-comment-questions"
+                      type="checkbox"
+                      checked={hideCommentQuestions}
+                      onChange={(event) => setHideCommentQuestions(event.target.checked)}
+                    />
+                    <label className="govuk-label govuk-checkboxes__label" htmlFor="hide-comment-questions">
+                      Workbook questions off
+                    </label>
+                  </div>
+                </div>
               </div>
-            <div class="govuk-!-margin-bottom-5">
+            {filenameDialogOpen && (
+              <div className="filename-dialog-backdrop">
+                <section
+                  className="filename-dialog"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="filename-dialog-title"
+                >
+                  <h2 id="filename-dialog-title" className="govuk-heading-m">Save progress</h2>
+                  <form onSubmit={handleFileDownload}>
+                    <label className="govuk-label" htmlFor="progress-filename">File name</label>
+                    <input
+                      autoFocus
+                      className="govuk-input"
+                      id="progress-filename"
+                      name="progress-filename"
+                      value={filenameInput}
+                      onChange={(event) => setFilenameInput(event.target.value)}
+                    />
+                    <div className="filename-dialog__actions">
+                      <button type="submit" className="govuk-button">Download JSON</button>
+                      <button
+                        type="button"
+                        className="govuk-button govuk-button--secondary"
+                        onClick={() => setFilenameDialogOpen(false)}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </form>
+                </section>
+              </div>
+            )}
+            <div class="govuk-!-margin-bottom-8">
             </div>
             <div className="govuk-service-navigation"
               data-module="govuk-service-navigation">
@@ -174,11 +269,13 @@ function App() {
             </div>
             {currentStage ? (
               <SurveyPage
-                key={`${activePageId}-${surveyVersion}`}
+                key={`${activePageId}-${surveyVersion}-${hideCommentQuestions}`}
                 surveyJson={surveyJson}
                 initialData={stageData[activePageId]}
                 onDataChange={handleDataChange}
                 pageIndex={currentStage.pageIndex}
+                hideCommentQuestions={hideCommentQuestions}
+                projectName={stageData['project-detail']?.['1']}
               />
             ) : Page ? <Page /> : null}
           </div>
