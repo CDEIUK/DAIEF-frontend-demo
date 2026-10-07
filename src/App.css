@@ -123,8 +123,7 @@
 	gap: 16px 32px;
 	margin: 0 0 0px;
 	padding: 16px 20px;
-	border: 3px solid #b1b4b6;
-	background: #fff;
+	background: #e5e5e5
 }
 
 .app-shell .survey-progress-label {
@@ -276,6 +275,22 @@
 	font-size: 18px;
 	font-weight: 700;
 	line-height: 1.31579;
+}
+
+.app-shell .survey-action-marker {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.8em;
+	height: 1.8em;
+	margin-right: 0.8em;
+	border-radius: 50%;
+	background: #d4351c;
+	color: #fff;
+	font-size: 0.7em;
+	font-weight: 700;
+	line-height: 1;
+	vertical-align: text-top;
 }
 
 .app-shell .sd-question__description {

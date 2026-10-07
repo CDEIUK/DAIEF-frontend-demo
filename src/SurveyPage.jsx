@@ -98,6 +98,37 @@ export default function SurveyPage({ surveyJson, initialData, onDataChange, page
     return () => model.onValueChanged.remove(handleValueChanged)
   }, [model, onDataChange, pageIndex])
 
+  useEffect(() => {
+    const addActionMarkers = () => {
+      document.querySelectorAll('.sd-question__title').forEach((questionTitle) => {
+        const titleText = questionTitle.textContent ?? ''
+
+        if (!titleText.match(/\[action\]/i) || questionTitle.querySelector('.survey-action-marker')) {
+          return
+        }
+
+        const actionMarker = document.createElement('span')
+        actionMarker.className = 'survey-action-marker'
+        actionMarker.setAttribute('aria-hidden', 'true')
+        actionMarker.textContent = '!'
+        questionTitle.insertBefore(actionMarker, questionTitle.firstChild)
+      })
+    }
+
+    addActionMarkers()
+
+    const observer = new MutationObserver(() => {
+      addActionMarkers()
+    })
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    })
+
+    return () => observer.disconnect()
+  }, [model])
+
   return (
     <section className="printable-survey">
       <div className="survey-metadata" aria-label="Form details">

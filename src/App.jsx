@@ -189,7 +189,7 @@ function App() {
                       onChange={(event) => setHideCommentQuestions(event.target.checked)}
                     />
                     <label className="govuk-label govuk-checkboxes__label" htmlFor="hide-comment-questions">
-                      Workbook questions off
+                      Hide workbook fields
                     </label>
                   </div>
                 </div>
