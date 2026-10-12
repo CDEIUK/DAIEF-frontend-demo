@@ -2,7 +2,7 @@
   "pages": [
     {
       "name": "page1",
-      "title": "Project detail",
+      "title": "Project Detail",
       "description": null,
       "elements": [
         {
@@ -15,27 +15,28 @@
           "type": "checkbox",
           "name": "FILTER",
           "startWithNewLine": true,
-          "title": "Tick all the filters that apply to your project.",
+          "title": "Select your project filters.",
+          "description": "Your answers will be used to show you the questions most relevant to your work. If you are not sure whether a statement applies, we encourage you to select it. This will help to ensure that potential risks and opportunities are captured and explored.",
           "choices": [
             {
               "value": "Option a",
-              "text": "Does your project involve the collection, use, or sharing of data?"
+              "text": "My project involves the collection, use, or sharing of data"
             },
             {
               "value": "Option b",
-              "text": "Does your project involve the use of AI or broader algorithmic tools?"
+              "text": "My project involves the use of AI or broader algorithmic tools"
             },
             {
               "value": "Option c",
-              "text": "Does your project interact directly with the public?"
+              "text": "My project involves direct interaction with the public"
             },
             {
               "value": "Option d",
-              "text": "Does your project make decisions with a significant or legal effect?"
+              "text": "My project involves making decisions with a significant or legal effects"
             },
             {
               "value": "Option e",
-              "text": "Does your project work in a safety-critical area? (I.e., policing, healthcare, or working with vulnerable persons/groups)"
+              "text": "My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)"
             }
           ]
         },
@@ -62,14 +63,14 @@
           "type": "radiogroup",
           "name": "1",
           "startWithNewLine": true,
-          "title": "1. Have you consulted your organisation’s data protection officer (DPO) about your project?",
+          "title": "1. Have you consulted your organisation’s Data Protection Officer (DPO) about your project?",
+          "description": "See the ICO website for more information about DPOs.",
           "visibleIf": "{FILTER} contains 'Option a'",
           "choices": [
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a'"
         },
         {
@@ -83,8 +84,7 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{1} <> 'Yes'"
         },
         {
@@ -98,43 +98,42 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{1a} <> 'Yes'"
         },
         {
           "type": "expression",
           "name": "1S",
           "startWithNewLine": true,
-          "title": "1 [action]",
+          "title": "1. [action]",
           "visibleIf": "{1} = 'No'"
         },
         {
           "type": "comment",
           "name": "1aT",
           "startWithNewLine": true,
-          "title": "Provide a brief summary of data processing advice that you received.",
+          "title": "1a. Provide a brief summary of data processing advice that you received.",
           "visibleIf": "{1a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "1aS",
           "startWithNewLine": false,
-          "title": "1a [action]",
+          "title": "1a. [action]",
           "visibleIf": "{1a} = 'No' or {1a} = 'Unsure'"
         },
         {
           "type": "comment",
           "name": "1bT",
           "startWithNewLine": true,
-          "title": "Briefly explain what advice you won't follow and why.",
+          "title": "1b. Briefly explain what advice you won't follow and why.",
           "visibleIf": "{1b} = 'No'"
         },
         {
           "type": "expression",
           "name": "1bS",
           "startWithNewLine": false,
-          "title": "1b [action]",
+          "title": "1b. [action]",
           "visibleIf": "{1b} = 'Unsure'"
         },
         {
@@ -147,8 +146,7 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c'"
         },
         {
@@ -162,8 +160,7 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{2} <> 'Yes'"
         },
         {
@@ -177,43 +174,42 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{2a} <> 'Yes'"
         },
         {
           "type": "expression",
           "name": "2S",
           "startWithNewLine": true,
-          "title": "2 [action]",
+          "title": "2. [action]",
           "visibleIf": "{2} = 'No'"
         },
         {
           "type": "comment",
           "name": "2aT",
           "startWithNewLine": true,
-          "title": "Provide a brief summary of security advice that you received",
+          "title": "2a. Provide a brief summary of security advice that you received",
           "visibleIf": "{2a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "2aS",
           "startWithNewLine": false,
-          "title": "2a [action]",
+          "title": "2a. [action]",
           "visibleIf": "{2a} = 'No' or {2a} = 'Unsure'"
         },
         {
           "type": "comment",
           "name": "2bT",
           "startWithNewLine": true,
-          "title": "Brieflly explain what advice you won't follow and why.",
+          "title": "2b. Brieflly explain what advice you won't follow and why.",
           "visibleIf": "{2b} = 'No'"
         },
         {
           "type": "expression",
           "name": "2bS",
           "startWithNewLine": false,
-          "title": "2b [action]",
+          "title": "2b. [action]",
           "visibleIf": "{2b} = 'Unsure'"
         },
         {
@@ -227,8 +223,7 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a'"
         },
         {
@@ -241,36 +236,35 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{3} <> 'Yes'"
         },
         {
           "type": "comment",
           "name": "3T",
           "startWithNewLine": true,
-          "title": "Explain briefly why your project isn't ikely to result in a high risk to the rights and freedoms of individuals",
+          "title": "3. Explain briefly why your project isn't ikely to result in a high risk to the rights and freedoms of individuals",
           "visibleIf": "{3} = 'No'"
         },
         {
           "type": "expression",
           "name": "3S",
           "startWithNewLine": false,
-          "title": "3 [action]",
+          "title": "3. [action]",
           "visibleIf": "{3} = 'Unsure'"
         },
         {
           "type": "comment",
           "name": "3aT",
           "startWithNewLine": true,
-          "title": "Provide a name, summary or link to your complete DPIA.",
+          "title": "3a. Provide a name, summary or link to your complete DPIA.",
           "visibleIf": "{3a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "3aS",
           "startWithNewLine": false,
-          "title": "3a [action]",
+          "title": "3a. [action]",
           "visibleIf": "{3a} = 'No'"
         },
         {
@@ -284,8 +278,7 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a'"
         },
         {
@@ -298,8 +291,7 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{4} <> 'Yes'"
         },
         {
@@ -313,43 +305,42 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{4} <> 'Yes'"
         },
         {
           "type": "expression",
           "name": "4S",
           "startWithNewLine": true,
-          "title": "4 [action]",
+          "title": "4. [action]",
           "visibleIf": "{4} = 'No' or {4} = 'Unsure'"
         },
         {
           "type": "comment",
           "name": "4aT",
           "startWithNewLine": true,
-          "title": "Provide a summary or link to your complete data sharing agreement.",
+          "title": "4a. Provide a summary or link to your complete data sharing agreement.",
           "visibleIf": "{4a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "4aS",
           "startWithNewLine": false,
-          "title": "4a [action]",
+          "title": "4a. [action]",
           "visibleIf": "{4a} = 'No'"
         },
         {
           "type": "comment",
           "name": "4bT",
           "startWithNewLine": true,
-          "title": "Briefly explain how data sharing achieves a benefit and is necessary.",
+          "title": "4b. Briefly explain how data sharing achieves a benefit and is necessary.",
           "visibleIf": "{4b} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "4bS",
           "startWithNewLine": false,
-          "title": "4b [action]",
+          "title": "4b. [action]",
           "visibleIf": "{4b} = 'No' or {4b} = 'Unsure'"
         },
         {
@@ -363,22 +354,21 @@
             "Somewhat",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "comment",
           "name": "5T",
           "startWithNewLine": true,
-          "title": "Briefly describe the governance structures that will support this project.",
+          "title": "5. Briefly describe the governance structures that will support this project.",
           "visibleIf": "{5} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "5S",
           "startWithNewLine": false,
-          "title": "5 [action]",
+          "title": "5. [action]",
           "visibleIf": "{5} = 'Somewhat' or {5} = 'No'"
         },
         {
@@ -391,8 +381,7 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
@@ -406,29 +395,28 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{6} <> 'Yes'"
         },
         {
           "type": "expression",
           "name": "6S",
           "startWithNewLine": true,
-          "title": "6 [action]",
+          "title": "6. [action]",
           "visibleIf": "{6} = 'No'"
         },
         {
           "type": "comment",
           "name": "6aT",
           "startWithNewLine": true,
-          "title": "Briefly describe any barriers to responsible owner intervention that you foresee.",
+          "title": "6a. Briefly describe any barriers to responsible owner intervention that you foresee.",
           "visibleIf": "{6a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "6aS",
           "startWithNewLine": false,
-          "title": "6a [action]",
+          "title": "6a. [action]",
           "visibleIf": "{6a} = 'No' or {6a} = 'Unsure'"
         },
         {
@@ -442,36 +430,35 @@
             "Somewhat",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "comment",
           "name": "7T",
           "startWithNewLine": true,
-          "title": "Provide the types of key decisions that you'll document.",
+          "title": "7. Provide the types of key decisions that you'll document.",
           "visibleIf": "{7} = 'Yes'"
         },
         {
           "type": "comment",
           "name": "7Ta",
           "startWithNewLine": true,
-          "title": "Provide the types of routines or processes that you'll use to document decisions.",
+          "title": "7T. Provide the types of routines or processes that you'll use to document decisions.",
           "visibleIf": "{7} = 'Yes'"
         },
         {
           "type": "comment",
           "name": "7Tb",
           "startWithNewLine": true,
-          "title": "Provide the ways in which people will be able to learn more about key decisions if needed.",
+          "title": "7T. Provide the ways in which people will be able to learn more about key decisions if needed.",
           "visibleIf": "{7} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "7S",
           "startWithNewLine": false,
-          "title": "7 [action]",
+          "title": "7. [action]",
           "visibleIf": "{7} = 'Somewhat' or {7} = 'No'"
         },
         {
@@ -485,8 +472,7 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
@@ -500,8 +486,7 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{8} <> 'Yes'"
         },
         {
@@ -515,43 +500,42 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{8} <> 'Yes'"
         },
         {
           "type": "expression",
           "name": "8S",
           "startWithNewLine": true,
-          "title": "8 [action]",
+          "title": "8. [action]",
           "visibleIf": "{8} = 'No' or {8} = 'Unsure'"
         },
         {
           "type": "comment",
           "name": "8aT",
           "startWithNewLine": true,
-          "title": "Describe the measures you will take to protect research particpants.",
+          "title": "8a. Describe the measures you will take to protect research particpants.",
           "visibleIf": "{8a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "8aS",
           "startWithNewLine": false,
-          "title": "8a [action]",
+          "title": "8a. [action]",
           "visibleIf": "{8a} = 'No' or {8a} = 'Unsure'"
         },
         {
           "type": "comment",
           "name": "8bT",
           "startWithNewLine": true,
-          "title": "Describe the measures you will take to protect researchers.",
+          "title": "8b. Describe the measures you will take to protect researchers.",
           "visibleIf": "{8b} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "8bS",
           "startWithNewLine": false,
-          "title": "8b [action]",
+          "title": "8b. [action]",
           "visibleIf": "{8b} = 'No' or {8b} = 'Unsure'"
         },
         {
@@ -565,8 +549,7 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
@@ -579,29 +562,28 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{9} <> 'No' and {9} <> 'Unsure'"
         },
         {
           "type": "comment",
           "name": "9T",
           "startWithNewLine": true,
-          "title": "Briefly describe how you will ensure diversity across the team.",
+          "title": "9. Briefly describe how you will ensure diversity across the team.",
           "visibleIf": "{9} = 'Yes'"
         },
         {
           "type": "comment",
           "name": "9aT",
           "startWithNewLine": true,
-          "title": "Briefly describe any risks or blind spots you have identified.",
+          "title": "9a. Briefly describe any risks or blind spots you have identified.",
           "visibleIf": "{9a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "9aS",
           "startWithNewLine": false,
-          "title": "9a [action]",
+          "title": "9a. [action]",
           "visibleIf": "{9a} = 'No'"
         },
         {
@@ -615,8 +597,7 @@
             "Somewhat",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
@@ -630,29 +611,28 @@
             "Somewhat",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{10} <> 'Yes'"
         },
         {
           "type": "expression",
           "name": "10S",
           "startWithNewLine": true,
-          "title": "10 [action]",
+          "title": "10. [action]",
           "visibleIf": "{10} = 'Somewhat' or {10} = 'No'"
         },
         {
           "type": "comment",
           "name": "10aT",
           "startWithNewLine": true,
-          "title": "Briefly describe how your user groups may be impacted differently.",
+          "title": "10a. Briefly describe how your user groups may be impacted differently.",
           "visibleIf": "{10a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "10aS",
           "startWithNewLine": false,
-          "title": "10a [action]",
+          "title": "10a. [action]",
           "visibleIf": "{10a} = 'Somewhat' or {10a} = 'No'"
         },
         {
@@ -666,8 +646,7 @@
             "Somewhat",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
@@ -681,29 +660,28 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{11} <> 'Yes'"
         },
         {
           "type": "expression",
           "name": "11S",
           "startWithNewLine": true,
-          "title": "11 [action]",
+          "title": "11. [action]",
           "visibleIf": "{11} = 'Somewhat' or {11} = 'No'"
         },
         {
           "type": "comment",
           "name": "11aT",
           "startWithNewLine": true,
-          "title": "Briefly describe the steps you will take to engage with a wide variety of stakeholders.",
+          "title": "11a. Briefly describe the steps you will take to engage with a wide variety of stakeholders.",
           "visibleIf": "{11a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "11aS",
           "startWithNewLine": false,
-          "title": "11a [action]",
+          "title": "11a. [action]",
           "visibleIf": "{11a} = 'No' or {11a} = 'Unsure'"
         },
         {
@@ -717,22 +695,21 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "comment",
           "name": "12T",
           "startWithNewLine": true,
-          "title": "Briefly describe how you'll engage with civil society organisations and external experts.",
+          "title": "12. Briefly describe how you'll engage with civil society organisations and external experts.",
           "visibleIf": "{12} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "12S",
           "startWithNewLine": false,
-          "title": "12 [action]",
+          "title": "12. [action]",
           "visibleIf": "{12} = 'No' or {12} = 'Unsure'"
         },
         {
@@ -746,8 +723,7 @@
             "Somewhat",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b'"
         },
         {
@@ -761,36 +737,35 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{13} <> 'Yes' and {13} <> 'Somewhat'"
         },
         {
           "type": "comment",
           "name": "13T",
           "startWithNewLine": true,
-          "title": "Briefly explain the environmental and sustainability implications of your project.",
+          "title": "13. Briefly explain the environmental and sustainability implications of your project.",
           "visibleIf": "{13} = 'Yes' or {13} = 'Somewhat'"
         },
         {
           "type": "expression",
           "name": "13S",
           "startWithNewLine": false,
-          "title": "13 [action]",
+          "title": "13. [action]",
           "visibleIf": "{13} = 'No'"
         },
         {
           "type": "comment",
           "name": "13aT",
           "startWithNewLine": true,
-          "title": "Briefly describe how you intend to monitor, evaluate and address environmental impact and sustainability challenges.",
+          "title": "13a. Briefly describe how you intend to monitor, evaluate and address environmental impact and sustainability challenges.",
           "visibleIf": "{13a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "13aS",
           "startWithNewLine": false,
-          "title": "13a [action]",
+          "title": "13a. [action]",
           "visibleIf": "{13a} = 'No' or {13a} = 'Unsure'"
         }
       ]
@@ -810,8 +785,7 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a'"
         },
         {
@@ -824,8 +798,7 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{1} <> 'Yes'"
         },
         {
@@ -838,50 +811,49 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{1} <> 'Yes'"
         },
         {
           "type": "comment",
           "name": "1T",
           "startWithNewLine": true,
-          "title": "Provide a summary or link to your action plan or acceptance criteria.",
+          "title": "1. Provide a summary or link to your action plan or acceptance criteria.",
           "visibleIf": "{1} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "1S",
           "startWithNewLine": false,
-          "title": "1 [action]",
+          "title": "1. [action]",
           "visibleIf": "{1} = 'No'"
         },
         {
           "type": "comment",
           "name": "1aT",
           "startWithNewLine": true,
-          "title": "Briefly describe the results of your data quality assessment and any actions you plan to take to improve data quality.",
+          "title": "1a. Briefly describe the results of your data quality assessment and any actions you plan to take to improve data quality.",
           "visibleIf": "{1a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "1aS",
           "startWithNewLine": false,
-          "title": "1a [action]",
+          "title": "1a. [action]",
           "visibleIf": "{1a} = 'No'"
         },
         {
           "type": "comment",
           "name": "1bT",
           "startWithNewLine": true,
-          "title": "Briefly describe how you will maintain data quality in the future.",
+          "title": "1b. Briefly describe how you will maintain data quality in the future.",
           "visibleIf": "{1b} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "1bS",
           "startWithNewLine": false,
-          "title": "1b [action]",
+          "title": "1b. [action]",
           "visibleIf": "{1b} = 'No'"
         },
         {
@@ -895,8 +867,7 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
@@ -909,29 +880,28 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{2} <> 'No'"
         },
         {
           "type": "expression",
           "name": "2S",
           "startWithNewLine": true,
-          "title": "2 [action]",
+          "title": "2. [action]",
           "visibleIf": "{2} = 'Unsure'"
         },
         {
           "type": "comment",
           "name": "2aT",
           "startWithNewLine": true,
-          "title": "Briefly describe the ways you will record and communicate information to your stakeholders.",
+          "title": "2a. Briefly describe the ways you will record and communicate information to your stakeholders.",
           "visibleIf": "{2a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "2aS",
           "startWithNewLine": false,
-          "title": "2a [action]",
+          "title": "2a. [action]",
           "visibleIf": "{2a} = 'No'"
         },
         {
@@ -944,8 +914,7 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a'"
         },
         {
@@ -958,22 +927,21 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{3} <> 'Yes'"
         },
         {
           "type": "comment",
           "name": "3aT",
           "startWithNewLine": true,
-          "title": "Describe how you are communicating your personal data processing activities to users.",
+          "title": "3a. Describe how you are communicating your personal data processing activities to users.",
           "visibleIf": "{3a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "3aS",
           "startWithNewLine": false,
-          "title": "3a [action]",
+          "title": "3a. [action]",
           "visibleIf": "{3a} = 'No'"
         },
         {
@@ -986,22 +954,21 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a'"
         },
         {
           "type": "comment",
           "name": "4T",
           "startWithNewLine": true,
-          "title": "Briefly describe the PETs you have used or will use in your project.",
+          "title": "4. Briefly describe the PETs you have used or will use in your project.",
           "visibleIf": "{4} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "4S",
           "startWithNewLine": false,
-          "title": "4 [action]",
+          "title": "4. [action]",
           "visibleIf": "{4} = 'No'"
         },
         {
@@ -1014,22 +981,21 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d'"
         },
         {
           "type": "comment",
           "name": "5T",
           "startWithNewLine": true,
-          "title": "Briefly describe how you have ensured explainability.",
+          "title": "5. Briefly describe how you have ensured explainability.",
           "visibleIf": "{5} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "5S",
           "startWithNewLine": false,
-          "title": "5 [action]",
+          "title": "5. [action]",
           "visibleIf": "{5} = 'No'"
         },
         {
@@ -1042,22 +1008,21 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d'"
         },
         {
           "type": "comment",
           "name": "6T",
           "startWithNewLine": true,
-          "title": "Describe the fairness testing you have started or planned.",
+          "title": "6. Describe the fairness testing you have started or planned.",
           "visibleIf": "{6} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "6S",
           "startWithNewLine": false,
-          "title": "6 [action]",
+          "title": "6. [action]",
           "visibleIf": "{6} = 'No'"
         },
         {
@@ -1071,8 +1036,7 @@
             "Somewhat",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option d'"
         },
         {
@@ -1086,36 +1050,35 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{7} <> 'Yes' and {7} <> 'Somewhat'"
         },
         {
           "type": "expression",
           "name": "7S",
           "startWithNewLine": true,
-          "title": "7 [action]",
+          "title": "7. [action]",
           "visibleIf": "{7} = 'Somewhat' or {7} = 'No'"
         },
         {
           "type": "comment",
           "name": "7T",
           "startWithNewLine": true,
-          "title": "Briefly describe or provide a link to your findings.",
+          "title": "7. Briefly describe or provide a link to your findings.",
           "visibleIf": "{7} = 'Yes' or {7} = 'Somewhat'"
         },
         {
           "type": "comment",
           "name": "7aT",
           "startWithNewLine": true,
-          "title": "Describe how you will mitigate any representativeness or bias limitations in your dataset.",
+          "title": "7a. Describe how you will mitigate any representativeness or bias limitations in your dataset.",
           "visibleIf": "{7a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "7aS",
           "startWithNewLine": false,
-          "title": "7a [action]",
+          "title": "7a. [action]",
           "visibleIf": "{7a} = 'No' or {7a} = 'Unsure'"
         },
         {
@@ -1129,22 +1092,21 @@
             "Somewhat",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "comment",
           "name": "8T",
           "startWithNewLine": true,
-          "title": "Briefly describe the various needs within your target user group that you will account for.",
+          "title": "8. Briefly describe the various needs within your target user group that you will account for.",
           "visibleIf": "{8} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "8S",
           "startWithNewLine": false,
-          "title": "8 [action]",
+          "title": "8. [action]",
           "visibleIf": "{8} = 'Somewhat' or {8} = 'No'"
         },
         {
@@ -1158,22 +1120,21 @@
             "Somewhat",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "comment",
           "name": "9T",
           "startWithNewLine": true,
-          "title": "Briefly explain the harms that might be caused by not undertaking this project.",
+          "title": "9. Briefly explain the harms that might be caused by not undertaking this project.",
           "visibleIf": "{9} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "9S",
           "startWithNewLine": false,
-          "title": "9 [action]",
+          "title": "9. [action]",
           "visibleIf": "{9} = 'Somewhat' or {9} = 'No'"
         },
         {
@@ -1187,8 +1148,7 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
@@ -1201,36 +1161,35 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{10} <> 'Yes'"
         },
         {
           "type": "comment",
           "name": "10T",
           "startWithNewLine": true,
-          "title": "Describe the likely or potential employment, working condition or required skill impacts of your solution?",
+          "title": "10. Describe the likely or potential employment, working condition or required skill impacts of your solution?",
           "visibleIf": "{10} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "10S",
           "startWithNewLine": false,
-          "title": "10 [action]",
+          "title": "10. [action]",
           "visibleIf": "{10} = 'Unsure'"
         },
         {
           "type": "comment",
           "name": "10aT",
           "startWithNewLine": true,
-          "title": "Describe who is likely to be advantaged or disadvantaged by your solution, if anyone?",
+          "title": "10a. Describe who is likely to be advantaged or disadvantaged by your solution, if anyone?",
           "visibleIf": "{10a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "10aS",
           "startWithNewLine": false,
-          "title": "10a [action]",
+          "title": "10a. [action]",
           "visibleIf": "{10a} = 'No'"
         },
         {
@@ -1243,8 +1202,7 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
@@ -1258,36 +1216,35 @@
             "Somewhat",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{11} <> 'Yes'"
         },
         {
           "type": "comment",
           "name": "11T",
           "startWithNewLine": true,
-          "title": "Briefly describe the trade-offs you've identified.",
+          "title": "11. Briefly describe the trade-offs you've identified.",
           "visibleIf": "{11} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "11S",
           "startWithNewLine": false,
-          "title": "11 [action]",
+          "title": "11. [action]",
           "visibleIf": "{11} = 'No'"
         },
         {
           "type": "comment",
           "name": "11aT",
           "startWithNewLine": true,
-          "title": "Briefly explain how you will balance these trade-offs.",
+          "title": "11a. Briefly explain how you will balance these trade-offs.",
           "visibleIf": "{11a} = 'Yes' or {11a} = 'Somewhat'"
         },
         {
           "type": "expression",
           "name": "11aS",
           "startWithNewLine": false,
-          "title": "11a [action]",
+          "title": "11a. [action]",
           "visibleIf": "{11a} = 'No'"
         }
       ]
@@ -1308,22 +1265,21 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a'"
         },
         {
           "type": "comment",
           "name": "1T",
           "startWithNewLine": true,
-          "title": "Briefly describe the data quality tests and/or results you've performed to give you confidence.",
+          "title": "1. Briefly describe the data quality tests and/or results you've performed to give you confidence.",
           "visibleIf": "{1} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "1S",
           "startWithNewLine": false,
-          "title": "1 [action]",
+          "title": "1. [action]",
           "visibleIf": "{1} = 'No'"
         },
         {
@@ -1336,8 +1292,7 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option b'"
         },
         {
@@ -1351,8 +1306,7 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{2} <> 'Yes'"
         },
         {
@@ -1366,43 +1320,42 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{2a} <> 'No' and {2a} <> 'Unsure'"
         },
         {
           "type": "expression",
           "name": "2S",
           "startWithNewLine": true,
-          "title": "2 [action]",
+          "title": "2. [action]",
           "visibleIf": "{2} = 'No'"
         },
         {
           "type": "comment",
           "name": "2aT",
           "startWithNewLine": true,
-          "title": "Briefly describe the data fairness tests and/or results you've performed to give you confidence.",
+          "title": "2a. Briefly describe the data fairness tests and/or results you've performed to give you confidence.",
           "visibleIf": "{2a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "2aS",
           "startWithNewLine": false,
-          "title": "2a [action]",
+          "title": "2a. [action]",
           "visibleIf": "{2a} = 'No'"
         },
         {
           "type": "comment",
           "name": "2bT",
           "startWithNewLine": true,
-          "title": "Briefly describe the corrective action you will take to ensure fairness.",
+          "title": "2b. Briefly describe the corrective action you will take to ensure fairness.",
           "visibleIf": "{2b} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "2bS",
           "startWithNewLine": false,
-          "title": "2b [action]",
+          "title": "2b. [action]",
           "visibleIf": "{2b} = 'No'"
         },
         {
@@ -1415,22 +1368,21 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "comment",
           "name": "3T",
           "startWithNewLine": true,
-          "title": "Briefly describe the accessibility measurs you've taken.",
+          "title": "3. Briefly describe the accessibility measurs you've taken.",
           "visibleIf": "{3} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "3S",
           "startWithNewLine": false,
-          "title": "3 [action]",
+          "title": "3. [action]",
           "visibleIf": "{3} = 'No'"
         },
         {
@@ -1443,22 +1395,21 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c'"
         },
         {
           "type": "comment",
           "name": "4T",
           "startWithNewLine": true,
-          "title": "Briefly describe the governance checks and controls mechanisms that you've established for your solution.",
+          "title": "4. Briefly describe the governance checks and controls mechanisms that you've established for your solution.",
           "visibleIf": "{4} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "4S",
           "startWithNewLine": false,
-          "title": "4 [action]",
+          "title": "4. [action]",
           "visibleIf": "{4} = 'No'"
         },
         {
@@ -1472,22 +1423,21 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a'"
         },
         {
           "type": "comment",
           "name": "5T",
           "startWithNewLine": true,
-          "title": "List the main resources that would allow others to understand and reproduce your project.",
+          "title": "5. List the main resources that would allow others to understand and reproduce your project.",
           "visibleIf": "{5} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "5S",
           "startWithNewLine": false,
-          "title": "5 [action]",
+          "title": "5. [action]",
           "visibleIf": "{5} = 'No' or {5} = 'Unsure'"
         },
         {
@@ -1501,8 +1451,7 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option b'"
         },
         {
@@ -1515,22 +1464,21 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{6} <> 'Yes'"
         },
         {
           "type": "expression",
           "name": "6S",
           "startWithNewLine": true,
-          "title": "6 [action]",
+          "title": "6. [action]",
           "visibleIf": "{6} = 'Unsure'"
         },
         {
           "type": "expression",
           "name": "6aS",
           "startWithNewLine": false,
-          "title": "6a [action]",
+          "title": "6a. [action]",
           "visibleIf": "{6a} = 'No'"
         },
         {
@@ -1543,8 +1491,7 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
@@ -1557,36 +1504,35 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{7} <> 'Yes'"
         },
         {
           "type": "comment",
           "name": "7T",
           "startWithNewLine": true,
-          "title": "Briefly describe how you've integrated these processes into your project.",
+          "title": "7. Briefly describe how you've integrated these processes into your project.",
           "visibleIf": "{7} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "7S",
           "startWithNewLine": false,
-          "title": "7 [action]",
+          "title": "7. [action]",
           "visibleIf": "{7} = 'No'"
         },
         {
           "type": "comment",
           "name": "7aT",
           "startWithNewLine": true,
-          "title": "Describe your environmental and sustainability thresholds, and the consequences of not adhering to them.",
+          "title": "7a. Describe your environmental and sustainability thresholds, and the consequences of not adhering to them.",
           "visibleIf": "{7a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "7aS",
           "startWithNewLine": false,
-          "title": "7a [action]",
+          "title": "7a. [action]",
           "visibleIf": "{7a} = 'No'"
         },
         {
@@ -1599,8 +1545,7 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
@@ -1613,36 +1558,35 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{9} <> 'Yes'"
         },
         {
           "type": "comment",
           "name": "8T",
           "startWithNewLine": true,
-          "title": "List or link the ‘go’ or ‘no-go’ criteria for your solution to go live.",
+          "title": "8. List or link the ‘go’ or ‘no-go’ criteria for your solution to go live.",
           "visibleIf": "{8} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "8S",
           "startWithNewLine": false,
-          "title": "8 [action]",
+          "title": "8. [action]",
           "visibleIf": "{8} = 'No'"
         },
         {
           "type": "comment",
           "name": "8aT",
           "startWithNewLine": true,
-          "title": "Briefly explain or link your plan for transitioning to live.",
+          "title": "8a. Briefly explain or link your plan for transitioning to live.",
           "visibleIf": "{8a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "8aS",
           "startWithNewLine": false,
-          "title": "8a [action]",
+          "title": "8a. [action]",
           "visibleIf": "{8a} = 'No'"
         }
       ]
@@ -1662,8 +1606,7 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
@@ -1676,36 +1619,35 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{1} <> 'Yes'"
         },
         {
           "type": "comment",
           "name": "1T",
           "startWithNewLine": true,
-          "title": "List the ways in which you are measuring and monitoring system performance.",
+          "title": "1. List the ways in which you are measuring and monitoring system performance.",
           "visibleIf": "{1} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "1S",
           "startWithNewLine": false,
-          "title": "1 [action]",
+          "title": "1. [action]",
           "visibleIf": "{1} = 'No'"
         },
         {
           "type": "comment",
           "name": "1aT",
           "startWithNewLine": true,
-          "title": "Describe or link your system degradation and safety plan.",
+          "title": "1a. Describe or link your system degradation and safety plan.",
           "visibleIf": "{1a} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "1aS",
           "startWithNewLine": false,
-          "title": "1a [action]",
+          "title": "1a. [action]",
           "visibleIf": "{1a} = 'No'"
         },
         {
@@ -1718,22 +1660,21 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "comment",
           "name": "2T",
           "startWithNewLine": true,
-          "title": "Briefly describe the opportunities you've established for users to submit feedback on system performance.",
+          "title": "2. Briefly describe the opportunities you've established for users to submit feedback on system performance.",
           "visibleIf": "{2} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "2S",
           "startWithNewLine": false,
-          "title": "2 [action]",
+          "title": "2. [action]",
           "visibleIf": "{2} = 'No'"
         },
         {
@@ -1746,8 +1687,7 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
@@ -1761,22 +1701,21 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{3} <> 'Yes'"
         },
         {
           "type": "expression",
           "name": "3S",
           "startWithNewLine": true,
-          "title": "3 [action]",
+          "title": "3. [action]",
           "visibleIf": "{3} = 'No'"
         },
         {
           "type": "expression",
           "name": "3aS",
           "startWithNewLine": false,
-          "title": "3a [action]",
+          "title": "3a. [action]",
           "visibleIf": "{3a} = 'No' or {3a} = 'Unsure'"
         },
         {
@@ -1790,22 +1729,21 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d'"
         },
         {
           "type": "comment",
           "name": "4T",
           "startWithNewLine": true,
-          "title": "Briefly describe the measures you've taken to ensure that users can rationalise system outputs.",
+          "title": "4. Briefly describe the measures you've taken to ensure that users can rationalise system outputs.",
           "visibleIf": "{4} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "4S",
           "startWithNewLine": false,
-          "title": "4 [action]",
+          "title": "4. [action]",
           "visibleIf": "{4} = 'No' or {4} = 'Unsure'"
         },
         {
@@ -1819,22 +1757,21 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option b'"
         },
         {
           "type": "comment",
           "name": "5T",
           "startWithNewLine": true,
-          "title": "Describe the measures you've taken to ensure that users know that they are engaging with an AI-enabled solution.",
+          "title": "5. Describe the measures you've taken to ensure that users know that they are engaging with an AI-enabled solution.",
           "visibleIf": "{5} = 'Yes'"
         },
         {
           "type": "expression",
           "name": "5S",
           "startWithNewLine": false,
-          "title": "5 [action]",
+          "title": "5. [action]",
           "visibleIf": "{5} = 'No'"
         },
         {
@@ -1848,8 +1785,7 @@
             "No",
             "Unsure"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{FILTER} notcontains 'Option b'"
         },
         {
@@ -1862,26 +1798,26 @@
             "Yes",
             "No"
           ],
-          "allowClear": true,
-          "isRequired": true,
+          "allowClear": false,
           "resetValueIf": "{6} <> 'Yes'"
         },
         {
           "type": "expression",
           "name": "6S",
           "startWithNewLine": true,
-          "title": "6 [action]",
+          "title": "6. [action]",
           "visibleIf": "{6} = 'Unsure'"
         },
         {
           "type": "expression",
           "name": "6aS",
           "startWithNewLine": false,
-          "title": "6a [action]",
+          "title": "6a. [action]",
           "visibleIf": "{6} = 'No'"
         }
       ]
     }
   ],
-  "headerView": "advanced"
+  "headerView": "advanced",
+  "formVersion": "v0.3"
 }

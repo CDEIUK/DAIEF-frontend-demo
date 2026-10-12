@@ -90,6 +90,7 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
     today.getFullYear(),
   ].join('-')
   const renderedQuestions = useRef(new Map())
+  const seriesDividers = useRef(new Map())
   const [model] = useState(() => {
     const surveyModel = new Model(surveyJson)
     if (pageIndex !== 0 && hideCommentQuestions) {
@@ -120,6 +121,46 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
       })
     }
 
+    const refreshSeriesDividers = () => {
+      if (pageIndex === 0) {
+        return
+      }
+
+      const rootRadioQuestions = (surveyModel.pages[pageIndex]?.elements ?? [])
+        .filter((question) => /^\d+$/.test(question.name) && question.getType() === 'radiogroup')
+      let hasSeenVisibleSeries = false
+
+      rootRadioQuestions.forEach((question) => {
+        const isVisible = question.isVisible
+        const showDivider = isVisible && hasSeenVisibleSeries
+        if (isVisible) {
+          hasSeenVisibleSeries = true
+        }
+
+        const element = renderedQuestions.current.get(question.name)
+        if (!element) {
+          return
+        }
+
+        const row = element.closest('.sd-row') ?? element
+        const parent = row.parentElement
+        if (!parent) {
+          return
+        }
+
+        let divider = seriesDividers.current.get(question.name)
+        if (!divider) {
+          divider = document.createElement('div')
+          divider.className = 'survey-series-divider'
+          divider.setAttribute('aria-hidden', 'true')
+          seriesDividers.current.set(question.name, divider)
+        }
+
+        divider.hidden = !showDivider
+        parent.insertBefore(divider, row)
+      })
+    }
+
     let completionStyleFrame
     const scheduleCompletedQuestionStyleRefresh = () => {
       if (completionStyleFrame !== undefined) {
@@ -128,12 +169,28 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
       completionStyleFrame = window.requestAnimationFrame(() => {
         completionStyleFrame = undefined
         refreshCompletedQuestionStyles()
+        refreshSeriesDividers()
       })
     }
 
     surveyModel.onAfterRenderQuestion.add((_, options) => {
       renderedQuestions.current.set(options.question.name, options.htmlElement)
+      if (options.question.getType() === 'radiogroup') {
+        options.htmlElement.addEventListener('click', (event) => {
+          const target = event.target
+          if (
+            target instanceof HTMLInputElement
+            && target.type === 'radio'
+            && target.checked
+            && surveyModel.getValue(options.question.name) === target.value
+          ) {
+            event.preventDefault()
+            surveyModel.clearValue(options.question.name)
+          }
+        }, true)
+      }
       refreshCompletedQuestionStyles()
+      refreshSeriesDividers()
     })
     surveyModel.onValueChanged.add(scheduleCompletedQuestionStyleRefresh)
 
@@ -187,7 +244,7 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
       <div className="survey-metadata" aria-label="Form details">
         <span>Project name: {projectName?.trim() || 'Not named'}</span>
         <span>Date: {currentDate}</span>
-        <span>Form version: v0.3</span>
+        <span>Form version: {surveyJson.formVersion ?? 'v0.3'}</span>
       </div>
       <h2 className="govuk-heading-l survey-page-title">{pageTitle}</h2>
       <div
@@ -217,9 +274,6 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
           role="alert"
           aria-labelledby="no-filters-error-title"
         >
-          <h2 className="govuk-error-summary__title" id="no-filters-error-title">
-            There is a problem
-          </h2>
           <div className="govuk-error-summary__body">
             <ul className="govuk-list govuk-error-summary__list">
               <li>

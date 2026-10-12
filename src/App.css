@@ -305,6 +305,12 @@
 	box-shadow: none;
 }
 
+.app-shell .survey-series-divider {
+	width: 100%;
+	margin: 24px 0;
+	border-top: 1px solid #b1b4b6;
+}
+
 .app-shell .survey-form .sd-question.survey-question--completed {
 	background-color: #dcf3ea;
 }
