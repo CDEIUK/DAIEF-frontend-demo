@@ -6,7 +6,7 @@ import 'govuk-frontend/dist/govuk/govuk-frontend.min.css'
 import surveyJson from '../translated-survey.json'
 
 const stages = [
-  { id: 'project-detail', label: 'Project detail', pageIndex: 0 },
+  { id: 'project-detail', label: 'Project Detail', pageIndex: 0 },
   { id: 'discovery', label: 'Discovery', pageIndex: 1 },
   { id: 'alpha', label: 'Alpha', pageIndex: 2 },
   { id: 'beta', label: 'Beta', pageIndex: 3 },
@@ -14,12 +14,15 @@ const stages = [
 ]
 
 const navigationStart = [
-  { id: 'how-to-use', label: 'How to use', component: HowToUse },
+  { id: 'about', label: 'How to use', component: HowToUse },
 ]
 
 const navigationEnd = []
 
 const navigationItems = [...navigationStart, ...stages, ...navigationEnd]
+const projectDetailQuestionNames = new Set(
+  surveyJson.pages[0].elements.map((question) => question.name),
+)
 
 function App() {
   const [activePageId, setActivePageId] = useState('project-detail')
@@ -39,9 +42,15 @@ function App() {
   }
 
   function handleDataChange(data) {
+    const pageData = activePageId === 'project-detail'
+      ? data
+      : Object.fromEntries(
+        Object.entries(data).filter(([name]) => !projectDetailQuestionNames.has(name)),
+      )
+
     setStageData((currentData) => ({
       ...currentData,
-      [activePageId]: { ...data },
+      [activePageId]: pageData,
     }))
   }
 
@@ -69,14 +78,14 @@ function App() {
   }
 
   function getDefaultFileName() {
-    const projectName = String(stageData['project-detail']?.['1'] ?? '').trim() || 'Project'
+    const projectName = String(stageData['project-detail']?.NAME ?? '').trim() || 'Project'
     const today = new Date()
     const currentDate = [
-      today.getFullYear(),
-      String(today.getMonth() + 1).padStart(2, '0'),
       String(today.getDate()).padStart(2, '0'),
+      String(today.getMonth() + 1).padStart(2, '0'),
+      today.getFullYear(),
     ].join('-')
-    return `DAIEF Interactive Guidance - ${projectName} ${currentDate}.json`
+    return `${projectName} ${currentDate}.json`
   }
 
   function handleSaveProgress() {
@@ -84,7 +93,7 @@ function App() {
     setFilenameDialogOpen(true)
   }
 
-  function handleFileDownload(event) {
+  async function handleFileDownload(event) {
     event.preventDefault()
     const safeFileName = [...filenameInput]
       .filter((character) => character.charCodeAt(0) >= 32 && character.charCodeAt(0) !== 127)
@@ -98,13 +107,35 @@ function App() {
     const responseFile = new Blob([
       JSON.stringify({ stageData }, null, 2),
     ], { type: 'application/json' })
+
+    if (window.showSaveFilePicker) {
+      try {
+        const fileHandle = await window.showSaveFilePicker({
+          suggestedName: downloadFileName,
+          types: [{
+            description: 'JSON file',
+            accept: { 'application/json': ['.json'] },
+          }],
+        })
+        const writable = await fileHandle.createWritable()
+        await writable.write(responseFile)
+        await writable.close()
+        setFilenameDialogOpen(false)
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          window.alert(`Unable to save the progress file: ${error.message}`)
+        }
+      }
+      return
+    }
+
     const downloadUrl = URL.createObjectURL(responseFile)
     const downloadLink = document.createElement('a')
 
     downloadLink.href = downloadUrl
     downloadLink.download = downloadFileName
     downloadLink.click()
-    URL.revokeObjectURL(downloadUrl)
+    window.setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000)
     setFilenameDialogOpen(false)
   }
 
@@ -140,7 +171,7 @@ function App() {
             Demo
           </strong>
           <span class="govuk-phase-banner__text">
-            This site is for demostration purposes only. It uses the GOV.UK Design System, but is not an official government service.
+            Under develolpment. Not an official UK government website.
           </span>
         </p>
       </div> 
@@ -246,16 +277,16 @@ function App() {
                             <a
                               className="govuk-service-navigation__link"
                               href={`#${item.id}`}
-                              aria-label={item.id === 'how-to-use' ? item.label : undefined}
-                              title={item.id === 'how-to-use' ? item.label : undefined}
+                              aria-label={item.id === 'about' ? item.label : undefined}
+                              title={item.id === 'about' ? item.label : undefined}
                               aria-current={isActive ? 'page' : undefined}
                               onClick={(event) => {
                                 event.preventDefault()
                                 handlePageChange(item.id)
                               }}
                             >
-                              {item.id === 'how-to-use' && <span className="app-navigation__info-icon" aria-hidden="true">i</span>}
-                              {item.id !== 'how-to-use' && (isActive ? <strong className="govuk-service-navigation__active-fallback">{item.label}</strong> : item.label)}
+                              {item.id === 'about' && <span className="app-navigation__info-icon" aria-hidden="true">i</span>}
+                              {item.id !== 'about' && (isActive ? <strong className="govuk-service-navigation__active-fallback">{item.label}</strong> : item.label)}
                             </a>
                           </li>
                         )
@@ -272,10 +303,12 @@ function App() {
                 key={`${activePageId}-${surveyVersion}-${hideCommentQuestions}`}
                 surveyJson={surveyJson}
                 initialData={stageData[activePageId]}
+                sharedData={activePageId === 'project-detail' ? undefined : stageData['project-detail']}
                 onDataChange={handleDataChange}
+                onNavigateToProjectDetail={() => handlePageChange('project-detail')}
                 pageIndex={currentStage.pageIndex}
                 hideCommentQuestions={hideCommentQuestions}
-                projectName={stageData['project-detail']?.['1']}
+                projectName={stageData['project-detail']?.NAME}
               />
             ) : Page ? <Page /> : null}
           </div>

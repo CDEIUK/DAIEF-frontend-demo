@@ -300,9 +300,13 @@
 }
 
 .app-shell .survey-form .sd-question.sd-question--with-frame {
-	border: 1px solid #b1b4b6;
+	border: 1px solid #ffffff;
 	border-radius: 0;
 	box-shadow: none;
+}
+
+.app-shell .survey-form .sd-question.survey-question--completed {
+	background-color: #dcf3ea;
 }
 
 .app-shell .sd-formbox,

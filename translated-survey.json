@@ -1,22 +1,21 @@
 {
   "pages": [
-    
-        {
+    {
       "name": "page1",
       "title": "Project detail",
-      "description": "Project detail contains the core information about your project. Use the filters below to show questions relevant to your project.",
+      "description": null,
       "elements": [
         {
           "type": "text",
-          "name": "1",
+          "name": "NAME",
           "startWithNewLine": true,
           "title": "Give your project a name."
         },
         {
           "type": "checkbox",
-          "name": "0",
+          "name": "FILTER",
           "startWithNewLine": true,
-          "title": "Tick all the filters  that apply to your project.",
+          "title": "Tick all the filters that apply to your project.",
           "choices": [
             {
               "value": "Option a",
@@ -40,16 +39,15 @@
             }
           ]
         },
-        
         {
           "type": "comment",
-          "name": "2",
+          "name": "PROB",
           "startWithNewLine": true,
           "title": "Describe the problem you’re trying to solve in simple terms."
         },
         {
           "type": "comment",
-          "name": "2a",
+          "name": "PURP",
           "startWithNewLine": true,
           "title": "Describe the project purpose and user need."
         }
@@ -65,12 +63,14 @@
           "name": "1",
           "startWithNewLine": true,
           "title": "1. Have you consulted your organisation’s data protection officer (DPO) about your project?",
+          "visibleIf": "{FILTER} contains 'Option a'",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a'"
         },
         {
           "type": "radiogroup",
@@ -142,12 +142,14 @@
           "name": "2",
           "startWithNewLine": true,
           "title": "2. Have you consulted with your organisation’s data and information security teams?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c'",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c'"
         },
         {
           "type": "radiogroup",
@@ -219,13 +221,15 @@
           "name": "3",
           "startWithNewLine": true,
           "title": "3. Will you complete a DPIA for this project?",
+          "visibleIf": "{FILTER} contains 'Option a'",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a'"
         },
         {
           "type": "radiogroup",
@@ -274,13 +278,15 @@
           "name": "4",
           "startWithNewLine": true,
           "title": "4. Will you share personal data with or receive personal data from other organisations as part of this project?",
+          "visibleIf": "{FILTER} contains 'Option a'",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a'"
         },
         {
           "type": "radiogroup",
@@ -351,13 +357,15 @@
           "name": "5",
           "startWithNewLine": true,
           "title": "5. Do you have governance structures to support the safe, effective and responsible implementation of the project?",
+          "visibleIf": "{FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "Somewhat",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "comment",
@@ -377,13 +385,15 @@
           "type": "radiogroup",
           "name": "6",
           "startWithNewLine": true,
-          "title": "6. How have you assigned responsibility for the project’s outcomes?",
+          "title": "6. Have you assigned responsibility for the project’s outcomes?",
+          "visibleIf": "{FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "radiogroup",
@@ -426,13 +436,15 @@
           "name": "7",
           "startWithNewLine": true,
           "title": "7. Are you confident in documenting key project decisions?",
+          "visibleIf": "{FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "Somewhat",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "comment",
@@ -467,13 +479,15 @@
           "name": "8",
           "startWithNewLine": true,
           "title": "8. Will you conduct research as part of your project?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "radiogroup",
@@ -545,13 +559,15 @@
           "name": "9",
           "startWithNewLine": true,
           "title": "9. Can you ensure that your project team is diverse and multidisciplinary?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "radiogroup",
@@ -593,13 +609,15 @@
           "name": "10",
           "startWithNewLine": true,
           "title": "10. Do you have a clear picture of your target user groups?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "Somewhat",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "radiogroup",
@@ -642,13 +660,15 @@
           "name": "11",
           "startWithNewLine": true,
           "title": "11. Do you have a clear picture of all your project stakeholders?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "Somewhat",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "radiogroup",
@@ -691,13 +711,15 @@
           "name": "12",
           "startWithNewLine": true,
           "title": "12. Will you work with civil society organisations or external domain experts to guide your project?",
+          "visibleIf": "{FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "comment",
@@ -718,13 +740,15 @@
           "name": "13",
           "startWithNewLine": true,
           "title": "13. Have you considered the potential environmental impact and sustainability of your project?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b'",
           "choices": [
             "Yes",
             "Somewhat",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b'"
         },
         {
           "type": "radiogroup",
@@ -781,12 +805,14 @@
           "name": "1",
           "startWithNewLine": true,
           "title": "1. Do you have a data quality action plan or acceptance criteria to ensure your data is fit for purpose?",
+          "visibleIf": "{FILTER} contains 'Option a'",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a'"
         },
         {
           "type": "radiogroup",
@@ -863,13 +889,15 @@
           "name": "2",
           "startWithNewLine": true,
           "title": "2. Is your project purpose, design and intended outcome clear to all your key stakeholders yet?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "radiogroup",
@@ -911,12 +939,14 @@
           "name": "3",
           "startWithNewLine": true,
           "title": "3. Are you processing or do you intend to process people’s personal data as part of your project?",
+          "visibleIf": "{FILTER} contains 'Option a'",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a'"
         },
         {
           "type": "radiogroup",
@@ -951,12 +981,14 @@
           "name": "4",
           "startWithNewLine": true,
           "title": "4. Have you integrated or do you intend to integrate any privacy-enhancing technologies into your project?",
+          "visibleIf": "{FILTER} contains 'Option a'",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a'"
         },
         {
           "type": "comment",
@@ -977,12 +1009,14 @@
           "name": "5",
           "startWithNewLine": true,
           "title": "5. Have you ensured that the system’s outputs can be clearly explained and understood by users and key stakeholders yet?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d'",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d'"
         },
         {
           "type": "comment",
@@ -1003,12 +1037,14 @@
           "name": "6",
           "startWithNewLine": true,
           "title": "6. Have you planned or started any fairness testing yet?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d'",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d'"
         },
         {
           "type": "comment",
@@ -1029,13 +1065,15 @@
           "name": "7",
           "startWithNewLine": true,
           "title": "7. Have you investigated representativeness and bias within your project datasets yet?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option d'",
           "choices": [
             "Yes",
             "Somewhat",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option d'"
         },
         {
           "type": "radiogroup",
@@ -1085,13 +1123,15 @@
           "name": "8",
           "startWithNewLine": true,
           "title": "8. Have you considered the diversity of needs within your target user group yet?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "Somewhat",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "comment",
@@ -1112,13 +1152,15 @@
           "name": "9",
           "startWithNewLine": true,
           "title": "9. Have you considered the harms in not undertaking your project?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "Somewhat",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "comment",
@@ -1139,13 +1181,15 @@
           "name": "10",
           "startWithNewLine": true,
           "title": "10. Could your solution have an impact on employment, working conditions or required skills?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "radiogroup",
@@ -1194,12 +1238,14 @@
           "name": "11",
           "startWithNewLine": true,
           "title": "11. Have you identified any trade-offs between ethical principles and business or organisational goals within your project?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "radiogroup",
@@ -1256,13 +1302,15 @@
           "name": "1",
           "startWithNewLine": true,
           "title": "1. Are you confident in the accuracy, representativeness and completeness of the data that is shaping your solution design?",
+          "visibleIf": "{FILTER} contains 'Option a'",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a'"
         },
         {
           "type": "comment",
@@ -1283,12 +1331,14 @@
           "name": "2",
           "startWithNewLine": true,
           "title": "2. Have you performed fairness tests on your AI system?",
+          "visibleIf": "{FILTER} contains 'Option b'",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option b'"
         },
         {
           "type": "radiogroup",
@@ -1360,12 +1410,14 @@
           "name": "3",
           "startWithNewLine": true,
           "title": "3. Have you ensured accessibility for all users yet?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "comment",
@@ -1386,12 +1438,14 @@
           "name": "4",
           "startWithNewLine": true,
           "title": "4. Have you established and tested human oversight mechanisms?",
+          "visibleIf": "{FILTER} contains 'Option b' or {FILTER} contains 'Option c'",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c'"
         },
         {
           "type": "comment",
@@ -1412,13 +1466,15 @@
           "name": "5",
           "startWithNewLine": true,
           "title": "5. Would others be able to reproduce your project process, results and outputs using your current project documentation?",
+          "visibleIf": "{FILTER} contains 'Option a'",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a'"
         },
         {
           "type": "comment",
@@ -1439,13 +1495,15 @@
           "name": "6",
           "startWithNewLine": true,
           "title": "6. Is your project within scope of the Algorithmic Transparency Recording Standard (ATRS)?",
+          "visibleIf": "{FILTER} contains 'Option b'",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option b'"
         },
         {
           "type": "radiogroup",
@@ -1480,12 +1538,14 @@
           "name": "7",
           "startWithNewLine": true,
           "title": "7. Have you integrated environmental evaluation and monitoring processes into your project yet?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "radiogroup",
@@ -1534,12 +1594,14 @@
           "name": "8",
           "startWithNewLine": true,
           "title": "8. Have you established ‘go’ or ‘no-go’ criteria for your solution to go live?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "radiogroup",
@@ -1595,12 +1657,14 @@
           "name": "1",
           "startWithNewLine": true,
           "title": "1. Are you measuring and monitoring performance of your system?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "radiogroup",
@@ -1649,12 +1713,14 @@
           "name": "2",
           "startWithNewLine": true,
           "title": "2. Have you established opportunities for users to submit feedback on system performance?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "comment",
@@ -1675,12 +1741,14 @@
           "name": "3",
           "startWithNewLine": true,
           "title": "3. Are you maintaining logs and documentation while your system is live?",
+          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
             "No"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
         },
         {
           "type": "radiogroup",
@@ -1716,13 +1784,15 @@
           "name": "4",
           "startWithNewLine": true,
           "title": "4. Are your system outputs consistently understandable and explainable to users and key stakeholders?",
+          "visibleIf": "{FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d'",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d'"
         },
         {
           "type": "comment",
@@ -1743,13 +1813,15 @@
           "name": "5",
           "startWithNewLine": true,
           "title": "5. Do your users know that an AI system is involved in producing outputs?",
+          "visibleIf": "{FILTER} contains 'Option b'",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option b'"
         },
         {
           "type": "comment",
@@ -1770,13 +1842,15 @@
           "name": "6",
           "startWithNewLine": true,
           "title": "6. Are you required to publish a transparency record as part of the ATRS initiative?",
+          "visibleIf": "{FILTER} contains 'Option b'",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": true,
-          "isRequired": true
+          "isRequired": true,
+          "resetValueIf": "{FILTER} notcontains 'Option b'"
         },
         {
           "type": "radiogroup",

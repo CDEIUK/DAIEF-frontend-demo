@@ -6,7 +6,7 @@ import re
 
 
 section_descriptions = {
-    "Project detail": "Project detail contains the core information about your project. Use the filters below to show questions relevant to your project.",
+    "Project Detail": "Project detail contains the core information about your project. Use the filters below to show questions relevant to your project.",
     "Discovery": "Discovery is the project research and scoping phase. You are understanding the problem that needs to be solved and the opportunities for addressing them using data and AI. Learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">discovery phase</a> in a new tab.<br><br>",
     "Alpha": "Alpha is the initial solution development phase. You are building prototypes to test your ideas and assumptions, and to gather feedback from users. Learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">alpha phase</a> in a new tab.<br><br>",
     "Beta": "Beta is the phase where you are building the solution that best solves your problem. You are refining your solution based on user feedback and preparing for launch. Learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-beta-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">beta phase</a> in a new tab.<br><br>",
@@ -77,11 +77,18 @@ def csv_to_survey(
 
             group_match = re.match(r"\d+", reference)
             field_group = group_match.group() if group_match else None
-            is_text_or_suggestion = "T" in reference or reference.endswith("S")
+            is_text_or_suggestion = field_group is not None and (
+                "T" in reference or reference.endswith("S")
+            )
             survey_type = {"radios": "radiogroup", "suggestion": "expression", "text": "comment", "short text": "text", "multiselect": "checkbox"}.get(
                 component_type, component_type
             )
-            line_break_needed = reference.isdigit() or survey_type == "comment"
+            is_project_detail = (
+                row.get("Section", "").strip().casefold() == "project detail"
+            )
+            line_break_needed = (
+                is_project_detail or reference.isdigit() or survey_type == "comment"
+            )
             if is_text_or_suggestion and field_group not in text_or_suggestion_groups:
                 line_break_needed = True
                 text_or_suggestion_groups.add(field_group)
@@ -92,11 +99,11 @@ def csv_to_survey(
                 "startWithNewLine": line_break_needed,
             }
 
-            if row.get("Section", "").strip().casefold() == "project detail":
+            if is_project_detail:
                 element["title"] = field_text
-            elif reference.endswith("S"):
+            elif field_group is not None and reference.endswith("S"):
                 element["title"] = f"{reference[:-1]} {field_text}".rstrip()
-            elif "T" in reference:
+            elif field_group is not None and "T" in reference:
                 element["title"] = field_text
             else:
                 element["title"] = f"{reference}. {field_text}"
@@ -137,24 +144,51 @@ def csv_to_survey(
                             ),
                             None,
                         )
+
+                    is_checkbox_source = (
+                        source_row is not None
+                        and source_row.get("Component type", "").strip().casefold()
+                        == "multiselect"
+                    )
                     if source_row and source_row.get("Component type", "").strip().casefold() != "radios":
                         source_options = {
                             option: source_row.get(option, "").strip()
                             for option in ("Option a", "Option b", "Option c", "Option d", "Option e")
                             if source_row.get(option, "").strip()
                         }
-                        values = [
-                            next(
-                                (
-                                    option for option, label in source_options.items()
-                                    if label.casefold() == value.casefold()
-                                ),
-                                value,
-                            )
-                            for value in values
-                        ]
+                        if is_checkbox_source:
+                            values = [
+                                next(
+                                    (
+                                        option for option, label in source_options.items()
+                                        if option.rsplit(" ", 1)[-1].casefold()
+                                        == value.casefold()
+                                        or label.casefold() == value.casefold()
+                                    ),
+                                    value,
+                                )
+                                for value in values
+                            ]
+                        else:
+                            values = [
+                                next(
+                                    (
+                                        option for option, label in source_options.items()
+                                        if label.casefold() == value.casefold()
+                                    ),
+                                    value,
+                                )
+                                for value in values
+                            ]
+
+                    condition_operator = operator
+                    if is_checkbox_source:
+                        condition_operator = {
+                            "=": "contains",
+                            "<>": "notcontains",
+                        }.get(operator, operator)
                     element["visibleIf"] = " or ".join(
-                        f"{{{question}}} {operator} '{value}'"
+                        f"{{{question}}} {condition_operator} '{value}'"
                         for value in values
                     )
 
@@ -176,8 +210,11 @@ def csv_to_survey(
                     element["allowClear"] = True
                     element["isRequired"] = True
                     if trigger_match and operator == "=":
+                        reset_operator = (
+                            "notcontains" if is_checkbox_source else "<>"
+                        )
                         element["resetValueIf"] = " and ".join(
-                            f"{{{question}}} <> '{value}'"
+                            f"{{{question}}} {reset_operator} '{value}'"
                             for value in values
                         )
 

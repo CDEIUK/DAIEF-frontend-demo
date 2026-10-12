@@ -47,8 +47,8 @@ export default function HowToUse() {
             <div id="accordion-default-content-1" className="govuk-accordion__section-content">
               <p className="govuk-body">The Interactive Guidance is a dynamic form split into five sections:</p>
               <ul className="govuk-list govuk-list--bullet govuk-!-padding-left-7">
-                <li><a>The Project Detail section allows you to enter information about your project and control the questions that you see using filters.</a></li>
-                <li><a>The Discovery, Alpha, Beta and Live sections ask you questions about your delivery approach at four different stages of the project life cycle.</a></li>
+                <li><a>The Project Detail section allows you to enter key information about your project and control the questions that you see using filters.</a></li>
+                <li><a>The Discovery, Alpha, Beta and Live sections ask you questions about your ethical delivery approach at four different stages of the project life cycle.</a></li>
               </ul>
               <p className="govuk-body">Each form section contains several question sets to work through. Question sets are composed of three elements:</p>
               <ul className="govuk-list govuk-list--bullet govuk-!-padding-left-7">
@@ -68,7 +68,7 @@ export default function HowToUse() {
               </h2>
             </div>
             <div id="accordion-default-content-2" className="govuk-accordion__section-content">
-              <p className="govuk-body">You can enter information into individual sections at different stages of your project over its entire duration. Refer to the section descriptions for more information about the Discovery, Alpha, Beta and Live project phases.</p>
+              <p className="govuk-body">You can enter information into individual sections at different phases of your project over its entire duration. Refer to the section descriptions for more information about the Discovery, Alpha, Beta and Live project phases.</p>
               <p className="govuk-body">The tool is designed to be used iteratively. You can return to the form at any time to update your answers and add new information as your project progresses. You may wish to revisit the form after responding to suggested actions.</p>
               <p className="govuk-body">Throughout, we suggest that you retain the completed sections locally for future reference or to make available to colleagues working on the project.</p>
             </div>
@@ -96,7 +96,7 @@ export default function HowToUse() {
               </h2>
             </div>
             <div id="accordion-default-content-4" className="govuk-accordion__section-content">
-              <p className="govuk-body">Information that you enter into the form is stored temporarily in your browser’s session memory. Data will remain intact when switching between form sections. However, data will be lost when you close the website or your browser session ends.</p>
+              <p className="govuk-body">Information that you enter into the form is stored temporarily in your browser’s session memory. Data will remain intact when switching between form sections. However, data will be lost when you refresh the page, close the website or your browser session ends.</p>
               <p className="govuk-body">You may save your form data locally to your computer as a JSON file. These data can be uploaded back to the site in a new session for you to continue the form where you left off.</p>
               <p className="govuk-body">Your data is not currently stored in any permanent database and is not processed by any other party.</p>
             </div>
@@ -113,7 +113,7 @@ export default function HowToUse() {
               <p className="govuk-body">The tool is designed and maintained by the Responsible AI and Data Team in GDS.</p>
               <p className="govuk-body">If you have feedback on the tool… [feedback option]</p>
               <p className="govuk-body">If you require more direct support from the Responsible AI and Data Team, please email us at 
-          <a href="mailto:GDS-Responsible-Data-AI@dsit.gov.uk" className="govuk-link" target="_blank" rel="noreferrer">GDS-Responsible-Data-AI@dsit.gov.uk</a>.</p>
+          <a href="mailto:GDS-Responsible-Data-AI@dsit.gov.uk" className="govuk-link" target="_blank" rel="noreferrer"> GDS-Responsible-Data-AI@dsit.gov.uk</a>.</p>
 
             </div>
           </div>
