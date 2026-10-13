@@ -45,9 +45,14 @@ function getProgressSummary(model, pageIndex) {
   const startedSeries = new Set()
   const allSeries = new Set()
   let actionCount = 0
+  let filteredOutSeriesCount = 0
 
   questions.forEach((question) => {
     const seriesMatch = question.name?.match(/^\d+/)
+
+    if (/^\d+$/.test(question.name) && question.getType() === 'radiogroup' && !question.isVisible) {
+      filteredOutSeriesCount += 1
+    }
 
     if (!seriesMatch) {
       return
@@ -75,6 +80,7 @@ function getProgressSummary(model, pageIndex) {
     actionCount,
     completedCount: getCompletedSeries(model, questions).size,
     totalSeriesCount: allSeries.size,
+    filteredOutSeriesCount,
   }
 }
 
@@ -255,6 +261,10 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
         <section className="survey-progress-panel" aria-label="Survey progress">
           <strong className="survey-progress-label">Section progress</strong>
           <div className="survey-progress-item">
+            <strong className="govuk-tag govuk-tag--grey">Filtered</strong>
+            <span className="survey-progress-count">{progressSummary.filteredOutSeriesCount}</span>
+          </div>
+          <div className="survey-progress-item">
             <strong className="govuk-tag govuk-tag--yellow">Started</strong>
             <span className="survey-progress-count">{progressSummary.startedCount}/{progressSummary.totalSeriesCount}</span>
           </div>
@@ -263,9 +273,10 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
             <span className="survey-progress-count">{progressSummary.completedCount}/{progressSummary.totalSeriesCount}</span>
           </div>
           <div className="survey-progress-item">
-            <strong className="govuk-tag govuk-tag--red">Actions</strong>
+            <strong className="govuk-tag govuk-tag--red">Action count</strong>
             <span className="survey-progress-count">{progressSummary.actionCount}</span>
           </div>
+
         </section>
       )}
       {showNoFiltersMessage ? (

@@ -32,6 +32,21 @@
 	display: none;
 }
 
+.app-shell .app-section-navigation {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	margin-top: 32px;
+}
+
+.app-shell .app-section-navigation .govuk-button {
+	margin-bottom: 0;
+}
+
+.app-shell .app-section-navigation__next {
+	margin-left: auto;
+}
+
 .app-shell .survey-form .sd-page__content {
 	padding-right: 0;
 	padding-left: 0;

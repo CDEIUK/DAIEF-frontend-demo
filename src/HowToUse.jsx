@@ -21,8 +21,8 @@ export default function HowToUse({ onNavigateToFirstSection }) {
     <div className="govuk-grid-row">
       <div className="govuk-grid-column-full">
         <h2 className="govuk-heading-l">About</h2>
-        <p className="govuk-body">This Interactive Guidance application is for people who work in government and other public sector organisations. It is aimed at individuals or teams working with data, data-driven tools, algorithmic tools or AI as part of delivering a project or service.</p>
-        <p className="govuk-body">The application is designed to help you to apply the <a href="https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework" target="_blank" rel="noreferrer">Data and AI Ethics Framework</a> to your own project. It guides you through a series of questions that encourage you to think practically about the following ethical principles:</p>
+        <p className="govuk-body">The Interactive Guidance is for people who work in government and other public sector organisations. It is aimed at individuals or teams working with data, data-driven systems, algorithmic systems or AI as part of delivering a project or service.</p>
+        <p className="govuk-body">This online tool is designed to help you to apply the <a href="https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework" target="_blank" rel="noreferrer">Data and AI Ethics Framework</a> to your own project. It guides you through a series of questions that encourage you to think practically about the following ethical principles:</p>
         <ul className="govuk-list govuk-list--bullet govuk-!-padding-left-7">
           <li><a href="https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework" target="_blank" rel="noreferrer">Transparency</a></li>
           <li><a href="https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework#accountability-section" target="_blank" rel="noreferrer">Accountability</a></li>
@@ -32,7 +32,7 @@ export default function HowToUse({ onNavigateToFirstSection }) {
           <li><a href="https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework#societal-impact-section" target="_blank" rel="noreferrer">Societal impact</a></li>
           <li><a href="https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework#safety-section" target="_blank" rel="noreferrer">Safety</a></li>
         </ul>
-        <p className="govuk-body">Using this online tool, you can identify ethical risks across the project life cycle and document the ways in which you are addressing data and AI ethics challenges within your project.</p>
+        <p className="govuk-body">Using this tool, you can identify ethical risks across the project life cycle and document the ways in which you are addressing data and AI ethics challenges within your project.</p>
 
         <a
           href="#project-detail"
@@ -101,8 +101,8 @@ export default function HowToUse({ onNavigateToFirstSection }) {
               </h2>
             </div>
             <div id="accordion-default-content-3" className="govuk-accordion__section-content">
-              <p className="govuk-body">The tool can be used for both documenting and guiding your project. You can switch between these two modes using the "Hide workbook field" checkbox.</p>
-              <p className="govuk-body"> Workbook fields are optional and can be used to produce a written artefact for sharing and to use in governance, assurance and project management processes. They can be hidden if you want to work through question sets quicker. You can always return to workbook fields after completing questions without them.</p>
+              <p className="govuk-body">The tool can be used for both documenting and guiding your project. You can switch between these two modes using the "Hide workbook fields" checkbox.</p>
+              <p className="govuk-body"> Workbook fields can be used to produce a written artefact for sharing and to use in governance, assurance and project management processes. They can be hidden if you want to work through question sets quicker. You can always return to workbook fields after completing questions without them.</p>
               <p className="govuk-body">Form sections can be exported as formatted documents at any time using the export button. You have the option to save as an HTML page (recommended) or a PDF.</p>
             </div>
           </div>

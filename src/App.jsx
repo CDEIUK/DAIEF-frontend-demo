@@ -36,6 +36,9 @@ function App() {
   const printableSurveyRef = useRef(null)
 
   const currentStage = stages.find((stage) => stage.id === activePageId)
+  const currentStageIndex = stages.findIndex((stage) => stage.id === activePageId)
+  const previousStage = stages[currentStageIndex - 1]
+  const nextStage = stages[currentStageIndex + 1]
   const currentPage = navigationItems.find((item) => item.id === activePageId)
   const Page = currentPage?.component
 
@@ -389,18 +392,40 @@ function App() {
             <div class="govuk-!-margin-bottom-5">
             </div>
             {currentStage ? (
-              <SurveyPage
-                key={`${activePageId}-${surveyVersion}-${hideCommentQuestions}`}
-                surveyJson={surveyJson}
-                initialData={stageData[activePageId]}
-                sharedData={activePageId === 'project-detail' ? undefined : stageData['project-detail']}
-                onDataChange={handleDataChange}
-                onNavigateToProjectDetail={() => handlePageChange('project-detail')}
-                pageIndex={currentStage.pageIndex}
-                hideCommentQuestions={hideCommentQuestions}
-                projectName={stageData['project-detail']?.NAME}
-                printableSurveyRef={printableSurveyRef}
-              />
+              <>
+                <SurveyPage
+                  key={`${activePageId}-${surveyVersion}-${hideCommentQuestions}`}
+                  surveyJson={surveyJson}
+                  initialData={stageData[activePageId]}
+                  sharedData={activePageId === 'project-detail' ? undefined : stageData['project-detail']}
+                  onDataChange={handleDataChange}
+                  onNavigateToProjectDetail={() => handlePageChange('project-detail')}
+                  pageIndex={currentStage.pageIndex}
+                  hideCommentQuestions={hideCommentQuestions}
+                  projectName={stageData['project-detail']?.NAME}
+                  printableSurveyRef={printableSurveyRef}
+                />
+                <nav className="app-section-navigation" aria-label="Form section navigation">
+                  {previousStage && (
+                    <button
+                      type="button"
+                      className="govuk-button govuk-button--secondary"
+                      onClick={() => handlePageChange(previousStage.id)}
+                    >
+                      Previous: {previousStage.label}
+                    </button>
+                  )}
+                  {nextStage && (
+                    <button
+                      type="button"
+                      className="govuk-button govuk-button--secondary app-section-navigation__next"
+                      onClick={() => handlePageChange(nextStage.id)}
+                    >
+                      Next: {nextStage.label}
+                    </button>
+                  )}
+                </nav>
+              </>
             ) : Page ? (
               <Page onNavigateToFirstSection={() => handlePageChange('project-detail')} />
             ) : null}
