@@ -78,7 +78,7 @@ function getProgressSummary(model, pageIndex) {
   }
 }
 
-export default function SurveyPage({ surveyJson, initialData, sharedData, onDataChange, onNavigateToProjectDetail, pageIndex = 0, hideCommentQuestions = false, projectName = '' }) {
+export default function SurveyPage({ surveyJson, initialData, sharedData, onDataChange, onNavigateToProjectDetail, printableSurveyRef, pageIndex = 0, hideCommentQuestions = false, projectName = '' }) {
   const pageTitle = surveyJson.pages[pageIndex]?.title ?? ''
   const pageDescription = surveyJson.pages[pageIndex]?.description ?? ''
   const hasSelectedFilters = Array.isArray(sharedData?.FILTER) && sharedData.FILTER.length > 0
@@ -240,7 +240,7 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
   }, [model])
 
   return (
-    <section className="printable-survey">
+    <section ref={printableSurveyRef} className="printable-survey">
       <div className="survey-metadata" aria-label="Form details">
         <span>Project name: {projectName?.trim() || 'Not named'}</span>
         <span>Date: {currentDate}</span>

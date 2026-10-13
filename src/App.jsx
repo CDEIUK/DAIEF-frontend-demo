@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import SurveyPage from './SurveyPage.jsx'
 import HowToUse from './HowToUse.jsx'
 import './App.css'
 import 'govuk-frontend/dist/govuk/govuk-frontend.min.css'
 import surveyJson from '../translated-survey.json'
+import { createStandaloneSectionHtml } from './standaloneHtml.js'
 
 const stages = [
   { id: 'project-detail', label: 'Project Detail', pageIndex: 0 },
@@ -25,12 +26,14 @@ const projectDetailQuestionNames = new Set(
 )
 
 function App() {
-  const [activePageId, setActivePageId] = useState('project-detail')
+  const [activePageId, setActivePageId] = useState('about')
   const [stageData, setStageData] = useState({})
   const [surveyVersion, setSurveyVersion] = useState(0)
   const [hideCommentQuestions, setHideCommentQuestions] = useState(false)
   const [filenameDialogOpen, setFilenameDialogOpen] = useState(false)
+  const [printFormatDialogOpen, setPrintFormatDialogOpen] = useState(false)
   const [filenameInput, setFilenameInput] = useState('')
+  const printableSurveyRef = useRef(null)
 
   const currentStage = stages.find((stage) => stage.id === activePageId)
   const currentPage = navigationItems.find((item) => item.id === activePageId)
@@ -144,7 +147,66 @@ function App() {
       return
     }
 
+    setPrintFormatDialogOpen(false)
     window.print()
+  }
+
+  async function handleSaveActiveSectionHtml() {
+    if (!currentStage) {
+      return
+    }
+
+    const projectName = String(stageData['project-detail']?.NAME ?? '').trim() || 'Project'
+    const today = new Date()
+    const date = [
+      String(today.getDate()).padStart(2, '0'),
+      String(today.getMonth() + 1).padStart(2, '0'),
+      today.getFullYear(),
+    ].join('-')
+    const fileName = `${projectName} - ${currentStage.label} ${date}`
+      .replace(/[<>:"/\\|?*]/g, '-')
+      .replace(/[. ]+$/, '') + '.html'
+
+    let saveFilePickerPromise
+    try {
+      if (window.showSaveFilePicker) {
+        saveFilePickerPromise = window.showSaveFilePicker({
+          suggestedName: fileName,
+          types: [{
+            description: 'HTML file',
+            accept: { 'text/html': ['.html'] },
+          }],
+        })
+      }
+
+      setPrintFormatDialogOpen(false)
+      const fileHandle = saveFilePickerPromise
+        ? await saveFilePickerPromise
+        : null
+      const html = await createStandaloneSectionHtml(
+        printableSurveyRef.current,
+        `${currentStage.label} - ${projectName}`,
+      )
+      const htmlFile = new Blob([html], { type: 'text/html;charset=utf-8' })
+
+      if (fileHandle) {
+        const writable = await fileHandle.createWritable()
+        await writable.write(htmlFile)
+        await writable.close()
+        return
+      }
+
+      const downloadUrl = URL.createObjectURL(htmlFile)
+      const downloadLink = document.createElement('a')
+      downloadLink.href = downloadUrl
+      downloadLink.download = fileName
+      downloadLink.click()
+      window.setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000)
+    } catch (error) {
+      if (error.name !== 'AbortError') {
+        window.alert(`Unable to save the active section as HTML: ${error.message}`)
+      }
+    }
   }
 
   return (
@@ -181,7 +243,7 @@ function App() {
             <p className="govuk-caption-xl">Data and AI Ethics Framework</p>
             <h1 className="govuk-heading-xl">Interactive Guidance</h1>
             <section className="save-panel" aria-labelledby="save-panel-heading">
-              <p id="save-panel-heading" className="govuk-body">Information that you enter on this site is stored locally on your computer and isn't shared with the UK government. Use the Restore and Save buttons to upload and download your form as a JSON file between sessions. You can print your answers as a formatted page for the active section using the Print button.</p>
+              <p id="save-panel-heading" className="govuk-body">Information that you enter on this site is stored locally on your computer and isn't shared with the UK government. Use the Restore and Save buttons to upload and download your form as a JSON file between sessions. Print or save the active section as PDF or HTML using the print button.</p>
             </section>
               <div className="save-panel__actions">
                 <div className="save-panel__file-actions">
@@ -203,10 +265,10 @@ function App() {
                   <button
                     type="button"
                     className="govuk-button save-panel__button"
-                    onClick={handlePrintCurrentSection}
+                    onClick={() => setPrintFormatDialogOpen(true)}
                     disabled={!currentStage}
                   >
-                    Print active section
+                    Export active section
                   </button>
                 </div>
                 <div className="govuk-checkboxes govuk-checkboxes--small comment-visibility-toggle">
@@ -255,6 +317,34 @@ function App() {
                       </button>
                     </div>
                   </form>
+                </section>
+              </div>
+            )}
+            {printFormatDialogOpen && (
+              <div className="filename-dialog-backdrop">
+                <section
+                  className="filename-dialog print-format-dialog"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="print-format-dialog-title"
+                >
+                  <h2 id="print-format-dialog-title" className="govuk-heading-m">Choose a format</h2>
+                  <p className="govuk-body">Choose how to export the active section.</p>
+                  <div className="filename-dialog__actions">
+                    <button type="button" className="govuk-button" onClick={handleSaveActiveSectionHtml}>
+                      Save as HTML
+                    </button>
+                    <button type="button" className="govuk-button" onClick={handlePrintCurrentSection}>
+                      Print as PDF
+                    </button>
+                    <button
+                      type="button"
+                      className="govuk-button govuk-button--secondary"
+                      onClick={() => setPrintFormatDialogOpen(false)}
+                    >
+                      Cancel
+                    </button>
+                  </div>
                 </section>
               </div>
             )}
@@ -309,8 +399,11 @@ function App() {
                 pageIndex={currentStage.pageIndex}
                 hideCommentQuestions={hideCommentQuestions}
                 projectName={stageData['project-detail']?.NAME}
+                printableSurveyRef={printableSurveyRef}
               />
-            ) : Page ? <Page /> : null}
+            ) : Page ? (
+              <Page onNavigateToFirstSection={() => handlePageChange('project-detail')} />
+            ) : null}
           </div>
         </div>
 
