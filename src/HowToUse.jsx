@@ -24,7 +24,7 @@ export default function HowToUse({ onNavigateToFirstSection }) {
         <p className="govuk-body">The Interactive Guidance is for people who work in government and other public sector organisations. It is aimed at individuals or teams working with data, data-driven systems, algorithmic systems or AI as part of delivering a project or service.</p>
         <p className="govuk-body">This online tool is designed to help you to apply the <a href="https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework" target="_blank" rel="noreferrer">Data and AI Ethics Framework</a> to your own project. It guides you through a series of questions that encourage you to think practically about the following ethical principles:</p>
         <ul className="govuk-list govuk-list--bullet govuk-!-padding-left-7">
-          <li><a href="https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework" target="_blank" rel="noreferrer">Transparency</a></li>
+          <li><a href="https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework#transparency-section" target="_blank" rel="noreferrer">Transparency</a></li>
           <li><a href="https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework#accountability-section" target="_blank" rel="noreferrer">Accountability</a></li>
           <li><a href="https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework#fairness-section" target="_blank" rel="noreferrer">Fairness</a></li>
           <li><a href="https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework#privacy-section" target="_blank" rel="noreferrer">Privacy</a></li>
@@ -45,7 +45,7 @@ export default function HowToUse({ onNavigateToFirstSection }) {
             onNavigateToFirstSection()
           }}
         >
-          Go to first section
+          Start using the tool
           <svg className="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
             <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
           </svg>

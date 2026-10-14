@@ -167,6 +167,33 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
       })
     }
 
+    const refreshFilterErrorState = () => {
+      if (pageIndex !== 0) {
+        return
+      }
+
+      const filterElement = renderedQuestions.current.get('FILTER')
+      if (!filterElement) {
+        return
+      }
+
+      const selectedFilters = surveyModel.getValue('FILTER')
+      const hasSelectedFilters = Array.isArray(selectedFilters) && selectedFilters.length > 0
+      filterElement.classList.toggle('survey-filter-question--error', !hasSelectedFilters)
+      filterElement.classList.toggle('govuk-form-group--error', !hasSelectedFilters)
+
+      let errorMessage = filterElement.querySelector('.survey-filter-error-message')
+      if (!errorMessage) {
+        errorMessage = document.createElement('span')
+        errorMessage.className = 'govuk-error-message survey-filter-error-message'
+        errorMessage.setAttribute('aria-live', 'polite')
+        errorMessage.textContent = 'Select at least one filter.'
+        filterElement.insertBefore(errorMessage, filterElement.firstChild)
+      }
+
+      errorMessage.hidden = hasSelectedFilters
+    }
+
     let completionStyleFrame
     const scheduleCompletedQuestionStyleRefresh = () => {
       if (completionStyleFrame !== undefined) {
@@ -176,11 +203,13 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
         completionStyleFrame = undefined
         refreshCompletedQuestionStyles()
         refreshSeriesDividers()
+        refreshFilterErrorState()
       })
     }
 
     surveyModel.onAfterRenderQuestion.add((_, options) => {
       renderedQuestions.current.set(options.question.name, options.htmlElement)
+      refreshFilterErrorState()
       if (options.question.getType() === 'radiogroup') {
         options.htmlElement.addEventListener('click', (event) => {
           const target = event.target

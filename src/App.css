@@ -218,6 +218,8 @@
 }
 
 .app-shell .save-panel__button {
+	flex: 0 0 auto;
+	width: auto;
 	margin: 0;
 }
 
@@ -455,6 +457,24 @@
 .app-shell .survey-form--project-detail .sd-question__content {
 	width: 100%;
 	max-width: none;
+}
+
+.app-shell .survey-form--project-detail .survey-filter-question--error {
+	border-left: 5px solid #d4351c !important;
+	padding-left: 15px;
+}
+
+.app-shell .survey-filter-error-message {
+	display: block;
+	margin: 0 0 8px;
+	color: #d4351c;
+	font-family: "GDS Transport", arial, sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+}
+
+.app-shell .survey-filter-error-message[hidden] {
+	display: none;
 }
 
 .app-shell .survey-form--project-detail .sd-row {

@@ -3,7 +3,7 @@
     {
       "name": "page1",
       "title": "Project Detail",
-      "description": null,
+      "description": "Provide the key information about your project and change the questions you see using filters.<br><br>",
       "elements": [
         {
           "type": "text",
@@ -50,7 +50,7 @@
           "type": "comment",
           "name": "PURP",
           "startWithNewLine": true,
-          "title": "Describe the project purpose and user need."
+          "title": "Describe how your solution solves this problem."
         }
       ]
     },
