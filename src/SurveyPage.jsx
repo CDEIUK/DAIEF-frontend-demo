@@ -87,6 +87,11 @@ function getProgressSummary(model, pageIndex) {
 export default function SurveyPage({ surveyJson, initialData, sharedData, onDataChange, onNavigateToProjectDetail, printableSurveyRef, pageIndex = 0, hideCommentQuestions = false, projectName = '' }) {
   const pageTitle = surveyJson.pages[pageIndex]?.title ?? ''
   const pageDescription = surveyJson.pages[pageIndex]?.description ?? ''
+  const themeLabelsByQuestion = new Map(
+    (surveyJson.pages[pageIndex]?.elements ?? [])
+      .filter((question) => /^\d+$/.test(question.name) && question.themes?.length)
+      .map((question) => [question.name, question.themes]),
+  )
   const hasSelectedFilters = Array.isArray(sharedData?.FILTER) && sharedData.FILTER.length > 0
   const showNoFiltersMessage = pageIndex !== 0 && !hasSelectedFilters
   const today = new Date()
@@ -210,7 +215,36 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
     surveyModel.onAfterRenderQuestion.add((_, options) => {
       renderedQuestions.current.set(options.question.name, options.htmlElement)
       refreshFilterErrorState()
+      const themes = themeLabelsByQuestion.get(options.question.name)
+      const questionTitle = options.htmlElement.querySelector('.sd-question__title')
+      if (themes && questionTitle?.parentElement && !options.htmlElement.querySelector('.survey-theme-tags')) {
+        const themeList = document.createElement('ul')
+        themeList.className = 'survey-theme-tags'
+        themeList.setAttribute('aria-label', 'Themes')
+        themes.forEach((theme) => {
+          const listItem = document.createElement('li')
+          const tag = document.createElement('strong')
+          tag.className = 'govuk-tag govuk-tag--blue'
+          tag.textContent = theme
+          listItem.append(tag)
+          themeList.append(listItem)
+        })
+        questionTitle.parentElement.insertBefore(themeList, questionTitle)
+      }
       if (options.question.getType() === 'radiogroup') {
+        options.htmlElement.addEventListener('keydown', (event) => {
+          const target = event.target
+          if (
+            (event.key === ' ' || event.code === 'Space')
+            && target instanceof HTMLInputElement
+            && target.type === 'radio'
+            && target.checked
+            && surveyModel.getValue(options.question.name) === target.value
+          ) {
+            event.preventDefault()
+            surveyModel.clearValue(options.question.name)
+          }
+        })
         options.htmlElement.addEventListener('click', (event) => {
           const target = event.target
           if (
@@ -277,7 +311,7 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
   return (
     <section ref={printableSurveyRef} className="printable-survey">
       <div className="survey-metadata" aria-label="Form details">
-        <span>Project name: {projectName?.trim() || 'Not named'}</span>
+        <span>Project name: {projectName?.trim() || '[None]'}</span>
         <span>Date: {currentDate}</span>
         <span>Form version: {surveyJson.formVersion ?? 'v0.3'}</span>
       </div>

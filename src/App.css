@@ -138,7 +138,8 @@
 	gap: 16px 32px;
 	margin: 0 0 0px;
 	padding: 16px 20px;
-	background: #e5e5e5
+	background: #ffffff;
+	border-bottom: 2px solid #b1b4b6;
 }
 
 .app-shell .survey-progress-label {
@@ -294,6 +295,21 @@
 	line-height: 1.31579;
 }
 
+.app-shell .survey-theme-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0 0 8px;
+	padding: 0;
+	list-style: none;
+}
+
+.app-shell .survey-theme-tags .govuk-tag {
+	display: inline-block;
+	margin: 0;
+	font-size: 14px;
+}
+
 .app-shell .survey-action-marker {
 	display: inline-flex;
 	align-items: center;
@@ -401,6 +417,12 @@
 	box-shadow: 0 0 0 3px #0b0c0c;
 }
 
+.app-shell .sd-radio.sd-radio--allowhover:not(.sd-radio--readonly):not(.sd-radio--disabled) .sd-item__control:focus-visible + .sd-radio__decorator {
+	outline: 3px solid #ffdd00;
+	outline-offset: 0;
+	box-shadow: 0 0 0 3px #0b0c0c;
+}
+
 .app-shell .sd-action {
 	border-radius: 0;
 	background: #ffffff;
@@ -435,7 +457,7 @@
 }
 
 .app-shell .sd-question:has(.sd-expression) {
-	background-color: #fde2e2;
+	background-color: 	#f4d7d7;
 	border-radius: 4px;
 }
 

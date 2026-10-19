@@ -3,7 +3,7 @@
     {
       "name": "page1",
       "title": "Project Detail",
-      "description": "Provide the key information about your project and change the questions you see using filters.<br><br>",
+      "description": "Provide the key information about your project and change the questions you see using filters.",
       "elements": [
         {
           "type": "text",
@@ -63,6 +63,10 @@
           "type": "radiogroup",
           "name": "1",
           "startWithNewLine": true,
+          "themes": [
+            "Accountability",
+            "Privacy"
+          ],
           "title": "1. Have you consulted your organisation’s Data Protection Officer (DPO) about your project?",
           "description": "See the ICO website for more information about DPOs.",
           "visibleIf": "{FILTER} contains 'Option a'",
@@ -140,6 +144,11 @@
           "type": "radiogroup",
           "name": "2",
           "startWithNewLine": true,
+          "themes": [
+            "Accountability",
+            "Privacy",
+            "Safety"
+          ],
           "title": "2. Have you consulted with your organisation’s data and information security teams?",
           "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c'",
           "choices": [
@@ -216,6 +225,11 @@
           "type": "radiogroup",
           "name": "3",
           "startWithNewLine": true,
+          "themes": [
+            "Accountability",
+            "Privacy",
+            "Societal Impact"
+          ],
           "title": "3. Will you complete a DPIA for this project?",
           "visibleIf": "{FILTER} contains 'Option a'",
           "choices": [
@@ -271,6 +285,10 @@
           "type": "radiogroup",
           "name": "4",
           "startWithNewLine": true,
+          "themes": [
+            "Accountability",
+            "Privacy"
+          ],
           "title": "4. Will you share personal data with or receive personal data from other organisations as part of this project?",
           "visibleIf": "{FILTER} contains 'Option a'",
           "choices": [
@@ -347,6 +365,9 @@
           "type": "radiogroup",
           "name": "5",
           "startWithNewLine": true,
+          "themes": [
+            "Accountability"
+          ],
           "title": "5. Do you have governance structures to support the safe, effective and responsible implementation of the project?",
           "visibleIf": "{FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
@@ -375,6 +396,10 @@
           "type": "radiogroup",
           "name": "6",
           "startWithNewLine": true,
+          "themes": [
+            "Accountability",
+            "Safety"
+          ],
           "title": "6. Have you assigned responsibility for the project’s outcomes?",
           "visibleIf": "{FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
@@ -423,6 +448,10 @@
           "type": "radiogroup",
           "name": "7",
           "startWithNewLine": true,
+          "themes": [
+            "Transparency",
+            "Accountability"
+          ],
           "title": "7. Are you confident in documenting key project decisions?",
           "visibleIf": "{FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
@@ -465,6 +494,9 @@
           "type": "radiogroup",
           "name": "8",
           "startWithNewLine": true,
+          "themes": [
+            "Safety"
+          ],
           "title": "8. Will you conduct research as part of your project?",
           "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
@@ -542,6 +574,10 @@
           "type": "radiogroup",
           "name": "9",
           "startWithNewLine": true,
+          "themes": [
+            "Fairness",
+            "Societal Impact"
+          ],
           "title": "9. Can you ensure that your project team is diverse and multidisciplinary?",
           "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
@@ -590,6 +626,10 @@
           "type": "radiogroup",
           "name": "10",
           "startWithNewLine": true,
+          "themes": [
+            "Fairness",
+            "Societal Impact"
+          ],
           "title": "10. Do you have a clear picture of your target user groups?",
           "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
@@ -639,6 +679,10 @@
           "type": "radiogroup",
           "name": "11",
           "startWithNewLine": true,
+          "themes": [
+            "Fairness",
+            "Societal Impact"
+          ],
           "title": "11. Do you have a clear picture of all your project stakeholders?",
           "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
@@ -688,6 +732,9 @@
           "type": "radiogroup",
           "name": "12",
           "startWithNewLine": true,
+          "themes": [
+            "Societal impact"
+          ],
           "title": "12. Will you work with civil society organisations or external domain experts to guide your project?",
           "visibleIf": "{FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
@@ -716,6 +763,9 @@
           "type": "radiogroup",
           "name": "13",
           "startWithNewLine": true,
+          "themes": [
+            "Environmental sustainability"
+          ],
           "title": "13. Have you considered the potential environmental impact and sustainability of your project?",
           "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b'",
           "choices": [

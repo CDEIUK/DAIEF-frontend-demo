@@ -6,7 +6,7 @@ import re
 
 
 section_descriptions = {
-    "Project Detail": "Provide the key information about your project and change the questions you see using filters.<br><br>",
+    "Project Detail": "Provide the key information about your project and change the questions you see using filters.",
     "Discovery": "Discovery is the project research and scoping phase. You are understanding the problem that needs to be solved and the opportunities for addressing them using data and AI. Learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">discovery phase</a> in a new tab.<br><br>",    
     "Alpha": "Alpha is the initial solution development phase. You are building prototypes to test your ideas and assumptions, and to gather feedback from users. Learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">alpha phase</a> in a new tab.<br><br>",
     "Beta": "Beta is the phase where you are building the solution that best solves your problem. You are refining your solution based on user feedback and preparing for launch. Learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-beta-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">beta phase</a> in a new tab.<br><br>",
@@ -147,6 +147,19 @@ def csv_to_survey(
                 "name": reference,
                 "startWithNewLine": line_break_needed,
             }
+
+            if re.fullmatch(r"\d+", reference):
+                theme_value = (
+                    row.get("DAIEF theme", "").strip()
+                    or row.get("DAIEF themes", "").strip()
+                )
+                themes = [
+                    theme.strip()
+                    for theme in theme_value.split(",")
+                    if theme.strip() and theme.strip().casefold() not in {"n/a", "na"}
+                ]
+                if themes:
+                    element["themes"] = themes
 
             if is_project_detail:
                 element["title"] = field_text

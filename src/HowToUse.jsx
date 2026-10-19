@@ -74,7 +74,7 @@ export default function HowToUse({ onNavigateToFirstSection }) {
                 <li><a>Workbook fields (blue): text boxes for documenting key ethical information about your project.</a></li>
                 <li><a>Actions (red): advice and suggestions for you to follow up on where applicable.</a></li>
               </ul>
-              <p className="govuk-body">A question set will be marked as complete and turn green when all radio questions have been answered and there are no outstanding actions. The grey progress panels display how many sets have been started, how many sets are complete and how many actions remain within the section.</p>
+              <p className="govuk-body">A question set will be marked as complete and turn green when all radio questions have been answered and there are no outstanding actions. The section progress panels display how many sets have been filtered, started, completed and how many actions remain within the section.</p>
               <p className="govuk-body">The form is intended to offer helpful guidance and prompt you to reflect on how your project is meeting ethical best practice. It is not intended to provide assurance or sign-off for a project.</p>
               </div>
           </div>
@@ -129,7 +129,7 @@ export default function HowToUse({ onNavigateToFirstSection }) {
               </h2>
             </div>
             <div id="accordion-default-content-4" className="govuk-accordion__section-content">
-              <p className="govuk-body">The tool is designed and maintained by the Responsible AI and Data Team in GDS.</p>
+              <p className="govuk-body">The tool is designed and maintained by the Responsible Data and AI Team in GDS.</p>
               <p className="govuk-body">If you have feedback on the tool… [feedback option]</p>
               <p className="govuk-body">If you require more direct support from the Responsible AI and Data Team, please email us at 
           <a href="mailto:GDS-Responsible-Data-AI@dsit.gov.uk" className="govuk-link" target="_blank" rel="noreferrer"> GDS-Responsible-Data-AI@dsit.gov.uk</a>.</p>
