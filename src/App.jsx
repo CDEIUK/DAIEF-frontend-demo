@@ -6,6 +6,8 @@ import 'govuk-frontend/dist/govuk/govuk-frontend.min.css'
 import surveyJson from '../translated-survey.json'
 import { createStandaloneSectionHtml } from './standaloneHtml.js'
 
+const surveyDefinitionKey = JSON.stringify(surveyJson)
+
 const stages = [
   { id: 'project-detail', label: 'Project Detail', pageIndex: 0 },
   { id: 'discovery', label: 'Discovery', pageIndex: 1 },
@@ -394,7 +396,7 @@ function App() {
             {currentStage ? (
               <>
                 <SurveyPage
-                  key={`${activePageId}-${surveyVersion}-${hideCommentQuestions}`}
+                  key={`${activePageId}-${surveyVersion}-${hideCommentQuestions}-${surveyDefinitionKey}`}
                   surveyJson={surveyJson}
                   initialData={stageData[activePageId]}
                   sharedData={activePageId === 'project-detail' ? undefined : stageData['project-detail']}

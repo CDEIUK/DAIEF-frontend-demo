@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 PROJECT_DIR = Path(__file__).resolve().parent
-WORKBOOK_PATH = PROJECT_DIR / "Interactive DAIEF schema (APP).xlsx"
+CONTENT_PATH = PROJECT_DIR / "form-content.yaml"
 TRANSLATION_SCRIPT = PROJECT_DIR / "json-translation.py"
 POLL_INTERVAL_SECONDS = 0.5
 STABLE_SECONDS = 1.0
@@ -20,13 +20,22 @@ def file_signature(path):
 
 
 def main():
-    observed_signature = file_signature(WORKBOOK_PATH)
+    observed_signature = file_signature(CONTENT_PATH)
     changed_at = None
-    print(f"Watching {WORKBOOK_PATH.name}; press Ctrl+C to stop.", flush=True)
+    print(f"Watching {CONTENT_PATH.name}; press Ctrl+C to stop.", flush=True)
+
+    print("Generating the survey from the current YAML content.", flush=True)
+    result = subprocess.run(
+        [sys.executable, str(TRANSLATION_SCRIPT)],
+        cwd=PROJECT_DIR,
+        check=False,
+    )
+    if result.returncode:
+        return result.returncode
 
     try:
         while True:
-            current_signature = file_signature(WORKBOOK_PATH)
+            current_signature = file_signature(CONTENT_PATH)
             if current_signature != observed_signature:
                 observed_signature = current_signature
                 changed_at = time.monotonic()
@@ -37,7 +46,7 @@ def main():
                 and time.monotonic() - changed_at >= STABLE_SECONDS
             ):
                 changed_at = None
-                print("Workbook changed; running translation.", flush=True)
+                print("YAML content changed; running translation.", flush=True)
                 result = subprocess.run(
                     [sys.executable, str(TRANSLATION_SCRIPT)],
                     cwd=PROJECT_DIR,
@@ -55,4 +64,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

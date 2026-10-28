@@ -1,16 +1,7 @@
 from pathlib import Path
 import json
-import posixpath
 import re
-import zipfile
-from xml.etree import ElementTree as ET
-
-
-XLSX_NAMESPACES = {
-    "main": "http://schemas.openxmlformats.org/spreadsheetml/2006/main",
-    "relationships": "http://schemas.openxmlformats.org/officeDocument/2006/relationships",
-    "package": "http://schemas.openxmlformats.org/package/2006/relationships",
-}
+import yaml
 
 section_descriptions = {
     "Project Detail": "Provide the key information about your project and change the questions you see using filters.",
@@ -21,143 +12,86 @@ section_descriptions = {
 }
 
 
-def read_schema_xlsx(xlsx_path):
-    """Read the schema-input worksheet and its optional form version."""
-    with zipfile.ZipFile(xlsx_path) as workbook:
-        workbook_xml = ET.fromstring(workbook.read("xl/workbook.xml"))
-        workbook_relationships = ET.fromstring(
-            workbook.read("xl/_rels/workbook.xml.rels")
-        )
-        relationship_targets = {
-            relationship.attrib["Id"]: relationship.attrib["Target"]
-            for relationship in workbook_relationships.findall(
-                "package:Relationship", XLSX_NAMESPACES
-            )
-        }
+def read_schema_yaml(yaml_path):
+    """Read grouped survey content from YAML and normalize it into schema rows."""
+    try:
+        with yaml_path.open(encoding="utf-8") as yaml_file:
+            content = yaml.safe_load(yaml_file)
+    except yaml.YAMLError as error:
+        raise ValueError(f"Could not parse {yaml_path.name}: {error}") from error
 
-        schema_sheet = next(
-            (
-                sheet
-                for sheet in workbook_xml.findall(
-                    "main:sheets/main:sheet", XLSX_NAMESPACES
-                )
-                if sheet.attrib["name"] == "schema-input"
-            ),
-            None,
-        )
-        if schema_sheet is None:
-            raise ValueError("Workbook does not contain a 'schema-input' sheet")
+    if not isinstance(content, dict):
+        raise ValueError("The YAML root must be a mapping.")
 
-        sheet_target = relationship_targets[
-            schema_sheet.attrib[
-                f"{{{XLSX_NAMESPACES['relationships']}}}id"
-            ]
-        ]
-        sheet_path = posixpath.normpath(posixpath.join("xl", sheet_target))
-        worksheet_xml = ET.fromstring(workbook.read(sheet_path))
+    form_version = content.get("form_version")
+    if form_version is not None and not isinstance(form_version, str):
+        raise ValueError("'form_version' must be a string.")
 
-        shared_strings = []
-        if "xl/sharedStrings.xml" in workbook.namelist():
-            strings_xml = ET.fromstring(workbook.read("xl/sharedStrings.xml"))
-            shared_strings = [
-                "".join(
-                    text.text or ""
-                    for text in item.findall(".//main:t", XLSX_NAMESPACES)
-                )
-                for item in strings_xml.findall("main:si", XLSX_NAMESPACES)
-            ]
+    sections = content.get("sections")
+    if not isinstance(sections, list) or not sections:
+        raise ValueError("'sections' must be a non-empty list.")
 
-        def cell_value(cell):
-            cell_type = cell.attrib.get("t")
-            if cell_type == "inlineStr":
-                value = "".join(
-                    text.text or ""
-                    for text in cell.findall(".//main:t", XLSX_NAMESPACES)
-                )
-            else:
-                value_node = cell.find("main:v", XLSX_NAMESPACES)
-                value = value_node.text if value_node is not None else ""
-                if cell_type == "s" and value:
-                    value = shared_strings[int(value)]
-            return clean_schema_value(value)
+    schema = []
+    for section_index, section in enumerate(sections, start=1):
+        location = f"sections[{section_index}]"
+        if not isinstance(section, dict):
+            raise ValueError(f"{location} must be a mapping.")
+        name = section.get("name")
+        questions = section.get("questions")
+        if not isinstance(name, str) or not name.strip():
+            raise ValueError(f"{location}.name must be a non-empty string.")
+        if not isinstance(questions, list):
+            raise ValueError(f"{location}.questions must be a list.")
 
-        rows_by_number = {
-            int(row.attrib["r"]): row
-            for row in worksheet_xml.findall(
-                "main:sheetData/main:row", XLSX_NAMESPACES
-            )
-        }
+        for question_index, question in enumerate(questions, start=1):
+            question_location = f"{location}.questions[{question_index}]"
+            if not isinstance(question, dict):
+                raise ValueError(f"{question_location} must be a mapping.")
 
-        first_row = rows_by_number.get(1)
-        form_version = ""
-        if first_row is not None:
-            form_version = next(
-                (
-                    cell_value(cell).strip()
-                    for cell in first_row.findall("main:c", XLSX_NAMESPACES)
-                    if cell.attrib["r"] == "A1"
+            for key in ("reference", "field_text", "component_type"):
+                if not isinstance(question.get(key), str):
+                    raise ValueError(
+                        f"{question_location}.{key} must be a string."
+                    )
+
+            options = question.get("options", {})
+            if not isinstance(options, dict):
+                raise ValueError(f"{question_location}.options must be a mapping.")
+
+            row = {
+                "Section": name,
+                "Reference": question["reference"],
+                "Trigger": question.get("trigger", ""),
+                "Field text": question["field_text"],
+                "Component type": question["component_type"],
+                "DAIEF themes": question.get("daief_themes", ""),
+                "Field text hyperlinks": question.get(
+                    "field_text_hyperlinks", ""
                 ),
-                "",
-            )
-
-        header_row_number = None
-        headers_by_column = {}
-        for row_number, row in sorted(rows_by_number.items()):
-            row_values = {
-                re.match(r"[A-Z]+", cell.attrib["r"]).group(): cell_value(cell)
-                for cell in row.findall("main:c", XLSX_NAMESPACES)
+                "Hint text": question.get("hint_text", ""),
             }
-            if {"Section", "Reference", "Field text", "Component type"}.issubset(
-                row_values.values()
-            ):
-                header_row_number = row_number
-                headers_by_column = {
-                    column: value
-                    for column, value in row_values.items()
-                    if value
-                }
-                break
+            for option_letter in "abcde":
+                row[f"Option {option_letter}"] = options.get(option_letter, "")
 
-        if header_row_number is None:
-            raise ValueError(
-                "Could not find schema headers on the 'schema-input' sheet"
-            )
+            for field, value in row.items():
+                if not isinstance(value, str):
+                    raise ValueError(
+                        f"{question_location} values must be strings "
+                        f"(invalid {field!r})."
+                    )
+            for option_letter, value in options.items():
+                if (
+                    option_letter not in {"a", "b", "c", "d", "e"}
+                    or not isinstance(value, str)
+                ):
+                    raise ValueError(
+                        f"{question_location}.options keys must be a-e "
+                        "with string values."
+                    )
 
-        schema = []
-        for row_number, row in sorted(rows_by_number.items()):
-            if row_number <= header_row_number:
-                continue
-            row_values = {
-                re.match(r"[A-Z]+", cell.attrib["r"]).group(): cell_value(cell)
-                for cell in row.findall("main:c", XLSX_NAMESPACES)
-            }
-            if any(row_values.values()):
-                schema.append(
-                    {
-                        header: row_values.get(column, "")
-                        for column, header in headers_by_column.items()
-                    }
-                )
+            schema.append(row)
 
-    return form_version or None, schema
-
-
-def clean_schema_value(value):
-    if not value:
-        return ""
-    value = value.strip()
-    if value == "0":
-        return ""
-    return (
-        value.replace("�s", "'s")
-        .replace("�re", "'re")
-        .replace("�ve", "'ve")
-        .replace("�d", "'d")
-        .replace("�ll", "'ll")
-        .replace("�", "")
-        .replace("Õ", "'")
-        .replace("Ê", "")
-    )
+    return form_version, schema
 
 
 def add_field_text_hyperlinks(field_text, link_text):
@@ -181,7 +115,7 @@ def add_field_text_hyperlinks(field_text, link_text):
     return re.sub(r"\[([^\[\]]+)\](?!\()", replace_anchor, field_text)
 
 
-def csv_to_survey(
+def schema_to_survey(
     rows,
     pages=None,
     page_name="page1",
@@ -190,7 +124,7 @@ def csv_to_survey(
     section_descriptions=section_descriptions,
     form_version=None,
 ):
-    """Translate CSV schema rows into a SurveyJS-compatible survey definition."""
+    """Translate schema rows into a SurveyJS-compatible survey definition."""
     def rows_for_section(section):
         return [
             row for row in rows
@@ -431,11 +365,11 @@ def csv_to_survey(
 
 def main():
     project_dir = Path(__file__).resolve().parent
-    xlsx_path = project_dir / "Interactive DAIEF schema (APP).xlsx"
+    yaml_path = project_dir / "form-content.yaml"
     output_path = project_dir / "translated-survey.json"
 
-    form_version, schema = read_schema_xlsx(xlsx_path)
-    translated_survey = csv_to_survey(schema, form_version=form_version)
+    form_version, schema = read_schema_yaml(yaml_path)
+    translated_survey = schema_to_survey(schema, form_version=form_version)
 
     empty_pages = [page["name"] for page in translated_survey["pages"] if not page["elements"]]
     if empty_pages:
@@ -445,4 +379,4 @@ def main():
         json.dump(translated_survey, output_file, ensure_ascii=False, indent=2)
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

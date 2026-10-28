@@ -1,0 +1,1528 @@
+# Author survey content by section. Keep text values as strings.
+# Questions are shown in this order in the survey.
+form_version: v0.3
+
+sections:
+
+  - name: Project Detail
+    questions:
+
+      - reference: NAME
+        field_text: Give your project a name.
+        component_type: short text
+        trigger: None
+        daief_themes: N/A
+
+      - reference: FILTER
+        field_text: Select your project filters.
+        component_type: multiselect
+        trigger: None
+        daief_themes: N/A
+        options:
+          a: My project involves the collection, use, or sharing of data
+          b: My project involves the use of AI or broader algorithmic tools
+          c: My project involves direct interaction with the public
+          d: My project involves making decisions with a significant or legal effects
+          e: My project involves work in a safety-critical area (e.g. policing, healthcare, working with
+            vulnerable people)
+        hint_text: Your answers will be used to show you the questions most relevant to your work. If
+          you are not sure whether a statement applies, we encourage you to select it. This will help
+          to ensure that potential risks and opportunities are captured and explored.
+
+      - reference: PROB
+        field_text: Describe the problem you’re trying to solve in simple terms.
+        component_type: text
+        trigger: None
+        daief_themes: N/A
+
+      - reference: PURP
+        field_text: Describe how your solution solves this problem.
+        component_type: text
+        trigger: None
+        daief_themes: N/A
+
+  - name: Discovery
+    questions:
+
+      - reference: '1'
+        field_text: Have you consulted your organisation’s Data Protection Officer (DPO) about your project?
+        component_type: radios
+        trigger: FILTER=a
+        daief_themes: Accountability, Privacy
+        options:
+          a: 'Yes'
+          b: 'No'
+        hint_text: See the ICO website for more information about DPOs.
+
+      - reference: 1a
+        field_text: Have you received all the data processing advice that you need?
+        component_type: radios
+        trigger: 1=Yes
+        daief_themes: Accountability, Privacy
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 1b
+        field_text: Do you intend to follow all the advice that you've received?
+        component_type: radios
+        trigger: 1a=Yes
+        daief_themes: Accountability, Privacy
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 1S
+        field_text: 'If your project uses personal data, you must meet your legal duties under the UK
+          General Data Protection Regulation (UK GDPR).
+
+
+          Your organisation’s data protection officer (DPO) or information assurance team should be able
+          to advise on your data protection obligations.'
+        component_type: suggestion
+        trigger: 1=No
+        daief_themes: Accountability, Privacy
+
+      - reference: 1aT
+        field_text: Provide a brief summary of data processing advice that you received.
+        component_type: text
+        trigger: 1a=Yes
+        daief_themes: Accountability, Privacy
+
+      - reference: 1aS
+        field_text: 'If your project uses personal data, you must meet your legal duties under the UK
+          General Data Protection Regulation (UK GDPR).
+
+
+          Your organisation’s data protection officer (DPO) or information assurance team should be able
+          to advise on your data protection obligations.'
+        component_type: suggestion
+        trigger: 1a=No OR Unsure
+        daief_themes: Accountability, Privacy
+
+      - reference: 1bT
+        field_text: Briefly explain what advice you won't follow and why.
+        component_type: text
+        trigger: 1b=No
+        daief_themes: Accountability, Privacy
+
+      - reference: 1bS
+        field_text: 'If your project uses personal data, you must meet your legal duties under the UK
+          General Data Protection Regulation (UK GDPR).
+
+
+          Your organisation’s data protection officer (DPO) or information assurance team should be able
+          to advise on your data protection obligations.'
+        component_type: suggestion
+        trigger: 1b=Unsure
+        daief_themes: Accountability, Privacy
+
+      - reference: '2'
+        field_text: Have you consulted with your organisation’s data and information security teams?
+        component_type: radios
+        trigger: FILTER=a OR b OR c
+        daief_themes: Accountability, Privacy, Safety
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 2a
+        field_text: Have you received all the security advice that you need?
+        component_type: radios
+        trigger: 2=Yes
+        daief_themes: Accountability, Privacy, Safety
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 2b
+        field_text: Do you intend to follow all the advice that you've received?
+        component_type: radios
+        trigger: 2a=Yes
+        daief_themes: Accountability, Privacy, Safety
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 2S
+        field_text: "You should involve information governance teams early in the project design process\
+          \ – this will help you to comply with privacy and data protection legislation, and plan resources\
+          \ effectively so that support is available for project teams when needed.\n\nYour organisation’s\
+          \ data and information security team should be able to advise on security requirements and risks.\
+          \ \n\nRefer to the government’s [personal data security principles] when processing and sharing\
+          \ personal data.\n\nIf you’re working with any third-party suppliers to store, collect or process\
+          \ data, make sure they’re vetted and that they comply with the security requirements of your\
+          \ project."
+        component_type: suggestion
+        trigger: 2=No
+        daief_themes: Accountability, Privacy, Safety
+        field_text_hyperlinks: https://www.gov.uk/guidance/principles-for-securing-personal-data-in-government-services
+
+      - reference: 2aT
+        field_text: Provide a brief summary of security advice that you received
+        component_type: text
+        trigger: 2a=Yes
+        daief_themes: Accountability, Privacy, Safety
+
+      - reference: 2aS
+        field_text: This is quite a difficult one to provide actions for without repeating what has already
+          been said.
+        component_type: suggestion
+        trigger: 2a=No OR Unsure
+        daief_themes: Accountability, Privacy, Safety
+
+      - reference: 2bT
+        field_text: Brieflly explain what advice you won't follow and why.
+        component_type: text
+        trigger: 2b=No
+        daief_themes: Accountability, Privacy, Safety
+
+      - reference: 2bS
+        field_text: "Your organisation’s data and information security team should be able to advise on\
+          \ security requirements and risks. \n\nRefer to the government’s [personal data security principles]\
+          \ when processing and sharing personal data.\n\nIf you’re working with any third-party suppliers\
+          \ to store, collect or process data, make sure they’re vetted and that they comply with the\
+          \ security requirements of your project."
+        component_type: suggestion
+        trigger: 2b=Unsure
+        daief_themes: Accountability, Privacy, Safety
+        field_text_hyperlinks: https://www.gov.uk/guidance/principles-for-securing-personal-data-in-government-services
+
+      - reference: '3'
+        field_text: Will you complete a DPIA for this project?
+        component_type: radios
+        trigger: FILTER=a
+        daief_themes: Accountability, Privacy, Societal Impact
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 3a
+        field_text: Have you conducted a full Data Protection Impact Assessment (DPIA)?
+        component_type: radios
+        trigger: 3=Yes
+        daief_themes: Accountability, Privacy, Societal Impact
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 3T
+        field_text: Explain briefly why your project isn't ikely to result in a high risk to the rights
+          and freedoms of individuals
+        component_type: text
+        trigger: 3=No
+        daief_themes: Accountability, Privacy, Societal Impact
+
+      - reference: 3S
+        field_text: Your organisation’s data protection officer (DPO) or information assurance team should
+          be able to advise on your data protection obligations.
+        component_type: suggestion
+        trigger: 3=Unsure
+        daief_themes: Accountability, Privacy, Societal Impact
+
+      - reference: 3aT
+        field_text: Provide a name, summary or link to your complete DPIA.
+        component_type: text
+        trigger: 3a=Yes
+        daief_themes: Accountability, Privacy, Societal Impact
+
+      - reference: 3aS
+        field_text: 'Where personal data is being processed, you must comply with relevant laws: You need
+          to carry out a Data Protection Impact Assessment (DPIA) before you process personal data when
+          the processing is likely to result in a high risk to the rights and freedoms of individuals.
+          It’s good practice to publish your completed DPIA to demonstrate that you’re taking the appropriate
+          precautions to protect personal data and ensure your system is fair.
+
+
+          Your organisation’s data protection officer (DPO) or information assurance team should be able
+          to advise on your data protection obligations.'
+        component_type: suggestion
+        trigger: 3a=No
+        daief_themes: Accountability, Privacy, Societal Impact
+
+      - reference: '4'
+        field_text: Will you share personal data with or receive personal data from other organisations
+          as part of this project?
+        component_type: radios
+        trigger: FILTER=a
+        daief_themes: Accountability, Privacy
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 4a
+        field_text: Have you established a data sharing agreement with other organisations?
+        component_type: radios
+        trigger: 4=Yes
+        daief_themes: Accountability, Privacy
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 4b
+        field_text: Are you confident that the data sharing benefits are necessary and proportional to
+          any privacy risks incurred?
+        component_type: radios
+        trigger: 4=Yes
+        daief_themes: Accountability, Privacy
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 4S
+        field_text: 'Where personal data is being processed, you must comply with relevant laws: You need
+          to carry out a Data Protection Impact Assessment (DPIA) before you process personal data when
+          the processing is likely to result in a high risk to the rights and freedoms of individuals.
+          It’s good practice to publish your completed DPIA to demonstrate that you’re taking the appropriate
+          precautions to protect personal data and ensure your system is fair.
+
+
+          Your organisation’s data protection officer (DPO) or information assurance team should be able
+          to advise on your data protection obligations.
+
+
+          New data assets should be registered via organisational data catalogues, or cross-departmentally
+          by designating [Essential Shared Data Assets (ESDAs)].'
+        component_type: suggestion
+        trigger: 4=No OR Unsure
+        daief_themes: Accountability, Privacy
+        field_text_hyperlinks: https://www.gov.uk/government/publications/essential-shared-data-assets-and-data-ownership-in-government/essential-shared-data-assets-esdas-guidance-for-departments-html
+
+      - reference: 4aT
+        field_text: Provide a summary or link to your complete data sharing agreement.
+        component_type: text
+        trigger: 4a=Yes
+        daief_themes: Accountability, Privacy
+
+      - reference: 4aS
+        field_text: ''
+        component_type: suggestion
+        trigger: 4a=No
+        daief_themes: Accountability, Privacy
+
+      - reference: 4bT
+        field_text: Briefly explain how data sharing achieves a benefit and is necessary.
+        component_type: text
+        trigger: 4b=Yes
+        daief_themes: Accountability, Privacy
+
+      - reference: 4bS
+        field_text: ''
+        component_type: suggestion
+        trigger: 4b=No OR Unsure
+        daief_themes: Accountability, Privacy
+
+      - reference: '5'
+        field_text: Do you have governance structures to support the safe, effective and responsible implementation
+          of the project?
+        component_type: radios
+        trigger: FILTER=c OR d OR e
+        daief_themes: Accountability
+        options:
+          a: 'Yes'
+          b: Somewhat
+          c: 'No'
+
+      - reference: 5T
+        field_text: Briefly describe the governance structures that will support this project.
+        component_type: text
+        trigger: 5=Yes
+        daief_themes: Accountability
+
+      - reference: 5S
+        field_text: 'You should always follow your organisation’s internal governance policies
+
+          Data and AI projects should have appropriate and effective governance and oversight. This includes
+          clear roles and responsibilities, clear documentation, and being transparent about the system
+          and the processes around it.'
+        component_type: suggestion
+        trigger: 5=Somewhat OR No
+        daief_themes: Accountability
+
+      - reference: '6'
+        field_text: Have you assigned responsibility for the project’s outcomes?
+        component_type: radios
+        trigger: FILTER=c OR d OR e
+        daief_themes: Accountability, Safety
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 6a
+        field_text: Is the responsible owner able to oversee the project effectively and intervene quickly
+          if in the case of harmful outcomes?
+        component_type: radios
+        trigger: 6=Yes
+        daief_themes: Accountability, Safety
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 6S
+        field_text: 'You need strong oversight and clear responsibilities to ensure accountability across
+          the life cycle of your project. You must set out who is responsible at each stage of the project.
+
+
+          This includes naming: senior responsible owners (SROs), data owners, data stewards, data custodians,
+          and AI asset owners.'
+        component_type: suggestion
+        trigger: 6=No
+        daief_themes: Accountability, Safety
+
+      - reference: 6aT
+        field_text: Briefly describe any barriers to responsible owner intervention that you foresee.
+        component_type: text
+        trigger: 6a=Yes
+        daief_themes: Accountability, Safety
+
+      - reference: 6aS
+        field_text: "As the primary risk owners for the project, senior responsible owners ensure a real\
+          \ policy or business need is being addressed, engage with stakeholders and assure ongoing viability.\
+          \ \nFor project governance to be effective, it’s essential that the people accountable have\
+          \ appropriate technical expertise and knowledge, and authority, to implement necessary changes.\
+          \ This is especially important for complex projects or those involving multiple suppliers, which\
+          \ is often the case with data and AI projects."
+        component_type: suggestion
+        trigger: 6a=No OR Unsure
+        daief_themes: Accountability, Safety
+
+      - reference: '7'
+        field_text: Are you confident in documenting key project decisions?
+        component_type: radios
+        trigger: FILTER=c OR d OR e
+        daief_themes: Transparency, Accountability
+        options:
+          a: 'Yes'
+          b: Somewhat
+          c: 'No'
+
+      - reference: 7T
+        field_text: Provide the types of key decisions that you'll document.
+        component_type: text
+        trigger: 7=Yes
+        daief_themes: Transparency, Accountability
+
+      - reference: 7Ta
+        field_text: Provide the types of routines or processes that you'll use to document decisions.
+        component_type: text
+        trigger: 7=Yes
+        daief_themes: Transparency, Accountability
+
+      - reference: 7Tb
+        field_text: Provide the ways in which people will be able to learn more about key decisions if
+          needed.
+        component_type: text
+        trigger: 7=Yes
+        daief_themes: Transparency, Accountability
+
+      - reference: 7S
+        field_text: 'To ensure AI and data projects can be audited or reviewed, your team must: record
+          who is responsible for each part of the system, including suppliers, and record decisions made
+          during project design, model deployment and system deployment processes.
+
+
+          For example, a data set factsheet can help explain how data was handled.
+
+          The [Algorithmic Transparency Recording Standard (ATRS)] also provides a template for public
+          sector organisations to document and share information about how and why they’re using algorithmic
+          tools.'
+        component_type: suggestion
+        trigger: 7= Somewhat OR No
+        daief_themes: Transparency, Accountability
+        field_text_hyperlinks: https://www.gov.uk/government/publications/algorithmic-transparency-template
+
+      - reference: '8'
+        field_text: Will you conduct research as part of your project?
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        daief_themes: Safety
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 8a
+        field_text: Are you confident in protecting research participants from safety risks?
+        component_type: radios
+        trigger: 8=Yes
+        daief_themes: Safety
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 8b
+        field_text: Are you confident in protecting reseachers from safety risks?
+        component_type: radios
+        trigger: 8=Yes
+        daief_themes: Safety
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 8S
+        field_text: 'When designing a government tool or service, you should always start by learning
+          about the people who will use it. If you don’t understand users or what they need from your
+          service, you cannot build the right thing.
+
+
+          You should involve diverse stakeholders in the design and testing process and undertake thorough
+          user research and public engagement to ensure you’re including the views of those that may be
+          affected or digitally excluded.
+
+
+          You must understand and comply with your legal obligations and duties. Refer to the Public Sector
+          Equality Duty (PSED) and the Equality Act 2010.'
+        component_type: suggestion
+        trigger: 8=No OR Unsure
+        daief_themes: Safety
+
+      - reference: 8aT
+        field_text: Describe the measures you will take to protect research particpants.
+        component_type: text
+        trigger: 8a=Yes
+        daief_themes: Safety
+
+      - reference: 8aS
+        field_text: "You must take steps to protect research participants. This applies to your team and\
+          \ to any third-party researchers you work with. \n\nYou should:\no make sure that participants\
+          \ understand the research and any risks involved \no only include participants who give clear,\
+          \ informed consent without pressure or coercion \no allow participants to withdraw at any time\
+          \ (with exceptions for situations like medical research where participant information is anonymised\
+          \ and aggregated and cannot be removed from the research data set)\no anonymise all data used\
+          \ in reports or analysis.\n\nThe Service Manual has guidance on [managing user research data\
+          \ and participant privacy]."
+        component_type: suggestion
+        trigger: 8a=No OR Unsure
+        daief_themes: Safety
+        field_text_hyperlinks: https://www.gov.uk/service-manual/user-research/managing-user-research-data-participant-privacy
+
+      - reference: 8bT
+        field_text: Describe the measures you will take to protect researchers.
+        component_type: text
+        trigger: 8b=Yes
+        daief_themes: Safety
+
+      - reference: 8bS
+        field_text: 'Some research projects involve sensitive topics, such as child protection or adult
+          safeguarding. These can be distressing for both researchers and participants. To reduce risk,
+          you should:
+
+          o highlight any sensitive topics in workshop or interview plans
+
+          o set up a ‘safety check-in’ protocol to support staff after sessions, particularly for one-to-one
+          or lone working
+
+          o use existing ethical guidelines and processes, such as the Service Manual’s guidance on researching
+          emotionally sensitive subjects
+
+
+          In rare cases, researchers may be targeted by participants or others. If this happens, or if
+          the risk is known in advance, put safeguards in place to protect staff.
+
+
+          The Government Analysis Function provides a list of resources related to conducting research
+          and analysis in government.'
+        component_type: suggestion
+        trigger: 8b=No OR Unsure
+        daief_themes: Safety
+
+      - reference: '9'
+        field_text: Can you ensure that your project team is diverse and multidisciplinary?
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        daief_themes: Fairness, Societal Impact
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 9a
+        field_text: Have you considered how a lack of diversity might impact your project?
+        component_type: radios
+        trigger: 9=No OR Unsure
+        daief_themes: Fairness, Societal Impact
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 9T
+        field_text: Briefly describe how you will ensure diversity across the team.
+        component_type: text
+        trigger: 9=Yes
+        daief_themes: Fairness, Societal Impact
+
+      - reference: 9aT
+        field_text: Briefly describe any risks or blind spots you have identified.
+        component_type: text
+        trigger: 9a=Yes
+        daief_themes: Fairness, Societal Impact
+
+      - reference: 9aS
+        field_text: 'Having a diverse and multidisciplinary team can provide a strong foundation for building
+          fairer tools and services. A diverse team is often able to spot issues early in the development
+          process by bringing varied perspectives and lived experiences.
+
+
+          If it’s not possible to assemble a diverse team, you should note any potential gaps in understanding
+          and proactively seek ways to engage with a variety of stakeholders. This might include through
+          user testing, public engagement and, where possible, presenting ideas at internal or external
+          community events.
+
+
+          The Service Manual includes guidance on the [people you need to have in your team at each phase].'
+        component_type: suggestion
+        trigger: 9a=No
+        daief_themes: Fairness, Societal Impact
+        field_text_hyperlinks: https://www.gov.uk/service-manual/the-team/set-up-a-service-team
+
+      - reference: '10'
+        field_text: Do you have a clear picture of your target user groups?
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        daief_themes: Fairness, Societal Impact
+        options:
+          a: 'Yes'
+          b: Somewhat
+          c: 'No'
+
+      - reference: 10a
+        field_text: Have you considered how different groups could be impacted unequally by your project?
+        component_type: radios
+        trigger: 10=Yes
+        daief_themes: Fairness, Societal Impact
+        options:
+          a: 'Yes'
+          b: Somewhat
+          c: 'No'
+
+      - reference: 10S
+        field_text: 'At the start of your project, you should make sure that:
+
+          o your project has a clear purpose
+
+          o there’s a clear public benefit
+
+          o you’re designing with humans in mind and in a human-centred way.
+
+
+          You should involve diverse stakeholders in the design and testing process and undertake thorough
+          user research and public engagement to ensure you’re including the views of those that may be
+          affected or digitally excluded.
+
+
+          You must understand and comply with your legal obligations and duties. Refer to the [Public
+          Sector Equality Duty (PSED)] and the [Equality Act 2010].
+
+
+          You should continually revisit user needs throughout your project. The Service Manual explains
+          more about [user needs].'
+        component_type: suggestion
+        trigger: 10=Somewhat OR No
+        daief_themes: Fairness, Societal Impact
+        field_text_hyperlinks: 'https://www.equalityhumanrights.com/guidance/public-sector-equality-duty-psed
+
+          https://www.gov.uk/guidance/equality-act-2010-guidance
+
+          https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs'
+
+      - reference: 10aT
+        field_text: Briefly describe how your user groups may be impacted differently.
+        component_type: text
+        trigger: 10a=Yes
+        daief_themes: Fairness, Societal Impact
+
+      - reference: 10aS
+        field_text: 'You should involve diverse stakeholders in the design and testing process and undertake
+          thorough user research and public engagement to ensure you’re including the views of those that
+          may be affected or digitally excluded.
+
+
+          You must understand and comply with your legal obligations and duties. Refer to the [Public
+          Sector Equality Duty (PSED)] and the [Equality Act 2010].
+
+
+          You should continually revisit user needs throughout your project. The Service Manual explains
+          more about [user needs].'
+        component_type: suggestion
+        trigger: 10a=Somewhat OR No
+        daief_themes: Fairness, Societal Impact
+        field_text_hyperlinks: 'https://www.equalityhumanrights.com/guidance/public-sector-equality-duty-psed
+
+          https://www.gov.uk/guidance/equality-act-2010-guidance
+
+          https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs'
+
+      - reference: '11'
+        field_text: Do you have a clear picture of all your project stakeholders?
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        daief_themes: Fairness, Societal Impact
+        options:
+          a: 'Yes'
+          b: Somewhat
+          c: 'No'
+
+      - reference: 11a
+        field_text: Will you engage with a wide variety of stakeholders throughout the project lifecycle?
+        component_type: radios
+        trigger: 11=Yes
+        daief_themes: Fairness, Societal Impact
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 11S
+        field_text: 'You should include stakeholder perspectives by engaging with civil society groups,
+          affected communities and wider public sector to understand values and impacts.
+
+
+          Proactive public and stakeholder engagement is critical to understand the potential impacts
+          of a tool or system. Engaging with stakeholders can help to build trust and improve adoption
+          of AI tools and systems.'
+        component_type: suggestion
+        trigger: 11=Somewhat OR No
+        daief_themes: Fairness, Societal Impact
+
+      - reference: 11aT
+        field_text: Briefly describe the steps you will take to engage with a wide variety of stakeholders.
+        component_type: text
+        trigger: 11a=Yes
+        daief_themes: Fairness, Societal Impact
+
+      - reference: 11aS
+        field_text: 'You should include stakeholder perspectives by engaging with civil society groups,
+          affected communities and wider public sector to understand values and impacts.
+
+
+          Ethical use of data and AI means listening to different perspectives and checking that your
+          tools work as intended. Otherwise, you could unintentionally exclude people or cause harm.'
+        component_type: suggestion
+        trigger: 11a=No OR Unsure
+        daief_themes: Fairness, Societal Impact
+
+      - reference: '12'
+        field_text: Will you work with civil society organisations or external domain experts to guide
+          your project?
+        component_type: radios
+        trigger: FILTER=c OR d OR e
+        daief_themes: Societal impact
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 12T
+        field_text: Briefly describe how you'll engage with civil society organisations and external experts.
+        component_type: text
+        trigger: 12=Yes
+        daief_themes: Societal impact
+
+      - reference: 12S
+        field_text: 'You should include stakeholder perspectives by engaging with civil society groups,
+          affected communities and wider public sector to understand values and impacts.
+
+
+          Ethical use of data and AI means listening to different perspectives and checking that your
+          tools work as intended. Otherwise, you could unintentionally exclude people or cause harm.'
+        component_type: suggestion
+        trigger: 12=No OR Unsure
+        daief_themes: Societal impact
+
+      - reference: '13'
+        field_text: Have you considered the potential environmental impact and sustainability of your
+          project?
+        component_type: radios
+        trigger: FILTER=a OR b
+        daief_themes: Environmental sustainability
+        options:
+          a: 'Yes'
+          b: Somewhat
+          c: 'No'
+
+      - reference: 13a
+        field_text: Will you monitor, evaluate and address environmental impact and sustainability challenges
+          throughout the project lifecycle?
+        component_type: radios
+        trigger: 13=Yes OR Somewhat
+        daief_themes: Environmental sustainability
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 13T
+        field_text: Briefly explain the environmental and sustainability implications of your project.
+        component_type: text
+        trigger: 13=Yes OR Somewhat
+        daief_themes: Environmental sustainability
+
+      - reference: 13S
+        field_text: 'Environmental sustainability means thinking about the wider impact of your project
+          on people and the planet. It’s important to consider this from the start, as it can influence
+          your choices about tools, suppliers and infrastructure.
+
+
+          The environmental sustainability chapter in the Data and AI Ethics Framework provides further
+          advice on how to assess the potential impact of data and AI projects.'
+        component_type: suggestion
+        trigger: 13=No
+        daief_themes: Environmental sustainability
+
+      - reference: 13aT
+        field_text: Briefly describe how you intend to monitor, evaluate and address environmental impact
+          and sustainability challenges.
+        component_type: text
+        trigger: 13a=Yes
+        daief_themes: Environmental sustainability
+
+      - reference: 13aS
+        field_text: "Before you begin building a tool or system, you should develop a plan to monitor\
+          \ and evaluate the environmental impact.\n\nYou should think about factors such as: \no Whether\
+          \ AI is the best technology or tool for the task – there may be alternatives that provide as\
+          \ good, or better, results and require less resource-intensive training and development.\no\
+          \ Project size and complexity – how much data will be processed, the number of end users, bandwidth\
+          \ and latency requirements, prompt efficiency\no Software requirements – including model type.\n\
+          o Hardware requirements – such as data centre usage or Internet of Things (IoT) devices.\n\n\
+          The Service Manual also has guidance on how to build more [environmentally sustainable digital\
+          \ services in government]."
+        component_type: suggestion
+        trigger: 13a=No OR Unsure
+        daief_themes: Environmental sustainability
+        field_text_hyperlinks: https://www.gov.uk/service-manual/design/environmentally-sustainable-services
+
+  - name: Alpha
+    questions:
+
+      - reference: '1'
+        field_text: Do you have a data quality action plan or acceptance criteria to ensure your data
+          is fit for purpose?
+        component_type: radios
+        trigger: FILTER=a
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 1a
+        field_text: Have you performed an initial data quality assessment?
+        component_type: radios
+        trigger: 1=Yes
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 1b
+        field_text: Do you have a plan for checking and validating data quality across the data lifecycle?
+        component_type: radios
+        trigger: 1=Yes
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 1T
+        field_text: Provide a summary or link to your action plan or acceptance criteria.
+        component_type: text
+        trigger: 1=Yes
+
+      - reference: 1S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 1=No
+
+      - reference: 1aT
+        field_text: Briefly describe the results of your data quality assessment and any actions you plan
+          to take to improve data quality.
+        component_type: text
+        trigger: 1a=Yes
+
+      - reference: 1aS
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 1a=No
+
+      - reference: 1bT
+        field_text: Briefly describe how you will maintain data quality in the future.
+        component_type: text
+        trigger: 1b=Yes
+
+      - reference: 1bS
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 1b=No
+
+      - reference: '2'
+        field_text: Is your project purpose, design and intended outcome clear to all your key stakeholders
+          yet?
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 2a
+        field_text: Do you have a plan to communicate project purpose, design and intended outcomes later?
+        component_type: radios
+        trigger: 2=No
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 2S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 2=Unsure
+
+      - reference: 2aT
+        field_text: Briefly describe the ways you will record and communicate information to your stakeholders.
+        component_type: text
+        trigger: 2a=Yes
+
+      - reference: 2aS
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 2a=No
+
+      - reference: '3'
+        field_text: Are you processing or do you intend to process people’s personal data as part of your
+          project?
+        component_type: radios
+        trigger: FILTER=a
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 3a
+        field_text: Are you communicating with or informing users about how their data is being used?
+        component_type: radios
+        trigger: 3=Yes
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 3aT
+        field_text: Describe how you are communicating your personal data processing activities to users.
+        component_type: text
+        trigger: 3a=Yes
+
+      - reference: 3aS
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 3a=No
+
+      - reference: '4'
+        field_text: Have you integrated or do you intend to integrate any privacy-enhancing technologies
+          into your project?
+        component_type: radios
+        trigger: FILTER=a
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 4T
+        field_text: Briefly describe the PETs you have used or will use in your project.
+        component_type: text
+        trigger: 4=Yes
+
+      - reference: 4S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 4=No
+
+      - reference: '5'
+        field_text: Have you ensured that the system’s outputs can be clearly explained and understood
+          by users and key stakeholders yet?
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 5T
+        field_text: Briefly describe how you have ensured explainability.
+        component_type: text
+        trigger: 5=Yes
+
+      - reference: 5S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 5=No
+
+      - reference: '6'
+        field_text: Have you planned or started any fairness testing yet?
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 6T
+        field_text: Describe the fairness testing you have started or planned.
+        component_type: text
+        trigger: 6=Yes
+
+      - reference: 6S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 6=No
+
+      - reference: '7'
+        field_text: Have you investigated representativeness and bias within your project datasets yet?
+        component_type: radios
+        trigger: FILTER=a OR d
+        options:
+          a: 'Yes'
+          b: Somewhat
+          c: 'No'
+
+      - reference: 7a
+        field_text: Are you able to address any dataset limitations that you have found?
+        component_type: radios
+        trigger: 7=Yes OR Somewhat
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 7S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 7= Somewhat OR No
+
+      - reference: 7T
+        field_text: Briefly describe or provide a link to your findings.
+        component_type: text
+        trigger: 7=Yes OR Somewhat
+
+      - reference: 7aT
+        field_text: Describe how you will mitigate any representativeness or bias limitations in your
+          dataset.
+        component_type: text
+        trigger: 7a=Yes
+
+      - reference: 7aS
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 7a=No OR Unsure
+
+      - reference: '8'
+        field_text: Have you considered the diversity of needs within your target user group yet?
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        options:
+          a: 'Yes'
+          b: Somewhat
+          c: 'No'
+
+      - reference: 8T
+        field_text: Briefly describe the various needs within your target user group that you will account
+          for.
+        component_type: text
+        trigger: 8=Yes
+
+      - reference: 8S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 8=Somewhat OR No
+
+      - reference: '9'
+        field_text: Have you considered the harms in not undertaking your project?
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        options:
+          a: 'Yes'
+          b: Somewhat
+          c: 'No'
+
+      - reference: 9T
+        field_text: Briefly explain the harms that might be caused by not undertaking this project.
+        component_type: text
+        trigger: 9=Yes
+
+      - reference: 9S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 9=Somewhat OR No
+
+      - reference: '10'
+        field_text: Could your solution have an impact on employment, working conditions or required skills?
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 10a
+        field_text: Have you considered who is likely to be relatively advantaged and disadvantaged by
+          this impact?
+        component_type: radios
+        trigger: 10=Yes
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 10T
+        field_text: Describe the likely or potential employment, working condition or required skill impacts
+          of your solution?
+        component_type: text
+        trigger: 10=Yes
+
+      - reference: 10S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 10=Unsure
+
+      - reference: 10aT
+        field_text: Describe who is likely to be advantaged or disadvantaged by your solution, if anyone?
+        component_type: text
+        trigger: 10a=Yes
+
+      - reference: 10aS
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 10a=No
+
+      - reference: '11'
+        field_text: Have you identified any trade-offs between ethical principles and business or organisational
+          goals within your project?
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 11a
+        field_text: Have you considered alternative solutions or project designs to meeting your intended
+          outcomes that would achieve a better balance of trade-offs?
+        component_type: radios
+        trigger: 11=Yes
+        options:
+          a: 'Yes'
+          b: Somewhat
+          c: 'No'
+
+      - reference: 11T
+        field_text: Briefly describe the trade-offs you've identified.
+        component_type: text
+        trigger: 11=Yes
+
+      - reference: 11S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 11=No
+
+      - reference: 11aT
+        field_text: Briefly explain how you will balance these trade-offs.
+        component_type: text
+        trigger: 11a=Yes OR Somewhat
+
+      - reference: 11aS
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 11a=No
+
+  - name: Beta
+    questions:
+
+      - reference: '1'
+        field_text: Are you confident in the accuracy, representativeness and completeness of the data
+          that is shaping your solution design?
+        component_type: radios
+        trigger: FILTER=a
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 1T
+        field_text: Briefly describe the data quality tests and/or results you've performed to give you
+          confidence.
+        component_type: text
+        trigger: 1=Yes
+
+      - reference: 1S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 1=No
+
+      - reference: '2'
+        field_text: Have you performed fairness tests on your AI system?
+        component_type: radios
+        trigger: FILTER=b
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 2a
+        field_text: Are you confident that your AI system will lead to fair outcomes yet?
+        component_type: radios
+        trigger: 2=Yes
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 2b
+        field_text: Will you take any corrective action to address fairness issues before going live?
+        component_type: radios
+        trigger: 2a=No OR Unsure
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 2S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 2=No
+
+      - reference: 2aT
+        field_text: Briefly describe the data fairness tests and/or results you've performed to give you
+          confidence.
+        component_type: text
+        trigger: 2a=Yes
+
+      - reference: 2aS
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 2a=No
+
+      - reference: 2bT
+        field_text: Briefly describe the corrective action you will take to ensure fairness.
+        component_type: text
+        trigger: 2b=Yes
+
+      - reference: 2bS
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 2b=No
+
+      - reference: '3'
+        field_text: Have you ensured accessibility for all users yet?
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 3T
+        field_text: Briefly describe the accessibility measurs you've taken.
+        component_type: text
+        trigger: 3=Yes
+
+      - reference: 3S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 3=No
+
+      - reference: '4'
+        field_text: Have you established and tested human oversight mechanisms?
+        component_type: radios
+        trigger: FILTER=b OR c
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 4T
+        field_text: Briefly describe the governance checks and controls mechanisms that you've established
+          for your solution.
+        component_type: text
+        trigger: 4=Yes
+
+      - reference: 4S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 4=No
+
+      - reference: '5'
+        field_text: Would others be able to reproduce your project process, results and outputs using
+          your current project documentation?
+        component_type: radios
+        trigger: FILTER=a
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 5T
+        field_text: List the main resources that would allow others to understand and reproduce your project.
+        component_type: text
+        trigger: 5=Yes
+
+      - reference: 5S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 5=No OR Unsure
+
+      - reference: '6'
+        field_text: Is your project within scope of the Algorithmic Transparency Recording Standard (ATRS)?
+        component_type: radios
+        trigger: FILTER=b
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 6a
+        field_text: Have you reviewed the ATRS for information you are required to publish?
+        component_type: radios
+        trigger: 6=Yes
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 6S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 6=Unsure
+
+      - reference: 6aS
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 6a=No
+
+      - reference: '7'
+        field_text: Have you integrated environmental evaluation and monitoring processes into your project
+          yet?
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 7a
+        field_text: Have you set environmental and sustainability thresholds that your project needs to
+          adhere to?
+        component_type: radios
+        trigger: 7=Yes
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 7T
+        field_text: Briefly describe how you've integrated these processes into your project.
+        component_type: text
+        trigger: 7=Yes
+
+      - reference: 7S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 7=No
+
+      - reference: 7aT
+        field_text: Describe your environmental and sustainability thresholds, and the consequences of
+          not adhering to them.
+        component_type: text
+        trigger: 7a=Yes
+
+      - reference: 7aS
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 7a=No
+
+      - reference: '8'
+        field_text: Have you established ‘go’ or ‘no-go’ criteria for your solution to go live?
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 8a
+        field_text: Do you have a plan for safely transitioning from development to live yet?
+        component_type: radios
+        trigger: 9=Yes
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 8T
+        field_text: List or link the ‘go’ or ‘no-go’ criteria for your solution to go live.
+        component_type: text
+        trigger: 8=Yes
+
+      - reference: 8S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 8=No
+
+      - reference: 8aT
+        field_text: Briefly explain or link your plan for transitioning to live.
+        component_type: text
+        trigger: 8a=Yes
+
+      - reference: 8aS
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 8a=No
+
+  - name: Live
+    questions:
+
+      - reference: '1'
+        field_text: Are you measuring and monitoring the safety of your live system?
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        daief_themes: Safety
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 1a
+        field_text: Do you have a response plan for if your system degrades or becomes unsafe?
+        component_type: radios
+        trigger: 1=Yes
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 1T
+        field_text: List the ways in which you are measuring and monitoring system performance.
+        component_type: text
+        trigger: 1=Yes
+
+      - reference: 1S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 1=No
+
+      - reference: 1aT
+        field_text: Describe or link your system degradation and safety plan.
+        component_type: text
+        trigger: 1a=Yes
+
+      - reference: 1aS
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 1a=No
+
+      - reference: '2'
+        field_text: Have you established opportunities for users to submit feedback on system performance?
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        daief_themes: Accountability, Safety
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 2T
+        field_text: Briefly describe the opportunities you've established for users to submit feedback
+          on system performance.
+        component_type: text
+        trigger: 2=Yes
+
+      - reference: 2S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 2=No
+
+      - reference: '3'
+        field_text: Are you maintaining logs and documentation while your system is live?
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        daief_themes: Transparency, Accountability
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 3a
+        field_text: Are you confident that these records are transparent enough and will support investigations
+          if issues occur?
+        component_type: radios
+        trigger: 3=Yes
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 3S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 3=No
+
+      - reference: 3aS
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 3a=No OR Unsure
+
+      - reference: '4'
+        field_text: Are your system outputs consistently understandable and explainable to users and key
+          stakeholders?
+        component_type: radios
+        trigger: FILTER=b OR c OR d
+        daief_themes: Transparency, Accountability
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 4T
+        field_text: Briefly describe the measures you've taken to ensure that users can rationalise system
+          outputs.
+        component_type: text
+        trigger: 4=Yes
+
+      - reference: 4S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 4=No OR Unsure
+
+      - reference: '5'
+        field_text: Do your users know that an AI system is involved in producing outputs?
+        component_type: radios
+        trigger: FILTER=b
+        daief_themes: Transparency, Accountability
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 5T
+        field_text: Describe the measures you've taken to ensure that users know that they are engaging
+          with an AI-enabled solution.
+        component_type: text
+        trigger: 5=Yes
+
+      - reference: 5S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 5=No
+
+      - reference: '6'
+        field_text: Are you required to publish a transparency record as part of the ATRS initiative?
+        component_type: radios
+        trigger: FILTER=b
+        daief_themes: Transparency, Accountability
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
+
+      - reference: 6a
+        field_text: Have you published a transparency record yet?
+        component_type: radios
+        trigger: 6=Yes
+        options:
+          a: 'Yes'
+          b: 'No'
+
+      - reference: 6S
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 6=Unsure
+
+      - reference: 6aS
+        field_text: '[action]'
+        component_type: suggestion
+        trigger: 6=No
