@@ -1,191 +1,1265 @@
-﻿v0.3,,,,,,,,,,,
-Section,Reference,Trigger,Field text,Component type,DAIEF themes,Option a,Option b,Option c,Option d,Option e,Hint text
-Project Detail,NAME,None,Give your project a name.,short text,N/A,0,0,0,0,0,0
-Project Detail,FILTER,None,Select your project filters.,multiselect,N/A,"My project involves the collection, use, or sharing of data",My project involves the use of AI or broader algorithmic tools,My project involves direct interaction with the public,My project involves making decisions with a significant or legal effects,"My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)","Your answers will be used to show you the questions most relevant to your work. If you are not sure whether a statement applies, we encourage you to select it. This will help to ensure that potential risks and opportunities are captured and explored."
-Project Detail,PROB,None,Describe the problem you’re trying to solve in simple terms.,text,N/A,0,0,0,0,0,0
-Project Detail,PURP,None,Describe how your solution solves this problem.,text,N/A,0,0,0,0,0,0
-Discovery,1,FILTER=a,Have you consulted your organisation’s Data Protection Officer (DPO) about your project?,radios,"Accountability, Privacy",Yes,No,0,0,0,See the ICO website for more information about DPOs.
-Discovery,1a,1=Yes,Have you received all the data processing advice that you need?,radios,"Accountability, Privacy",Yes,No,Unsure,0,0,0
-Discovery,1b,1a=Yes,Do you intend to follow all the advice that you've received?,radios,"Accountability, Privacy",Yes,No,Unsure,0,0,0
-Discovery,1S,1=No,[action],suggestion,"Accountability, Privacy",0,0,0,0,0,0
-Discovery,1aT,1a=Yes,Provide a brief summary of data processing advice that you received.,text,"Accountability, Privacy",0,0,0,0,0,0
-Discovery,1aS,1a=No OR Unsure,[action],suggestion,"Accountability, Privacy",0,0,0,0,0,0
-Discovery,1bT,1b=No,Briefly explain what advice you won't follow and why.,text,"Accountability, Privacy",0,0,0,0,0,0
-Discovery,1bS,1b=Unsure,[action],suggestion,"Accountability, Privacy",0,0,0,0,0,0
-Discovery,2,FILTER=a OR b OR c,Have you consulted with your organisation’s data and information security teams?,radios,"Accountability, Privacy, Safety",Yes,No,0,0,0,0
-Discovery,2a,2=Yes,Have you received all the security advice that you need?,radios,"Accountability, Privacy, Safety",Yes,No,Unsure,0,0,0
-Discovery,2b,2a=Yes,Do you intend to follow all the advice that you've received?,radios,"Accountability, Privacy, Safety",Yes,No,Unsure,0,0,0
-Discovery,2S,2=No,[action],suggestion,"Accountability, Privacy, Safety",0,0,0,0,0,0
-Discovery,2aT,2a=Yes,Provide a brief summary of security advice that you received,text,"Accountability, Privacy, Safety",0,0,0,0,0,0
-Discovery,2aS,2a=No OR Unsure,[action],suggestion,"Accountability, Privacy, Safety",0,0,0,0,0,0
-Discovery,2bT,2b=No,Brieflly explain what advice you won't follow and why.,text,"Accountability, Privacy, Safety",0,0,0,0,0,0
-Discovery,2bS,2b=Unsure,[action],suggestion,"Accountability, Privacy, Safety",0,0,0,0,0,0
-Discovery,3,FILTER=a,Will you complete a DPIA for this project?,radios,"Accountability, Privacy, Societal Impact",Yes,No ,Unsure,0,0,0
-Discovery,3a,3=Yes,Have you conducted a full Data Protection Impact Assessment (DPIA)?,radios,"Accountability, Privacy, Societal Impact",Yes,No,0,0,0,0
-Discovery,3T,3=No,Explain briefly why your project isn't ikely to result in a high risk to the rights and freedoms of individuals,text,"Accountability, Privacy, Societal Impact",0,0,0,0,0,0
-Discovery,3S,3=Unsure,[action],suggestion,"Accountability, Privacy, Societal Impact",0,0,0,0,0,0
-Discovery,3aT,3a=Yes,"Provide a name, summary or link to your complete DPIA.",text,"Accountability, Privacy, Societal Impact",0,0,0,0,0,0
-Discovery,3aS,3a=No,[action],suggestion,"Accountability, Privacy, Societal Impact",0,0,0,0,0,0
-Discovery,4,FILTER=a,Will you share personal data with or receive personal data from other organisations as part of this project?,radios,"Accountability, Privacy",Yes,No ,Unsure,0,0,0
-Discovery,4a,4=Yes,Have you established a data sharing agreement with other organisations?,radios,"Accountability, Privacy",Yes,No ,0,0,0,0
-Discovery,4b,4=Yes,Are you confident that the data sharing benefits are necessary and proportional to any privacy risks incurred?,radios,"Accountability, Privacy",Yes,No ,Unsure,0,0,0
-Discovery,4S,4=No OR Unsure,[action],suggestion,"Accountability, Privacy",0,0,0,0,0,0
-Discovery,4aT,4a=Yes,Provide a summary or link to your complete data sharing agreement.,text,"Accountability, Privacy",0,0,0,0,0,0
-Discovery,4aS,4a=No,[action],suggestion,"Accountability, Privacy",0,0,0,0,0,0
-Discovery,4bT,4b=Yes,Briefly explain how data sharing achieves a benefit and is necessary.,text,"Accountability, Privacy",0,0,0,0,0,0
-Discovery,4bS,4b=No OR Unsure,[action],suggestion,"Accountability, Privacy",0,0,0,0,0,0
-Discovery,5,FILTER=c OR d OR e,"Do you have governance structures to support the safe, effective and responsible implementation of the project?",radios,Accountability,Yes,Somewhat,No,0,0,0
-Discovery,5T,5=Yes,Briefly describe the governance structures that will support this project.,text,Accountability,0,0,0,0,0,0
-Discovery,5S,5=Somewhat OR No,[action],suggestion,Accountability,0,0,0,0,0,0
-Discovery,6,FILTER=c OR d OR e,Have you assigned responsibility for the project’s outcomes?,radios,"Accountability, Safety",Yes,No,0,0,0,0
-Discovery,6a,6=Yes,Is the responsible owner able to oversee the project effectively and intervene quickly if in the case of harmful outcomes? ,radios,"Accountability, Safety",Yes,No,Unsure,0,0,0
-Discovery,6S,6=No,[action],suggestion,"Accountability, Safety",0,0,0,0,0,0
-Discovery,6aT,6a=Yes,Briefly describe any barriers to responsible owner intervention that you foresee.,text,"Accountability, Safety",0,0,0,0,0,0
-Discovery,6aS,6a=No OR Unsure,[action],suggestion,"Accountability, Safety",0,0,0,0,0,0
-Discovery,7,FILTER=c OR d OR e,Are you confident in documenting key project decisions?,radios,"Transparency, Accountability",Yes,Somewhat,No,0,0,0
-Discovery,7T,7=Yes,Provide the types of key decisions that you'll document.,text,"Transparency, Accountability",0,0,0,0,0,0
-Discovery,7Ta,7=Yes,Provide the types of routines or processes that you'll use to document decisions.,text,"Transparency, Accountability",0,0,0,0,0,0
-Discovery,7Tb,7=Yes,Provide the ways in which people will be able to learn more about key decisions if needed.,text,"Transparency, Accountability",0,0,0,0,0,0
-Discovery,7S,7= Somewhat OR No,[action],suggestion,"Transparency, Accountability",0,0,0,0,0,0
-Discovery,8,FILTER=a OR b OR c OR d OR e,Will you conduct research as part of your project?,radios,Safety,Yes,No ,Unsure,0,0,0
-Discovery,8a,8=Yes,Are you confident in protecting research participants from safety risks?,radios,Safety,Yes,No ,Unsure,0,0,0
-Discovery,8b,8=Yes,Are you confident in protecting reseachers from safety risks?,radios,Safety,Yes,No ,Unsure,0,0,0
-Discovery,8S,8=No OR Unsure,[action],suggestion,Safety,0,0,0,0,0,0
-Discovery,8aT,8a=Yes,Describe the measures you will take to protect research particpants.,text,Safety,0,0,0,0,0,0
-Discovery,8aS,8a=No OR Unsure,[action],suggestion,Safety,0,0,0,0,0,0
-Discovery,8bT,8b=Yes,Describe the measures you will take to protect researchers.,text,Safety,0,0,0,0,0,0
-Discovery,8bS,8b=No OR Unsure,[action],suggestion,Safety,0,0,0,0,0,0
-Discovery,9,FILTER=a OR b OR c OR d OR e,Can you ensure that your project team is diverse and multidisciplinary?,radios,"Fairness, Societal Impact",Yes,No,Unsure,0,0,0
-Discovery,9a,9=No OR Unsure,Have you considered how a lack of diversity might impact your project?,radios,"Fairness, Societal Impact",Yes,No,0,0,0,0
-Discovery,9T,9=Yes,Briefly describe how you will ensure diversity across the team.,text,"Fairness, Societal Impact",0,0,0,0,0,0
-Discovery,9aT,9a=Yes,Briefly describe any risks or blind spots you have identified.,text,"Fairness, Societal Impact",0,0,0,0,0,0
-Discovery,9aS,9a=No,[action],suggestion,"Fairness, Societal Impact",0,0,0,0,0,0
-Discovery,10,FILTER=a OR b OR c OR d OR e,Do you have a clear picture of your target user groups?,radios,"Fairness, Societal Impact",Yes,Somewhat,No,0,0,0
-Discovery,10a,10=Yes,Have you considered how different groups could be impacted unequally by your project?,radios,"Fairness, Societal Impact",Yes,Somewhat,No,0,0,0
-Discovery,10S,10=Somewhat OR No,[action],suggestion,"Fairness, Societal Impact",0,0,0,0,0,0
-Discovery,10aT,10a=Yes,Briefly describe how your user groups may be impacted differently.,text,"Fairness, Societal Impact",0,0,0,0,0,0
-Discovery,10aS,10a=Somewhat OR No,[action],suggestion,"Fairness, Societal Impact",0,0,0,0,0,0
-Discovery,11,FILTER=a OR b OR c OR d OR e,Do you have a clear picture of all your project stakeholders?,radios,"Fairness, Societal Impact",Yes,Somewhat,No,0,0,0
-Discovery,11a,11=Yes,Will you engage with a wide variety of stakeholders throughout the project lifecycle?,radios,"Fairness, Societal Impact",Yes,No,Unsure,0,0,0
-Discovery,11S,11=Somewhat OR No,[action],suggestion,"Fairness, Societal Impact",0,0,0,0,0,0
-Discovery,11aT,11a=Yes,Briefly describe the steps you will take to engage with a wide variety of stakeholders.,text,"Fairness, Societal Impact",0,0,0,0,0,0
-Discovery,11aS,11a=No OR Unsure,[action],suggestion,"Fairness, Societal Impact",0,0,0,0,0,0
-Discovery,12,FILTER=c OR d OR e,Will you work with civil society organisations or external domain experts to guide your project?,radios,Societal impact,Yes,No,Unsure,0,0,0
-Discovery,12T,12=Yes,Briefly describe how you'll engage with civil society organisations and external experts.,text,Societal impact,0,0,0,0,0,0
-Discovery,12S,12=No OR Unsure,[action],suggestion,Societal impact,0,0,0,0,0,0
-Discovery,13,FILTER=a OR b,Have you considered the potential environmental impact and sustainability of your project?,radios,Environmental sustainability,Yes,Somewhat,No,0,0,0
-Discovery,13a,13=Yes OR Somewhat,"Will you monitor, evaluate and address environmental impact and sustainability challenges throughout the project lifecycle?",radios,Environmental sustainability,Yes,No,Unsure,0,0,0
-Discovery,13T,13=Yes OR Somewhat,Briefly explain the environmental and sustainability implications of your project.,text,Environmental sustainability,0,0,0,0,0,0
-Discovery,13S,13=No,[action],suggestion,Environmental sustainability,0,0,0,0,0,0
-Discovery,13aT,13a=Yes,"Briefly describe how you intend to monitor, evaluate and address environmental impact and sustainability challenges.",text,Environmental sustainability,0,0,0,0,0,0
-Discovery,13aS,13a=No OR Unsure,[action],suggestion,Environmental sustainability,0,0,0,0,0,0
-Alpha,1,FILTER=a,Do you have a data quality action plan or acceptance criteria to ensure your data is fit for purpose?,radios,0,Yes,No,0,0,0,0
-Alpha,1a,1=Yes,Have you performed an initial data quality assessment?,radios,0,Yes,No,0,0,0,0
-Alpha,1b,1=Yes,Do you have a plan for checking and validating data quality across the data lifecycle?,radios,0,Yes,No,0,0,0,0
-Alpha,1T,1=Yes,Provide a summary or link to your action plan or acceptance criteria.,text,0,0,0,0,0,0,0
-Alpha,1S,1=No,[action],suggestion,0,0,0,0,0,0,0
-Alpha,1aT,1a=Yes,Briefly describe the results of your data quality assessment and any actions you plan to take to improve data quality.,text,0,0,0,0,0,0,0
-Alpha,1aS,1a=No,[action],suggestion,0,0,0,0,0,0,0
-Alpha,1bT,1b=Yes,Briefly describe how you will maintain data quality in the future.,text,0,0,0,0,0,0,0
-Alpha,1bS,1b=No,[action],suggestion,0,0,0,0,0,0,0
-Alpha,2,FILTER=a OR b OR c OR d OR e,"Is your project purpose, design and intended outcome clear to all your key stakeholders yet?",radios,0,Yes,No,Unsure,0,0,0
-Alpha,2a,2=No,"Do you have a plan to communicate project purpose, design and intended outcomes later?",radios,0,Yes,No,0,0,0,0
-Alpha,2S,2=Unsure,[action],suggestion,0,0,0,0,0,0,0
-Alpha,2aT,2a=Yes,Briefly describe the ways you will record and communicate information to your stakeholders.,text,0,0,0,0,0,0,0
-Alpha,2aS,2a=No,[action],suggestion,0,0,0,0,0,0,0
-Alpha,3,FILTER=a,Are you processing or do you intend to process people’s personal data as part of your project?,radios,0,Yes,No,0,0,0,0
-Alpha,3a,3=Yes,Are you communicating with or informing users about how their data is being used?,radios,0,Yes,No,0,0,0,0
-Alpha,3aT,3a=Yes,Describe how you are communicating your personal data processing activities to users.,text,0,0,0,0,0,0,0
-Alpha,3aS,3a=No,[action],suggestion,0,0,0,0,0,0,0
-Alpha,4,FILTER=a,Have you integrated or do you intend to integrate any privacy-enhancing technologies into your project?,radios,0,Yes,No,0,0,0,0
-Alpha,4T,4=Yes,Briefly describe the PETs you have used or will use in your project.,text,0,0,0,0,0,0,0
-Alpha,4S,4=No,[action],suggestion,0,0,0,0,0,0,0
-Alpha,5,FILTER=a OR b OR c OR d,Have you ensured that the system’s outputs can be clearly explained and understood by users and key stakeholders yet?,radios,0,Yes,No,0,0,0,0
-Alpha,5T,5=Yes,Briefly describe how you have ensured explainability.,text,0,0,0,0,0,0,0
-Alpha,5S,5=No,[action],suggestion,0,0,0,0,0,0,0
-Alpha,6,FILTER=a OR b OR c OR d,Have you planned or started any fairness testing yet?,radios,0,Yes,No,0,0,0,0
-Alpha,6T,6=Yes,Describe the fairness testing you have started or planned.,text,0,0,0,0,0,0,0
-Alpha,6S,6=No,[action],suggestion,0,0,0,0,0,0,0
-Alpha,7,FILTER=a OR d,Have you investigated representativeness and bias within your project datasets yet?,radios,0,Yes,Somewhat,No,0,0,0
-Alpha,7a,7=Yes OR Somewhat,Are you able to address any dataset limitations that you have found?,radios,0,Yes,No,Unsure,0,0,0
-Alpha,7S,7= Somewhat OR No,[action],suggestion,0,0,0,0,0,0,0
-Alpha,7T,7=Yes OR Somewhat,Briefly describe or provide a link to your findings.,text,0,0,0,0,0,0,0
-Alpha,7aT,7a=Yes,Describe how you will mitigate any representativeness or bias limitations in your dataset.,text,0,0,0,0,0,0,0
-Alpha,7aS,7a=No OR Unsure,[action],suggestion,0,0,0,0,0,0,0
-Alpha,8,FILTER=a OR b OR c OR d OR e,Have you considered the diversity of needs within your target user group yet?,radios,0,Yes,Somewhat,No,0,0,0
-Alpha,8T,8=Yes,Briefly describe the various needs within your target user group that you will account for.,text,0,0,0,0,0,0,0
-Alpha,8S,8=Somewhat OR No,[action],suggestion,0,0,0,0,0,0,0
-Alpha,9,FILTER=a OR b OR c OR d OR e,Have you considered the harms in not undertaking your project?,radios,0,Yes,Somewhat,No,0,0,0
-Alpha,9T,9=Yes,Briefly explain the harms that might be caused by not undertaking this project.,text,0,0,0,0,0,0,0
-Alpha,9S,9=Somewhat OR No,[action],suggestion,0,0,0,0,0,0,0
-Alpha,10,FILTER=a OR b OR c OR d OR e,"Could your solution have an impact on employment, working conditions or required skills?",radios,0,Yes,No,Unsure,0,0,0
-Alpha,10a,10=Yes,Have you considered who is likely to be relatively advantaged and disadvantaged by this impact?,radios,0,Yes,No,0,0,0,0
-Alpha,10T,10=Yes,"Describe the likely or potential employment, working condition or required skill impacts of your solution?",text,0,0,0,0,0,0,0
-Alpha,10S,10=Unsure,[action],suggestion,0,0,0,0,0,0,0
-Alpha,10aT,10a=Yes,"Describe who is likely to be advantaged or disadvantaged by your solution, if anyone?",text,0,0,0,0,0,0,0
-Alpha,10aS,10a=No,[action],suggestion,0,0,0,0,0,0,0
-Alpha,11,FILTER=a OR b OR c OR d OR e,Have you identified any trade-offs between ethical principles and business or organisational goals within your project?,radios,0,Yes,No,0,0,0,0
-Alpha,11a,11=Yes,Have you considered alternative solutions or project designs to meeting your intended outcomes that would achieve a better balance of trade-offs?,radios,0,Yes,Somewhat,No,0,0,0
-Alpha,11T,11=Yes,Briefly describe the trade-offs you've identified.,text,0,0,0,0,0,0,0
-Alpha,11S,11=No,[action],suggestion,0,0,0,0,0,0,0
-Alpha,11aT,11a=Yes OR Somewhat,Briefly explain how you will balance these trade-offs.,text,0,0,0,0,0,0,0
-Alpha,11aS,11a=No,[action],suggestion,0,0,0,0,0,0,0
-Beta,1,FILTER=a,"Are you confident in the accuracy, representativeness and completeness of the data that is shaping your solution design?",radios,0,Yes,No,Unsure,0,0,0
-Beta,1T,1=Yes,Briefly describe the data quality tests and/or results you've performed to give you confidence.,text,0,0,0,0,0,0,0
-Beta,1S,1=No,[action],suggestion,0,0,0,0,0,0,0
-Beta,2,FILTER=b,Have you performed fairness tests on your AI system?,radios,0,Yes,No,0,0,0,0
-Beta,2a,2=Yes,Are you confident that your AI system will lead to fair outcomes yet?,radios,0,Yes,No,Unsure,0,0,0
-Beta,2b,2a=No OR Unsure,Will you take any corrective action to address fairness issues before going live?,radios,0,Yes,No,Unsure,0,0,0
-Beta,2S,2=No,[action],suggestion,0,0,0,0,0,0,0
-Beta,2aT,2a=Yes,Briefly describe the data fairness tests and/or results you've performed to give you confidence.,text,0,0,0,0,0,0,0
-Beta,2aS,2a=No ,[action],suggestion,0,0,0,0,0,0,0
-Beta,2bT,2b=Yes,Briefly describe the corrective action you will take to ensure fairness.,text,0,0,0,0,0,0,0
-Beta,2bS,2b=No,[action],suggestion,0,0,0,0,0,0,0
-Beta,3,FILTER=a OR b OR c OR d OR e,Have you ensured accessibility for all users yet?,radios,0,Yes,No,0,0,0,0
-Beta,3T,3=Yes,Briefly describe the accessibility measurs you've taken.,text,0,0,0,0,0,0,0
-Beta,3S,3=No,[action],suggestion,0,0,0,0,0,0,0
-Beta,4,FILTER=b OR c,Have you established and tested human oversight mechanisms?,radios,0,Yes,No,0,0,0,0
-Beta,4T,4=Yes,Briefly describe the governance checks and controls mechanisms that you've established for your solution.,text,0,0,0,0,0,0,0
-Beta,4S,4=No,[action],suggestion,0,0,0,0,0,0,0
-Beta,5,FILTER=a,"Would others be able to reproduce your project process, results and outputs using your current project documentation?",radios,0,Yes,No,Unsure,0,0,0
-Beta,5T,5=Yes,List the main resources that would allow others to understand and reproduce your project.,text,0,0,0,0,0,0,0
-Beta,5S,5=No OR Unsure,[action],suggestion,0,0,0,0,0,0,0
-Beta,6,FILTER=b,Is your project within scope of the Algorithmic Transparency Recording Standard (ATRS)?,radios,0,Yes,No,Unsure,0,0,0
-Beta,6a,6=Yes,Have you reviewed the ATRS for information you are required to publish?,radios,0,Yes,No,0,0,0,0
-Beta,6S,6=Unsure,[action],suggestion,0,0,0,0,0,0,0
-Beta,6aS,6a=No,[action],suggestion,0,0,0,0,0,0,0
-Beta,7,FILTER=a OR b OR c OR d OR e,Have you integrated environmental evaluation and monitoring processes into your project yet?,radios,0,Yes,No,0,0,0,0
-Beta,7a,7=Yes,Have you set environmental and sustainability thresholds that your project needs to adhere to?,radios,0,Yes,No,0,0,0,0
-Beta,7T,7=Yes,Briefly describe how you've integrated these processes into your project.,text,0,0,0,0,0,0,0
-Beta,7S,7=No,[action],suggestion,0,0,0,0,0,0,0
-Beta,7aT,7a=Yes,"Describe your environmental and sustainability thresholds, and the consequences of not adhering to them.",text,0,0,0,0,0,0,0
-Beta,7aS,7a=No,[action],suggestion,0,0,0,0,0,0,0
-Beta,8,FILTER=a OR b OR c OR d OR e,Have you established ‘go’ or ‘no-go’ criteria for your solution to go live?,radios,0,Yes,No,0,0,0,0
-Beta,8a,9=Yes,Do you have a plan for safely transitioning from development to live yet?,radios,0,Yes,No,0,0,0,0
-Beta,8T,8=Yes,List or link the ‘go’ or ‘no-go’ criteria for your solution to go live.,text,0,0,0,0,0,0,0
-Beta,8S,8=No,[action],suggestion,0,0,0,0,0,0,0
-Beta,8aT,8a=Yes,Briefly explain or link your plan for transitioning to live.,text,0,0,0,0,0,0,0
-Beta,8aS,8a=No,[action],suggestion,0,0,0,0,0,0,0
-Live,1,FILTER=a OR b OR c OR d OR e,Are you measuring and monitoring performance of your system?,radios,0,Yes,No,0,0,0,0
-Live,1a,1=Yes,Do you have a response plan for if your system degrades or becomes unsafe? ,radios,0,Yes,No,0,0,0,0
-Live,1T,1=Yes,List the ways in which you are measuring and monitoring system performance.,text,0,0,0,0,0,0,0
-Live,1S,1=No,[action],suggestion,0,0,0,0,0,0,0
-Live,1aT,1a=Yes,Describe or link your system degradation and safety plan.,text,0,0,0,0,0,0,0
-Live,1aS,1a=No,[action],suggestion,0,0,0,0,0,0,0
-Live,2,FILTER=a OR b OR c OR d OR e,Have you established opportunities for users to submit feedback on system performance?,radios,0,Yes,No,0,0,0,0
-Live,2T,2=Yes,Briefly describe the opportunities you've established for users to submit feedback on system performance.,text,0,0,0,0,0,0,0
-Live,2S,2=No,[action],suggestion,0,0,0,0,0,0,0
-Live,3,FILTER=a OR b OR c OR d OR e,Are you maintaining logs and documentation while your system is live?,radios,0,Yes,No,0,0,0,0
-Live,3a,3=Yes,Are you confident that these records are transparent enough and will support investigations if issues occur?,radios,0,Yes,No,Unsure,0,0,0
-Live,3S,3=No,[action],suggestion,0,0,0,0,0,0,0
-Live,3aS,3a=No OR Unsure,[action],suggestion,0,0,0,0,0,0,0
-Live,4,FILTER=b OR c OR d,Are your system outputs consistently understandable and explainable to users and key stakeholders?,radios,0,Yes,No,Unsure,0,0,0
-Live,4T,4=Yes,Briefly describe the measures you've taken to ensure that users can rationalise system outputs.,text,0,0,0,0,0,0,0
-Live,4S,4=No OR Unsure,[action],suggestion,0,0,0,0,0,0,0
-Live,5,FILTER=b,Do your users know that an AI system is involved in producing outputs?,radios,0,Yes,No,Unsure,0,0,0
-Live,5T,5=Yes,Describe the measures you've taken to ensure that users know that they are engaging with an AI-enabled solution.,text,0,0,0,0,0,0,0
-Live,5S,5=No,[action],suggestion,0,0,0,0,0,0,0
-Live,6,FILTER=b,Are you required to publish a transparency record as part of the ATRS initiative?,radios,0,Yes,No,Unsure,0,0,0
-Live,6a,6=Yes,Have you published a transparency record yet?,radios,0,Yes,No,0,0,0,0
-Live,6S,6=Unsure,[action],suggestion,0,0,0,0,0,0,0
-Live,6aS,6=No,[action],suggestion,0,0,0,0,0,0,0
+﻿v0.3,,,,,,,,,,,,
+Section,Reference,Trigger,Field text,Component type,DAIEF themes,Option a,Option b,Option c,Option d,Option e,Field text hyperlinks,Hint text
+Project Detail,NAME,None,Give your project a name.,short text,N/A,0,0,0,0,0,0,0
+Project Detail,FILTER,None,Select your project filters.,multiselect,N/A,"My project involves the collection, use, or sharing of data",My project involves the use of AI or broader algorithmic tools,My project involves direct interaction with the public,My project involves making decisions with a significant or legal effects,"My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)",0,"Your answers will be used to show you the questions most relevant to your work. If you are not sure whether a statement applies, we encourage you to select it. This will help to ensure that potential risks and opportunities are captured and explored."
+Project Detail,PROB,None,Describe the problem you’re trying to solve in simple terms.,text,N/A,0,0,0,0,0,0,0
+Project Detail,PURP,None,Describe how your solution solves this problem.,text,N/A,0,0,0,0,0,0,0
+Discovery,1,FILTER=a,Have you consulted your organisation’s Data Protection Officer (DPO) about your project?,radios,"Accountability, Privacy",Yes,No,0,0,0,0,See the ICO website for more information about DPOs.
+Discovery,1a,1=Yes,Have you received all the data processing advice that you need?,radios,"Accountability, Privacy",Yes,No,Unsure,0,0,0,0
+Discovery,1b,1a=Yes,Do you intend to follow all the advice that you've received?,radios,"Accountability, Privacy",Yes,No,Unsure,0,0,0,0
+Discovery,1S,1=No,"If your project uses personal data, you must meet your legal duties under the UK General Data Protection Regulation (UK GDPR).
+
+Your organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.",suggestion,"Accountability, Privacy",0,0,0,0,0,0,0
+Discovery,1aT,1a=Yes,Provide a brief summary of data processing advice that you received.,text,"Accountability, Privacy",0,0,0,0,0,0,0
+Discovery,1aS,1a=No OR Unsure,"If your project uses personal data, you must meet your legal duties under the UK General Data Protection Regulation (UK GDPR).
+
+Your organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.",suggestion,"Accountability, Privacy",0,0,0,0,0,0,0
+Discovery,1bT,1b=No,Briefly explain what advice you won't follow and why.,text,"Accountability, Privacy",0,0,0,0,0,0,0
+Discovery,1bS,1b=Unsure,"If your project uses personal data, you must meet your legal duties under the UK General Data Protection Regulation (UK GDPR).
+
+Your organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.",suggestion,"Accountability, Privacy",0,0,0,0,0,0,0
+Discovery,2,FILTER=a OR b OR c,Have you consulted with your organisation’s data and information security teams?,radios,"Accountability, Privacy, Safety",Yes,No,0,0,0,0,0
+Discovery,2a,2=Yes,Have you received all the security advice that you need?,radios,"Accountability, Privacy, Safety",Yes,No,Unsure,0,0,0,0
+Discovery,2b,2a=Yes,Do you intend to follow all the advice that you've received?,radios,"Accountability, Privacy, Safety",Yes,No,Unsure,0,0,0,0
+Discovery,2S,2=No,"You should involve information governance teams early in the project design process – this will help you to comply with privacy and data protection legislation, and plan resources effectively so that support is available for project teams when needed.
+
+Your organisation’s data and information security team should be able to advise on security requirements and risks. 
+
+Refer to the government’s [personal data security principles] when processing and sharing personal data.
+
+If you’re working with any third-party suppliers to store, collect or process data, make sure they’re vetted and that they comply with the security requirements of your project.",suggestion,"Accountability, Privacy, Safety",0,0,0,0,0,https://www.gov.uk/guidance/principles-for-securing-personal-data-in-government-services,0
+Discovery,2aT,2a=Yes,Provide a brief summary of security advice that you received,text,"Accountability, Privacy, Safety",0,0,0,0,0,0,0
+Discovery,2aS,2a=No OR Unsure,This is quite a difficult one to provide actions for without repeating what has already been said.,suggestion,"Accountability, Privacy, Safety",0,0,0,0,0,0,0
+Discovery,2bT,2b=No,Brieflly explain what advice you won't follow and why.,text,"Accountability, Privacy, Safety",0,0,0,0,0,0,0
+Discovery,2bS,2b=Unsure,"Your organisation’s data and information security team should be able to advise on security requirements and risks. 
+
+Refer to the government’s [personal data security principles] when processing and sharing personal data.
+
+If you’re working with any third-party suppliers to store, collect or process data, make sure they’re vetted and that they comply with the security requirements of your project.",suggestion,"Accountability, Privacy, Safety",0,0,0,0,0,https://www.gov.uk/guidance/principles-for-securing-personal-data-in-government-services,0
+Discovery,3,FILTER=a,Will you complete a DPIA for this project?,radios,"Accountability, Privacy, Societal Impact",Yes,No ,Unsure,0,0,0,0
+Discovery,3a,3=Yes,Have you conducted a full Data Protection Impact Assessment (DPIA)?,radios,"Accountability, Privacy, Societal Impact",Yes,No,0,0,0,0,0
+Discovery,3T,3=No,Explain briefly why your project isn't ikely to result in a high risk to the rights and freedoms of individuals,text,"Accountability, Privacy, Societal Impact",0,0,0,0,0,0,0
+Discovery,3S,3=Unsure,Your organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.,suggestion,"Accountability, Privacy, Societal Impact",0,0,0,0,0,0,0
+Discovery,3aT,3a=Yes,"Provide a name, summary or link to your complete DPIA.",text,"Accountability, Privacy, Societal Impact",0,0,0,0,0,0,0
+Discovery,3aS,3a=No,"Where personal data is being processed, you must comply with relevant laws: You need to carry out a Data Protection Impact Assessment (DPIA) before you process personal data when the processing is likely to result in a high risk to the rights and freedoms of individuals. It’s good practice to publish your completed DPIA to demonstrate that you’re taking the appropriate precautions to protect personal data and ensure your system is fair.
+
+Your organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.",suggestion,"Accountability, Privacy, Societal Impact",0,0,0,0,0,0,0
+Discovery,4,FILTER=a,Will you share personal data with or receive personal data from other organisations as part of this project?,radios,"Accountability, Privacy",Yes,No ,Unsure,0,0,0,0
+Discovery,4a,4=Yes,Have you established a data sharing agreement with other organisations?,radios,"Accountability, Privacy",Yes,No ,0,0,0,0,0
+Discovery,4b,4=Yes,Are you confident that the data sharing benefits are necessary and proportional to any privacy risks incurred?,radios,"Accountability, Privacy",Yes,No ,Unsure,0,0,0,0
+Discovery,4S,4=No OR Unsure,"Where personal data is being processed, you must comply with relevant laws: You need to carry out a Data Protection Impact Assessment (DPIA) before you process personal data when the processing is likely to result in a high risk to the rights and freedoms of individuals. It’s good practice to publish your completed DPIA to demonstrate that you’re taking the appropriate precautions to protect personal data and ensure your system is fair.
+
+Your organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.
+
+New data assets should be registered via organisational data catalogues, or cross-departmentally by designating [Essential Shared Data Assets (ESDAs)].",suggestion,"Accountability, Privacy",0,0,0,0,0,https://www.gov.uk/government/publications/essential-shared-data-assets-and-data-ownership-in-government/essential-shared-data-assets-esdas-guidance-for-departments-html,0
+Discovery,4aT,4a=Yes,Provide a summary or link to your complete data sharing agreement.,text,"Accountability, Privacy",0,0,0,0,0,0,0
+Discovery,4aS,4a=No,0,suggestion,"Accountability, Privacy",0,0,0,0,0,0,0
+Discovery,4bT,4b=Yes,Briefly explain how data sharing achieves a benefit and is necessary.,text,"Accountability, Privacy",0,0,0,0,0,0,0
+Discovery,4bS,4b=No OR Unsure,0,suggestion,"Accountability, Privacy",0,0,0,0,0,0,0
+Discovery,5,FILTER=c OR d OR e,"Do you have governance structures to support the safe, effective and responsible implementation of the project?",radios,Accountability,Yes,Somewhat,No,0,0,0,0
+Discovery,5T,5=Yes,Briefly describe the governance structures that will support this project.,text,Accountability,0,0,0,0,0,0,0
+Discovery,5S,5=Somewhat OR No,"You should always follow your organisation’s internal governance policies
+Data and AI projects should have appropriate and effective governance and oversight. This includes clear roles and responsibilities, clear documentation, and being transparent about the system and the processes around it.",suggestion,Accountability,0,0,0,0,0,0,0
+Discovery,6,FILTER=c OR d OR e,Have you assigned responsibility for the project’s outcomes?,radios,"Accountability, Safety",Yes,No,0,0,0,0,0
+Discovery,6a,6=Yes,Is the responsible owner able to oversee the project effectively and intervene quickly if in the case of harmful outcomes? ,radios,"Accountability, Safety",Yes,No,Unsure,0,0,0,0
+Discovery,6S,6=No,"You need strong oversight and clear responsibilities to ensure accountability across the life cycle of your project. You must set out who is responsible at each stage of the project.
+
+This includes naming: senior responsible owners (SROs), data owners, data stewards, data custodians, and AI asset owners.",suggestion,"Accountability, Safety",0,0,0,0,0,0,0
+Discovery,6aT,6a=Yes,Briefly describe any barriers to responsible owner intervention that you foresee.,text,"Accountability, Safety",0,0,0,0,0,0,0
+Discovery,6aS,6a=No OR Unsure,"As the primary risk owners for the project, senior responsible owners ensure a real policy or business need is being addressed, engage with stakeholders and assure ongoing viability.
+
+For project governance to be effective, it’s essential that the people accountable have appropriate technical expertise and knowledge, and authority, to implement necessary changes. This is especially important for complex projects or those involving multiple suppliers, which is often the case with data and AI projects.",suggestion,"Accountability, Safety",0,0,0,0,0,0,0
+Discovery,7,FILTER=c OR d OR e,Are you confident in documenting key project decisions?,radios,"Transparency, Accountability",Yes,Somewhat,No,0,0,0,0
+Discovery,7T,7=Yes,Provide the types of key decisions that you'll document.,text,"Transparency, Accountability",0,0,0,0,0,0,0
+Discovery,7Ta,7=Yes,Provide the types of routines or processes that you'll use to document decisions.,text,"Transparency, Accountability",0,0,0,0,0,0,0
+Discovery,7Tb,7=Yes,Provide the ways in which people will be able to learn more about key decisions if needed.,text,"Transparency, Accountability",0,0,0,0,0,0,0
+Discovery,7S,7= Somewhat OR No,"To ensure AI and data projects can be audited or reviewed, your team must: record who is responsible for each part of the system, including suppliers, and record decisions made during project design, model deployment and system deployment processes.
+
+For example, a data set factsheet can help explain how data was handled.
+The [Algorithmic Transparency Recording Standard (ATRS)] also provides a template for public sector organisations to document and share information about how and why they’re using algorithmic tools.",suggestion,"Transparency, Accountability",0,0,0,0,0,https://www.gov.uk/government/publications/algorithmic-transparency-template,0
+Discovery,8,FILTER=a OR b OR c OR d OR e,Will you conduct research as part of your project?,radios,Safety,Yes,No ,Unsure,0,0,0,0
+Discovery,8a,8=Yes,Are you confident in protecting research participants from safety risks?,radios,Safety,Yes,No ,Unsure,0,0,0,0
+Discovery,8b,8=Yes,Are you confident in protecting reseachers from safety risks?,radios,Safety,Yes,No ,Unsure,0,0,0,0
+Discovery,8S,8=No OR Unsure,"When designing a government tool or service, you should always start by learning about the people who will use it. If you don’t understand users or what they need from your service, you cannot build the right thing.
+
+You should involve diverse stakeholders in the design and testing process and undertake thorough user research and public engagement to ensure you’re including the views of those that may be affected or digitally excluded.
+
+You must understand and comply with your legal obligations and duties. Refer to the Public Sector Equality Duty (PSED) and the Equality Act 2010.",suggestion,Safety,0,0,0,0,0,0,0
+Discovery,8aT,8a=Yes,Describe the measures you will take to protect research particpants.,text,Safety,0,0,0,0,0,0,0
+Discovery,8aS,8a=No OR Unsure,"You must take steps to protect research participants. This applies to your team and to any third-party researchers you work with. 
+
+You should:
+o make sure that participants understand the research and any risks involved 
+o only include participants who give clear, informed consent without pressure or coercion 
+o allow participants to withdraw at any time (with exceptions for situations like medical research where participant information is anonymised and aggregated and cannot be removed from the research data set)
+o anonymise all data used in reports or analysis.
+
+The Service Manual has guidance on [managing user research data and participant privacy].",suggestion,Safety,0,0,0,0,0,https://www.gov.uk/service-manual/user-research/managing-user-research-data-participant-privacy,0
+Discovery,8bT,8b=Yes,Describe the measures you will take to protect researchers.,text,Safety,0,0,0,0,0,0,0
+Discovery,8bS,8b=No OR Unsure,"Some research projects involve sensitive topics, such as child protection or adult safeguarding. These can be distressing for both researchers and participants. To reduce risk, you should:
+o highlight any sensitive topics in workshop or interview plans
+o set up a ‘safety check-in’ protocol to support staff after sessions, particularly for one-to-one or lone working
+o use existing ethical guidelines and processes, such as the Service Manual’s guidance on researching emotionally sensitive subjects
+
+In rare cases, researchers may be targeted by participants or others. If this happens, or if the risk is known in advance, put safeguards in place to protect staff.
+
+The Government Analysis Function provides a list of resources related to conducting research and analysis in government.",suggestion,Safety,0,0,0,0,0,0,0
+Discovery,9,FILTER=a OR b OR c OR d OR e,Can you ensure that your project team is diverse and multidisciplinary?,radios,"Fairness, Societal Impact",Yes,No,Unsure,0,0,0,0
+Discovery,9a,9=No OR Unsure,Have you considered how a lack of diversity might impact your project?,radios,"Fairness, Societal Impact",Yes,No,0,0,0,0,0
+Discovery,9T,9=Yes,Briefly describe how you will ensure diversity across the team.,text,"Fairness, Societal Impact",0,0,0,0,0,0,0
+Discovery,9aT,9a=Yes,Briefly describe any risks or blind spots you have identified.,text,"Fairness, Societal Impact",0,0,0,0,0,0,0
+Discovery,9aS,9a=No,"Having a diverse and multidisciplinary team can provide a strong foundation for building fairer tools and services. A diverse team is often able to spot issues early in the development process by bringing varied perspectives and lived experiences.
+
+If it’s not possible to assemble a diverse team, you should note any potential gaps in understanding and proactively seek ways to engage with a variety of stakeholders. This might include through user testing, public engagement and, where possible, presenting ideas at internal or external community events.
+
+The Service Manual includes guidance on the [people you need to have in your team at each phase].",suggestion,"Fairness, Societal Impact",0,0,0,0,0,https://www.gov.uk/service-manual/the-team/set-up-a-service-team,0
+Discovery,10,FILTER=a OR b OR c OR d OR e,Do you have a clear picture of your target user groups?,radios,"Fairness, Societal Impact",Yes,Somewhat,No,0,0,0,0
+Discovery,10a,10=Yes,Have you considered how different groups could be impacted unequally by your project?,radios,"Fairness, Societal Impact",Yes,Somewhat,No,0,0,0,0
+Discovery,10S,10=Somewhat OR No,"At the start of your project, you should make sure that:
+o your project has a clear purpose
+o there’s a clear public benefit
+o you’re designing with humans in mind and in a human-centred way.
+
+You should involve diverse stakeholders in the design and testing process and undertake thorough user research and public engagement to ensure you’re including the views of those that may be affected or digitally excluded.
+
+You must understand and comply with your legal obligations and duties. Refer to the [Public Sector Equality Duty (PSED)] and the [Equality Act 2010].
+
+You should continually revisit user needs throughout your project. The Service Manual explains more about [user needs].",suggestion,"Fairness, Societal Impact",0,0,0,0,0,"https://www.equalityhumanrights.com/guidance/public-sector-equality-duty-psed
+https://www.gov.uk/guidance/equality-act-2010-guidance
+https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs
+",0
+Discovery,10aT,10a=Yes,Briefly describe how your user groups may be impacted differently.,text,"Fairness, Societal Impact",0,0,0,0,0,0,0
+Discovery,10aS,10a=Somewhat OR No,"You should involve diverse stakeholders in the design and testing process and undertake thorough user research and public engagement to ensure you’re including the views of those that may be affected or digitally excluded.
+
+You must understand and comply with your legal obligations and duties. Refer to the [Public Sector Equality Duty (PSED)] and the [Equality Act 2010].
+
+You should continually revisit user needs throughout your project. The Service Manual explains more about [user needs].",suggestion,"Fairness, Societal Impact",0,0,0,0,0,"https://www.equalityhumanrights.com/guidance/public-sector-equality-duty-psed
+https://www.gov.uk/guidance/equality-act-2010-guidance
+https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs
+",0
+Discovery,11,FILTER=a OR b OR c OR d OR e,Do you have a clear picture of all your project stakeholders?,radios,"Fairness, Societal Impact",Yes,Somewhat,No,0,0,0,0
+Discovery,11a,11=Yes,Will you engage with a wide variety of stakeholders throughout the project lifecycle?,radios,"Fairness, Societal Impact",Yes,No,Unsure,0,0,0,0
+Discovery,11S,11=Somewhat OR No,"You should include stakeholder perspectives by engaging with civil society groups, affected communities and wider public sector to understand values and impacts.
+
+Proactive public and stakeholder engagement is critical to understand the potential impacts of a tool or system. Engaging with stakeholders can help to build trust and improve adoption of AI tools and systems.",suggestion,"Fairness, Societal Impact",0,0,0,0,0,0,0
+Discovery,11aT,11a=Yes,Briefly describe the steps you will take to engage with a wide variety of stakeholders.,text,"Fairness, Societal Impact",0,0,0,0,0,0,0
+Discovery,11aS,11a=No OR Unsure,"You should include stakeholder perspectives by engaging with civil society groups, affected communities and wider public sector to understand values and impacts.
+
+Ethical use of data and AI means listening to different perspectives and checking that your tools work as intended. Otherwise, you could unintentionally exclude people or cause harm.",suggestion,"Fairness, Societal Impact",0,0,0,0,0,0,0
+Discovery,12,FILTER=c OR d OR e,Will you work with civil society organisations or external domain experts to guide your project?,radios,Societal impact,Yes,No,Unsure,0,0,0,0
+Discovery,12T,12=Yes,Briefly describe how you'll engage with civil society organisations and external experts.,text,Societal impact,0,0,0,0,0,0,0
+Discovery,12S,12=No OR Unsure,"You should include stakeholder perspectives by engaging with civil society groups, affected communities and wider public sector to understand values and impacts.
+
+Ethical use of data and AI means listening to different perspectives and checking that your tools work as intended. Otherwise, you could unintentionally exclude people or cause harm.",suggestion,Societal impact,0,0,0,0,0,0,0
+Discovery,13,FILTER=a OR b,Have you considered the potential environmental impact and sustainability of your project?,radios,Environmental sustainability,Yes,Somewhat,No,0,0,0,0
+Discovery,13a,13=Yes OR Somewhat,"Will you monitor, evaluate and address environmental impact and sustainability challenges throughout the project lifecycle?",radios,Environmental sustainability,Yes,No,Unsure,0,0,0,0
+Discovery,13T,13=Yes OR Somewhat,Briefly explain the environmental and sustainability implications of your project.,text,Environmental sustainability,0,0,0,0,0,0,0
+Discovery,13S,13=No,"Environmental sustainability means thinking about the wider impact of your project on people and the planet. It’s important to consider this from the start, as it can influence your choices about tools, suppliers and infrastructure.
+
+The environmental sustainability chapter in the Data and AI Ethics Framework provides further advice on how to assess the potential impact of data and AI projects.",suggestion,Environmental sustainability,0,0,0,0,0,0,0
+Discovery,13aT,13a=Yes,"Briefly describe how you intend to monitor, evaluate and address environmental impact and sustainability challenges.",text,Environmental sustainability,0,0,0,0,0,0,0
+Discovery,13aS,13a=No OR Unsure,"Before you begin building a tool or system, you should develop a plan to monitor and evaluate the environmental impact.
+
+You should think about factors such as: 
+o Whether AI is the best technology or tool for the task – there may be alternatives that provide as good, or better, results and require less resource-intensive training and development.
+o Project size and complexity – how much data will be processed, the number of end users, bandwidth and latency requirements, prompt efficiency
+o Software requirements – including model type.
+o Hardware requirements – such as data centre usage or Internet of Things (IoT) devices.
+
+The Service Manual also has guidance on how to build more [environmentally sustainable digital services in government].",suggestion,Environmental sustainability,0,0,0,0,0,https://www.gov.uk/service-manual/design/environmentally-sustainable-services,0
+Alpha,1,FILTER=a,Do you have a data quality action plan or acceptance criteria to ensure your data is fit for purpose?,radios,0,Yes,No,0,0,0,0,0
+Alpha,1a,1=Yes,Have you performed an initial data quality assessment?,radios,0,Yes,No,0,0,0,0,0
+Alpha,1b,1=Yes,Do you have a plan for checking and validating data quality across the data lifecycle?,radios,0,Yes,No,0,0,0,0,0
+Alpha,1T,1=Yes,Provide a summary or link to your action plan or acceptance criteria.,text,0,0,0,0,0,0,0,0
+Alpha,1S,1=No,"All civil servants have a responsibility to ensure that the data they manage and use is of high quality and fit for purpose.
+
+Data quality should be checked and validated across the data life cycle. This includes ensuring data is fit for purpose before, during and after data analysis or model development and deployment.
+
+Refer to the Government Data Quality Framework for guidance on understanding, documenting and improving data quality, and for information about real public sector case studies. Linked with this, there’s guidance on implementing a data quality action plan.",suggestion,0,0,0,0,0,0,0,0
+Alpha,1aT,1a=Yes,Briefly describe the results of your data quality assessment and any actions you plan to take to improve data quality.,text,0,0,0,0,0,0,0,0
+Alpha,1aS,1a=No,Have you performed an initial data quality assessment?[HL8],suggestion,0,0,0,0,0,0,0,0
+Alpha,1bT,1b=Yes,Briefly describe how you will maintain data quality in the future.,text,0,0,0,0,0,0,0,0
+Alpha,1bS,1b=No,"Maintaining data quality is a continuous process. You should maintain clear documentation of any known limitations, biases and quality concerns. 
+
+If using data for analysis and model development, you should conduct ongoing validation of outputs, especially where models are reused or retrained.
+
+The Government Data Quality Framework sets out principles and practices to assess, communicate and improve the quality of data in government. Linked with this, there’s guidance on implementing a data quality action plan.",suggestion,0,0,0,0,0,0,0,0
+Alpha,2,FILTER=a OR b OR c OR d OR e,"Is your project purpose, design and intended outcome clear to all your key stakeholders yet?",radios,0,Yes,No,Unsure,0,0,0,0
+Alpha,2a,2=No,"Do you have a plan to communicate project purpose, design and intended outcomes later?",radios,0,Yes,No,0,0,0,0,0
+Alpha,2S,2=Unsure,"Is your project purpose, design and intended outcome clear to all your key stakeholders yet?
+
+Proactive public and stakeholder engagement is critical to understand the potential societal impact of a tool or system. Engaging with stakeholders can help to build trust and improve adoption of AI tools and systems.",suggestion,0,0,0,0,0,0,0,0
+Alpha,2aT,2a=Yes,Briefly describe the ways you will record and communicate information to your stakeholders.,text,0,0,0,0,0,0,0,0
+Alpha,2aS,2a=No,"Do you have a plan to communicate project purpose, design and intended outcomes later?
+
+You should proactively communicate the project's purpose, design and intended outcomes to relevant stakeholders. Early and ongoing engagement can help build trust, improve understanding, and identify concerns before the project progresses further.",suggestion,0,0,0,0,0,0,0,0
+Alpha,3,FILTER=a,Are you processing or do you intend to process people’s personal data as part of your project?[HL9] [HL10],radios,0,Yes,No,0,0,0,0,0
+Alpha,3a,3=Yes,Are you communicating with or informing users about how their data is being used?,radios,0,Yes,No,0,0,0,0,0
+Alpha,3aT,3a=Yes,Describe how you are communicating your personal data processing activities to users.[HL11],text,0,0,0,0,0,0,0,0
+Alpha,3aS,3a=No,"A good principle to uphold is that nobody should be surprised about how their data is being used. 
+
+Where personal data is being processed, you must comply with relevant laws: You need to carry out a Data Protection Impact Assessment (DPIA) before you process personal data when the processing is likely to result in a high risk to the rights and freedoms of individuals. It’s good practice to publish your completed DPIA to demonstrate that you’re taking the appropriate precautions to protect personal data and ensure your system is fair.
+
+When processing personal data, you must provide a privacy notice that is easy to locate and explains in clear, accessible language:
+
+why you need the data
+
+how long you’ll keep the data
+
+whether you’ll share the data with others
+
+how people can exercise their rights or raise complaints.",suggestion,0,0,0,0,0,0,0,0
+Alpha,4,FILTER=a,Have you integrated or do you intend to integrate any privacy-enhancing technologies into your project?,radios,0,Yes,No,0,0,0,0,0
+Alpha,4T,4=Yes,Briefly describe the PETs you have used or will use in your project.,text,0,0,0,0,0,0,0,0
+Alpha,4S,4=No,"Have you integrated or do you intend to integrate any privacy-enhancing technologies into your project?
+
+There are 2 main principles to guide the development of your system or service:
+
+privacy by design – making design and development decisions from the very start that enhance privacy objectives.
+
+privacy by default - ensuring that default settings for the product or service are the most privacy-preserving options.
+
+Privacy enhancing technologies (PETs) can help to achieve a privacy-by-design approach.
+
+You should use PETs where possible, applying techniques such as anonymisation or the use of synthetic data.",suggestion,0,0,0,0,0,0,0,0
+Alpha,5,FILTER=a OR b OR c OR d,Have you ensured that the system’s outputs can be clearly explained and understood by users and key stakeholders yet?[HL12],radios,0,Yes,No,0,0,0,0,0
+Alpha,5T,5=Yes,Briefly describe how you have ensured explainability.,text,0,0,0,0,0,0,0,0
+Alpha,5S,5=No,"Have you ensured that the system’s outputs can be clearly explained and understood by users and key stakeholders yet?
+
+If you’re building an AI system, you should take steps to ensure that the system is explainable. For example, you can explain why a model or algorithmic tool has produced a particular outcome.
+
+If you’re building an AI system, you should take steps to ensure that the system is explainable. For example, you can explain why a model or algorithmic tool has produced a particular outcome.",suggestion,0,0,0,0,0,0,0,0
+Alpha,6,FILTER=a OR b OR c OR d,Have you planned or started any fairness testing yet?,radios,0,Yes,No,0,0,0,0,0
+Alpha,6T,6=Yes,Describe the fairness testing you have started or planned.,text,0,0,0,0,0,0,0,0
+Alpha,6S,6=No,"Have you planned or started any fairness testing yet?[HL13] 
+
+Fairness considerations are critical across the life cycle of your project – from initial decisions about what data to collect and how, to the impacts of your project years after deployment.
+
+You should understand which individuals or groups could potentially benefit or be treated unfairly by your project, and which are most vulnerable to harm as a result.
+
+Fairness metrics are different ways to measure whether your data set is representative and free from bias, and whether AI systems treat people equitably. 
+
+You should identify fairness metrics that are relevant to your project
+
+You should conduct testing throughout the build phases and repeat after your service goes live. This is particularly important if any changes are made to the system, data source(s), or when there are significant societal changes that may impact the service.",suggestion,0,0,0,0,0,0,0,0
+Alpha,7,FILTER=a OR d,Have you investigated representativeness and bias within your project datasets yet?,radios,0,Yes,Somewhat,No,0,0,0,0
+Alpha,7a,7=Yes OR Somewhat,Are you able to address any dataset limitations that you have found?,radios,0,Yes,No,Unsure,0,0,0,0
+Alpha,7S,7= Somewhat OR No,"Have you investigated representativeness and bias within your project datasets yet? [Somewhat/no]
+
+
+All civil servants have a responsibility to ensure that the data they manage and use is of high quality and fit for purpose. Data quality should be checked and validated across the data life cycle.
+
+You should assess data representativeness, bias, and the different potential impacts that can result from data use. This includes identifying and addressing harmful biases.
+
+The Fairness chapter contains further information on identifying and mitigating biases.[HL14]",suggestion,0,0,0,0,0,0,0,0
+Alpha,7T,7=Yes OR Somewhat,Briefly describe or provide a link to your findings.,text,0,0,0,0,0,0,0,0
+Alpha,7aT,7a=Yes,Describe how you will mitigate any representativeness or bias limitations in your dataset.,text,0,0,0,0,0,0,0,0
+Alpha,7aS,7a=No OR Unsure,"Are you able to address any dataset limitations that you have found? [No/unsure]
+
+All civil servants have a responsibility to ensure that the data they manage and use is of high quality and fit for purpose. Data quality should be checked and validated across the data life cycle.
+
+If you’re unable to address dataset limitations, you should consider whether the data is safe to use for your purposes.
+
+You should disclose any limitations of the data, such as quality issues, missing or incomplete data, gaps in representativeness, or known errors. Tools such as data sheets or data set cards can be helpful in documenting information about data quality.",suggestion,0,0,0,0,0,0,0,0
+Alpha,8,FILTER=a OR b OR c OR d OR e,Have you considered the diversity of needs within your target user group yet?[HL15],radios,0,Yes,Somewhat,No,0,0,0,0
+Alpha,8T,8=Yes,Briefly describe the various needs within your target user group that you will account for.,text,0,0,0,0,0,0,0,0
+Alpha,8S,8=Somewhat OR No,"Have you considered the diversity of needs within your target user group yet?
+
+Ethical use of data and AI means listening to different perspectives and checking that your tools work as intended. Otherwise, you could unintentionally exclude people or cause harm.
+
+You should ask:
+
+who could be negatively or positively affected? 
+
+do the risks outweigh the expected benefits?
+
+how are the risks and benefits distributed across different groups? 
+
+what might be the long-term consequences?
+
+To better understand the lived experiences of users, it can be helpful to use qualitative and ethnographic methods such as observations, informal conversations or interviews. Think about how different people experience services, including colleagues who will be using the tools.",suggestion,0,0,0,0,0,0,0,0
+Alpha,9,FILTER=a OR b OR c OR d OR e,Have you considered the harms in not undertaking your project?,radios,0,Yes,Somewhat,No,0,0,0,0
+Alpha,9T,9=Yes,Briefly explain the harms that might be caused by not undertaking this project.,text,0,0,0,0,0,0,0,0
+Alpha,9S,9=Somewhat OR No,,suggestion,0,0,0,0,0,0,0,0
+Alpha,10,FILTER=a OR b OR c OR d OR e,"Could your solution have an impact on employment, working conditions or required skills?",radios,0,Yes,No,Unsure,0,0,0,0
+Alpha,10a,10=Yes,Have you considered who is likely to be relatively advantaged and disadvantaged by this impact?,radios,0,Yes,No,0,0,0,0,0
+Alpha,10T,10=Yes,"Describe the likely or potential employment, working condition or required skill impacts of your solution?",text,0,0,0,0,0,0,0,0
+Alpha,10S,10=Unsure,"Could your solution have an impact on employment, working conditions or required skills?[HL16] 
+
+You should factor in ways to empower the public and workers who may be using data and AI tools. To adopt AI safely and effectively, teams should have:
+
+suitable training and resources
+
+a working environment that considers and prioritises broader ‘human’ factors – including cultural shifts, organisational change and skill development
+
+To learn more, refer to the guidance on a human-centred approach to scaling AI tools.",suggestion,0,0,0,0,0,0,0,0
+Alpha,10aT,10a=Yes,"Describe who is likely to be advantaged or disadvantaged by your solution, if anyone?",text,0,0,0,0,0,0,0,0
+Alpha,10aS,10a=No,"Ethical use of data and AI means[HL17] listening to different perspectives and checking that your tools work as intended. Otherwise, you could unintentionally exclude people or cause harm.
+
+You should ask:
+
+who could be negatively or positively affected? 
+
+do the risks outweigh the expected benefits?
+
+how are the risks and benefits distributed across different groups? 
+
+what might be the long-term consequences?
+
+To better understand the lived experiences of users, it can be helpful to use qualitative and ethnographic methods such as observations, informal conversations or interviews. Think about how different people experience services, including colleagues who will be using the tools.",suggestion,0,0,0,0,0,0,0,0
+Alpha,11,FILTER=a OR b OR c OR d OR e,Have you identified any trade-offs between ethical principles and business or organisational goals within your project?,radios,0,Yes,No,0,0,0,0,0
+Alpha,11a,11=Yes,Have you considered alternative solutions or project designs to meeting your intended outcomes that would achieve a better balance of trade-offs?,radios,0,Yes,Somewhat,No,0,0,0,0
+Alpha,11T,11=Yes,Briefly describe the trade-offs you've identified.,text,0,0,0,0,0,0,0,0
+Alpha,11S,11=No,"There may be instances where you find that 2 or more of the ethical principles are in tension with one another. Ethical trade-offs are inherently complex and you must treat them with care.
+
+Here are some approaches which can help you establish suitable trade-offs:
+
+include stakeholder perspectives by engaging with affected communities to understand values and impacts
+
+consult legal and human rights frameworks to ensure that decisions align with national and international standards
+
+balance proportionality and necessity
+
+ensure meaningful and inclusive deliberation
+
+establish mechanisms to monitor outcomes and adjust if necessary.",suggestion,0,0,0,0,0,0,0,0
+Alpha,11aT,11a=Yes OR Somewhat,Briefly explain how you will balance these trade-offs.,text,0,0,0,0,0,0,0,0
+Alpha,11aS,11a=No,Have you considered alternative solutions or project designs to meeting your intended outcomes that would achieve a better balance of trade-offs?[HL18],suggestion,0,0,0,0,0,0,0,0
+Beta,1,FILTER=a,"Are you confident in the accuracy, representativeness and completeness of the data that is shaping your solution design?[HL19]",radios,0,Yes,No,Unsure,0,0,0,0
+Beta,1T,1=Yes,Briefly describe the data quality tests and/or results you've performed to give you confidence.,text,0,0,0,0,0,0,0,0
+Beta,1S,1=No,"Are you confident in the accuracy, representativeness and completeness of the data that is shaping your solution design? [No]",suggestion,0,0,0,0,0,0,0,0
+Beta,2,FILTER=b,Have you performed fairness tests on your AI system?,radios,0,Yes,No,0,0,0,0,0
+Beta,2a,2=Yes,Are you confident that your AI system will lead to fair outcomes yet?[HL20],radios,0,Yes,No,Unsure,0,0,0,0
+Beta,2b,2a=No OR Unsure,Will you take any corrective action to address fairness issues before going live?,radios,0,Yes,No,Unsure,0,0,0,0
+Beta,2S,2=No,Have you performed fairness tests on your AI system? [No],suggestion,0,0,0,0,0,0,0,0
+Beta,2aT,2a=Yes,Briefly describe the data fairness tests and/or results you've performed to give you confidence.,text,0,0,0,0,0,0,0,0
+Beta,2aS,2a=No ,Are you confident that your AI system will lead to fair outcomes yet? [No],suggestion,0,0,0,0,0,0,0,0
+Beta,2bT,2b=Yes,Briefly describe the corrective action you will take to ensure fairness.,text,0,0,0,0,0,0,0,0
+Beta,2bS,2b=No,Will you take any corrective action to address fairness issues before going live? [No],suggestion,0,0,0,0,0,0,0,0
+Beta,3,FILTER=a OR b OR c OR d OR e,Have you ensured accessibility for all users yet?,radios,0,Yes,No,0,0,0,0,0
+Beta,3T,3=Yes,Briefly describe the accessibility measures you've taken.,text,0,0,0,0,0,0,0,0
+Beta,3S,3=No,"Have you ensured accessibility for all users yet?
+
+[No][HL21] 
+
+Review the accessibility needs of your users and identify any barriers that could prevent people from accessing, using or benefiting from your project. You should make changes where needed to ensure your project is accessible and inclusive.
+
+This includes engaging directly with groups at risk of digital exclusion to understand their needs and provide accessible, non-digital alternatives where possible.
+
+The Service Manual has guidance on accessibility and assisted digital.",suggestion,0,0,0,0,0,0,0,0
+Beta,4,FILTER=b OR c,Have you established and tested human oversight mechanisms?,radios,0,Yes,No,0,0,0,0,0
+Beta,4T,4=Yes,Briefly describe the governance checks and controls mechanisms that you've established for your solution.,text,0,0,0,0,0,0,0,0
+Beta,4S,4=No,"Have you established and tested human oversight mechanisms? [No]
+
+
+
+Human oversight of AI systems can help to maintain accountability and correct any erroneous or potentially harmful impacts.
+
+Identify where human oversight is needed and put mechanisms in place so that a person can meaningfully review, question or intervene in the AI system’s outputs or decisions where appropriate. You should test these mechanisms to make sure they work as intended.",suggestion,0,0,0,0,0,0,0,0
+Beta,5,FILTER=a,"Would others be able to reproduce your project process, results and outputs using your current project documentation?[HL22]",radios,0,Yes,No,Unsure,0,0,0,0
+Beta,5T,5=Yes,List the main resources that would allow others to understand and reproduce your project.,text,0,0,0,0,0,0,0,0
+Beta,5S,5=No OR Unsure,"Would others be able to reproduce your project process, results and outputs using your current project documentation? [No][HL23] 
+
+Your project documentation – including technical information about data, methods, 
+
+should be clear enough for others to reproduce and 
+
+The Reproducible Analytical Pipelines guidance sets out what a Reproducible Analytical Pipeline is and points to resources for analysts who need to build them.",suggestion,0,0,0,0,0,0,0,0
+Beta,6,FILTER=b,Is your project within scope of the Algorithmic Transparency Recording Standard (ATRS)?,radios,0,Yes,No,Unsure,0,0,0,0
+Beta,6a,6=Yes,Have you reviewed the ATRS for information you are required to publish?[HL24],radios,0,Yes,No,0,0,0,0,0
+Beta,6S,6=Unsure,"You should check if your tool is in scope of the Algorithmic Transparency Recording Standard (ATRS). 
+
+The ATRS establishes a standardised way for public sector organisations to publish information about how and why they are using algorithmic tools.
+
+The ATRS is mandatory for: 
+
+All government departments, and for ALBs which deliver public or frontline services, or directly interact with the general public.
+
+Algorithmic tools which have a significant influence on a decision-making process with public effect or directly interact with the general public.
+
+The mandatory requirement to publish an ATRS record applies to tools that are in Beta/Pilot or Production phase. 
+
+Teams are welcome to submit records for tools in earlier stages of the lifecycle, but it is not mandatory to do so.",suggestion,0,0,0,0,0,0,0,0
+Beta,6aS,6a=No,Have you reviewed the ATRS for information you are required to publish? [No/unsure][HL25],suggestion,0,0,0,0,0,0,0,0
+Beta,7,FILTER=a OR b OR c OR d OR e,Have you integrated environmental evaluation and monitoring processes into your project yet?,radios,0,Yes,No,0,0,0,0,0
+Beta,7a,7=Yes,Have you set environmental and sustainability thresholds that your project needs to adhere to?,radios,0,Yes,No,0,0,0,0,0
+Beta,7T,7=Yes,Briefly describe how you've integrated these processes into your project.,text,0,0,0,0,0,0,0,0
+Beta,7S,7=No,"Have you integrated environmental evaluation and monitoring processes into your project yet? [No]
+
+
+There are various environmental factors that you should monitor and manage across the lifecycle of your project. This can be a complex task but it’s vital for ensuring proper stewardship of data and AI projects.
+
+You should select appropriate metrics and key performance indicators (KPIs) that can be tracked over time – such as carbon footprint, energy consumption or compute efficiency. You may need to consider more than one metric to understand the project’s broader impact.
+
+There are some tools that can support with measuring the environmental impact, such as EcoLogits, CodeCarbon or Data Carbon Ladder.",suggestion,0,0,0,0,0,0,0,0
+Beta,7aT,7a=Yes,"Describe your environmental and sustainability thresholds, and the consequences of not adhering to them.",text,0,0,0,0,0,0,0,0
+Beta,7aS,7a=No,Have you set environmental and sustainability thresholds that your project needs to adhere to? [No] [HL26],suggestion,0,0,0,0,0,0,0,0
+Beta,8,FILTER=a OR b OR c OR d OR e,Have you established ‘go’ or ‘no-go’ criteria for your solution to go live?,radios,0,Yes,No,0,0,0,0,0
+Beta,8a,9=Yes,Do you have a plan for safely transitioning from development to live yet?,radios,0,Yes,No,0,0,0,0,0
+Beta,8T,8=Yes,List or link the ‘go’ or ‘no-go’ criteria for your solution to go live.,text,0,0,0,0,0,0,0,0
+Beta,8S,8=No,"Have you established ‘go’ or ‘no-go’ criteria for your solution to go live? [No]
+
+
+
+If it’s not possible to make the system sufficiently safe for the intended use, even with available mitigations, you should not use the system to address the problem.",suggestion,0,0,0,0,0,0,0,0
+Beta,8aT,8a=Yes,Briefly explain or link your plan for transitioning to live.,text,0,0,0,0,0,0,0,0
+Beta,8aS,8a=No,"Do you have a plan for safely transitioning from development to live yet? [No]
+
+
+
+You should establish a human-in-the-loop to oversee and validate outputs and decisions where AI is used in risky or high-impact situations – this person or team should be able to identify risks and intervene.",suggestion,0,0,0,0,0,0,0,0
+Live,1,FILTER=a OR b OR c OR d OR e,Are you measuring and monitoring performance of your system?,radios,Safety,Yes,No,0,0,0,0,0
+Live,1a,1=Yes,Do you have a response plan for if your system degrades or becomes unsafe?,radios,0,Yes,No,0,0,0,0,0
+Live,1T,1=Yes,List the ways in which you are measuring and monitoring system performance.,text,0,0,0,0,0,0,0,0
+Live,1S,1=No,"Are you measuring and monitoring performance of your system? [No][HL27] 
+
+You should create a clear mechanism for monitoring the performance of the system.",suggestion,0,0,0,0,0,0,0,0
+Live,1aT,1a=Yes,Describe or link your system degradation and safety plan.,text,0,0,0,0,0,0,0,0
+Live,1aS,1a=No,Do you have a response plan for if your system degrades or becomes unsafe? [No],suggestion,0,0,0,0,0,0,0,0
+Live,2,FILTER=a OR b OR c OR d OR e,Have you established opportunities for users to submit feedback on system performance?,radios,"Accountability, Safety",Yes,No,0,0,0,0,0
+Live,2T,2=Yes,Briefly describe the opportunities you've established for users to submit feedback on system performance.,text,0,0,0,0,0,0,0,0
+Live,2S,2=No,"Have you established opportunities for users to submit feedback on system performance? [No]
+
+You should create a clear mechanism for monitoring the ongoing use of your data or AI project. 
+
+This involves evaluating how it’s used, and providing a feedback loop where users and operators can identify issues and send them back to the development team.
+
+Examples of feedback mechanisms might include: surveys and feedback forms, reporting mechanisms integrated into the tool or service, and stakeholder workshops.
+
+Where appropriate, you should engage with civil society organisations for guidance on how to design and integrate feedback and redress mechanisms for your AI project or system.",suggestion,0,0,0,0,0,0,0,0
+Live,3,FILTER=a OR b OR c OR d OR e,Are you maintaining logs and documentation while your system is live?,radios,"Transparency, Accountability",Yes,No,0,0,0,0,0
+Live,3a,3=Yes,Are you confident that these records are transparent enough and will support investigations if issues occur?,radios,0,Yes,No,Unsure,0,0,0,0
+Live,3S,3=No,Are you maintaining logs and documentation while your system is live? [No],suggestion,0,0,0,0,0,0,0,0
+Live,3aS,3a=No OR Unsure,Are you confident that these records are transparent enough and will support investigations if issues occur? [No/unsure],suggestion,0,0,0,0,0,0,0,0
+Live,4,FILTER=b OR c OR d,Are your system outputs consistently understandable and explainable to users and key stakeholders?,radios,"Transparency, Accountability",Yes,No,Unsure,0,0,0,0
+Live,4T,4=Yes,Briefly describe the measures you've taken to ensure that users can rationalise system outputs.,text,0,0,0,0,0,0,0,0
+Live,4S,4=No OR Unsure,Are your system outputs consistently understandable and explainable to users and key stakeholders? [No/unsure],suggestion,0,0,0,0,0,0,0,0
+Live,5,FILTER=b,Do your users know that an AI system is involved in producing outputs?,radios,"Transparency, Accountability",Yes,No,Unsure,0,0,0,0
+Live,5T,5=Yes,Describe the measures you've taken to ensure that users know that they are engaging with an AI-enabled solution.,text,0,0,0,0,0,0,0,0
+Live,5S,5=No,Do your users know that an AI system is involved in producing outputs? [No],suggestion,0,0,0,0,0,0,0,0
+Live,6,FILTER=b,Are you required to publish a transparency record as part of the ATRS initiative?,radios,"Transparency, Accountability",Yes,No,Unsure,0,0,0,0
+Live,6a,6=Yes,Have you published a transparency record yet?,radios,0,Yes,No,0,0,0,0,0
+Live,6S,6=Unsure,"Are you required to publish a transparency record as part of the ATRS initiative? [Unsure]
+
+You should check if your tool is in scope of the Algorithmic Transparency Recording Standard (ATRS). 
+
+The ATRS is mandatory for: 
+
+All government departments, and for ALBs which deliver public or frontline services, or directly interact with the general public.
+
+Algorithmic tools which have a significant influence on a decision-making process with public effect or directly interact with the general public.
+
+The ATRS mandatory scope and exemptions policy is available on gov.uk.",suggestion,0,0,0,0,0,0,0,0
+Live,6aS,6=No,It is best practice to publish an ATRS record even if your tool isn’t within the mandatory scope.,suggestion,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,0,0,0,0,0,0

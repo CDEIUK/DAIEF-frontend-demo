@@ -244,7 +244,7 @@ function App() {
         <div className="govuk-grid-row">
           <div className="govuk-grid-column-full">
             <p className="govuk-caption-xl">Data and AI Ethics Framework</p>
-            <h1 className="govuk-heading-xl">Interactive Guidance</h1>
+            <h1 className="govuk-heading-xl">Self-Assessment Tool</h1>
             <section className="save-panel" aria-labelledby="save-panel-heading">
               <p id="save-panel-heading" className="govuk-body">Information that you enter on this site is stored locally on your computer and isn't shared with the UK government. Use the Restore and Save buttons to upload and download your form as a JSON file between sessions. Print or save the active section as PDF or HTML using the print button.</p>
             </section>
@@ -285,7 +285,7 @@ function App() {
                       onChange={(event) => setHideCommentQuestions(event.target.checked)}
                     />
                     <label className="govuk-label govuk-checkboxes__label" htmlFor="hide-comment-questions">
-                      Hide workbook fields
+                      Hide document fields
                     </label>
                   </div>
                 </div>

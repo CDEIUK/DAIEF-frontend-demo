@@ -131,6 +131,18 @@
 	outline-offset: 0;
 }
 
+.app-shell .sd-question__description a,
+.app-shell .sd-question__title a {
+	color: #1d70b8;
+	text-decoration: underline;
+}
+
+.app-shell .sd-question__description a:focus,
+.app-shell .sd-question__title a:focus {
+	outline: 3px solid #ffdd00;
+	outline-offset: 0;
+}
+
 .app-shell .survey-progress-panel {
 	display: flex;
 	align-items: center;
@@ -463,6 +475,42 @@
 
 .app-shell .sd-question:has(.sd-expression) .sd-expression {
 	background-color: transparent;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.app-shell .sd-question:has(.sd-expression) .sd-question__title {
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.app-shell .sd-question:has(.sd-expression) .survey-action-marker {
+	display: inline-flex;
+}
+
+.app-shell .sd-question:has(.sd-expression) .survey-action-label {
+	margin-left: -0.4em;
+	font-weight: 700;
+}
+
+.app-shell .survey-document-marker {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.8em;
+	height: 1.8em;
+	margin-right: 0.8em;
+	border-radius: 50%;
+	background: #1d70b8;
+	color: #fff;
+	font-size: 0.7em;
+	font-weight: 700;
+	line-height: 1;
+	vertical-align: text-top;
+}
+
+.app-shell .survey-document-label {
+	font-weight: 700;
 }
 
 .app-shell .sd-question:has(.sd-comment),
@@ -474,6 +522,12 @@
 .app-shell .sd-question:has(.sd-comment) .sd-comment {
 	background-color: #ffffff;
 }
+
+.app-shell .sd-question:has(.sd-comment) .sd-question__title {
+	font-size: 16px;
+	font-weight: 400;
+}
+
 
 .app-shell .survey-form--project-detail .sd-question,
 .app-shell .survey-form--project-detail .sd-question__content {

@@ -84,6 +84,65 @@ function getProgressSummary(model, pageIndex) {
   }
 }
 
+function renderMarkdownLinks(text) {
+  const output = document.createElement('div')
+  const linkPattern = /\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)/g
+  let lastIndex = 0
+  let match
+
+  while ((match = linkPattern.exec(text)) !== null) {
+    output.append(document.createTextNode(text.slice(lastIndex, match.index)))
+
+    let url
+    try {
+      url = new URL(match[2])
+    } catch {
+      output.append(document.createTextNode(match[0]))
+      lastIndex = linkPattern.lastIndex
+      continue
+    }
+
+    if (!['http:', 'https:'].includes(url.protocol)) {
+      output.append(document.createTextNode(match[0]))
+      lastIndex = linkPattern.lastIndex
+      continue
+    }
+
+    const link = document.createElement('a')
+    link.href = url.href
+    link.target = '_blank'
+    link.rel = 'noopener noreferrer'
+    link.textContent = match[1]
+    output.append(link)
+    lastIndex = linkPattern.lastIndex
+  }
+
+  output.append(document.createTextNode(text.slice(lastIndex)))
+  return output.innerHTML
+}
+
+function addTitleMarker(questionTitle, markerClass, markerText, labelClass, labelText) {
+  if (questionTitle.querySelector(`.${markerClass}`)) {
+    return
+  }
+
+  const marker = document.createElement('span')
+  marker.className = markerClass
+  marker.setAttribute('aria-hidden', 'true')
+  marker.textContent = markerText
+  questionTitle.insertBefore(marker, questionTitle.firstChild)
+
+  const label = document.createElement('span')
+  label.className = labelClass
+  label.textContent = ` ${labelText}`
+  questionTitle.insertBefore(label, marker.nextSibling)
+
+  const firstBreak = document.createElement('br')
+  const secondBreak = document.createElement('br')
+  questionTitle.insertBefore(firstBreak, label.nextSibling)
+  questionTitle.insertBefore(secondBreak, firstBreak.nextSibling)
+}
+
 export default function SurveyPage({ surveyJson, initialData, sharedData, onDataChange, onNavigateToProjectDetail, printableSurveyRef, pageIndex = 0, hideCommentQuestions = false, projectName = '' }) {
   const pageTitle = surveyJson.pages[pageIndex]?.title ?? ''
   const pageDescription = surveyJson.pages[pageIndex]?.description ?? ''
@@ -104,6 +163,11 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
   const seriesDividers = useRef(new Map())
   const [model] = useState(() => {
     const surveyModel = new Model(surveyJson)
+    surveyModel.onTextMarkdown.add((_, options) => {
+      if (/\[[^\]\n]+\]\(https?:\/\/[^\s)]+\)/.test(options.text)) {
+        options.html = renderMarkdownLinks(options.text)
+      }
+    })
     if (pageIndex !== 0 && hideCommentQuestions) {
       surveyModel.clearInvisibleValues = 'none'
     }
@@ -214,6 +278,9 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
 
     surveyModel.onAfterRenderQuestion.add((_, options) => {
       renderedQuestions.current.set(options.question.name, options.htmlElement)
+      if (pageIndex === 0) {
+        options.htmlElement.classList.add('survey-project-detail-question')
+      }
       refreshFilterErrorState()
       const themes = themeLabelsByQuestion.get(options.question.name)
       const questionTitle = options.htmlElement.querySelector('.sd-question__title')
@@ -279,18 +346,24 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
 
   useEffect(() => {
     const addActionMarkers = () => {
-      document.querySelectorAll('.sd-question__title').forEach((questionTitle) => {
-        const titleText = questionTitle.textContent ?? ''
+      document.querySelectorAll('.sd-question:has(.sd-expression) .sd-question__title').forEach((questionTitle) => {
+        addTitleMarker(
+          questionTitle,
+          'survey-action-marker',
+          '!',
+          'survey-action-label',
+          'Action',
+        )
+      })
 
-        if (!titleText.match(/\[action\]/i) || questionTitle.querySelector('.survey-action-marker')) {
-          return
-        }
-
-        const actionMarker = document.createElement('span')
-        actionMarker.className = 'survey-action-marker'
-        actionMarker.setAttribute('aria-hidden', 'true')
-        actionMarker.textContent = '!'
-        questionTitle.insertBefore(actionMarker, questionTitle.firstChild)
+      document.querySelectorAll('.sd-question:has(.sd-comment):not(.survey-project-detail-question) .sd-question__title').forEach((questionTitle) => {
+        addTitleMarker(
+          questionTitle,
+          'survey-document-marker',
+          '🗎',
+          'survey-document-label',
+          'Document',
+        )
       })
     }
 

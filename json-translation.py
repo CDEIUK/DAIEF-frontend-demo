@@ -1,9 +1,16 @@
 from pathlib import Path
-import csv
-import io
 import json
+import posixpath
 import re
+import zipfile
+from xml.etree import ElementTree as ET
 
+
+XLSX_NAMESPACES = {
+    "main": "http://schemas.openxmlformats.org/spreadsheetml/2006/main",
+    "relationships": "http://schemas.openxmlformats.org/officeDocument/2006/relationships",
+    "package": "http://schemas.openxmlformats.org/package/2006/relationships",
+}
 
 section_descriptions = {
     "Project Detail": "Provide the key information about your project and change the questions you see using filters.",
@@ -14,37 +21,128 @@ section_descriptions = {
 }
 
 
-def read_schema_csv(csv_text):
-    """Read CSV schemas with an optional form-version row before the headers."""
-    csv_rows = list(csv.reader(io.StringIO(csv_text)))
-    if not csv_rows:
-        return None, []
-
-    form_version = None
-    first_row = csv_rows[0]
-    if first_row and first_row[0].strip() and all(
-        not value.strip() for value in first_row[1:]
-    ):
-        form_version = first_row[0].strip()
-        csv_rows = csv_rows[1:]
-
-    if not csv_rows:
-        return form_version, []
-
-    schema_text = io.StringIO()
-    csv.writer(schema_text).writerows(csv_rows)
-    schema = [
-        {
-            field: clean_csv_value(value)
-            for field, value in row.items()
+def read_schema_xlsx(xlsx_path):
+    """Read the schema-input worksheet and its optional form version."""
+    with zipfile.ZipFile(xlsx_path) as workbook:
+        workbook_xml = ET.fromstring(workbook.read("xl/workbook.xml"))
+        workbook_relationships = ET.fromstring(
+            workbook.read("xl/_rels/workbook.xml.rels")
+        )
+        relationship_targets = {
+            relationship.attrib["Id"]: relationship.attrib["Target"]
+            for relationship in workbook_relationships.findall(
+                "package:Relationship", XLSX_NAMESPACES
+            )
         }
-        for row in csv.DictReader(io.StringIO(schema_text.getvalue()))
-    ]
 
-    return form_version, schema
+        schema_sheet = next(
+            (
+                sheet
+                for sheet in workbook_xml.findall(
+                    "main:sheets/main:sheet", XLSX_NAMESPACES
+                )
+                if sheet.attrib["name"] == "schema-input"
+            ),
+            None,
+        )
+        if schema_sheet is None:
+            raise ValueError("Workbook does not contain a 'schema-input' sheet")
+
+        sheet_target = relationship_targets[
+            schema_sheet.attrib[
+                f"{{{XLSX_NAMESPACES['relationships']}}}id"
+            ]
+        ]
+        sheet_path = posixpath.normpath(posixpath.join("xl", sheet_target))
+        worksheet_xml = ET.fromstring(workbook.read(sheet_path))
+
+        shared_strings = []
+        if "xl/sharedStrings.xml" in workbook.namelist():
+            strings_xml = ET.fromstring(workbook.read("xl/sharedStrings.xml"))
+            shared_strings = [
+                "".join(
+                    text.text or ""
+                    for text in item.findall(".//main:t", XLSX_NAMESPACES)
+                )
+                for item in strings_xml.findall("main:si", XLSX_NAMESPACES)
+            ]
+
+        def cell_value(cell):
+            cell_type = cell.attrib.get("t")
+            if cell_type == "inlineStr":
+                value = "".join(
+                    text.text or ""
+                    for text in cell.findall(".//main:t", XLSX_NAMESPACES)
+                )
+            else:
+                value_node = cell.find("main:v", XLSX_NAMESPACES)
+                value = value_node.text if value_node is not None else ""
+                if cell_type == "s" and value:
+                    value = shared_strings[int(value)]
+            return clean_schema_value(value)
+
+        rows_by_number = {
+            int(row.attrib["r"]): row
+            for row in worksheet_xml.findall(
+                "main:sheetData/main:row", XLSX_NAMESPACES
+            )
+        }
+
+        first_row = rows_by_number.get(1)
+        form_version = ""
+        if first_row is not None:
+            form_version = next(
+                (
+                    cell_value(cell).strip()
+                    for cell in first_row.findall("main:c", XLSX_NAMESPACES)
+                    if cell.attrib["r"] == "A1"
+                ),
+                "",
+            )
+
+        header_row_number = None
+        headers_by_column = {}
+        for row_number, row in sorted(rows_by_number.items()):
+            row_values = {
+                re.match(r"[A-Z]+", cell.attrib["r"]).group(): cell_value(cell)
+                for cell in row.findall("main:c", XLSX_NAMESPACES)
+            }
+            if {"Section", "Reference", "Field text", "Component type"}.issubset(
+                row_values.values()
+            ):
+                header_row_number = row_number
+                headers_by_column = {
+                    column: value
+                    for column, value in row_values.items()
+                    if value
+                }
+                break
+
+        if header_row_number is None:
+            raise ValueError(
+                "Could not find schema headers on the 'schema-input' sheet"
+            )
+
+        schema = []
+        for row_number, row in sorted(rows_by_number.items()):
+            if row_number <= header_row_number:
+                continue
+            row_values = {
+                re.match(r"[A-Z]+", cell.attrib["r"]).group(): cell_value(cell)
+                for cell in row.findall("main:c", XLSX_NAMESPACES)
+            }
+            if any(row_values.values()):
+                schema.append(
+                    {
+                        header: row_values.get(column, "")
+                        for column, header in headers_by_column.items()
+                    }
+                )
+
+    return form_version or None, schema
 
 
-def clean_csv_value(value):
+def clean_schema_value(value):
     if not value:
         return ""
     value = value.strip()
@@ -60,6 +158,27 @@ def clean_csv_value(value):
         .replace("Õ", "'")
         .replace("Ê", "")
     )
+
+
+def add_field_text_hyperlinks(field_text, link_text):
+    """Turn bracketed field-text snippets into Markdown links."""
+    destinations = [
+        destination.strip()
+        for destination in link_text.splitlines()
+        if destination.strip()
+    ]
+    if not destinations:
+        return field_text
+
+    anchor_index = 0
+
+    def replace_anchor(match):
+        nonlocal anchor_index
+        destination = destinations[min(anchor_index, len(destinations) - 1)]
+        anchor_index += 1
+        return f"[{match.group(1)}]({destination})"
+
+    return re.sub(r"\[([^\[\]]+)\](?!\()", replace_anchor, field_text)
 
 
 def csv_to_survey(
@@ -116,6 +235,12 @@ def csv_to_survey(
         for row in page_rows:
             reference = row["Reference"].strip()
             field_text = row["Field text"].strip()
+            link_text = (
+                row.get("Field text link")
+                or row.get("Field text hyperlinks")
+                or ""
+            ).strip()
+            field_text = add_field_text_hyperlinks(field_text, link_text)
             component_type = row["Component type"].strip().lower()
             trigger = row["Trigger"].strip()
             if trigger.lower() == "none":
@@ -306,15 +431,10 @@ def csv_to_survey(
 
 def main():
     project_dir = Path(__file__).resolve().parent
-    csv_path = project_dir / "schema-input.csv"
+    xlsx_path = project_dir / "Interactive DAIEF schema (APP).xlsx"
     output_path = project_dir / "translated-survey.json"
 
-    csv_bytes = csv_path.read_bytes()
-    try:
-        csv_text = csv_bytes.decode("utf-8-sig")
-    except UnicodeDecodeError:
-        csv_text = csv_bytes.decode("cp1252")
-    form_version, schema = read_schema_csv(csv_text)
+    form_version, schema = read_schema_xlsx(xlsx_path)
     translated_survey = csv_to_survey(schema, form_version=form_version)
 
     empty_pages = [page["name"] for page in translated_survey["pages"] if not page["elements"]]

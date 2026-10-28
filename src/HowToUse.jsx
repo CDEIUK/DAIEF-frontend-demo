@@ -71,7 +71,7 @@ export default function HowToUse({ onNavigateToFirstSection }) {
               <p className="govuk-body">Each form section contains several question sets to work through. Question sets are composed of three elements:</p>
               <ul className="govuk-list govuk-list--bullet govuk-!-padding-left-7">
                 <li><a>Radio questions (white): single choice questions that trigger further questions, fields and actions.</a></li>
-                <li><a>Workbook fields (blue): text boxes for documenting key ethical information about your project.</a></li>
+                <li><a>Document fields (blue): text boxes for documenting key ethical information about your project.</a></li>
                 <li><a>Actions (red): advice and suggestions for you to follow up on where applicable.</a></li>
               </ul>
               <p className="govuk-body">A question set will be marked as complete and turn green when all radio questions have been answered and there are no outstanding actions. The section progress panels display how many sets have been filtered, started, completed and how many actions remain within the section.</p>
@@ -101,8 +101,8 @@ export default function HowToUse({ onNavigateToFirstSection }) {
               </h2>
             </div>
             <div id="accordion-default-content-3" className="govuk-accordion__section-content">
-              <p className="govuk-body">The tool can be used for both documenting and guiding your project. You can switch between these two modes using the "Hide workbook fields" checkbox.</p>
-              <p className="govuk-body"> Workbook fields can be used to produce a written artefact for sharing and to use in governance, assurance and project management processes. They can be hidden if you want to work through question sets quicker. You can always return to workbook fields after completing questions without them.</p>
+              <p className="govuk-body">The tool can be used for both documenting and guiding your project. You can switch between these two modes using the "Hide document fields" checkbox.</p>
+              <p className="govuk-body">Document fields can be used to produce a written artefact for sharing and to use in governance, assurance and project management processes. They can be hidden if you want to work through question sets quicker. You can always return to document fields after completing questions without them.</p>
               <p className="govuk-body">Form sections can be exported as formatted documents at any time using the export button. You have the option to save as an HTML page (recommended) or a PDF.</p>
             </div>
           </div>

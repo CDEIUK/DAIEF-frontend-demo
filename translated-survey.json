@@ -109,7 +109,7 @@
           "type": "expression",
           "name": "1S",
           "startWithNewLine": true,
-          "title": "1. [action]",
+          "title": "1. If your project uses personal data, you must meet your legal duties under the UK General Data Protection Regulation (UK GDPR).\n\nYour organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.",
           "visibleIf": "{1} = 'No'"
         },
         {
@@ -123,7 +123,7 @@
           "type": "expression",
           "name": "1aS",
           "startWithNewLine": false,
-          "title": "1a. [action]",
+          "title": "1a. If your project uses personal data, you must meet your legal duties under the UK General Data Protection Regulation (UK GDPR).\n\nYour organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.",
           "visibleIf": "{1a} = 'No' or {1a} = 'Unsure'"
         },
         {
@@ -137,7 +137,7 @@
           "type": "expression",
           "name": "1bS",
           "startWithNewLine": false,
-          "title": "1b. [action]",
+          "title": "1b. If your project uses personal data, you must meet your legal duties under the UK General Data Protection Regulation (UK GDPR).\n\nYour organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.",
           "visibleIf": "{1b} = 'Unsure'"
         },
         {
@@ -190,7 +190,7 @@
           "type": "expression",
           "name": "2S",
           "startWithNewLine": true,
-          "title": "2. [action]",
+          "title": "2. You should involve information governance teams early in the project design process – this will help you to comply with privacy and data protection legislation, and plan resources effectively so that support is available for project teams when needed.\n\nYour organisation’s data and information security team should be able to advise on security requirements and risks. \n\nRefer to the government’s [personal data security principles](https://www.gov.uk/guidance/principles-for-securing-personal-data-in-government-services) when processing and sharing personal data.\n\nIf you’re working with any third-party suppliers to store, collect or process data, make sure they’re vetted and that they comply with the security requirements of your project.",
           "visibleIf": "{2} = 'No'"
         },
         {
@@ -204,7 +204,7 @@
           "type": "expression",
           "name": "2aS",
           "startWithNewLine": false,
-          "title": "2a. [action]",
+          "title": "2a. This is quite a difficult one to provide actions for without repeating what has already been said.",
           "visibleIf": "{2a} = 'No' or {2a} = 'Unsure'"
         },
         {
@@ -218,7 +218,7 @@
           "type": "expression",
           "name": "2bS",
           "startWithNewLine": false,
-          "title": "2b. [action]",
+          "title": "2b. Your organisation’s data and information security team should be able to advise on security requirements and risks. \n\nRefer to the government’s [personal data security principles](https://www.gov.uk/guidance/principles-for-securing-personal-data-in-government-services) when processing and sharing personal data.\n\nIf you’re working with any third-party suppliers to store, collect or process data, make sure they’re vetted and that they comply with the security requirements of your project.",
           "visibleIf": "{2b} = 'Unsure'"
         },
         {
@@ -264,7 +264,7 @@
           "type": "expression",
           "name": "3S",
           "startWithNewLine": false,
-          "title": "3. [action]",
+          "title": "3. Your organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.",
           "visibleIf": "{3} = 'Unsure'"
         },
         {
@@ -278,7 +278,7 @@
           "type": "expression",
           "name": "3aS",
           "startWithNewLine": false,
-          "title": "3a. [action]",
+          "title": "3a. Where personal data is being processed, you must comply with relevant laws: You need to carry out a Data Protection Impact Assessment (DPIA) before you process personal data when the processing is likely to result in a high risk to the rights and freedoms of individuals. It’s good practice to publish your completed DPIA to demonstrate that you’re taking the appropriate precautions to protect personal data and ensure your system is fair.\n\nYour organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.",
           "visibleIf": "{3a} = 'No'"
         },
         {
@@ -330,7 +330,7 @@
           "type": "expression",
           "name": "4S",
           "startWithNewLine": true,
-          "title": "4. [action]",
+          "title": "4. Where personal data is being processed, you must comply with relevant laws: You need to carry out a Data Protection Impact Assessment (DPIA) before you process personal data when the processing is likely to result in a high risk to the rights and freedoms of individuals. It’s good practice to publish your completed DPIA to demonstrate that you’re taking the appropriate precautions to protect personal data and ensure your system is fair.\n\nYour organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.\n\nNew data assets should be registered via organisational data catalogues, or cross-departmentally by designating [Essential Shared Data Assets (ESDAs)](https://www.gov.uk/government/publications/essential-shared-data-assets-and-data-ownership-in-government/essential-shared-data-assets-esdas-guidance-for-departments-html).",
           "visibleIf": "{4} = 'No' or {4} = 'Unsure'"
         },
         {
@@ -341,25 +341,11 @@
           "visibleIf": "{4a} = 'Yes'"
         },
         {
-          "type": "expression",
-          "name": "4aS",
-          "startWithNewLine": false,
-          "title": "4a. [action]",
-          "visibleIf": "{4a} = 'No'"
-        },
-        {
           "type": "comment",
           "name": "4bT",
           "startWithNewLine": true,
           "title": "4b. Briefly explain how data sharing achieves a benefit and is necessary.",
           "visibleIf": "{4b} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "4bS",
-          "startWithNewLine": false,
-          "title": "4b. [action]",
-          "visibleIf": "{4b} = 'No' or {4b} = 'Unsure'"
         },
         {
           "type": "radiogroup",
@@ -389,7 +375,7 @@
           "type": "expression",
           "name": "5S",
           "startWithNewLine": false,
-          "title": "5. [action]",
+          "title": "5. You should always follow your organisation’s internal governance policies\nData and AI projects should have appropriate and effective governance and oversight. This includes clear roles and responsibilities, clear documentation, and being transparent about the system and the processes around it.",
           "visibleIf": "{5} = 'Somewhat' or {5} = 'No'"
         },
         {
@@ -427,7 +413,7 @@
           "type": "expression",
           "name": "6S",
           "startWithNewLine": true,
-          "title": "6. [action]",
+          "title": "6. You need strong oversight and clear responsibilities to ensure accountability across the life cycle of your project. You must set out who is responsible at each stage of the project.\n\nThis includes naming: senior responsible owners (SROs), data owners, data stewards, data custodians, and AI asset owners.",
           "visibleIf": "{6} = 'No'"
         },
         {
@@ -441,7 +427,7 @@
           "type": "expression",
           "name": "6aS",
           "startWithNewLine": false,
-          "title": "6a. [action]",
+          "title": "6a. As the primary risk owners for the project, senior responsible owners ensure a real policy or business need is being addressed, engage with stakeholders and assure ongoing viability. \nFor project governance to be effective, it’s essential that the people accountable have appropriate technical expertise and knowledge, and authority, to implement necessary changes. This is especially important for complex projects or those involving multiple suppliers, which is often the case with data and AI projects.",
           "visibleIf": "{6a} = 'No' or {6a} = 'Unsure'"
         },
         {
@@ -487,7 +473,7 @@
           "type": "expression",
           "name": "7S",
           "startWithNewLine": false,
-          "title": "7. [action]",
+          "title": "7. To ensure AI and data projects can be audited or reviewed, your team must: record who is responsible for each part of the system, including suppliers, and record decisions made during project design, model deployment and system deployment processes.\n\nFor example, a data set factsheet can help explain how data was handled.\nThe [Algorithmic Transparency Recording Standard (ATRS)](https://www.gov.uk/government/publications/algorithmic-transparency-template) also provides a template for public sector organisations to document and share information about how and why they’re using algorithmic tools.",
           "visibleIf": "{7} = 'Somewhat' or {7} = 'No'"
         },
         {
@@ -539,7 +525,7 @@
           "type": "expression",
           "name": "8S",
           "startWithNewLine": true,
-          "title": "8. [action]",
+          "title": "8. When designing a government tool or service, you should always start by learning about the people who will use it. If you don’t understand users or what they need from your service, you cannot build the right thing.\n\nYou should involve diverse stakeholders in the design and testing process and undertake thorough user research and public engagement to ensure you’re including the views of those that may be affected or digitally excluded.\n\nYou must understand and comply with your legal obligations and duties. Refer to the Public Sector Equality Duty (PSED) and the Equality Act 2010.",
           "visibleIf": "{8} = 'No' or {8} = 'Unsure'"
         },
         {
@@ -553,7 +539,7 @@
           "type": "expression",
           "name": "8aS",
           "startWithNewLine": false,
-          "title": "8a. [action]",
+          "title": "8a. You must take steps to protect research participants. This applies to your team and to any third-party researchers you work with. \n\nYou should:\no make sure that participants understand the research and any risks involved \no only include participants who give clear, informed consent without pressure or coercion \no allow participants to withdraw at any time (with exceptions for situations like medical research where participant information is anonymised and aggregated and cannot be removed from the research data set)\no anonymise all data used in reports or analysis.\n\nThe Service Manual has guidance on [managing user research data and participant privacy](https://www.gov.uk/service-manual/user-research/managing-user-research-data-participant-privacy).",
           "visibleIf": "{8a} = 'No' or {8a} = 'Unsure'"
         },
         {
@@ -567,7 +553,7 @@
           "type": "expression",
           "name": "8bS",
           "startWithNewLine": false,
-          "title": "8b. [action]",
+          "title": "8b. Some research projects involve sensitive topics, such as child protection or adult safeguarding. These can be distressing for both researchers and participants. To reduce risk, you should:\no highlight any sensitive topics in workshop or interview plans\no set up a ‘safety check-in’ protocol to support staff after sessions, particularly for one-to-one or lone working\no use existing ethical guidelines and processes, such as the Service Manual’s guidance on researching emotionally sensitive subjects\n\nIn rare cases, researchers may be targeted by participants or others. If this happens, or if the risk is known in advance, put safeguards in place to protect staff.\n\nThe Government Analysis Function provides a list of resources related to conducting research and analysis in government.",
           "visibleIf": "{8b} = 'No' or {8b} = 'Unsure'"
         },
         {
@@ -619,7 +605,7 @@
           "type": "expression",
           "name": "9aS",
           "startWithNewLine": false,
-          "title": "9a. [action]",
+          "title": "9a. Having a diverse and multidisciplinary team can provide a strong foundation for building fairer tools and services. A diverse team is often able to spot issues early in the development process by bringing varied perspectives and lived experiences.\n\nIf it’s not possible to assemble a diverse team, you should note any potential gaps in understanding and proactively seek ways to engage with a variety of stakeholders. This might include through user testing, public engagement and, where possible, presenting ideas at internal or external community events.\n\nThe Service Manual includes guidance on the [people you need to have in your team at each phase](https://www.gov.uk/service-manual/the-team/set-up-a-service-team).",
           "visibleIf": "{9a} = 'No'"
         },
         {
@@ -658,7 +644,7 @@
           "type": "expression",
           "name": "10S",
           "startWithNewLine": true,
-          "title": "10. [action]",
+          "title": "10. At the start of your project, you should make sure that:\no your project has a clear purpose\no there’s a clear public benefit\no you’re designing with humans in mind and in a human-centred way.\n\nYou should involve diverse stakeholders in the design and testing process and undertake thorough user research and public engagement to ensure you’re including the views of those that may be affected or digitally excluded.\n\nYou must understand and comply with your legal obligations and duties. Refer to the [Public Sector Equality Duty (PSED)](https://www.equalityhumanrights.com/guidance/public-sector-equality-duty-psed) and the [Equality Act 2010](https://www.gov.uk/guidance/equality-act-2010-guidance).\n\nYou should continually revisit user needs throughout your project. The Service Manual explains more about [user needs](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs).",
           "visibleIf": "{10} = 'Somewhat' or {10} = 'No'"
         },
         {
@@ -672,7 +658,7 @@
           "type": "expression",
           "name": "10aS",
           "startWithNewLine": false,
-          "title": "10a. [action]",
+          "title": "10a. You should involve diverse stakeholders in the design and testing process and undertake thorough user research and public engagement to ensure you’re including the views of those that may be affected or digitally excluded.\n\nYou must understand and comply with your legal obligations and duties. Refer to the [Public Sector Equality Duty (PSED)](https://www.equalityhumanrights.com/guidance/public-sector-equality-duty-psed) and the [Equality Act 2010](https://www.gov.uk/guidance/equality-act-2010-guidance).\n\nYou should continually revisit user needs throughout your project. The Service Manual explains more about [user needs](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs).",
           "visibleIf": "{10a} = 'Somewhat' or {10a} = 'No'"
         },
         {
@@ -711,7 +697,7 @@
           "type": "expression",
           "name": "11S",
           "startWithNewLine": true,
-          "title": "11. [action]",
+          "title": "11. You should include stakeholder perspectives by engaging with civil society groups, affected communities and wider public sector to understand values and impacts.\n\nProactive public and stakeholder engagement is critical to understand the potential impacts of a tool or system. Engaging with stakeholders can help to build trust and improve adoption of AI tools and systems.",
           "visibleIf": "{11} = 'Somewhat' or {11} = 'No'"
         },
         {
@@ -725,7 +711,7 @@
           "type": "expression",
           "name": "11aS",
           "startWithNewLine": false,
-          "title": "11a. [action]",
+          "title": "11a. You should include stakeholder perspectives by engaging with civil society groups, affected communities and wider public sector to understand values and impacts.\n\nEthical use of data and AI means listening to different perspectives and checking that your tools work as intended. Otherwise, you could unintentionally exclude people or cause harm.",
           "visibleIf": "{11a} = 'No' or {11a} = 'Unsure'"
         },
         {
@@ -756,7 +742,7 @@
           "type": "expression",
           "name": "12S",
           "startWithNewLine": false,
-          "title": "12. [action]",
+          "title": "12. You should include stakeholder perspectives by engaging with civil society groups, affected communities and wider public sector to understand values and impacts.\n\nEthical use of data and AI means listening to different perspectives and checking that your tools work as intended. Otherwise, you could unintentionally exclude people or cause harm.",
           "visibleIf": "{12} = 'No' or {12} = 'Unsure'"
         },
         {
@@ -801,7 +787,7 @@
           "type": "expression",
           "name": "13S",
           "startWithNewLine": false,
-          "title": "13. [action]",
+          "title": "13. Environmental sustainability means thinking about the wider impact of your project on people and the planet. It’s important to consider this from the start, as it can influence your choices about tools, suppliers and infrastructure.\n\nThe environmental sustainability chapter in the Data and AI Ethics Framework provides further advice on how to assess the potential impact of data and AI projects.",
           "visibleIf": "{13} = 'No'"
         },
         {
@@ -815,7 +801,7 @@
           "type": "expression",
           "name": "13aS",
           "startWithNewLine": false,
-          "title": "13a. [action]",
+          "title": "13a. Before you begin building a tool or system, you should develop a plan to monitor and evaluate the environmental impact.\n\nYou should think about factors such as: \no Whether AI is the best technology or tool for the task – there may be alternatives that provide as good, or better, results and require less resource-intensive training and development.\no Project size and complexity – how much data will be processed, the number of end users, bandwidth and latency requirements, prompt efficiency\no Software requirements – including model type.\no Hardware requirements – such as data centre usage or Internet of Things (IoT) devices.\n\nThe Service Manual also has guidance on how to build more [environmentally sustainable digital services in government](https://www.gov.uk/service-manual/design/environmentally-sustainable-services).",
           "visibleIf": "{13a} = 'No' or {13a} = 'Unsure'"
         }
       ]
@@ -1650,7 +1636,10 @@
           "type": "radiogroup",
           "name": "1",
           "startWithNewLine": true,
-          "title": "1. Are you measuring and monitoring performance of your system?",
+          "themes": [
+            "Safety"
+          ],
+          "title": "1. Are you measuring and monitoring the safety of your live system?",
           "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
             "Yes",
@@ -1704,6 +1693,10 @@
           "type": "radiogroup",
           "name": "2",
           "startWithNewLine": true,
+          "themes": [
+            "Accountability",
+            "Safety"
+          ],
           "title": "2. Have you established opportunities for users to submit feedback on system performance?",
           "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
@@ -1731,6 +1724,10 @@
           "type": "radiogroup",
           "name": "3",
           "startWithNewLine": true,
+          "themes": [
+            "Transparency",
+            "Accountability"
+          ],
           "title": "3. Are you maintaining logs and documentation while your system is live?",
           "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
           "choices": [
@@ -1772,6 +1769,10 @@
           "type": "radiogroup",
           "name": "4",
           "startWithNewLine": true,
+          "themes": [
+            "Transparency",
+            "Accountability"
+          ],
           "title": "4. Are your system outputs consistently understandable and explainable to users and key stakeholders?",
           "visibleIf": "{FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d'",
           "choices": [
@@ -1800,6 +1801,10 @@
           "type": "radiogroup",
           "name": "5",
           "startWithNewLine": true,
+          "themes": [
+            "Transparency",
+            "Accountability"
+          ],
           "title": "5. Do your users know that an AI system is involved in producing outputs?",
           "visibleIf": "{FILTER} contains 'Option b'",
           "choices": [
@@ -1828,6 +1833,10 @@
           "type": "radiogroup",
           "name": "6",
           "startWithNewLine": true,
+          "themes": [
+            "Transparency",
+            "Accountability"
+          ],
           "title": "6. Are you required to publish a transparency record as part of the ATRS initiative?",
           "visibleIf": "{FILTER} contains 'Option b'",
           "choices": [
