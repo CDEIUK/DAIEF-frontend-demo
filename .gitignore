@@ -25,3 +25,6 @@ dist-ssr
 
 # Server
 server.js
+
+# Excel workbooks
+*.xlsx
