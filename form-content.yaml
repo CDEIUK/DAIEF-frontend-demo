@@ -15,9 +15,6 @@ sections:
 
       - reference: FILTER
         field_text: Select your project filters.
-        component_type: multiselect
-        trigger: None
-        daief_themes: N/A
         options:
           a: My project involves the collection, use, or sharing of data
           b: My project involves the use of AI or broader algorithmic tools
@@ -25,6 +22,9 @@ sections:
           d: My project involves making decisions with a significant or legal effects
           e: My project involves work in a safety-critical area (e.g. policing, healthcare, working with
             vulnerable people)
+        component_type: multiselect
+        trigger: None
+        daief_themes: N/A
         hint_text: Your answers will be used to show you the questions most relevant to your work. If
           you are not sure whether a statement applies, we encourage you to select it. This will help
           to ensure that potential risks and opportunities are captured and explored.
@@ -46,33 +46,33 @@ sections:
 
       - reference: '1'
         field_text: Have you consulted your organisation’s Data Protection Officer (DPO) about your project?
-        component_type: radios
-        trigger: FILTER=a
-        daief_themes: Accountability, Privacy
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: FILTER=a
+        daief_themes: Accountability, Privacy
         hint_text: See the ICO website for more information about DPOs.
 
       - reference: 1a
         field_text: Have you received all the data processing advice that you need?
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
         component_type: radios
         trigger: 1=Yes
         daief_themes: Accountability, Privacy
-        options:
-          a: 'Yes'
-          b: 'No'
-          c: Unsure
 
       - reference: 1b
         field_text: Do you intend to follow all the advice that you've received?
-        component_type: radios
-        trigger: 1a=Yes
-        daief_themes: Accountability, Privacy
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: 1a=Yes
+        daief_themes: Accountability, Privacy
 
       - reference: 1S
         field_text: 'If your project uses personal data, you must meet your legal duties under the UK
@@ -121,32 +121,32 @@ sections:
 
       - reference: '2'
         field_text: Have you consulted with your organisation’s data and information security teams?
+        options:
+          a: 'Yes'
+          b: 'No'
         component_type: radios
         trigger: FILTER=a OR b OR c
         daief_themes: Accountability, Privacy, Safety
-        options:
-          a: 'Yes'
-          b: 'No'
 
       - reference: 2a
         field_text: Have you received all the security advice that you need?
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
         component_type: radios
         trigger: 2=Yes
         daief_themes: Accountability, Privacy, Safety
-        options:
-          a: 'Yes'
-          b: 'No'
-          c: Unsure
 
       - reference: 2b
         field_text: Do you intend to follow all the advice that you've received?
-        component_type: radios
-        trigger: 2a=Yes
-        daief_themes: Accountability, Privacy, Safety
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: 2a=Yes
+        daief_themes: Accountability, Privacy, Safety
 
       - reference: 2S
         field_text: "You should involve information governance teams early in the project design process\
@@ -194,22 +194,22 @@ sections:
 
       - reference: '3'
         field_text: Will you complete a DPIA for this project?
-        component_type: radios
-        trigger: FILTER=a
-        daief_themes: Accountability, Privacy, Societal Impact
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: FILTER=a
+        daief_themes: Accountability, Privacy, Societal Impact
 
       - reference: 3a
         field_text: Have you conducted a full Data Protection Impact Assessment (DPIA)?
-        component_type: radios
-        trigger: 3=Yes
-        daief_themes: Accountability, Privacy, Societal Impact
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: 3=Yes
+        daief_themes: Accountability, Privacy, Societal Impact
 
       - reference: 3T
         field_text: Explain briefly why your project isn't ikely to result in a high risk to the rights
@@ -248,33 +248,33 @@ sections:
       - reference: '4'
         field_text: Will you share personal data with or receive personal data from other organisations
           as part of this project?
-        component_type: radios
-        trigger: FILTER=a
-        daief_themes: Accountability, Privacy
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: FILTER=a
+        daief_themes: Accountability, Privacy
 
       - reference: 4a
         field_text: Have you established a data sharing agreement with other organisations?
-        component_type: radios
-        trigger: 4=Yes
-        daief_themes: Accountability, Privacy
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: 4=Yes
+        daief_themes: Accountability, Privacy
 
       - reference: 4b
         field_text: Are you confident that the data sharing benefits are necessary and proportional to
           any privacy risks incurred?
-        component_type: radios
-        trigger: 4=Yes
-        daief_themes: Accountability, Privacy
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: 4=Yes
+        daief_themes: Accountability, Privacy
 
       - reference: 4S
         field_text: 'Where personal data is being processed, you must comply with relevant laws: You need
@@ -322,13 +322,13 @@ sections:
       - reference: '5'
         field_text: Do you have governance structures to support the safe, effective and responsible implementation
           of the project?
-        component_type: radios
-        trigger: FILTER=c OR d OR e
-        daief_themes: Accountability
         options:
           a: 'Yes'
           b: Somewhat
           c: 'No'
+        component_type: radios
+        trigger: FILTER=c OR d OR e
+        daief_themes: Accountability
 
       - reference: 5T
         field_text: Briefly describe the governance structures that will support this project.
@@ -348,23 +348,23 @@ sections:
 
       - reference: '6'
         field_text: Have you assigned responsibility for the project’s outcomes?
-        component_type: radios
-        trigger: FILTER=c OR d OR e
-        daief_themes: Accountability, Safety
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: FILTER=c OR d OR e
+        daief_themes: Accountability, Safety
 
       - reference: 6a
         field_text: Is the responsible owner able to oversee the project effectively and intervene quickly
           if in the case of harmful outcomes?
-        component_type: radios
-        trigger: 6=Yes
-        daief_themes: Accountability, Safety
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: 6=Yes
+        daief_themes: Accountability, Safety
 
       - reference: 6S
         field_text: 'You need strong oversight and clear responsibilities to ensure accountability across
@@ -396,13 +396,13 @@ sections:
 
       - reference: '7'
         field_text: Are you confident in documenting key project decisions?
-        component_type: radios
-        trigger: FILTER=c OR d OR e
-        daief_themes: Transparency, Accountability
         options:
           a: 'Yes'
           b: Somewhat
           c: 'No'
+        component_type: radios
+        trigger: FILTER=c OR d OR e
+        daief_themes: Transparency, Accountability
 
       - reference: 7T
         field_text: Provide the types of key decisions that you'll document.
@@ -441,33 +441,33 @@ sections:
 
       - reference: '8'
         field_text: Will you conduct research as part of your project?
+        options:
+          a: 'Yes'
+          b: 'No'
+          c: Unsure
         component_type: radios
         trigger: FILTER=a OR b OR c OR d OR e
         daief_themes: Safety
-        options:
-          a: 'Yes'
-          b: 'No'
-          c: Unsure
 
       - reference: 8a
         field_text: Are you confident in protecting research participants from safety risks?
-        component_type: radios
-        trigger: 8=Yes
-        daief_themes: Safety
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: 8=Yes
+        daief_themes: Safety
 
       - reference: 8b
         field_text: Are you confident in protecting reseachers from safety risks?
-        component_type: radios
-        trigger: 8=Yes
-        daief_themes: Safety
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: 8=Yes
+        daief_themes: Safety
 
       - reference: 8S
         field_text: 'When designing a government tool or service, you should always start by learning
@@ -538,22 +538,22 @@ sections:
 
       - reference: '9'
         field_text: Can you ensure that your project team is diverse and multidisciplinary?
-        component_type: radios
-        trigger: FILTER=a OR b OR c OR d OR e
-        daief_themes: Fairness, Societal Impact
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        daief_themes: Fairness, Societal Impact
 
       - reference: 9a
         field_text: Have you considered how a lack of diversity might impact your project?
-        component_type: radios
-        trigger: 9=No OR Unsure
-        daief_themes: Fairness, Societal Impact
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: 9=No OR Unsure
+        daief_themes: Fairness, Societal Impact
 
       - reference: 9T
         field_text: Briefly describe how you will ensure diversity across the team.
@@ -587,23 +587,23 @@ sections:
 
       - reference: '10'
         field_text: Do you have a clear picture of your target user groups?
+        options:
+          a: 'Yes'
+          b: Somewhat
+          c: 'No'
         component_type: radios
         trigger: FILTER=a OR b OR c OR d OR e
         daief_themes: Fairness, Societal Impact
-        options:
-          a: 'Yes'
-          b: Somewhat
-          c: 'No'
 
       - reference: 10a
         field_text: Have you considered how different groups could be impacted unequally by your project?
-        component_type: radios
-        trigger: 10=Yes
-        daief_themes: Fairness, Societal Impact
         options:
           a: 'Yes'
           b: Somewhat
           c: 'No'
+        component_type: radios
+        trigger: 10=Yes
+        daief_themes: Fairness, Societal Impact
 
       - reference: 10S
         field_text: 'At the start of your project, you should make sure that:
@@ -664,23 +664,23 @@ sections:
 
       - reference: '11'
         field_text: Do you have a clear picture of all your project stakeholders?
-        component_type: radios
-        trigger: FILTER=a OR b OR c OR d OR e
-        daief_themes: Fairness, Societal Impact
         options:
           a: 'Yes'
           b: Somewhat
           c: 'No'
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        daief_themes: Fairness, Societal Impact
 
       - reference: 11a
         field_text: Will you engage with a wide variety of stakeholders throughout the project lifecycle?
-        component_type: radios
-        trigger: 11=Yes
-        daief_themes: Fairness, Societal Impact
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: 11=Yes
+        daief_themes: Fairness, Societal Impact
 
       - reference: 11S
         field_text: 'You should include stakeholder perspectives by engaging with civil society groups,
@@ -714,13 +714,13 @@ sections:
       - reference: '12'
         field_text: Will you work with civil society organisations or external domain experts to guide
           your project?
-        component_type: radios
-        trigger: FILTER=c OR d OR e
-        daief_themes: Societal impact
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: FILTER=c OR d OR e
+        daief_themes: Societal impact
 
       - reference: 12T
         field_text: Briefly describe how you'll engage with civil society organisations and external experts.
@@ -742,24 +742,24 @@ sections:
       - reference: '13'
         field_text: Have you considered the potential environmental impact and sustainability of your
           project?
-        component_type: radios
-        trigger: FILTER=a OR b
-        daief_themes: Environmental sustainability
         options:
           a: 'Yes'
           b: Somewhat
           c: 'No'
+        component_type: radios
+        trigger: FILTER=a OR b
+        daief_themes: Environmental sustainability
 
       - reference: 13a
         field_text: Will you monitor, evaluate and address environmental impact and sustainability challenges
           throughout the project lifecycle?
-        component_type: radios
-        trigger: 13=Yes OR Somewhat
-        daief_themes: Environmental sustainability
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: 13=Yes OR Somewhat
+        daief_themes: Environmental sustainability
 
       - reference: 13T
         field_text: Briefly explain the environmental and sustainability implications of your project.
@@ -807,27 +807,27 @@ sections:
       - reference: '1'
         field_text: Do you have a data quality action plan or acceptance criteria to ensure your data
           is fit for purpose?
-        component_type: radios
-        trigger: FILTER=a
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: FILTER=a
 
       - reference: 1a
         field_text: Have you performed an initial data quality assessment?
-        component_type: radios
-        trigger: 1=Yes
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: 1=Yes
 
       - reference: 1b
         field_text: Do you have a plan for checking and validating data quality across the data lifecycle?
-        component_type: radios
-        trigger: 1=Yes
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: 1=Yes
 
       - reference: 1T
         field_text: Provide a summary or link to your action plan or acceptance criteria.
@@ -863,20 +863,20 @@ sections:
       - reference: '2'
         field_text: Is your project purpose, design and intended outcome clear to all your key stakeholders
           yet?
-        component_type: radios
-        trigger: FILTER=a OR b OR c OR d OR e
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
 
       - reference: 2a
         field_text: Do you have a plan to communicate project purpose, design and intended outcomes later?
-        component_type: radios
-        trigger: 2=No
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: 2=No
 
       - reference: 2S
         field_text: '[action]'
@@ -896,19 +896,19 @@ sections:
       - reference: '3'
         field_text: Are you processing or do you intend to process people’s personal data as part of your
           project?
-        component_type: radios
-        trigger: FILTER=a
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: FILTER=a
 
       - reference: 3a
         field_text: Are you communicating with or informing users about how their data is being used?
-        component_type: radios
-        trigger: 3=Yes
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: 3=Yes
 
       - reference: 3aT
         field_text: Describe how you are communicating your personal data processing activities to users.
@@ -923,11 +923,11 @@ sections:
       - reference: '4'
         field_text: Have you integrated or do you intend to integrate any privacy-enhancing technologies
           into your project?
-        component_type: radios
-        trigger: FILTER=a
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: FILTER=a
 
       - reference: 4T
         field_text: Briefly describe the PETs you have used or will use in your project.
@@ -942,11 +942,11 @@ sections:
       - reference: '5'
         field_text: Have you ensured that the system’s outputs can be clearly explained and understood
           by users and key stakeholders yet?
-        component_type: radios
-        trigger: FILTER=a OR b OR c OR d
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d
 
       - reference: 5T
         field_text: Briefly describe how you have ensured explainability.
@@ -960,11 +960,11 @@ sections:
 
       - reference: '6'
         field_text: Have you planned or started any fairness testing yet?
-        component_type: radios
-        trigger: FILTER=a OR b OR c OR d
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d
 
       - reference: 6T
         field_text: Describe the fairness testing you have started or planned.
@@ -978,21 +978,21 @@ sections:
 
       - reference: '7'
         field_text: Have you investigated representativeness and bias within your project datasets yet?
-        component_type: radios
-        trigger: FILTER=a OR d
         options:
           a: 'Yes'
           b: Somewhat
           c: 'No'
+        component_type: radios
+        trigger: FILTER=a OR d
 
       - reference: 7a
         field_text: Are you able to address any dataset limitations that you have found?
-        component_type: radios
-        trigger: 7=Yes OR Somewhat
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: 7=Yes OR Somewhat
 
       - reference: 7S
         field_text: '[action]'
@@ -1017,12 +1017,12 @@ sections:
 
       - reference: '8'
         field_text: Have you considered the diversity of needs within your target user group yet?
-        component_type: radios
-        trigger: FILTER=a OR b OR c OR d OR e
         options:
           a: 'Yes'
           b: Somewhat
           c: 'No'
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
 
       - reference: 8T
         field_text: Briefly describe the various needs within your target user group that you will account
@@ -1037,12 +1037,12 @@ sections:
 
       - reference: '9'
         field_text: Have you considered the harms in not undertaking your project?
-        component_type: radios
-        trigger: FILTER=a OR b OR c OR d OR e
         options:
           a: 'Yes'
           b: Somewhat
           c: 'No'
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
 
       - reference: 9T
         field_text: Briefly explain the harms that might be caused by not undertaking this project.
@@ -1056,21 +1056,21 @@ sections:
 
       - reference: '10'
         field_text: Could your solution have an impact on employment, working conditions or required skills?
-        component_type: radios
-        trigger: FILTER=a OR b OR c OR d OR e
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
 
       - reference: 10a
         field_text: Have you considered who is likely to be relatively advantaged and disadvantaged by
           this impact?
-        component_type: radios
-        trigger: 10=Yes
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: 10=Yes
 
       - reference: 10T
         field_text: Describe the likely or potential employment, working condition or required skill impacts
@@ -1096,21 +1096,21 @@ sections:
       - reference: '11'
         field_text: Have you identified any trade-offs between ethical principles and business or organisational
           goals within your project?
-        component_type: radios
-        trigger: FILTER=a OR b OR c OR d OR e
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
 
       - reference: 11a
         field_text: Have you considered alternative solutions or project designs to meeting your intended
           outcomes that would achieve a better balance of trade-offs?
-        component_type: radios
-        trigger: 11=Yes
         options:
           a: 'Yes'
           b: Somewhat
           c: 'No'
+        component_type: radios
+        trigger: 11=Yes
 
       - reference: 11T
         field_text: Briefly describe the trade-offs you've identified.
@@ -1138,12 +1138,12 @@ sections:
       - reference: '1'
         field_text: Are you confident in the accuracy, representativeness and completeness of the data
           that is shaping your solution design?
-        component_type: radios
-        trigger: FILTER=a
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: FILTER=a
 
       - reference: 1T
         field_text: Briefly describe the data quality tests and/or results you've performed to give you
@@ -1158,29 +1158,29 @@ sections:
 
       - reference: '2'
         field_text: Have you performed fairness tests on your AI system?
-        component_type: radios
-        trigger: FILTER=b
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: FILTER=b
 
       - reference: 2a
         field_text: Are you confident that your AI system will lead to fair outcomes yet?
-        component_type: radios
-        trigger: 2=Yes
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: 2=Yes
 
       - reference: 2b
         field_text: Will you take any corrective action to address fairness issues before going live?
-        component_type: radios
-        trigger: 2a=No OR Unsure
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: 2a=No OR Unsure
 
       - reference: 2S
         field_text: '[action]'
@@ -1210,11 +1210,11 @@ sections:
 
       - reference: '3'
         field_text: Have you ensured accessibility for all users yet?
-        component_type: radios
-        trigger: FILTER=a OR b OR c OR d OR e
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
 
       - reference: 3T
         field_text: Briefly describe the accessibility measurs you've taken.
@@ -1228,11 +1228,11 @@ sections:
 
       - reference: '4'
         field_text: Have you established and tested human oversight mechanisms?
-        component_type: radios
-        trigger: FILTER=b OR c
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: FILTER=b OR c
 
       - reference: 4T
         field_text: Briefly describe the governance checks and controls mechanisms that you've established
@@ -1248,12 +1248,12 @@ sections:
       - reference: '5'
         field_text: Would others be able to reproduce your project process, results and outputs using
           your current project documentation?
-        component_type: radios
-        trigger: FILTER=a
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: FILTER=a
 
       - reference: 5T
         field_text: List the main resources that would allow others to understand and reproduce your project.
@@ -1267,20 +1267,20 @@ sections:
 
       - reference: '6'
         field_text: Is your project within scope of the Algorithmic Transparency Recording Standard (ATRS)?
-        component_type: radios
-        trigger: FILTER=b
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: FILTER=b
 
       - reference: 6a
         field_text: Have you reviewed the ATRS for information you are required to publish?
-        component_type: radios
-        trigger: 6=Yes
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: 6=Yes
 
       - reference: 6S
         field_text: '[action]'
@@ -1295,20 +1295,20 @@ sections:
       - reference: '7'
         field_text: Have you integrated environmental evaluation and monitoring processes into your project
           yet?
-        component_type: radios
-        trigger: FILTER=a OR b OR c OR d OR e
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
 
       - reference: 7a
         field_text: Have you set environmental and sustainability thresholds that your project needs to
           adhere to?
-        component_type: radios
-        trigger: 7=Yes
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: 7=Yes
 
       - reference: 7T
         field_text: Briefly describe how you've integrated these processes into your project.
@@ -1333,19 +1333,19 @@ sections:
 
       - reference: '8'
         field_text: Have you established ‘go’ or ‘no-go’ criteria for your solution to go live?
-        component_type: radios
-        trigger: FILTER=a OR b OR c OR d OR e
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
 
       - reference: 8a
         field_text: Do you have a plan for safely transitioning from development to live yet?
-        component_type: radios
-        trigger: 9=Yes
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: 9=Yes
 
       - reference: 8T
         field_text: List or link the ‘go’ or ‘no-go’ criteria for your solution to go live.
@@ -1372,20 +1372,20 @@ sections:
 
       - reference: '1'
         field_text: Are you measuring and monitoring the safety of your live system?
+        options:
+          a: 'Yes'
+          b: 'No'
         component_type: radios
         trigger: FILTER=a OR b OR c OR d OR e
         daief_themes: Safety
-        options:
-          a: 'Yes'
-          b: 'No'
 
       - reference: 1a
         field_text: Do you have a response plan for if your system degrades or becomes unsafe?
-        component_type: radios
-        trigger: 1=Yes
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: 1=Yes
 
       - reference: 1T
         field_text: List the ways in which you are measuring and monitoring system performance.
@@ -1409,12 +1409,12 @@ sections:
 
       - reference: '2'
         field_text: Have you established opportunities for users to submit feedback on system performance?
-        component_type: radios
-        trigger: FILTER=a OR b OR c OR d OR e
-        daief_themes: Accountability, Safety
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        daief_themes: Accountability, Safety
 
       - reference: 2T
         field_text: Briefly describe the opportunities you've established for users to submit feedback
@@ -1429,22 +1429,22 @@ sections:
 
       - reference: '3'
         field_text: Are you maintaining logs and documentation while your system is live?
-        component_type: radios
-        trigger: FILTER=a OR b OR c OR d OR e
-        daief_themes: Transparency, Accountability
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: FILTER=a OR b OR c OR d OR e
+        daief_themes: Transparency, Accountability
 
       - reference: 3a
         field_text: Are you confident that these records are transparent enough and will support investigations
           if issues occur?
-        component_type: radios
-        trigger: 3=Yes
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: 3=Yes
 
       - reference: 3S
         field_text: '[action]'
@@ -1459,13 +1459,13 @@ sections:
       - reference: '4'
         field_text: Are your system outputs consistently understandable and explainable to users and key
           stakeholders?
-        component_type: radios
-        trigger: FILTER=b OR c OR d
-        daief_themes: Transparency, Accountability
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: FILTER=b OR c OR d
+        daief_themes: Transparency, Accountability
 
       - reference: 4T
         field_text: Briefly describe the measures you've taken to ensure that users can rationalise system
@@ -1480,13 +1480,13 @@ sections:
 
       - reference: '5'
         field_text: Do your users know that an AI system is involved in producing outputs?
-        component_type: radios
-        trigger: FILTER=b
-        daief_themes: Transparency, Accountability
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: FILTER=b
+        daief_themes: Transparency, Accountability
 
       - reference: 5T
         field_text: Describe the measures you've taken to ensure that users know that they are engaging
@@ -1501,21 +1501,21 @@ sections:
 
       - reference: '6'
         field_text: Are you required to publish a transparency record as part of the ATRS initiative?
-        component_type: radios
-        trigger: FILTER=b
-        daief_themes: Transparency, Accountability
         options:
           a: 'Yes'
           b: 'No'
           c: Unsure
+        component_type: radios
+        trigger: FILTER=b
+        daief_themes: Transparency, Accountability
 
       - reference: 6a
         field_text: Have you published a transparency record yet?
-        component_type: radios
-        trigger: 6=Yes
         options:
           a: 'Yes'
           b: 'No'
+        component_type: radios
+        trigger: 6=Yes
 
       - reference: 6S
         field_text: '[action]'
