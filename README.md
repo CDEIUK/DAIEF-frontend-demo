@@ -24,7 +24,7 @@ Use a Markdown link in the field text or hint text, for example:
 
 The app renders HTTP(S) Markdown links in question titles and descriptions. Other content is rendered as text.
 
-When generating the survey JSON, the script reads the `schema-input` table from `Interactive DAIEF schema (APP).xlsx`. Put anchor text in square brackets in the `Field text` cell and its destination URL(s) in the `Field text hyperlinks` cell (also accepted as `Field text link`). Separate multiple URLs with line breaks. Anchors and URLs are paired in order; if there are fewer URLs than anchors, the last URL is reused, and extra URLs are ignored.
+When generating the survey JSON, the script reads `schema-input.csv`. It accepts a header row first, or a form-version row followed by the schema headers. Put anchor text in square brackets in the `Field text` cell and its destination URL(s) in the `Field text hyperlinks` cell (also accepted as `Field text link`). Separate multiple URLs with line breaks. Anchors and URLs are paired in order; if there are fewer URLs than anchors, the last URL is reused, and extra URLs are ignored.
 
 ## Public demo
 

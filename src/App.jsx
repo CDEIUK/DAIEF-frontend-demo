@@ -29,7 +29,6 @@ function App() {
   const [activePageId, setActivePageId] = useState('about')
   const [stageData, setStageData] = useState({})
   const [surveyVersion, setSurveyVersion] = useState(0)
-  const [hideCommentQuestions, setHideCommentQuestions] = useState(false)
   const [filenameDialogOpen, setFilenameDialogOpen] = useState(false)
   const [printFormatDialogOpen, setPrintFormatDialogOpen] = useState(false)
   const [filenameInput, setFilenameInput] = useState('')
@@ -274,21 +273,6 @@ function App() {
                     Export active section
                   </button>
                 </div>
-                <div className="govuk-checkboxes govuk-checkboxes--small comment-visibility-toggle">
-                  <div className="govuk-checkboxes__item">
-                    <input
-                      className="govuk-checkboxes__input"
-                      id="hide-comment-questions"
-                      name="hide-comment-questions"
-                      type="checkbox"
-                      checked={hideCommentQuestions}
-                      onChange={(event) => setHideCommentQuestions(event.target.checked)}
-                    />
-                    <label className="govuk-label govuk-checkboxes__label" htmlFor="hide-comment-questions">
-                      Hide document fields
-                    </label>
-                  </div>
-                </div>
               </div>
             {filenameDialogOpen && (
               <div className="filename-dialog-backdrop">
@@ -394,14 +378,13 @@ function App() {
             {currentStage ? (
               <>
                 <SurveyPage
-                  key={`${activePageId}-${surveyVersion}-${hideCommentQuestions}`}
+                  key={`${activePageId}-${surveyVersion}`}
                   surveyJson={surveyJson}
                   initialData={stageData[activePageId]}
                   sharedData={activePageId === 'project-detail' ? undefined : stageData['project-detail']}
                   onDataChange={handleDataChange}
                   onNavigateToProjectDetail={() => handlePageChange('project-detail')}
                   pageIndex={currentStage.pageIndex}
-                  hideCommentQuestions={hideCommentQuestions}
                   projectName={stageData['project-detail']?.NAME}
                   printableSurveyRef={printableSurveyRef}
                 />

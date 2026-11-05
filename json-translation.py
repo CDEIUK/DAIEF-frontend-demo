@@ -1,3 +1,4 @@
+import csv
 from pathlib import Path
 import json
 import posixpath
@@ -11,6 +12,179 @@ XLSX_NAMESPACES = {
     "relationships": "http://schemas.openxmlformats.org/officeDocument/2006/relationships",
     "package": "http://schemas.openxmlformats.org/package/2006/relationships",
 }
+OPTION_COLUMNS = (
+    "Option a",
+    "Option b",
+    "Option c",
+    "Option d",
+    "Option e",
+    "Option f",
+)
+
+
+def read_schema_csv(csv_path):
+    """Read the schema CSV and its form version."""
+    with open(csv_path, encoding="utf-8-sig", newline="") as schema_file:
+        csv_reader = csv.reader(schema_file)
+        first_row = next(csv_reader, [])
+        required_headers = {"Section", "Reference", "Field text", "Component type"}
+        has_header_first = required_headers.issubset(first_row)
+        if has_header_first:
+            form_version = None
+            schema_reader = csv.DictReader(schema_file, fieldnames=first_row)
+        else:
+            form_version = (first_row[0].strip() if first_row else None) or None
+            schema_reader = csv.DictReader(schema_file)
+
+        schema = [
+            {
+                header: clean_schema_value(value or "")
+                for header, value in row.items()
+                if header
+            }
+            for row in schema_reader
+        ]
+    return form_version, schema
+
+
+def options_for_row(row):
+    """Return choice values and labels from either supported schema format."""
+    option_labels = [
+        (option, row.get(option, "").strip())
+        for option in OPTION_COLUMNS
+        if row.get(option, "").strip()
+    ]
+    if option_labels:
+        return option_labels
+
+    labels = []
+    for line in row.get("Options", "").splitlines():
+        labels.extend(
+            label.strip()
+            for label in line.split(";")
+            if label.strip()
+        )
+    return [
+        (f"Option {chr(ord('a') + index)}", label)
+        for index, label in enumerate(labels)
+    ]
+
+
+def filter_context_for_label(label):
+    """Identify a FILTER option's context from its display label."""
+    normalized_label = label.casefold()
+    if "personal data" in normalized_label:
+        return "personal"
+    if "collection" in normalized_label and "data" in normalized_label:
+        return "data"
+    if "algorithmic" in normalized_label or "ai" in normalized_label:
+        return "ai"
+    if "public" in normalized_label:
+        return "public"
+    if "decision" in normalized_label:
+        return "decision"
+    if "safety-critical" in normalized_label:
+        return "critical"
+    return None
+
+
+def condition_for_row(condition, row, page_rows, rows):
+    """Translate a schema condition into SurveyJS visibility and reset expressions."""
+    condition = condition.strip()
+    if not condition or condition.casefold() == "none":
+        return None
+
+    condition_parts = [
+        part.strip()
+        for part in re.split(r"\s+OR\s+", condition, flags=re.IGNORECASE)
+    ]
+    match = re.fullmatch(r"(.+?)(<>|=|-)(.+)", condition_parts[0])
+    if not match:
+        return None
+
+    question, operator, first_value = (part.strip() for part in match.groups())
+    operator = "=" if operator == "-" else operator
+    values = [first_value, *(part for part in condition_parts[1:] if part)]
+
+    source_row = next(
+        (
+            candidate for candidate in page_rows
+            if candidate["Reference"].strip() == question
+        ),
+        None,
+    )
+    if source_row is None:
+        current_index = next(
+            (index for index, candidate in enumerate(rows) if candidate is row),
+            len(rows),
+        )
+        source_row = next(
+            (
+                candidate for candidate in reversed(rows[:current_index])
+                if candidate["Reference"].strip() == question
+            ),
+            None,
+        )
+    if source_row is None and question.isdigit():
+        source_row = next(
+            (
+                candidate for candidate in page_rows
+                if candidate.get("Component type", "").strip().casefold() == "radios"
+                and re.match(rf"^{re.escape(question)}[a-z]*$", candidate["Reference"].strip())
+            ),
+            None,
+        )
+
+    question_name = question
+    is_checkbox_source = False
+    if source_row is not None:
+        question_name = source_row["Reference"].strip()
+        source_component = source_row.get("Component type", "").strip().casefold()
+        is_checkbox_source = source_component == "multiselect"
+
+        if source_component != "radios":
+            source_options = dict(options_for_row(source_row))
+            values = [
+                next(
+                    (
+                        option for option, label in source_options.items()
+                        if (
+                            is_checkbox_source
+                            and option.rsplit(" ", 1)[-1].casefold() == value.casefold()
+                        )
+                        or label.casefold() == value.casefold()
+                        or (
+                            question_name.casefold() == "filter"
+                            and filter_context_for_label(label) == value.casefold()
+                        )
+                    ),
+                    value,
+                )
+                for value in values
+            ]
+
+    condition_operator = operator
+    reset_operator = "<>"
+    if is_checkbox_source:
+        condition_operator = {
+            "=": "contains",
+            "<>": "notcontains",
+        }.get(operator, operator)
+        reset_operator = "notcontains"
+
+    visible_if = " or ".join(
+        f"{{{question_name}}} {condition_operator} '{value}'"
+        for value in values
+    )
+    reset_if = None
+    if operator == "=":
+        reset_if = " and ".join(
+            f"{{{question_name}}} {reset_operator} '{value}'"
+            for value in values
+        )
+
+    return {"visibleIf": visible_if, "resetValueIf": reset_if}
+
 
 section_descriptions = {
     "Project Detail": "Provide the key information about your project and change the questions you see using filters.",
@@ -230,7 +404,8 @@ def csv_to_survey(
 
     def elements_for_rows(page_rows):
         elements = []
-        text_or_suggestion_groups = set()
+        document_or_action_groups = set()
+        full_width_root_groups = set()
 
         for row in page_rows:
             reference = row["Reference"].strip()
@@ -251,29 +426,53 @@ def csv_to_survey(
 
             group_match = re.match(r"\d+", reference)
             field_group = group_match.group() if group_match else None
-            is_text_or_suggestion = field_group is not None and (
-                "T" in reference or reference.endswith("S")
+            is_root = row.get("Root", "").strip().casefold() == "y"
+            is_document_or_action = field_group is not None and (
+                "T" in reference
+                or reference.endswith("S")
+                or component_type in {"document", "action", "text", "suggestion"}
             )
-            survey_type = {"radios": "radiogroup", "suggestion": "expression", "text": "comment", "short text": "text", "multiselect": "checkbox"}.get(
-                component_type, component_type
-            )
+            survey_type = {
+                "radios": "radiogroup",
+                "action": "expression",
+                "suggestion": "expression",
+                "info": "expression",
+                "context": "expression",
+                "document": "comment",
+                "text": "comment",
+                "short text": "text",
+                "multiselect": "checkbox",
+            }.get(component_type, component_type)
             is_project_detail = (
                 row.get("Section", "").strip().casefold() == "project detail"
             )
             line_break_needed = (
-                is_project_detail or reference.isdigit() or survey_type == "comment"
+                is_project_detail
+                or is_root
+                or reference.isdigit()
+                or survey_type == "comment"
+                or component_type in {"context", "info"}
+                or field_group in full_width_root_groups
             )
-            if is_text_or_suggestion and field_group not in text_or_suggestion_groups:
+            if is_document_or_action and field_group not in document_or_action_groups:
                 line_break_needed = True
-                text_or_suggestion_groups.add(field_group)
+                document_or_action_groups.add(field_group)
 
             element = {
                 "type": survey_type,
                 "name": reference,
                 "startWithNewLine": line_break_needed,
             }
+            if is_root:
+                element["isRoot"] = True
+            if is_root or re.fullmatch(r"\d+", reference):
+                question_set_header = row.get("Question set header", "").strip()
+                if question_set_header and question_set_header != "0":
+                    element["questionSetHeader"] = question_set_header
+            if component_type in {"context", "info"}:
+                element["isContext"] = True
 
-            if re.fullmatch(r"\d+", reference):
+            if is_root or re.fullmatch(r"\d+", reference):
                 theme_value = (
                     row.get("DAIEF theme", "").strip()
                     or row.get("DAIEF themes", "").strip()
@@ -286,129 +485,51 @@ def csv_to_survey(
                 if themes:
                     element["themes"] = themes
 
-            if is_project_detail:
-                element["title"] = field_text
-            elif field_group is not None and reference.endswith("S"):
-                element["title"] = f"{reference[:-1]}. {field_text}".rstrip()
-            elif field_group is not None and "T" in reference:
-                element["title"] = f"{reference[:-1]}. {field_text}".rstrip()
-            else:
-                element["title"] = f"{reference}. {field_text}"
+            element["title"] = field_text
 
             hint_text = row.get("Hint text", "").strip()
             if hint_text and hint_text != "0":
                 element["description"] = hint_text
 
-            trigger_parts = [
-                part.strip()
-                for part in re.split(r"\s+OR\s+", trigger, flags=re.IGNORECASE)
+            context_condition = condition_for_row(
+                row.get("Context filter", ""), row, page_rows, rows
+            )
+            trigger_condition = condition_for_row(trigger, row, page_rows, rows)
+            conditions = [
+                condition["visibleIf"]
+                for condition in (context_condition, trigger_condition)
+                if condition is not None
             ]
-            trigger_match = None
-            if trigger_parts and trigger_parts[0]:
-                trigger_match = re.fullmatch(
-                    r"(.+?)(<>|=|-)(.+)", trigger_parts[0]
+            if conditions:
+                element["visibleIf"] = " and ".join(
+                    f"({condition})" for condition in conditions
                 )
-                if trigger_match:
-                    question, operator, first_value = (
-                        part.strip() for part in trigger_match.groups()
-                    )
-                    operator = "=" if operator == "-" else operator
-                    values = [first_value] + [
-                        part for part in trigger_parts[1:] if part
-                    ]
-                    source_row = next(
-                        (
-                            candidate for candidate in page_rows
-                            if candidate["Reference"].strip() == question
-                        ),
-                        None,
-                    )
-                    if source_row is None:
-                        current_index = next(
-                            index for index, candidate in enumerate(rows)
-                            if candidate is row
-                        )
-                        source_row = next(
-                            (
-                                candidate for candidate in reversed(rows[:current_index])
-                                if candidate["Reference"].strip() == question
-                            ),
-                            None,
-                        )
-
-                    is_checkbox_source = (
-                        source_row is not None
-                        and source_row.get("Component type", "").strip().casefold()
-                        == "multiselect"
-                    )
-                    if source_row and source_row.get("Component type", "").strip().casefold() != "radios":
-                        source_options = {
-                            option: source_row.get(option, "").strip()
-                            for option in ("Option a", "Option b", "Option c", "Option d", "Option e")
-                            if source_row.get(option, "").strip()
-                        }
-                        if is_checkbox_source:
-                            values = [
-                                next(
-                                    (
-                                        option for option, label in source_options.items()
-                                        if option.rsplit(" ", 1)[-1].casefold()
-                                        == value.casefold()
-                                        or label.casefold() == value.casefold()
-                                    ),
-                                    value,
-                                )
-                                for value in values
-                            ]
-                        else:
-                            values = [
-                                next(
-                                    (
-                                        option for option, label in source_options.items()
-                                        if label.casefold() == value.casefold()
-                                    ),
-                                    value,
-                                )
-                                for value in values
-                            ]
-
-                    condition_operator = operator
-                    if is_checkbox_source:
-                        condition_operator = {
-                            "=": "contains",
-                            "<>": "notcontains",
-                        }.get(operator, operator)
-                    element["visibleIf"] = " or ".join(
-                        f"{{{question}}} {condition_operator} '{value}'"
-                        for value in values
-                    )
 
             if element["type"] in ("radiogroup", "checkbox"):
-                option_labels = {
-                    option: row.get(option, "").strip()
-                    for option in ("Option a", "Option b", "Option c", "Option d", "Option e")
-                    if row.get(option, "").strip()
-                }
+                option_labels = options_for_row(row)
                 if element["type"] == "checkbox":
                     element["choices"] = [
                         {"value": option, "text": label}
-                        for option, label in option_labels.items()
+                        for option, label in option_labels
                     ]
                 else:
                     element["choices"] = [
-                        label for label in option_labels.values()
+                        label for _, label in option_labels
                     ]
                     element["allowClear"] = False
-                    if trigger_match and operator == "=":
-                        reset_operator = (
-                            "notcontains" if is_checkbox_source else "<>"
-                        )
-                        element["resetValueIf"] = " and ".join(
-                            f"{{{question}}} {reset_operator} '{value}'"
-                            for value in values
+                    reset_conditions = [
+                        condition["resetValueIf"]
+                        for condition in (context_condition, trigger_condition)
+                        if condition is not None and condition["resetValueIf"]
+                    ]
+                    if reset_conditions:
+                        element["resetValueIf"] = " or ".join(
+                            f"({condition})" for condition in reset_conditions
                         )
 
             elements.append(element)
+            if is_root and component_type in {"context", "info"}:
+                full_width_root_groups.add(field_group)
 
         return elements
 
@@ -431,10 +552,10 @@ def csv_to_survey(
 
 def main():
     project_dir = Path(__file__).resolve().parent
-    xlsx_path = project_dir / "Interactive DAIEF schema (APP).xlsx"
+    csv_path = project_dir / "schema-input.csv"
     output_path = project_dir / "translated-survey.json"
 
-    form_version, schema = read_schema_xlsx(xlsx_path)
+    form_version, schema = read_schema_csv(csv_path)
     translated_survey = csv_to_survey(schema, form_version=form_version)
 
     empty_pages = [page["name"] for page in translated_survey["pages"] if not page["elements"]]

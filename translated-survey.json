@@ -9,12 +9,14 @@
           "type": "text",
           "name": "NAME",
           "startWithNewLine": true,
+          "isRoot": true,
           "title": "Give your project a name."
         },
         {
           "type": "checkbox",
           "name": "FILTER",
           "startWithNewLine": true,
+          "isRoot": true,
           "title": "Select your project filters.",
           "description": "Your answers will be used to show you the questions most relevant to your work. If you are not sure whether a statement applies, we encourage you to select it. This will help to ensure that potential risks and opportunities are captured and explored.",
           "choices": [
@@ -28,14 +30,18 @@
             },
             {
               "value": "Option c",
-              "text": "My project involves direct interaction with the public"
+              "text": "My project involves the use or processing of personal data"
             },
             {
               "value": "Option d",
-              "text": "My project involves making decisions with a significant or legal effects"
+              "text": "My project involves direct interaction with the public"
             },
             {
               "value": "Option e",
+              "text": "My project involves making decisions with a significant or legal effects"
+            },
+            {
+              "value": "Option f",
               "text": "My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)"
             }
           ]
@@ -44,12 +50,14 @@
           "type": "comment",
           "name": "PROB",
           "startWithNewLine": true,
+          "isRoot": true,
           "title": "Describe the problem you’re trying to solve in simple terms."
         },
         {
           "type": "comment",
           "name": "PURP",
           "startWithNewLine": true,
+          "isRoot": true,
           "title": "Describe how your solution solves this problem."
         }
       ]
@@ -60,749 +68,338 @@
       "description": "Discovery is the project research and scoping phase. You are understanding the problem that needs to be solved and the opportunities for addressing them using data and AI. Learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">discovery phase</a> in a new tab.<br><br>",
       "elements": [
         {
-          "type": "radiogroup",
-          "name": "1",
+          "type": "expression",
+          "name": "1i",
           "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Data protection approach",
+          "isContext": true,
           "themes": [
             "Accountability",
             "Privacy"
           ],
-          "title": "1. Have you consulted your organisation’s Data Protection Officer (DPO) about your project?",
+          "title": "You must comply with data privacy and protection law at all times, including: \n•\tUK General Data Protection Regulation (UK GDPR) \n•\tthe Data Protection Act 2018 \n•\tthe Data (Use and Access) Act 2025 \n•\tany other applicable privacy legislation.\n\nYou must consult your organisation's Data Protection Officer (DPO) before initiating any activity which involves collecting, processing, sharing or storage of personal or sensitive data. You should follow all internal policies on data handling, privacy and security.",
+          "visibleIf": "({FILTER} contains 'Option a')"
+        },
+        {
+          "type": "radiogroup",
+          "name": "1r",
+          "startWithNewLine": true,
+          "title": "Have you consulted your organisation’s Data Protection Officer (DPO) about your project?",
           "description": "See the ICO website for more information about DPOs.",
-          "visibleIf": "{FILTER} contains 'Option a'",
           "choices": [
             "Yes",
-            "No"
+            "No",
+            "Unsure"
           ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a'"
+          "allowClear": false
         },
         {
-          "type": "radiogroup",
+          "type": "comment",
+          "name": "1d",
+          "startWithNewLine": true,
+          "title": "What were the key recommendations you received? Were any risks identified?",
+          "visibleIf": "({1r} = 'Yes')"
+        },
+        {
+          "type": "expression",
           "name": "1a",
-          "startWithNewLine": false,
-          "title": "1a. Have you received all the data processing advice that you need?",
-          "visibleIf": "{1} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{1} <> 'Yes'"
+          "startWithNewLine": true,
+          "title": "•\tIf your project uses personal data, you must meet your legal duties under the UK General Data Protection Regulation (UK GDPR).\n•\tYour organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.\n•\tYou must comply with the Public Sector Equality Duty and Equality Act 2010. This means you need to carefully consider and document the equality impact of processing personal data where it can be used to identify individuals as having a protected characteristic. This document is often referred to as an Equality Impact Assessment (EIA). For more information, consult the EHRC guidance on the Public Sector Equality Duty.",
+          "visibleIf": "({1r} = 'No' or {1r} = 'Unsure')"
         },
         {
           "type": "radiogroup",
-          "name": "1b",
-          "startWithNewLine": false,
-          "title": "1b. Do you intend to follow all the advice that you've received?",
-          "visibleIf": "{1a} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{1a} <> 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "1S",
+          "name": "2r",
           "startWithNewLine": true,
-          "title": "1. If your project uses personal data, you must meet your legal duties under the UK General Data Protection Regulation (UK GDPR).\n\nYour organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.",
-          "visibleIf": "{1} = 'No'"
-        },
-        {
-          "type": "comment",
-          "name": "1aT",
-          "startWithNewLine": true,
-          "title": "1a. Provide a brief summary of data processing advice that you received.",
-          "visibleIf": "{1a} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "1aS",
-          "startWithNewLine": false,
-          "title": "1a. If your project uses personal data, you must meet your legal duties under the UK General Data Protection Regulation (UK GDPR).\n\nYour organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.",
-          "visibleIf": "{1a} = 'No' or {1a} = 'Unsure'"
-        },
-        {
-          "type": "comment",
-          "name": "1bT",
-          "startWithNewLine": true,
-          "title": "1b. Briefly explain what advice you won't follow and why.",
-          "visibleIf": "{1b} = 'No'"
-        },
-        {
-          "type": "expression",
-          "name": "1bS",
-          "startWithNewLine": false,
-          "title": "1b. If your project uses personal data, you must meet your legal duties under the UK General Data Protection Regulation (UK GDPR).\n\nYour organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.",
-          "visibleIf": "{1b} = 'Unsure'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "2",
-          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Data Protection Impact Assessment",
           "themes": [
             "Accountability",
             "Privacy",
             "Safety"
           ],
-          "title": "2. Have you consulted with your organisation’s data and information security teams?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c'",
+          "title": "Have you, or do you intend to complete a Data Protection Impact Assessment (DPIA) for this project?",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c')",
           "choices": [
-            "Yes",
-            "No"
+            "Yes, a DPIA has been completed",
+            "Yes, a DPIA is planned but has not yet been completed",
+            "No",
+            "Other"
           ],
           "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c'"
+          "resetValueIf": "({FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c')"
         },
         {
-          "type": "radiogroup",
+          "type": "comment",
+          "name": "2d",
+          "startWithNewLine": true,
+          "title": "Provide a summary or link to your completed DPIA, including any identified risks.",
+          "visibleIf": "({2r} = 'Yes, a DPIA has been completed')"
+        },
+        {
+          "type": "comment",
+          "name": "2d2",
+          "startWithNewLine": true,
+          "title": "Briefly explain your plans for completing the DPIA, including when you expect to do this.",
+          "visibleIf": "({2r} = 'Yes, a DPIA is planned but has not yet been completed')"
+        },
+        {
+          "type": "expression",
           "name": "2a",
           "startWithNewLine": false,
-          "title": "2a. Have you received all the security advice that you need?",
-          "visibleIf": "{2} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{2} <> 'Yes'"
+          "title": "•\tWhere personal data is being processed, you must comply with relevant laws.\n•\tYou need to carry out a Data Protection Impact Assessment (DPIA) before you process personal data when the processing is likely to result in a high risk to the rights and freedoms of individuals. It’s good practice to publish your completed DPIA to demonstrate that you’re taking the appropriate precautions to protect personal data and ensure your system is fair.\n•\tYour organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.",
+          "visibleIf": "({2r} = 'No')"
+        },
+        {
+          "type": "expression",
+          "name": "2i",
+          "startWithNewLine": true,
+          "isContext": true,
+          "title": "You must comply with equality legislation at all times, including: \n•\tthe Equality Act 2010 \n•\tthe Public Sector Equality Duty \n•\tany other applicable equality legislation. \n\nThe Public Sector Equality Duty requires that you show ‘due regard’ for the aims of the duty fulfilled before, and at the time that a particular policy or operational activity that will or might impact people with protected characteristics is under consideration, as well as at the time a decision is taken. Assessing impact is an integral part of this duty, and the completion of an Equality Impact Assessment (EIA) is an effective means of fulfilling this."
         },
         {
           "type": "radiogroup",
-          "name": "2b",
-          "startWithNewLine": false,
-          "title": "2b. Do you intend to follow all the advice that you've received?",
-          "visibleIf": "{2a} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{2a} <> 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "2S",
+          "name": "3r",
           "startWithNewLine": true,
-          "title": "2. You should involve information governance teams early in the project design process – this will help you to comply with privacy and data protection legislation, and plan resources effectively so that support is available for project teams when needed.\n\nYour organisation’s data and information security team should be able to advise on security requirements and risks. \n\nRefer to the government’s [personal data security principles](https://www.gov.uk/guidance/principles-for-securing-personal-data-in-government-services) when processing and sharing personal data.\n\nIf you’re working with any third-party suppliers to store, collect or process data, make sure they’re vetted and that they comply with the security requirements of your project.",
-          "visibleIf": "{2} = 'No'"
-        },
-        {
-          "type": "comment",
-          "name": "2aT",
-          "startWithNewLine": true,
-          "title": "2a. Provide a brief summary of security advice that you received",
-          "visibleIf": "{2a} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "2aS",
-          "startWithNewLine": false,
-          "title": "2a. This is quite a difficult one to provide actions for without repeating what has already been said.",
-          "visibleIf": "{2a} = 'No' or {2a} = 'Unsure'"
-        },
-        {
-          "type": "comment",
-          "name": "2bT",
-          "startWithNewLine": true,
-          "title": "2b. Brieflly explain what advice you won't follow and why.",
-          "visibleIf": "{2b} = 'No'"
-        },
-        {
-          "type": "expression",
-          "name": "2bS",
-          "startWithNewLine": false,
-          "title": "2b. Your organisation’s data and information security team should be able to advise on security requirements and risks. \n\nRefer to the government’s [personal data security principles](https://www.gov.uk/guidance/principles-for-securing-personal-data-in-government-services) when processing and sharing personal data.\n\nIf you’re working with any third-party suppliers to store, collect or process data, make sure they’re vetted and that they comply with the security requirements of your project.",
-          "visibleIf": "{2b} = 'Unsure'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "3",
-          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Equality Impact Assesssment",
           "themes": [
-            "Accountability",
-            "Privacy",
+            "Fairness",
             "Societal Impact"
           ],
-          "title": "3. Will you complete a DPIA for this project?",
-          "visibleIf": "{FILTER} contains 'Option a'",
+          "title": "Have you, or do you intend to complete an Equality Impact Assessment (EqIA) for this project?",
+          "description": "You must comply with relevant laws and assess the equality impact of your project: \n•\tbefore making any decisions to initiate a project, including procuring and development\n•\tduring implementation\n•\tafter implementation.\n\nThere’s no set way for you to record your equality considerations and your organisation may have its own Equality Impact Assessment (EIA) template for you to complete.",
+          "visibleIf": "({FILTER} contains 'Option a')",
           "choices": [
-            "Yes",
-            "No",
-            "Unsure"
+            "Yes, an EqIA has been completed",
+            "Yes, an EIqA is planned but has not yet been completed",
+            "Other"
           ],
           "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "3a",
-          "startWithNewLine": false,
-          "title": "3a. Have you conducted a full Data Protection Impact Assessment (DPIA)?",
-          "visibleIf": "{3} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{3} <> 'Yes'"
+          "resetValueIf": "({FILTER} notcontains 'Option a')"
         },
         {
           "type": "comment",
-          "name": "3T",
+          "name": "3d",
           "startWithNewLine": true,
-          "title": "3. Explain briefly why your project isn't ikely to result in a high risk to the rights and freedoms of individuals",
-          "visibleIf": "{3} = 'No'"
-        },
-        {
-          "type": "expression",
-          "name": "3S",
-          "startWithNewLine": false,
-          "title": "3. Your organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.",
-          "visibleIf": "{3} = 'Unsure'"
+          "title": "Provide a summary or link to your completed EqIA, including any identified risks.",
+          "visibleIf": "({3r} = 'Yes, an EqIA has been completed')"
         },
         {
           "type": "comment",
-          "name": "3aT",
+          "name": "3d2",
           "startWithNewLine": true,
-          "title": "3a. Provide a name, summary or link to your complete DPIA.",
-          "visibleIf": "{3a} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "3aS",
-          "startWithNewLine": false,
-          "title": "3a. Where personal data is being processed, you must comply with relevant laws: You need to carry out a Data Protection Impact Assessment (DPIA) before you process personal data when the processing is likely to result in a high risk to the rights and freedoms of individuals. It’s good practice to publish your completed DPIA to demonstrate that you’re taking the appropriate precautions to protect personal data and ensure your system is fair.\n\nYour organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.",
-          "visibleIf": "{3a} = 'No'"
+          "title": "Briefly explain your plans for completing the EqIA, including when you expect to do this.",
+          "visibleIf": "({3r} = 'Yes, an EqIA is planned but has not yet been completed')"
         },
         {
           "type": "radiogroup",
-          "name": "4",
+          "name": "4r",
           "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Information security approach",
           "themes": [
-            "Accountability",
-            "Privacy"
+            "Privacy",
+            "Safety"
           ],
-          "title": "4. Will you share personal data with or receive personal data from other organisations as part of this project?",
-          "visibleIf": "{FILTER} contains 'Option a'",
+          "title": "Have you consulted with your organisation’s data and information security teams?",
+          "visibleIf": "({FILTER} contains 'Option a')",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a'"
+          "resetValueIf": "({FILTER} notcontains 'Option a')"
         },
         {
-          "type": "radiogroup",
+          "type": "comment",
+          "name": "4d",
+          "startWithNewLine": true,
+          "title": "What were the key recommendations you received? Were any risks identified?",
+          "visibleIf": "({4r} = 'Yes')"
+        },
+        {
+          "type": "expression",
           "name": "4a",
           "startWithNewLine": false,
-          "title": "4a. Have you established a data sharing agreement with other organisations?",
-          "visibleIf": "{4} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{4} <> 'Yes'"
+          "title": "•\tYou should involve data and information security teams early in the project design process.\n•\tYour organisation’s data and information security team should be able to advise on security requirements and risks. \n•\tRefer to the government’s personal data security principles when processing and sharing personal data.\n•\tIf you’re working with any third-party suppliers to store, collect or process data, make sure they comply with the security requirements of your project.",
+          "visibleIf": "({4r} = 'No' or {4r} = 'Unsure')"
         },
         {
           "type": "radiogroup",
-          "name": "4b",
-          "startWithNewLine": false,
-          "title": "4b. Are you confident that the data sharing benefits are necessary and proportional to any privacy risks incurred?",
-          "visibleIf": "{4} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{4} <> 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "4S",
+          "name": "5r",
           "startWithNewLine": true,
-          "title": "4. Where personal data is being processed, you must comply with relevant laws: You need to carry out a Data Protection Impact Assessment (DPIA) before you process personal data when the processing is likely to result in a high risk to the rights and freedoms of individuals. It’s good practice to publish your completed DPIA to demonstrate that you’re taking the appropriate precautions to protect personal data and ensure your system is fair.\n\nYour organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.\n\nNew data assets should be registered via organisational data catalogues, or cross-departmentally by designating [Essential Shared Data Assets (ESDAs)](https://www.gov.uk/government/publications/essential-shared-data-assets-and-data-ownership-in-government/essential-shared-data-assets-esdas-guidance-for-departments-html).",
-          "visibleIf": "{4} = 'No' or {4} = 'Unsure'"
-        },
-        {
-          "type": "comment",
-          "name": "4aT",
-          "startWithNewLine": true,
-          "title": "4a. Provide a summary or link to your complete data sharing agreement.",
-          "visibleIf": "{4a} = 'Yes'"
-        },
-        {
-          "type": "comment",
-          "name": "4bT",
-          "startWithNewLine": true,
-          "title": "4b. Briefly explain how data sharing achieves a benefit and is necessary.",
-          "visibleIf": "{4b} = 'Yes'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "5",
-          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Data sharing agreements",
           "themes": [
             "Accountability"
           ],
-          "title": "5. Do you have governance structures to support the safe, effective and responsible implementation of the project?",
-          "visibleIf": "{FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
-          "choices": [
-            "Yes",
-            "Somewhat",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
-        },
-        {
-          "type": "comment",
-          "name": "5T",
-          "startWithNewLine": true,
-          "title": "5. Briefly describe the governance structures that will support this project.",
-          "visibleIf": "{5} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "5S",
-          "startWithNewLine": false,
-          "title": "5. You should always follow your organisation’s internal governance policies\nData and AI projects should have appropriate and effective governance and oversight. This includes clear roles and responsibilities, clear documentation, and being transparent about the system and the processes around it.",
-          "visibleIf": "{5} = 'Somewhat' or {5} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "6",
-          "startWithNewLine": true,
-          "themes": [
-            "Accountability",
-            "Safety"
-          ],
-          "title": "6. Have you assigned responsibility for the project’s outcomes?",
-          "visibleIf": "{FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "6a",
-          "startWithNewLine": false,
-          "title": "6a. Is the responsible owner able to oversee the project effectively and intervene quickly if in the case of harmful outcomes?",
-          "visibleIf": "{6} = 'Yes'",
+          "title": "Do you have any data sharing agreements in place with other organisations?",
+          "visibleIf": "({FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e')",
           "choices": [
             "Yes",
             "No",
-            "Unsure"
+            "Other"
           ],
           "allowClear": false,
-          "resetValueIf": "{6} <> 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "6S",
-          "startWithNewLine": true,
-          "title": "6. You need strong oversight and clear responsibilities to ensure accountability across the life cycle of your project. You must set out who is responsible at each stage of the project.\n\nThis includes naming: senior responsible owners (SROs), data owners, data stewards, data custodians, and AI asset owners.",
-          "visibleIf": "{6} = 'No'"
+          "resetValueIf": "({FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e')"
         },
         {
           "type": "comment",
-          "name": "6aT",
+          "name": "5d",
           "startWithNewLine": true,
-          "title": "6a. Briefly describe any barriers to responsible owner intervention that you foresee.",
-          "visibleIf": "{6a} = 'Yes'"
+          "title": "Briefly explain how this data sharing achieves a benefit and is necessary.",
+          "visibleIf": "({5r} = 'Yes')"
         },
         {
-          "type": "expression",
-          "name": "6aS",
-          "startWithNewLine": false,
-          "title": "6a. As the primary risk owners for the project, senior responsible owners ensure a real policy or business need is being addressed, engage with stakeholders and assure ongoing viability. \nFor project governance to be effective, it’s essential that the people accountable have appropriate technical expertise and knowledge, and authority, to implement necessary changes. This is especially important for complex projects or those involving multiple suppliers, which is often the case with data and AI projects.",
-          "visibleIf": "{6a} = 'No' or {6a} = 'Unsure'"
+          "type": "comment",
+          "name": "5d2",
+          "startWithNewLine": true,
+          "title": "Briefly explain why this is not applicable to your project.",
+          "visibleIf": "({5r} = 'No')"
         },
         {
-          "type": "radiogroup",
-          "name": "7",
+          "type": "comment",
+          "name": "6d",
           "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Governance and oversight",
+          "themes": [
+            "Accountability"
+          ],
+          "title": "How does, or could, your governance structure support the safe and effective development of the project?",
+          "description": "·      Data and AI projects should have appropriate and effective governance and oversight. This includes clear roles and responsibilities, clear documentation, and being transparent about the system and the processes around it.\n·      You must set out who is responsible at each stage of the project. This includes naming: senior responsible owners (SROs), data owners, data stewards, data custodians, and AI asset owners. \n·      The Service Manual includes further information about delivery team roles and responsibilities.'",
+          "visibleIf": "({FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e')"
+        },
+        {
+          "type": "comment",
+          "name": "7d",
+          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Process documentation",
           "themes": [
             "Transparency",
             "Accountability"
           ],
-          "title": "7. Are you confident in documenting key project decisions?",
-          "visibleIf": "{FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
-          "choices": [
-            "Yes",
-            "Somewhat",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
+          "title": "How are you documenting key project decisions?",
+          "description": "·      To ensure AI and data projects can be audited or reviewed, it is advisable to record who is responsible for each part of the project, including suppliers; and to record decisions made during project design. \n·      You should consult your organisation’s information governance team for guidance on project documentation.",
+          "visibleIf": "({FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e')"
         },
         {
           "type": "comment",
-          "name": "7T",
+          "name": "8d",
           "startWithNewLine": true,
-          "title": "7. Provide the types of key decisions that you'll document.",
-          "visibleIf": "{7} = 'Yes'"
-        },
-        {
-          "type": "comment",
-          "name": "7Ta",
-          "startWithNewLine": true,
-          "title": "7T. Provide the types of routines or processes that you'll use to document decisions.",
-          "visibleIf": "{7} = 'Yes'"
-        },
-        {
-          "type": "comment",
-          "name": "7Tb",
-          "startWithNewLine": true,
-          "title": "7T. Provide the ways in which people will be able to learn more about key decisions if needed.",
-          "visibleIf": "{7} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "7S",
-          "startWithNewLine": false,
-          "title": "7. To ensure AI and data projects can be audited or reviewed, your team must: record who is responsible for each part of the system, including suppliers, and record decisions made during project design, model deployment and system deployment processes.\n\nFor example, a data set factsheet can help explain how data was handled.\nThe [Algorithmic Transparency Recording Standard (ATRS)](https://www.gov.uk/government/publications/algorithmic-transparency-template) also provides a template for public sector organisations to document and share information about how and why they’re using algorithmic tools.",
-          "visibleIf": "{7} = 'Somewhat' or {7} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "8",
-          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Responsible ownership",
           "themes": [
-            "Safety"
+            "Accountability"
           ],
-          "title": "8. Will you conduct research as part of your project?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
+          "title": "How have you assigned responsibility for the project’s outcomes? Are the responsible owners able to make necessary changes?",
+          "description": "Consider whether those responsible for the project have the authority, time and information they need to implement changes. You should also think about whether the organisation embodies a ‘culture of change’ and continuous improvement, where concerns are raised, decisions made and changes followed through.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "radiogroup",
-          "name": "8a",
-          "startWithNewLine": false,
-          "title": "8a. Are you confident in protecting research participants from safety risks?",
-          "visibleIf": "{8} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{8} <> 'Yes'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "8b",
-          "startWithNewLine": false,
-          "title": "8b. Are you confident in protecting reseachers from safety risks?",
-          "visibleIf": "{8} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{8} <> 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "8S",
+          "name": "9r",
           "startWithNewLine": true,
-          "title": "8. When designing a government tool or service, you should always start by learning about the people who will use it. If you don’t understand users or what they need from your service, you cannot build the right thing.\n\nYou should involve diverse stakeholders in the design and testing process and undertake thorough user research and public engagement to ensure you’re including the views of those that may be affected or digitally excluded.\n\nYou must understand and comply with your legal obligations and duties. Refer to the Public Sector Equality Duty (PSED) and the Equality Act 2010.",
-          "visibleIf": "{8} = 'No' or {8} = 'Unsure'"
-        },
-        {
-          "type": "comment",
-          "name": "8aT",
-          "startWithNewLine": true,
-          "title": "8a. Describe the measures you will take to protect research particpants.",
-          "visibleIf": "{8a} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "8aS",
-          "startWithNewLine": false,
-          "title": "8a. You must take steps to protect research participants. This applies to your team and to any third-party researchers you work with. \n\nYou should:\no make sure that participants understand the research and any risks involved \no only include participants who give clear, informed consent without pressure or coercion \no allow participants to withdraw at any time (with exceptions for situations like medical research where participant information is anonymised and aggregated and cannot be removed from the research data set)\no anonymise all data used in reports or analysis.\n\nThe Service Manual has guidance on [managing user research data and participant privacy](https://www.gov.uk/service-manual/user-research/managing-user-research-data-participant-privacy).",
-          "visibleIf": "{8a} = 'No' or {8a} = 'Unsure'"
-        },
-        {
-          "type": "comment",
-          "name": "8bT",
-          "startWithNewLine": true,
-          "title": "8b. Describe the measures you will take to protect researchers.",
-          "visibleIf": "{8b} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "8bS",
-          "startWithNewLine": false,
-          "title": "8b. Some research projects involve sensitive topics, such as child protection or adult safeguarding. These can be distressing for both researchers and participants. To reduce risk, you should:\no highlight any sensitive topics in workshop or interview plans\no set up a ‘safety check-in’ protocol to support staff after sessions, particularly for one-to-one or lone working\no use existing ethical guidelines and processes, such as the Service Manual’s guidance on researching emotionally sensitive subjects\n\nIn rare cases, researchers may be targeted by participants or others. If this happens, or if the risk is known in advance, put safeguards in place to protect staff.\n\nThe Government Analysis Function provides a list of resources related to conducting research and analysis in government.",
-          "visibleIf": "{8b} = 'No' or {8b} = 'Unsure'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "9",
-          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Research",
           "themes": [
             "Fairness",
             "Societal Impact"
           ],
-          "title": "9. Can you ensure that your project team is diverse and multidisciplinary?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
+          "title": "Will you conduct research as part of your project?",
+          "description": "Prompt: When designing a government tool or service, you should always start by learning about the people who will use it. If you don’t understand users or what they need from your service, you cannot build the right thing.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
+          "resetValueIf": "({FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e' and {FILTER} notcontains 'Option f')"
         },
         {
-          "type": "radiogroup",
+          "type": "comment",
+          "name": "9d",
+          "startWithNewLine": true,
+          "title": "Describe the measures you will take to protect research particpants.",
+          "description": "·      You must take steps to protect both researchers and research participants. This applies to your team and to any third-party researchers you work with.\n·      The Service Manual has guidance on managing user research data and participant privacy and researching emotionally sensitive subjects.\n·      The Government Analysis Function also provides a list of resources related to conducting research and analysis in government.",
+          "visibleIf": "({9r} = 'Yes')"
+        },
+        {
+          "type": "expression",
           "name": "9a",
           "startWithNewLine": false,
-          "title": "9a. Have you considered how a lack of diversity might impact your project?",
-          "visibleIf": "{9} = 'No' or {9} = 'Unsure'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{9} <> 'No' and {9} <> 'Unsure'"
+          "title": "·      You should involve diverse stakeholders in the design and testing process and undertake thorough user research to ensure you’re including the views of those that may be impacted or digitally excluded.\n·      The Service Manual has guidance on managing user research data and participant privacy and researching emotionally sensitive subjects.\n·      The Government Analysis Function also provides a list of resources related to conducting research and analysis in government.",
+          "visibleIf": "({9r} = 'No' or {9r} = 'Unsure')"
         },
         {
           "type": "comment",
-          "name": "9T",
+          "name": "10d",
           "startWithNewLine": true,
-          "title": "9. Briefly describe how you will ensure diversity across the team.",
-          "visibleIf": "{9} = 'Yes'"
-        },
-        {
-          "type": "comment",
-          "name": "9aT",
-          "startWithNewLine": true,
-          "title": "9a. Briefly describe any risks or blind spots you have identified.",
-          "visibleIf": "{9a} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "9aS",
-          "startWithNewLine": false,
-          "title": "9a. Having a diverse and multidisciplinary team can provide a strong foundation for building fairer tools and services. A diverse team is often able to spot issues early in the development process by bringing varied perspectives and lived experiences.\n\nIf it’s not possible to assemble a diverse team, you should note any potential gaps in understanding and proactively seek ways to engage with a variety of stakeholders. This might include through user testing, public engagement and, where possible, presenting ideas at internal or external community events.\n\nThe Service Manual includes guidance on the [people you need to have in your team at each phase](https://www.gov.uk/service-manual/the-team/set-up-a-service-team).",
-          "visibleIf": "{9a} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "10",
-          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Diverse participation",
           "themes": [
             "Fairness",
             "Societal Impact"
           ],
-          "title": "10. Do you have a clear picture of your target user groups?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
-          "choices": [
-            "Yes",
-            "Somewhat",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "10a",
-          "startWithNewLine": false,
-          "title": "10a. Have you considered how different groups could be impacted unequally by your project?",
-          "visibleIf": "{10} = 'Yes'",
-          "choices": [
-            "Yes",
-            "Somewhat",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{10} <> 'Yes'"
+          "title": "How are you ensuring that you’re capturing diverse views?",
+          "description": "·      Having a diverse and multidisciplinary team can provide a strong foundation for building fairer tools and services.\n·      You should include stakeholder perspectives by engaging with civil society groups, affected communities and wider public sector to understand potential benefits and impacts.\n·      You must understand and comply with your legal obligations and duties. Refer to the Public Sector Equality Duty (PSED) and the Equality Act 2010.\n·      You should continually revisit user needs throughout your project. The Service Manual explains more about understanding user needs.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "expression",
-          "name": "10S",
+          "name": "10i",
           "startWithNewLine": true,
-          "title": "10. At the start of your project, you should make sure that:\no your project has a clear purpose\no there’s a clear public benefit\no you’re designing with humans in mind and in a human-centred way.\n\nYou should involve diverse stakeholders in the design and testing process and undertake thorough user research and public engagement to ensure you’re including the views of those that may be affected or digitally excluded.\n\nYou must understand and comply with your legal obligations and duties. Refer to the [Public Sector Equality Duty (PSED)](https://www.equalityhumanrights.com/guidance/public-sector-equality-duty-psed) and the [Equality Act 2010](https://www.gov.uk/guidance/equality-act-2010-guidance).\n\nYou should continually revisit user needs throughout your project. The Service Manual explains more about [user needs](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs).",
-          "visibleIf": "{10} = 'Somewhat' or {10} = 'No'"
+          "isContext": true,
+          "title": "Engaging with stakeholders and affected groups \t\t\t\t\n\t\t\t\t\nYou should engage with different stakeholder groups across the project life cycle, including civil society groups, domain experts and affected communities. This is important to: \t\t\t\t\n·      ensure you are building tools and services which serve a real user need \t\t\t\t\n·      identify areas of potential harm and exclusion \t\t\t\t\n·      understand the context in which your tool or service might be used.\t\t\t\t\n\t\t\t\t\nYou should continually revisit user needs throughout your project. The Service Manual explains more about user needs."
         },
         {
           "type": "comment",
-          "name": "10aT",
+          "name": "11d",
           "startWithNewLine": true,
-          "title": "10a. Briefly describe how your user groups may be impacted differently.",
-          "visibleIf": "{10a} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "10aS",
-          "startWithNewLine": false,
-          "title": "10a. You should involve diverse stakeholders in the design and testing process and undertake thorough user research and public engagement to ensure you’re including the views of those that may be affected or digitally excluded.\n\nYou must understand and comply with your legal obligations and duties. Refer to the [Public Sector Equality Duty (PSED)](https://www.equalityhumanrights.com/guidance/public-sector-equality-duty-psed) and the [Equality Act 2010](https://www.gov.uk/guidance/equality-act-2010-guidance).\n\nYou should continually revisit user needs throughout your project. The Service Manual explains more about [user needs](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs).",
-          "visibleIf": "{10a} = 'Somewhat' or {10a} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "11",
-          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Communicating with stakeholders",
           "themes": [
-            "Fairness",
-            "Societal Impact"
+            "Transparency"
           ],
-          "title": "11. Do you have a clear picture of all your project stakeholders?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
-          "choices": [
-            "Yes",
-            "Somewhat",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "11a",
-          "startWithNewLine": false,
-          "title": "11a. Will you engage with a wide variety of stakeholders throughout the project lifecycle?",
-          "visibleIf": "{11} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{11} <> 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "11S",
-          "startWithNewLine": true,
-          "title": "11. You should include stakeholder perspectives by engaging with civil society groups, affected communities and wider public sector to understand values and impacts.\n\nProactive public and stakeholder engagement is critical to understand the potential impacts of a tool or system. Engaging with stakeholders can help to build trust and improve adoption of AI tools and systems.",
-          "visibleIf": "{11} = 'Somewhat' or {11} = 'No'"
+          "title": "Do you have a plan to communicate project purpose, design and intended outcomes to users and relevant stakeholders?",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "comment",
-          "name": "11aT",
+          "name": "12d",
           "startWithNewLine": true,
-          "title": "11a. Briefly describe the steps you will take to engage with a wide variety of stakeholders.",
-          "visibleIf": "{11a} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "11aS",
-          "startWithNewLine": false,
-          "title": "11a. You should include stakeholder perspectives by engaging with civil society groups, affected communities and wider public sector to understand values and impacts.\n\nEthical use of data and AI means listening to different perspectives and checking that your tools work as intended. Otherwise, you could unintentionally exclude people or cause harm.",
-          "visibleIf": "{11a} = 'No' or {11a} = 'Unsure'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "12",
-          "startWithNewLine": true,
-          "themes": [
-            "Societal impact"
-          ],
-          "title": "12. Will you work with civil society organisations or external domain experts to guide your project?",
-          "visibleIf": "{FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
-        },
-        {
-          "type": "comment",
-          "name": "12T",
-          "startWithNewLine": true,
-          "title": "12. Briefly describe how you'll engage with civil society organisations and external experts.",
-          "visibleIf": "{12} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "12S",
-          "startWithNewLine": false,
-          "title": "12. You should include stakeholder perspectives by engaging with civil society groups, affected communities and wider public sector to understand values and impacts.\n\nEthical use of data and AI means listening to different perspectives and checking that your tools work as intended. Otherwise, you could unintentionally exclude people or cause harm.",
-          "visibleIf": "{12} = 'No' or {12} = 'Unsure'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "13",
-          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Environment impact approach",
           "themes": [
             "Environmental sustainability"
           ],
-          "title": "13. Have you considered the potential environmental impact and sustainability of your project?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b'",
-          "choices": [
-            "Yes",
-            "Somewhat",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "13a",
-          "startWithNewLine": false,
-          "title": "13a. Will you monitor, evaluate and address environmental impact and sustainability challenges throughout the project lifecycle?",
-          "visibleIf": "{13} = 'Yes' or {13} = 'Somewhat'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{13} <> 'Yes' and {13} <> 'Somewhat'"
+          "title": "How are you considering the potential environmental impact and sustainability of your project?",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b')"
         },
         {
           "type": "comment",
-          "name": "13T",
+          "name": "13d",
           "startWithNewLine": true,
-          "title": "13. Briefly explain the environmental and sustainability implications of your project.",
-          "visibleIf": "{13} = 'Yes' or {13} = 'Somewhat'"
+          "isRoot": true,
+          "questionSetHeader": "Environment impact monitoring",
+          "themes": [
+            "Environmental sustainability"
+          ],
+          "title": "Briefly describe how you intend to monitor, evaluate and address environmental impact and sustainability challenges.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b')"
         },
         {
           "type": "expression",
-          "name": "13S",
-          "startWithNewLine": false,
-          "title": "13. Environmental sustainability means thinking about the wider impact of your project on people and the planet. It’s important to consider this from the start, as it can influence your choices about tools, suppliers and infrastructure.\n\nThe environmental sustainability chapter in the Data and AI Ethics Framework provides further advice on how to assess the potential impact of data and AI projects.",
-          "visibleIf": "{13} = 'No'"
-        },
-        {
-          "type": "comment",
-          "name": "13aT",
+          "name": "13i",
           "startWithNewLine": true,
-          "title": "13a. Briefly describe how you intend to monitor, evaluate and address environmental impact and sustainability challenges.",
-          "visibleIf": "{13a} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "13aS",
-          "startWithNewLine": false,
-          "title": "13a. Before you begin building a tool or system, you should develop a plan to monitor and evaluate the environmental impact.\n\nYou should think about factors such as: \no Whether AI is the best technology or tool for the task – there may be alternatives that provide as good, or better, results and require less resource-intensive training and development.\no Project size and complexity – how much data will be processed, the number of end users, bandwidth and latency requirements, prompt efficiency\no Software requirements – including model type.\no Hardware requirements – such as data centre usage or Internet of Things (IoT) devices.\n\nThe Service Manual also has guidance on how to build more [environmentally sustainable digital services in government](https://www.gov.uk/service-manual/design/environmentally-sustainable-services).",
-          "visibleIf": "{13a} = 'No' or {13a} = 'Unsure'"
+          "isContext": true,
+          "title": "Before you begin building a tool or system, you should develop a plan to monitor and evaluate the environmental impact. There are various environmental factors that you should monitor and manage across the lifecycle of your project. This can be a complex task but it’s vital for ensuring proper stewardship of data and AI projects. \n \nYou should select appropriate metrics and key performance indicators (KPIs) that can be tracked over time – such as carbon footprint, energy consumption or compute efficiency. You may need to consider more than one metric to understand the project’s broader impact.\n\nThe sustainability chapter in the Data and AI Ethics Framework provides further guidance on how to do this.  \n\nThe Service Manual has guidance on how to build more environmentally sustainable digital services in government.",
+          "description": "It’s important to consider environmental sustainability and impact from the start of your project, as it can influence your choices about tools, suppliers and infrastructure."
         }
       ]
     },
@@ -813,475 +410,175 @@
       "elements": [
         {
           "type": "radiogroup",
-          "name": "1",
+          "name": "1r",
           "startWithNewLine": true,
-          "title": "1. Do you have a data quality action plan or acceptance criteria to ensure your data is fit for purpose?",
-          "visibleIf": "{FILTER} contains 'Option a'",
+          "isRoot": true,
+          "questionSetHeader": "Data quality",
+          "themes": [
+            "Safety"
+          ],
+          "title": "Do you have a plan in place to ensure data quality is assessed across the project lifecycle?",
+          "visibleIf": "({FILTER} contains 'Option a')",
           "choices": [
             "Yes",
-            "No"
+            "Not yet",
+            "Other"
           ],
           "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a'"
+          "resetValueIf": "({FILTER} notcontains 'Option a')"
         },
         {
-          "type": "radiogroup",
+          "type": "comment",
+          "name": "1d",
+          "startWithNewLine": true,
+          "title": "Briefly describe how you will check for and maintain data quality.",
+          "visibleIf": "({1r} = 'Yes')"
+        },
+        {
+          "type": "expression",
           "name": "1a",
           "startWithNewLine": false,
-          "title": "1a. Have you performed an initial data quality assessment?",
-          "visibleIf": "{1} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No"
+          "title": "The Government Data Quality Framework sets out principles and practices to assess, communicate and improve the quality of data in government. Linked with this, there’s guidance on implementing a data quality action plan.",
+          "visibleIf": "({1r} = 'Not yet')"
+        },
+        {
+          "type": "comment",
+          "name": "2d",
+          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Privacy-enhancing technologies",
+          "themes": [
+            "Privacy",
+            "Safety"
           ],
-          "allowClear": false,
-          "resetValueIf": "{1} <> 'Yes'"
+          "title": "How are you integrating privacy-enhancing technologies (PETs) into your project?",
+          "description": "Privacy enhancing technologies (PETs) can help to achieve a privacy-by-design approach - making design and development decisions from the very start that enhance privacy objectives.\n\nYou should use PETs where possible, applying techniques such as anonymisation or the use of synthetic data.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
+        },
+        {
+          "type": "comment",
+          "name": "3d",
+          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Communicating with stakeholders",
+          "themes": [
+            "Transparency",
+            "Accountability"
+          ],
+          "title": "How are you communicating the project information and purpose to relevant stakeholders?",
+          "description": "You should proactively communicate the project's purpose, design and intended outcomes to relevant stakeholders. \n\nEarly and ongoing engagement can help build trust, improve understanding, and identify concerns before the project progresses further.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
+        },
+        {
+          "type": "comment",
+          "name": "4d",
+          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Accessibility",
+          "themes": [
+            "Fairness"
+          ],
+          "title": "How are you ensuring the tool or service is accessible for all users?",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
+        },
+        {
+          "type": "comment",
+          "name": "5d",
+          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Fairness testing",
+          "themes": [
+            "Fairness"
+          ],
+          "title": "How are you testing and monitoring for fairness risks?",
+          "description": "As you develop your approach to fairness testing and evaluation, you should:\n·      Consider which individuals or groups could benefit from, be disadvantaged by, or be particularly vulnerable to harms from the project.\n·      Identify appropriate measures or metrics for assessing fairness, including how you will assess whether your data is sufficiently representative and whether the system produces unfair outcomes.\n\nYou must review the accessibility needs of your users and identify any barriers that could prevent people from accessing, using or benefiting from your project. You should make changes where needed to ensure your project is accessible and inclusive. The Service Manual includes guidance on accessibility and assisted digital.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
+        },
+        {
+          "type": "comment",
+          "name": "6d",
+          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Societal impact approach",
+          "themes": [
+            "Societal Impact"
+          ],
+          "title": "What are the potential societal impacts of your project? What steps will you take to address these impacts, if any?",
+          "description": "Societal impacts are the broader positive or negative effects that data and AI can have on people, communities, society and the economy. These impacts may be direct or indirect and may affect different groups in different ways.\n\nYou should engage with a diverse group of stakeholders, including staff, to understand the potential wider societal impact of implementing the project.\n\n·      To adopt AI safely and effectively, teams should have:\no      suitable training and resources\no      a working environment that considers and prioritises broader ‘human’ factors – including cultural shifts, organisational change and skill development.\n·      To learn more, refer to the guidance on a human-centred approach to scaling AI tools,",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
+        },
+        {
+          "type": "comment",
+          "name": "7d",
+          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Trade-offs",
+          "themes": [
+            "Societal Impact"
+          ],
+          "title": "How are you managing any trade-offs between ethical principles and project or organisational goals?",
+          "description": "Ethical trade-offs are complex, and you must treat them with care. Sometimes project goals, such as improving efficiency or reducing costs, may come into tension with ethical considerations such as fairness or privacy. Identifying these tensions early can help you make informed and responsible decisions.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
+        },
+        {
+          "type": "comment",
+          "name": "8d",
+          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Governance and oversight",
+          "themes": [
+            "Safety",
+            "Accountability"
+          ],
+          "title": "How are you ensuring there is sufficient human oversight of the system?",
+          "description": "·      Human oversight of AI systems can help to maintain accountability and correct any erroneous or potentially harmful impacts.\n·      Identify where human oversight is needed and put mechanisms in place so that a person can meaningfully review, question or intervene in the AI system’s outputs or decisions where appropriate. You should test these mechanisms across the project lifecycle to make sure they work as intended.\n·      Where appropriate, you should engage with civil society organisations for guidance on how to design and integrate feedback and redress mechanisms for your AI project or system.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "radiogroup",
-          "name": "1b",
-          "startWithNewLine": false,
-          "title": "1b. Do you have a plan for checking and validating data quality across the data lifecycle?",
-          "visibleIf": "{1} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No"
+          "name": "9r",
+          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Algorithmic transparency",
+          "themes": [
+            "Transparency"
           ],
-          "allowClear": false,
-          "resetValueIf": "{1} <> 'Yes'"
-        },
-        {
-          "type": "comment",
-          "name": "1T",
-          "startWithNewLine": true,
-          "title": "1. Provide a summary or link to your action plan or acceptance criteria.",
-          "visibleIf": "{1} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "1S",
-          "startWithNewLine": false,
-          "title": "1. [action]",
-          "visibleIf": "{1} = 'No'"
-        },
-        {
-          "type": "comment",
-          "name": "1aT",
-          "startWithNewLine": true,
-          "title": "1a. Briefly describe the results of your data quality assessment and any actions you plan to take to improve data quality.",
-          "visibleIf": "{1a} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "1aS",
-          "startWithNewLine": false,
-          "title": "1a. [action]",
-          "visibleIf": "{1a} = 'No'"
-        },
-        {
-          "type": "comment",
-          "name": "1bT",
-          "startWithNewLine": true,
-          "title": "1b. Briefly describe how you will maintain data quality in the future.",
-          "visibleIf": "{1b} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "1bS",
-          "startWithNewLine": false,
-          "title": "1b. [action]",
-          "visibleIf": "{1b} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "2",
-          "startWithNewLine": true,
-          "title": "2. Is your project purpose, design and intended outcome clear to all your key stakeholders yet?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
+          "title": "Is your tool within scope of the Algorithmic Transparency Recording Standard (ATRS)?",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "2a",
-          "startWithNewLine": false,
-          "title": "2a. Do you have a plan to communicate project purpose, design and intended outcomes later?",
-          "visibleIf": "{2} = 'No'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{2} <> 'No'"
+          "resetValueIf": "({FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e' and {FILTER} notcontains 'Option f')"
         },
         {
           "type": "expression",
-          "name": "2S",
+          "name": "9i",
           "startWithNewLine": true,
-          "title": "2. [action]",
-          "visibleIf": "{2} = 'Unsure'"
+          "isContext": true,
+          "title": "The ATRS establishes a standardised way for public sector organisations to publish information about how and why they are using algorithmic tools. The ATRS is mandatory for: \t\t\t\t\n·      All government departments, and for ALBs which deliver public or frontline services, or directly interact with the general public.\t\t\t\t\n·      Algorithmic tools which have a significant influence on a decision-making process with public effect or directly interact with the general public.\t\t\t\t\n\t\t\t\t\nIf your organisation and tools fall within the mandatory scope of the ATRS, you are required to complete and openly publish an ATRS record once your project reaches public beta.\t\t\t\t\n\t\t\t\t\nThe ATRS template, guidance for completing a record, and the repository of published records are all hosted on the ATRS Hub on GOV.UK. You can reach the ATRS team at algorithmic-transparency@dsit.gov.uk."
+        },
+        {
+          "type": "expression",
+          "name": "9a",
+          "startWithNewLine": true,
+          "title": "·      You should check if your tool is in scope of the Algorithmic Transparency Recording Standard (ATRS). \n·      The ATRS is mandatory for: \no      All government departments, and for ALBs which deliver public or frontline services, or directly interact with the general public.\no      Algorithmic tools which have a significant influence on a decision-making process with public effect or directly interact with the general public.\n·      The mandatory requirement to publish an ATRS record applies to tools that are in Beta/Pilot or Production phase.\n·      It is recommended best practice to publish an ATRS record even if your tool is not within mandatory scope.",
+          "visibleIf": "({9r} = 'Unsure')"
         },
         {
           "type": "comment",
-          "name": "2aT",
+          "name": "10d",
           "startWithNewLine": true,
-          "title": "2a. Briefly describe the ways you will record and communicate information to your stakeholders.",
-          "visibleIf": "{2a} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "2aS",
-          "startWithNewLine": false,
-          "title": "2a. [action]",
-          "visibleIf": "{2a} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "3",
-          "startWithNewLine": true,
-          "title": "3. Are you processing or do you intend to process people’s personal data as part of your project?",
-          "visibleIf": "{FILTER} contains 'Option a'",
-          "choices": [
-            "Yes",
-            "No"
+          "isRoot": true,
+          "questionSetHeader": "Sustainability monitoring",
+          "themes": [
+            "Environmental sustainability"
           ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "3a",
-          "startWithNewLine": false,
-          "title": "3a. Are you communicating with or informing users about how their data is being used?",
-          "visibleIf": "{3} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{3} <> 'Yes'"
-        },
-        {
-          "type": "comment",
-          "name": "3aT",
-          "startWithNewLine": true,
-          "title": "3a. Describe how you are communicating your personal data processing activities to users.",
-          "visibleIf": "{3a} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "3aS",
-          "startWithNewLine": false,
-          "title": "3a. [action]",
-          "visibleIf": "{3a} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "4",
-          "startWithNewLine": true,
-          "title": "4. Have you integrated or do you intend to integrate any privacy-enhancing technologies into your project?",
-          "visibleIf": "{FILTER} contains 'Option a'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a'"
-        },
-        {
-          "type": "comment",
-          "name": "4T",
-          "startWithNewLine": true,
-          "title": "4. Briefly describe the PETs you have used or will use in your project.",
-          "visibleIf": "{4} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "4S",
-          "startWithNewLine": false,
-          "title": "4. [action]",
-          "visibleIf": "{4} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "5",
-          "startWithNewLine": true,
-          "title": "5. Have you ensured that the system’s outputs can be clearly explained and understood by users and key stakeholders yet?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d'"
-        },
-        {
-          "type": "comment",
-          "name": "5T",
-          "startWithNewLine": true,
-          "title": "5. Briefly describe how you have ensured explainability.",
-          "visibleIf": "{5} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "5S",
-          "startWithNewLine": false,
-          "title": "5. [action]",
-          "visibleIf": "{5} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "6",
-          "startWithNewLine": true,
-          "title": "6. Have you planned or started any fairness testing yet?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d'"
-        },
-        {
-          "type": "comment",
-          "name": "6T",
-          "startWithNewLine": true,
-          "title": "6. Describe the fairness testing you have started or planned.",
-          "visibleIf": "{6} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "6S",
-          "startWithNewLine": false,
-          "title": "6. [action]",
-          "visibleIf": "{6} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "7",
-          "startWithNewLine": true,
-          "title": "7. Have you investigated representativeness and bias within your project datasets yet?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option d'",
-          "choices": [
-            "Yes",
-            "Somewhat",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option d'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "7a",
-          "startWithNewLine": false,
-          "title": "7a. Are you able to address any dataset limitations that you have found?",
-          "visibleIf": "{7} = 'Yes' or {7} = 'Somewhat'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{7} <> 'Yes' and {7} <> 'Somewhat'"
-        },
-        {
-          "type": "expression",
-          "name": "7S",
-          "startWithNewLine": true,
-          "title": "7. [action]",
-          "visibleIf": "{7} = 'Somewhat' or {7} = 'No'"
-        },
-        {
-          "type": "comment",
-          "name": "7T",
-          "startWithNewLine": true,
-          "title": "7. Briefly describe or provide a link to your findings.",
-          "visibleIf": "{7} = 'Yes' or {7} = 'Somewhat'"
-        },
-        {
-          "type": "comment",
-          "name": "7aT",
-          "startWithNewLine": true,
-          "title": "7a. Describe how you will mitigate any representativeness or bias limitations in your dataset.",
-          "visibleIf": "{7a} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "7aS",
-          "startWithNewLine": false,
-          "title": "7a. [action]",
-          "visibleIf": "{7a} = 'No' or {7a} = 'Unsure'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "8",
-          "startWithNewLine": true,
-          "title": "8. Have you considered the diversity of needs within your target user group yet?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
-          "choices": [
-            "Yes",
-            "Somewhat",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
-        },
-        {
-          "type": "comment",
-          "name": "8T",
-          "startWithNewLine": true,
-          "title": "8. Briefly describe the various needs within your target user group that you will account for.",
-          "visibleIf": "{8} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "8S",
-          "startWithNewLine": false,
-          "title": "8. [action]",
-          "visibleIf": "{8} = 'Somewhat' or {8} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "9",
-          "startWithNewLine": true,
-          "title": "9. Have you considered the harms in not undertaking your project?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
-          "choices": [
-            "Yes",
-            "Somewhat",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
-        },
-        {
-          "type": "comment",
-          "name": "9T",
-          "startWithNewLine": true,
-          "title": "9. Briefly explain the harms that might be caused by not undertaking this project.",
-          "visibleIf": "{9} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "9S",
-          "startWithNewLine": false,
-          "title": "9. [action]",
-          "visibleIf": "{9} = 'Somewhat' or {9} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "10",
-          "startWithNewLine": true,
-          "title": "10. Could your solution have an impact on employment, working conditions or required skills?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "10a",
-          "startWithNewLine": false,
-          "title": "10a. Have you considered who is likely to be relatively advantaged and disadvantaged by this impact?",
-          "visibleIf": "{10} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{10} <> 'Yes'"
-        },
-        {
-          "type": "comment",
-          "name": "10T",
-          "startWithNewLine": true,
-          "title": "10. Describe the likely or potential employment, working condition or required skill impacts of your solution?",
-          "visibleIf": "{10} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "10S",
-          "startWithNewLine": false,
-          "title": "10. [action]",
-          "visibleIf": "{10} = 'Unsure'"
-        },
-        {
-          "type": "comment",
-          "name": "10aT",
-          "startWithNewLine": true,
-          "title": "10a. Describe who is likely to be advantaged or disadvantaged by your solution, if anyone?",
-          "visibleIf": "{10a} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "10aS",
-          "startWithNewLine": false,
-          "title": "10a. [action]",
-          "visibleIf": "{10a} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "11",
-          "startWithNewLine": true,
-          "title": "11. Have you identified any trade-offs between ethical principles and business or organisational goals within your project?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "11a",
-          "startWithNewLine": false,
-          "title": "11a. Have you considered alternative solutions or project designs to meeting your intended outcomes that would achieve a better balance of trade-offs?",
-          "visibleIf": "{11} = 'Yes'",
-          "choices": [
-            "Yes",
-            "Somewhat",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{11} <> 'Yes'"
-        },
-        {
-          "type": "comment",
-          "name": "11T",
-          "startWithNewLine": true,
-          "title": "11. Briefly describe the trade-offs you've identified.",
-          "visibleIf": "{11} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "11S",
-          "startWithNewLine": false,
-          "title": "11. [action]",
-          "visibleIf": "{11} = 'No'"
-        },
-        {
-          "type": "comment",
-          "name": "11aT",
-          "startWithNewLine": true,
-          "title": "11a. Briefly explain how you will balance these trade-offs.",
-          "visibleIf": "{11a} = 'Yes' or {11a} = 'Somewhat'"
-        },
-        {
-          "type": "expression",
-          "name": "11aS",
-          "startWithNewLine": false,
-          "title": "11a. [action]",
-          "visibleIf": "{11a} = 'No'"
+          "title": "How are you ensuring the project has measurable environmental sustainability goals?",
+          "description": "Setting clear sustainability objectives and using greener software practices will help make sustainability a core part of your project design.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         }
       ]
     },
@@ -1291,339 +588,120 @@
       "description": "Beta is the phase where you are building the solution that best solves your problem. You are refining your solution based on user feedback and preparing for launch. Learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-beta-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">beta phase</a> in a new tab.<br><br>",
       "elements": [
         {
-          "type": "radiogroup",
-          "name": "1",
+          "type": "comment",
+          "name": "1d",
           "startWithNewLine": true,
-          "title": "1. Are you confident in the accuracy, representativeness and completeness of the data that is shaping your solution design?",
-          "visibleIf": "{FILTER} contains 'Option a'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
+          "isRoot": true,
+          "questionSetHeader": "Data quality",
+          "themes": [
+            "Safety",
+            "Fairness",
+            "Privacy"
           ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a'"
+          "title": "How are you ensuring that the data used by the project remains appropriate and of sufficient quality for its intended purpose?",
+          "description": "·      Data quality should be checked and validated across the data life cycle.\n·      You should disclose any limitations of the data, such as quality issues, missing or incomplete data, gaps in representativeness, or known errors. Tools such as data sheets or data set cards can be helpful in documenting information about data quality.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "comment",
-          "name": "1T",
+          "name": "2d",
           "startWithNewLine": true,
-          "title": "1. Briefly describe the data quality tests and/or results you've performed to give you confidence.",
-          "visibleIf": "{1} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "1S",
-          "startWithNewLine": false,
-          "title": "1. [action]",
-          "visibleIf": "{1} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "2",
-          "startWithNewLine": true,
-          "title": "2. Have you performed fairness tests on your AI system?",
-          "visibleIf": "{FILTER} contains 'Option b'",
-          "choices": [
-            "Yes",
-            "No"
+          "isRoot": true,
+          "questionSetHeader": "Accessibility",
+          "themes": [
+            "Fairness"
           ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option b'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "2a",
-          "startWithNewLine": false,
-          "title": "2a. Are you confident that your AI system will lead to fair outcomes yet?",
-          "visibleIf": "{2} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{2} <> 'Yes'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "2b",
-          "startWithNewLine": false,
-          "title": "2b. Will you take any corrective action to address fairness issues before going live?",
-          "visibleIf": "{2a} = 'No' or {2a} = 'Unsure'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{2a} <> 'No' and {2a} <> 'Unsure'"
-        },
-        {
-          "type": "expression",
-          "name": "2S",
-          "startWithNewLine": true,
-          "title": "2. [action]",
-          "visibleIf": "{2} = 'No'"
+          "title": "How are you ensuring accessibility for all users?",
+          "description": "Before going live, you must test your tool or project with real users, including users with accessibility needs and those who use assistive technologies.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "comment",
-          "name": "2aT",
+          "name": "3d",
           "startWithNewLine": true,
-          "title": "2a. Briefly describe the data fairness tests and/or results you've performed to give you confidence.",
-          "visibleIf": "{2a} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "2aS",
-          "startWithNewLine": false,
-          "title": "2a. [action]",
-          "visibleIf": "{2a} = 'No'"
+          "isRoot": true,
+          "questionSetHeader": "Equality impact",
+          "themes": [
+            "Fairness",
+            "Societal Impact"
+          ],
+          "title": "How are you testing the project's impact on different groups? What have you learnt so far?",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "comment",
-          "name": "2bT",
+          "name": "4d",
           "startWithNewLine": true,
-          "title": "2b. Briefly describe the corrective action you will take to ensure fairness.",
-          "visibleIf": "{2b} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "2bS",
-          "startWithNewLine": false,
-          "title": "2b. [action]",
-          "visibleIf": "{2b} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "3",
-          "startWithNewLine": true,
-          "title": "3. Have you ensured accessibility for all users yet?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
-          "choices": [
-            "Yes",
-            "No"
+          "isRoot": true,
+          "questionSetHeader": "Governance and oversight",
+          "themes": [
+            "Accountability"
           ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
+          "title": "How have you designed and tested human oversight mechanisms? What governance, checks and controls are in place?",
+          "description": "You should be clear what human checks exist across the life cycle of your project and who is responsible for them (including role type and senior responsible owners). Test as early as possible whether these checks work in practice – for example, whether users can raise concerns, and if changes can be made quickly when risks are identified.",
+          "visibleIf": "({FILTER} contains 'Option b' or {FILTER} contains 'Option c')"
         },
         {
           "type": "comment",
-          "name": "3T",
+          "name": "5d",
           "startWithNewLine": true,
-          "title": "3. Briefly describe the accessibility measurs you've taken.",
-          "visibleIf": "{3} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "3S",
-          "startWithNewLine": false,
-          "title": "3. [action]",
-          "visibleIf": "{3} = 'No'"
+          "isRoot": true,
+          "questionSetHeader": "Process documentation",
+          "themes": [
+            "Transparency",
+            "Accountability"
+          ],
+          "title": "What documentation is available so that your process, results and outputs can be replicated by others using the same data and environment?",
+          "description": "Documentation is relevant to both data and AI projects, and should cover data sources, preprocessing, model choice, training parameters, evaluation metrics and more where appropriate.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "radiogroup",
-          "name": "4",
+          "name": "6r",
           "startWithNewLine": true,
-          "title": "4. Have you established and tested human oversight mechanisms?",
-          "visibleIf": "{FILTER} contains 'Option b' or {FILTER} contains 'Option c'",
+          "isRoot": true,
+          "questionSetHeader": "Release thresholds",
+          "themes": [
+            "Safety"
+          ],
+          "title": "Have you established ‘go’ or ‘no-go’ criteria prior to the system going live?",
+          "description": "Before going live, you should consider what an acceptable threshold for your project looks like as a whole. This should consider ethical themes and parameters holistically, rather than in isolation. Think about what person(s) have the authority to make this decision and what information they need to ensure their decision is informed.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')",
           "choices": [
             "Yes",
-            "No"
+            "Not yet",
+            "Other"
           ],
           "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c'"
+          "resetValueIf": "({FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e' and {FILTER} notcontains 'Option f')"
         },
         {
           "type": "comment",
-          "name": "4T",
+          "name": "6d",
           "startWithNewLine": true,
-          "title": "4. Briefly describe the governance checks and controls mechanisms that you've established for your solution.",
-          "visibleIf": "{4} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "4S",
-          "startWithNewLine": false,
-          "title": "4. [action]",
-          "visibleIf": "{4} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "5",
-          "startWithNewLine": true,
-          "title": "5. Would others be able to reproduce your project process, results and outputs using your current project documentation?",
-          "visibleIf": "{FILTER} contains 'Option a'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a'"
+          "title": "Briefly describe the criteria or plan you have in place.",
+          "visibleIf": "({7} = 'Yes')"
         },
         {
           "type": "comment",
-          "name": "5T",
+          "name": "6d2",
           "startWithNewLine": true,
-          "title": "5. List the main resources that would allow others to understand and reproduce your project.",
-          "visibleIf": "{5} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "5S",
-          "startWithNewLine": false,
-          "title": "5. [action]",
-          "visibleIf": "{5} = 'No' or {5} = 'Unsure'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "6",
-          "startWithNewLine": true,
-          "title": "6. Is your project within scope of the Algorithmic Transparency Recording Standard (ATRS)?",
-          "visibleIf": "{FILTER} contains 'Option b'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option b'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "6a",
-          "startWithNewLine": false,
-          "title": "6a. Have you reviewed the ATRS for information you are required to publish?",
-          "visibleIf": "{6} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{6} <> 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "6S",
-          "startWithNewLine": true,
-          "title": "6. [action]",
-          "visibleIf": "{6} = 'Unsure'"
-        },
-        {
-          "type": "expression",
-          "name": "6aS",
-          "startWithNewLine": false,
-          "title": "6a. [action]",
-          "visibleIf": "{6a} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "7",
-          "startWithNewLine": true,
-          "title": "7. Have you integrated environmental evaluation and monitoring processes into your project yet?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "7a",
-          "startWithNewLine": false,
-          "title": "7a. Have you set environmental and sustainability thresholds that your project needs to adhere to?",
-          "visibleIf": "{7} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{7} <> 'Yes'"
+          "title": "Briefly describe how you plan on establishing a go/no-go criteria prior to deployment.",
+          "visibleIf": "({7} = 'Not yet')"
         },
         {
           "type": "comment",
-          "name": "7T",
+          "name": "7d",
           "startWithNewLine": true,
-          "title": "7. Briefly describe how you've integrated these processes into your project.",
-          "visibleIf": "{7} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "7S",
-          "startWithNewLine": false,
-          "title": "7. [action]",
-          "visibleIf": "{7} = 'No'"
-        },
-        {
-          "type": "comment",
-          "name": "7aT",
-          "startWithNewLine": true,
-          "title": "7a. Describe your environmental and sustainability thresholds, and the consequences of not adhering to them.",
-          "visibleIf": "{7a} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "7aS",
-          "startWithNewLine": false,
-          "title": "7a. [action]",
-          "visibleIf": "{7a} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "8",
-          "startWithNewLine": true,
-          "title": "8. Have you established ‘go’ or ‘no-go’ criteria for your solution to go live?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
-          "choices": [
-            "Yes",
-            "No"
+          "isRoot": true,
+          "questionSetHeader": "Transitioning to live",
+          "themes": [
+            "Accountability",
+            "Safety"
           ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "8a",
-          "startWithNewLine": false,
-          "title": "8a. Do you have a plan for safely transitioning from development to live yet?",
-          "visibleIf": "{9} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{9} <> 'Yes'"
-        },
-        {
-          "type": "comment",
-          "name": "8T",
-          "startWithNewLine": true,
-          "title": "8. List or link the ‘go’ or ‘no-go’ criteria for your solution to go live.",
-          "visibleIf": "{8} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "8S",
-          "startWithNewLine": false,
-          "title": "8. [action]",
-          "visibleIf": "{8} = 'No'"
-        },
-        {
-          "type": "comment",
-          "name": "8aT",
-          "startWithNewLine": true,
-          "title": "8a. Briefly explain or link your plan for transitioning to live.",
-          "visibleIf": "{8a} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "8aS",
-          "startWithNewLine": false,
-          "title": "8a. [action]",
-          "visibleIf": "{8a} = 'No'"
+          "title": "How will you safely and responsibly transition from development to live? Who will own the system during ‘business-as-usual’ deployment, and how will handover be managed?",
+          "description": "You should consider whether the future owners of the system have the capability and resources to effectively, safely and responsibly manage the project over time.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         }
       ]
     },
@@ -1633,250 +711,164 @@
       "description": "Live is the phase where your solution is available to users. You are monitoring performance and gathering feedback to inform future improvements. Learn more about the <a href=\"https://www.gov.uk/service-manual/agile-delivery/how-the-live-phase-works\" target=\"_blank\" rel=\"noopener noreferrer\">live phase</a> in a new tab.<br><br>",
       "elements": [
         {
-          "type": "radiogroup",
-          "name": "1",
+          "type": "comment",
+          "name": "1d",
           "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Performance monitoring",
           "themes": [
             "Safety"
           ],
-          "title": "1. Are you measuring and monitoring the safety of your live system?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "1a",
-          "startWithNewLine": false,
-          "title": "1a. Do you have a response plan for if your system degrades or becomes unsafe?",
-          "visibleIf": "{1} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{1} <> 'Yes'"
+          "title": "How are you measuring and monitoring system performance post-deployment?",
+          "description": "Once your project is live you should be actively monitoring performance in the real world. Key Performance Indicators (KPIs) that you track may include reliability and accuracy indicators (for example, error rates, latency, uptime), model drift, and monitoring of potentially harmful and unsafe behaviour (for example, misclassification, unsafe recommendations or inappropriate generated content).",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "comment",
-          "name": "1T",
+          "name": "2d",
           "startWithNewLine": true,
-          "title": "1. List the ways in which you are measuring and monitoring system performance.",
-          "visibleIf": "{1} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "1S",
-          "startWithNewLine": false,
-          "title": "1. [action]",
-          "visibleIf": "{1} = 'No'"
-        },
-        {
-          "type": "comment",
-          "name": "1aT",
-          "startWithNewLine": true,
-          "title": "1a. Describe or link your system degradation and safety plan.",
-          "visibleIf": "{1a} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "1aS",
-          "startWithNewLine": false,
-          "title": "1a. [action]",
-          "visibleIf": "{1a} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "2",
-          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Performance mitigations",
           "themes": [
-            "Accountability",
             "Safety"
           ],
-          "title": "2. Have you established opportunities for users to submit feedback on system performance?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
+          "title": "How will you respond if the system performance degrades or becomes unsafe?",
+          "description": "Consider also how you can respond to any alerts or crossed thresholds, such as options to roll back or use fallback systems, your ability to triage and fix different issues, and how you communicate this with users.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "comment",
-          "name": "2T",
+          "name": "3d",
           "startWithNewLine": true,
-          "title": "2. Briefly describe the opportunities you've established for users to submit feedback on system performance.",
-          "visibleIf": "{2} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "2S",
-          "startWithNewLine": false,
-          "title": "2. [action]",
-          "visibleIf": "{2} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "3",
-          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Feedback mechanisms",
           "themes": [
             "Transparency",
-            "Accountability"
+            "Safety"
           ],
-          "title": "3. Are you maintaining logs and documentation while your system is live?",
-          "visibleIf": "{FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "3a",
-          "startWithNewLine": false,
-          "title": "3a. Are you confident that these records are transparent enough and will support investigations if issues occur?",
-          "visibleIf": "{3} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{3} <> 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "3S",
-          "startWithNewLine": true,
-          "title": "3. [action]",
-          "visibleIf": "{3} = 'No'"
-        },
-        {
-          "type": "expression",
-          "name": "3aS",
-          "startWithNewLine": false,
-          "title": "3a. [action]",
-          "visibleIf": "{3a} = 'No' or {3a} = 'Unsure'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "4",
-          "startWithNewLine": true,
-          "themes": [
-            "Transparency",
-            "Accountability"
-          ],
-          "title": "4. Are your system outputs consistently understandable and explainable to users and key stakeholders?",
-          "visibleIf": "{FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d'"
+          "title": "What mechanisms are in place for users to submit feedback on system or tool performance?",
+          "description": "Consider different groups' needs when providing feedback mechanisms. This could include colleagues across government departments and the public. Mechanisms may include surveys, feedback forms and consultation responses.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "comment",
-          "name": "4T",
+          "name": "4d",
           "startWithNewLine": true,
-          "title": "4. Briefly describe the measures you've taken to ensure that users can rationalise system outputs.",
-          "visibleIf": "{4} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "4S",
-          "startWithNewLine": false,
-          "title": "4. [action]",
-          "visibleIf": "{4} = 'No' or {4} = 'Unsure'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "5",
-          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Feedback integration",
           "themes": [
             "Transparency",
-            "Accountability"
+            "Safety"
           ],
-          "title": "5. Do your users know that an AI system is involved in producing outputs?",
-          "visibleIf": "{FILTER} contains 'Option b'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option b'"
+          "title": "How are you actioning user feedback to improve the project?",
+          "description": "Consider how feedback is triaged, how you identify recurring issues, how you make changes and communicate with users when changes are integrated.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "comment",
-          "name": "5T",
+          "name": "5d",
           "startWithNewLine": true,
-          "title": "5. Describe the measures you've taken to ensure that users know that they are engaging with an AI-enabled solution.",
-          "visibleIf": "{5} = 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "5S",
-          "startWithNewLine": false,
-          "title": "5. [action]",
-          "visibleIf": "{5} = 'No'"
-        },
-        {
-          "type": "radiogroup",
-          "name": "6",
-          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Explainability",
           "themes": [
-            "Transparency",
-            "Accountability"
+            "Transparency"
           ],
-          "title": "6. Are you required to publish a transparency record as part of the ATRS initiative?",
-          "visibleIf": "{FILTER} contains 'Option b'",
-          "choices": [
-            "Yes",
-            "No",
-            "Unsure"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{FILTER} notcontains 'Option b'"
+          "title": "Can the rationale for outputs be explained to users and affected individuals in a way that is easily understandable?",
+          "description": "If you’re building an AI system, you should take steps to ensure that the system is explainable. For example, you can explain why a model or algorithmic tool has produced a particular outcome.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
-          "type": "radiogroup",
-          "name": "6a",
-          "startWithNewLine": false,
-          "title": "6a. Have you published a transparency record yet?",
-          "visibleIf": "{6} = 'Yes'",
-          "choices": [
-            "Yes",
-            "No"
-          ],
-          "allowClear": false,
-          "resetValueIf": "{6} <> 'Yes'"
-        },
-        {
-          "type": "expression",
-          "name": "6S",
+          "type": "comment",
+          "name": "6d",
           "startWithNewLine": true,
-          "title": "6. [action]",
-          "visibleIf": "{6} = 'Unsure'"
+          "isRoot": true,
+          "questionSetHeader": "Algorithmic transparency",
+          "themes": [
+            "Transparency"
+          ],
+          "title": "How are you notifying users that they are using or interacting with an AI system rather than a human?",
+          "description": "You should consider how different groups, particularly groups such as children, the elderly and vulnerable persons, can recognise and identify whether they are interacting with an AI system or a human. \n\nSystems for notification may include explicit opening statements and persistent labels (for example, stating that the system is ‘powered by AI’), distinct visual cues such as robotic icons, or watermarking on AI-generated text, and reminders in conversation flows. Consider how effective these notifications are in practice for different user groups and in different situations.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
-          "type": "expression",
-          "name": "6aS",
-          "startWithNewLine": false,
-          "title": "6a. [action]",
-          "visibleIf": "{6} = 'No'"
+          "type": "comment",
+          "name": "7d",
+          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Data retention",
+          "themes": [
+            "Privacy"
+          ],
+          "title": "How long will data be retained, and what are the justifications for this period?",
+          "description": "Continually evaluate your data retention policy to ensure that privacy risks do not grow over the project’s life cycle.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
+        },
+        {
+          "type": "comment",
+          "name": "8d",
+          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "System misuse",
+          "themes": [
+            "Safety"
+          ],
+          "title": "What monitoring and interventions are in place to detect and prevent misuse of the system?",
+          "description": "You should remain vigilant of growing capabilities for intentional misuse of the system, as well as the potential for well-intentioned users to push the system beyond its intended parameters.\n \nBe clear who is responsible for monitoring and responding to protected use, including outside of standard working hours and who can authorise changes to mitigate emerging issues.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
+        },
+        {
+          "type": "comment",
+          "name": "9d",
+          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "End-of-life communication",
+          "themes": [
+            "Transparency"
+          ],
+          "title": "Will the people affected by the system being shut down – and possibly replaced – be told about it?",
+          "description": "A system may be retired at the end of its intended life, or potentially before if other risks are unable to be adequately mitigated during its lifetime. Consider how you will inform users if and when this happens, and what groups may be at risk or disproportionally impacted by system retirement.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
+        },
+        {
+          "type": "comment",
+          "name": "10d",
+          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "End-of-life impact",
+          "themes": [
+            "Societal Impact"
+          ],
+          "title": "What would the broader societal or public service impacts be of retiring the system? Are you able to evaluate and communicate this?",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
+        },
+        {
+          "type": "comment",
+          "name": "11d",
+          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Environment impact monitoring",
+          "themes": [
+            "Environmental sustainability"
+          ],
+          "title": "How will you monitor the environmental impact of the project post-deployment? How can you respond if this increases over time and exceeds acceptable thresholds defined by your project's context, risks and benefits?",
+          "description": "Your project’s environmental impact can change during its life due to factors such as changing traffic, updates to model architecture, storage requirements and more.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
+        },
+        {
+          "type": "comment",
+          "name": "#REF!",
+          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Hardware management",
+          "themes": [
+            "Environmental sustainability"
+          ],
+          "title": "What measures are in place to responsibly manage or recycle hardware and infrastructure associated with the project or system?",
+          "description": "You should consider a wide range of hardware that may be required during the life cycle of your project – from hardware owned by cloud providers and other third-party organisations, to edge devices that may be involved in data collection or service delivery, to user devices.",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         }
       ]
     }
   ],
-  "headerView": "advanced",
-  "formVersion": "v0.3"
+  "headerView": "advanced"
 }
