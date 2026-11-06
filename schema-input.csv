@@ -14,7 +14,7 @@ My project involves work in a safety-critical area (e.g. policing, healthcare, w
 •	the Data (Use and Access) Act 2025 
 •	any other applicable privacy legislation.
 
-You must consult your organisation's Data Protection Officer (DPO) before initiating any activity which involves collecting, processing, sharing or storage of personal or sensitive data. You should follow all internal policies on data handling, privacy and security.",info,y,FILTER=data,Data protection approach,"Accountability, Privacy",,,
+You must consult your organisation's Data Protection Officer (DPO) before initiating any activity which involves collecting, processing, sharing or storage of personal or sensitive data. You should follow all internal policies on data handling, privacy and security.",info,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Data protection approach,"Accountability, Privacy",,,
 ,Discovery,1r,None,Have you consulted your organisation’s Data Protection Officer (DPO) about your project?,radios,,,,,"Yes;
 No;
 Unsure",,See the ICO website for more information about DPOs.
@@ -22,7 +22,7 @@ Unsure",,See the ICO website for more information about DPOs.
 ,Discovery,1a,1=No OR Unsure,"•	If your project uses personal data, you must meet your legal duties under the UK General Data Protection Regulation (UK GDPR).
 •	Your organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.
 •	You must comply with the Public Sector Equality Duty and Equality Act 2010. This means you need to carefully consider and document the equality impact of processing personal data where it can be used to identify individuals as having a protected characteristic. This document is often referred to as an Equality Impact Assessment (EIA). For more information, consult the EHRC guidance on the Public Sector Equality Duty.",action,,,,,,,
-1.4,Discovery,2r,None,"Have you, or do you intend to complete a Data Protection Impact Assessment (DPIA) for this project?",radios,y,FILTER=data OR ai OR personal,Data Protection Impact Assessment,"Accountability, Privacy, Safety","Yes, a DPIA has been completed;
+1.4,Discovery,2r,None,"Have you, or do you intend to complete a Data Protection Impact Assessment (DPIA) for this project?",radios,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Data Protection Impact Assessment,"Accountability, Privacy, Safety","Yes, a DPIA has been completed;
 Yes, a DPIA is planned but has not yet been completed;
 No;
 Other",,
@@ -37,7 +37,7 @@ Other",,
 •	any other applicable equality legislation. 
 
 The Public Sector Equality Duty requires that you show ‘due regard’ for the aims of the duty fulfilled before, and at the time that a particular policy or operational activity that will or might impact people with protected characteristics is under consideration, as well as at the time a decision is taken. Assessing impact is an integral part of this duty, and the completion of an Equality Impact Assessment (EIA) is an effective means of fulfilling this.",info,,,,,,,
-,Discovery,3r,None,"Have you, or do you intend to complete an Equality Impact Assessment (EqIA) for this project?",radios,y,FILTER=data,Equality Impact Assesssment,"Fairness, Societal Impact","Yes, an EqIA has been completed;
+,Discovery,3r,None,"Have you, or do you intend to complete an Equality Impact Assessment (EqIA) for this project?",radios,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Equality Impact Assesssment,"Fairness, Societal Impact","Yes, an EqIA has been completed;
 Yes, an EqIA is planned but has not yet been completed;
 Other",,"You must comply with relevant laws and assess the equality impact of your project: 
 •	before making any decisions to initiate a project, including procuring and development
@@ -47,7 +47,7 @@ Other",,"You must comply with relevant laws and assess the equality impact of yo
 There’s no set way for you to record your equality considerations and your organisation may have its own Equality Impact Assessment (EIA) template for you to complete."
 ,Discovery,3d,"3=Yes, an EqIA has been completed","Provide a summary or link to your completed EqIA, including any identified risks.",document,,,,,,,
 ,Discovery,3d2,"3=Yes, an EqIA is planned but has not yet been completed","Briefly explain your plans for completing the EqIA, including when you expect to do this.",document,,,,,,,
-1.7,Discovery,4r,None,Have you consulted with your organisation’s data and information security teams?,radios,y,FILTER=data,Information security approach,"Privacy, Safety","Yes;
+1.7,Discovery,4r,None,Have you consulted with your organisation’s data and information security teams?,radios,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Information security approach,"Privacy, Safety","Yes;
 No;
 Unsure",,
 ,Discovery,4d,4=Yes,What were the key recommendations you received? Were any risks identified?,document,,,,,,,
@@ -55,15 +55,15 @@ Unsure",,
 •	Your organisation’s data and information security team should be able to advise on security requirements and risks. 
 •	Refer to the government’s personal data security principles when processing and sharing personal data.
 •	If you’re working with any third-party suppliers to store, collect or process data, make sure they comply with the security requirements of your project.",action,,,,,,https://www.gov.uk/government/publications/essential-shared-data-assets-and-data-ownership-in-government/essential-shared-data-assets-esdas-guidance-for-departments-html,
-1.8,Discovery,5r,None,Do you have any data sharing agreements in place with other organisations?,radios,y,FILTER=personal OR public OR e,Data sharing agreements,Accountability,"Yes;
+1.8,Discovery,5r,None,Do you have any data sharing agreements in place with other organisations?,radios,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Data sharing agreements,Accountability,"Yes;
 No;
 Other",,
 ,Discovery,5d,5=Yes,Briefly explain how this data sharing achieves a benefit and is necessary. ,document,,,,,,,
 ,Discovery,5d2,5=No,Briefly explain why this is not applicable to your project.,document,,,,,,,
-,Discovery,6d,None,"How does, or could, your governance structure support the safe and effective development of the project?",document,y,FILTER=personal OR public OR e,Governance and oversight,Accountability,,,"·      Data and AI projects should have appropriate and effective governance and oversight. This includes clear roles and responsibilities, clear documentation, and being transparent about the system and the processes around it.
+,Discovery,6d,None,"How does, or could, your governance structure support the safe and effective development of the project?",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Governance and oversight,Accountability,,,"·      Data and AI projects should have appropriate and effective governance and oversight. This includes clear roles and responsibilities, clear documentation, and being transparent about the system and the processes around it.
 ·      You must set out who is responsible at each stage of the project. This includes naming: senior responsible owners (SROs), data owners, data stewards, data custodians, and AI asset owners. 
 ·      The Service Manual includes further information about delivery team roles and responsibilities.'"
-1.10,Discovery,7d,None,How are you documenting key project decisions?,document,y,FILTER=personal OR public OR e,Process documentation,"Transparency, Accountability",,,"·      To ensure AI and data projects can be audited or reviewed, it is advisable to record who is responsible for each part of the project, including suppliers; and to record decisions made during project design. 
+1.10,Discovery,7d,None,How are you documenting key project decisions?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Process documentation,"Transparency, Accountability",,,"·      To ensure AI and data projects can be audited or reviewed, it is advisable to record who is responsible for each part of the project, including suppliers; and to record decisions made during project design. 
 ·      You should consult your organisation’s information governance team for guidance on project documentation."
 1.11,Discovery,8d,None,How have you assigned responsibility for the project’s outcomes? Are the responsible owners able to make necessary changes?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Responsible ownership,Accountability,,,"Consider whether those responsible for the project have the authority, time and information they need to implement changes. You should also think about whether the organisation embodies a ‘culture of change’ and continuous improvement, where concerns are raised, decisions made and changes followed through."
 ,Discovery,9r,None,Will you conduct research as part of your project?,radios,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Research,"Fairness, Societal Impact","Yes;
@@ -88,8 +88,8 @@ You should engage with different stakeholder groups across the project life cycl
 				
 You should continually revisit user needs throughout your project. The Service Manual explains more about user needs.				",info,,,,,,,
 ,Discovery,11d,None,"Do you have a plan to communicate project purpose, design and intended outcomes to users and relevant stakeholders?",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Communicating with stakeholders,Transparency,,,
-,Discovery,12d,None,How are you considering the potential environmental impact and sustainability of your project?,document,y,FILTER=data OR ai,Environment impact approach,Environmental sustainability,,,
-,Discovery,13d,None,"Briefly describe how you intend to monitor, evaluate and address environmental impact and sustainability challenges.",document,y,FILTER=data OR ai,Environment impact monitoring,Environmental sustainability,,,
+,Discovery,12d,None,How are you considering the potential environmental impact and sustainability of your project?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Environmental impact approach,Environmental sustainability,,,
+,Discovery,13d,None,"Briefly describe how you intend to monitor, evaluate and address environmental impact and sustainability challenges.",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Environmental impact monitoring,Environmental sustainability,,,
 ,Discovery,13i,None,"Before you begin building a tool or system, you should develop a plan to monitor and evaluate the environmental impact. There are various environmental factors that you should monitor and manage across the lifecycle of your project. This can be a complex task but it’s vital for ensuring proper stewardship of data and AI projects. 
  
 You should select appropriate metrics and key performance indicators (KPIs) that can be tracked over time – such as carbon footprint, energy consumption or compute efficiency. You may need to consider more than one metric to understand the project’s broader impact.
@@ -97,7 +97,7 @@ You should select appropriate metrics and key performance indicators (KPIs) that
 The sustainability chapter in the Data and AI Ethics Framework provides further guidance on how to do this.  
 
 The Service Manual has guidance on how to build more environmentally sustainable digital services in government.",info,,,,,,," It’s important to consider environmental sustainability and impact from the start of your project, as it can influence your choices about tools, suppliers and infrastructure."
-,Alpha,1r,None,Do you have a plan in place to ensure data quality is assessed across the project lifecycle?,radios,y,FILTER=data,Data quality,Safety,"Yes;
+,Alpha,1r,None,Do you have a plan in place to ensure data quality is assessed across the project lifecycle?,radios,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Data quality,Safety,"Yes;
 Not yet;
 Other",,
 ,Alpha,1d,1=Yes,Briefly describe how you will check for and maintain data quality.,document,,,,,,,
@@ -147,7 +147,7 @@ o      Algorithmic tools which have a significant influence on a decision-m
 ·      You should disclose any limitations of the data, such as quality issues, missing or incomplete data, gaps in representativeness, or known errors. Tools such as data sheets or data set cards can be helpful in documenting information about data quality."
 ,Beta,2d,None,How are you ensuring accessibility for all users?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Accessibility,Fairness,,,"Before going live, you must test your tool or project with real users, including users with accessibility needs and those who use assistive technologies."
 ,Beta,3d,None,How are you testing the project's impact on different groups? What have you learnt so far?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Equality impact,"Fairness, Societal Impact",,,
-,Beta,4d,None,"How have you designed and tested human oversight mechanisms? What governance, checks and controls are in place? ",document,y,FILTER=ai OR personal,Governance and oversight,Accountability,,,"You should be clear what human checks exist across the life cycle of your project and who is responsible for them (including role type and senior responsible owners). Test as early as possible whether these checks work in practice – for example, whether users can raise concerns, and if changes can be made quickly when risks are identified."
+,Beta,4d,None,"How have you designed and tested human oversight mechanisms? What governance, checks and controls are in place? ",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Governance and oversight,Accountability,,,"You should be clear what human checks exist across the life cycle of your project and who is responsible for them (including role type and senior responsible owners). Test as early as possible whether these checks work in practice – for example, whether users can raise concerns, and if changes can be made quickly when risks are identified."
 ,Beta,5d,None,"What documentation is available so that your process, results and outputs can be replicated by others using the same data and environment?",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Process documentation,"Transparency, Accountability",,,"Documentation is relevant to both data and AI projects, and should cover data sources, preprocessing, model choice, training parameters, evaluation metrics and more where appropriate."
 ,Beta,6r,None,Have you established ‘go’ or ‘no-go’ criteria prior to the system going live?,radios,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Release thresholds,Safety,"Yes;
 Not yet;
@@ -169,7 +169,7 @@ Systems for notification may include explicit opening statements and persistent 
 Be clear who is responsible for monitoring and responding to protected use, including outside of standard working hours and who can authorise changes to mitigate emerging issues."
 ,Live,9d,None,Will the people affected by the system being shut down – and possibly replaced – be told about it? ,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,End-of-life communication,Transparency,,,"A system may be retired at the end of its intended life, or potentially before if other risks are unable to be adequately mitigated during its lifetime. Consider how you will inform users if and when this happens, and what groups may be at risk or disproportionally impacted by system retirement."
 ,Live,10d,None,What would the broader societal or public service impacts be of retiring the system? Are you able to evaluate and communicate this? ,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,End-of-life impact,Societal Impact,,,
-,Live,11d,None,"How will you monitor the environmental impact of the project post-deployment? How can you respond if this increases over time and exceeds acceptable thresholds defined by your project's context, risks and benefits? ",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Environment impact monitoring,Environmental sustainability,,,"Your project’s environmental impact can change during its life due to factors such as changing traffic, updates to model architecture, storage requirements and more. "
-,Live,#REF!,None,"What measures are in place to responsibly manage or recycle hardware and infrastructure associated with the project or system?
+,Live,11d,None,"How will you monitor the environmental impact of the project post-deployment? How can you respond if this increases over time and exceeds acceptable thresholds defined by your project's context, risks and benefits? ",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Environmental impact monitoring,Environmental sustainability,,,"Your project’s environmental impact can change during its life due to factors such as changing traffic, updates to model architecture, storage requirements and more. "
+,Live,12d,None,"What measures are in place to responsibly manage or recycle hardware and infrastructure associated with the project or system?
 
 ",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Hardware management,Environmental sustainability,,,"You should consider a wide range of hardware that may be required during the life cycle of your project – from hardware owned by cloud providers and other third-party organisations, to edge devices that may be involved in data collection or service delivery, to user devices."

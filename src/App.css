@@ -50,6 +50,7 @@
 .app-shell .survey-form .sd-page__content {
 	padding-right: 0;
 	padding-left: 0;
+	row-gap: 8px;
 }
 
 .app-shell .survey-form .sd-question__header-and-content-container {
@@ -132,6 +133,18 @@
 	outline-offset: 0;
 }
 
+.app-shell .survey-question-set-toggle-controls {
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin: -8px 0 24px;
+}
+
+.app-shell .survey-question-set-toggle-button {
+	margin: 0;
+}
+
 .app-shell .sd-question__description a,
 .app-shell .sd-question__title a {
 	color: #1d70b8;
@@ -204,7 +217,7 @@
 .app-shell .save-panel {
 	margin: 0 0 24px;
 	padding: 16px 20px;
-	background: #e5e5e5;
+	background: 	#f3f3f3;
 }
 
 .app-shell .save-panel p {
@@ -324,8 +337,8 @@
 	width: 100%;
 	margin-bottom: 16px;
 	padding: 16px 0 16px 20px;
-	border-left: 4px solid transparent;
-	border-left-color: 	#cecece;
+	border-top: 1px solid transparent;
+	border-top-color: 	#cecece;
 }
 
 .app-shell .survey-question-set-header__row {
@@ -335,9 +348,17 @@
 
 .app-shell .survey-question-set-header__content {
 	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 8px;
+}
+
+.app-shell .survey-question-set-header__meta {
+	display: flex;
 	align-items: flex-start;
 	justify-content: space-between;
 	gap: 16px;
+	width: 100%;
 }
 
 .app-shell .survey-question-set-header__heading {
@@ -345,10 +366,16 @@
 	margin-bottom: 0;
 }
 
+.app-shell .survey-question-set-header__status {
+	margin-left: auto;
+	align-self: flex-start;
+	white-space: nowrap;
+}
+
 .app-shell .survey-question-set-header .survey-theme-tags {
 	flex: 0 0 auto;
-	justify-content: flex-end;
-	max-width: 50%;
+	justify-content: flex-start;
+	max-width: 100%;
 }
 
 .app-shell .survey-question-set-header__toggle {
@@ -388,15 +415,20 @@
 	display: none !important;
 }
 
-.app-shell .survey-form .sd-page__content > .sd-row:has(.sd-question[hidden]):not(:has(.sd-question:not([hidden]))):not(:has(.survey-question-set-header)) {
+.app-shell .survey-form .sd-page__content > .sd-row:has(.sd-question[hidden]):not(:has(.sd-question:not([hidden]))):not(:has(.survey-question-set-header)):not(:has(.survey-question-set-completion)) {
 	display: none !important;
 }
 
 .app-shell .survey-question-set-completion {
-	display: flex;
-	justify-content: flex-end;
+	display: block !important;
+	justify-content: flex-start;
 	width: 100%;
 	margin-top: 8px;
+	margin-bottom: 12px;
+	padding-bottom: 12px;
+	padding-left: 24px;
+	visibility: visible !important;
+	opacity: 1 !important;
 }
 
 .app-shell .survey-question-set-completion[hidden] {
@@ -410,7 +442,7 @@
 .app-shell .survey-question-set-completion .govuk-checkboxes__item {
 	width: max-content;
 	max-width: 100%;
-	margin-left: auto;
+	margin-left: 0;
 	margin-bottom: 0;
 }
 
@@ -420,11 +452,16 @@
 	padding-right: 0;
 	flex: 0 0 auto;
 	width: max-content;
-	text-align: right;
+	text-align: left;
+	font-weight: 700;
 }
 
 .app-shell .survey-completion-control {
 	text-align: left;
+	position: relative;
+	display: block;
+	visibility: visible !important;
+	opacity: 1 !important;
 }
 
 .app-shell .survey-completion-control.govuk-form-group--error {
@@ -501,16 +538,10 @@
 	box-shadow: none;
 }
 
-.app-shell .survey-question-set-header--completed {
-	border-left-color: 	#4b9b7d;
-}
-
-.app-shell .survey-question-set-header--started {
-	border-left-color: #ffdd00;
-}
-
+.app-shell .survey-question-set-header--completed,
+.app-shell .survey-question-set-header--started,
 .app-shell .survey-question-set-header--action {
-	border-left-color: #d4351c;
+	border-left-color: #cecece;
 }
 
 .app-shell .sd-formbox,
@@ -627,7 +658,7 @@
 }
 
 .app-shell .sd-question.survey-context {
-	background-color: #f3f2f1;
+	background-color: 	#f3f3f3;
 	border-radius: 4px;
 }
 

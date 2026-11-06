@@ -229,13 +229,69 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
   ].join('-')
   const renderedQuestions = useRef(new Map())
   const renderedQuestionSetHeaders = useRef(new Map())
+  const renderedQuestionSetStatusTags = useRef(new Map())
   const renderedQuestionSetCompletionControls = useRef(new Map())
+  const renderedQuestionSetCompletionRows = useRef(new Map())
   const manuallyCompletedSeries = useRef(new Set())
   const collapsedSeries = useRef(new Set(
     [...rootQuestionNames]
       .map((name) => name.match(/^\d+/)?.[0])
       .filter(Boolean),
   ))
+  const refreshQuestionSetHeaderStyles = (surveyModel) => {
+    const questions = surveyModel.pages[pageIndex]?.elements ?? []
+    const startedSeries = getStartedSeries(surveyModel, questions, rootQuestionNames)
+
+    renderedQuestionSetHeaders.current.forEach((header, series) => {
+      const hasAction = hasTriggeredAction(
+        surveyModel,
+        pageIndex,
+        series,
+        actionQuestionNames,
+      )
+      const isCompleted = manuallyCompletedSeries.current.has(series)
+      header.classList.toggle('survey-question-set-header--action', hasAction)
+      header.classList.toggle('survey-question-set-header--completed', !hasAction && isCompleted)
+      header.classList.toggle(
+        'survey-question-set-header--started',
+        !hasAction && !isCompleted && startedSeries.has(series),
+      )
+
+      const statusTag = renderedQuestionSetStatusTags.current.get(series)
+      if (!statusTag) {
+        return
+      }
+
+      statusTag.classList.remove(
+        'govuk-tag--green',
+        'govuk-tag--yellow',
+        'govuk-tag--red',
+        'govuk-tag--grey',
+      )
+
+      if (hasAction) {
+        statusTag.textContent = 'Action required'
+        statusTag.classList.add('govuk-tag--red')
+        return
+      }
+
+      if (isCompleted) {
+        statusTag.textContent = 'Completed'
+        statusTag.classList.add('govuk-tag--green')
+        return
+      }
+
+      if (startedSeries.has(series)) {
+        statusTag.textContent = 'In progress'
+        statusTag.classList.add('govuk-tag--yellow')
+        return
+      }
+
+      statusTag.textContent = 'Not started'
+      statusTag.classList.add('govuk-tag--grey')
+    })
+  }
+
   const [model] = useState(() => {
     const surveyModel = new Model(surveyJson)
     surveyModel.widthMode = 'responsive'
@@ -246,27 +302,6 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
     })
     surveyModel.data = { ...initialData, ...sharedData }
     surveyModel.currentPageNo = pageIndex
-
-    const refreshQuestionSetHeaderStyles = () => {
-      const questions = surveyModel.pages[pageIndex]?.elements ?? []
-      const startedSeries = getStartedSeries(surveyModel, questions, rootQuestionNames)
-
-      renderedQuestionSetHeaders.current.forEach((header, series) => {
-        const hasAction = hasTriggeredAction(
-          surveyModel,
-          pageIndex,
-          series,
-          actionQuestionNames,
-        )
-        const isCompleted = manuallyCompletedSeries.current.has(series)
-        header.classList.toggle('survey-question-set-header--action', hasAction)
-        header.classList.toggle('survey-question-set-header--completed', !hasAction && isCompleted)
-        header.classList.toggle(
-          'survey-question-set-header--started',
-          !hasAction && !isCompleted && startedSeries.has(series),
-        )
-      })
-    }
 
     const refreshFilterErrorState = () => {
       if (pageIndex !== 0) {
@@ -328,7 +363,7 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
             actionQuestionNames,
           ))
         }
-        refreshQuestionSetHeaderStyles()
+        refreshQuestionSetHeaderStyles(surveyModel)
         refreshFilterErrorState()
       })
     }
@@ -346,8 +381,42 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
       const isQuestionSetRoot = rootQuestionNames.has(options.question.name)
       const series = isQuestionSetRoot ? questionSeries : undefined
       const themes = themeLabelsBySeries.get(questionSeries)
+      const moveQuestionSetCompletionToEnd = (seriesToMove) => {
+        const content = options.htmlElement.closest('.sd-page__content')
+        const completionRow = renderedQuestionSetCompletionRows.current.get(seriesToMove)
+        if (!content || !completionRow) {
+          return
+        }
+
+        const lastQuestionElement = [...renderedQuestions.current.entries()]
+          .filter(([questionName]) => questionName.match(/^\d+/)?.[0] === seriesToMove)
+          .map(([, element]) => element)
+          .filter((element) => (
+            element?.closest('.sd-page__content') === content
+            && element.closest('.sd-row')
+          ))
+          .sort((left, right) => (
+            Array.from(content.children).indexOf(left.closest('.sd-row'))
+            - Array.from(content.children).indexOf(right.closest('.sd-row'))
+          ))
+          .at(-1)
+        const lastQuestionRow = lastQuestionElement?.closest('.sd-row')
+
+        if (lastQuestionRow) {
+          if (lastQuestionRow.nextElementSibling !== completionRow) {
+            content.insertBefore(completionRow, lastQuestionRow.nextElementSibling)
+          }
+        } else {
+          const header = renderedQuestionSetHeaders.current.get(seriesToMove)
+          const headerRow = header?.closest('.sd-row')
+          if (headerRow && headerRow.nextElementSibling !== completionRow) {
+            content.insertBefore(completionRow, headerRow.nextElementSibling)
+          }
+        }
+      }
       if (questionSeries) {
         options.htmlElement.hidden = collapsedSeries.current.has(questionSeries)
+        moveQuestionSetCompletionToEnd(questionSeries)
       }
       if (series && options.htmlElement.parentElement) {
         let setHeader = options.htmlElement.previousElementSibling
@@ -361,8 +430,14 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
           headingRow.className = 'survey-question-set-header__row'
           const headingContent = document.createElement('div')
           headingContent.className = 'survey-question-set-header__content'
+          const headingMeta = document.createElement('div')
+          headingMeta.className = 'survey-question-set-header__meta'
           const heading = document.createElement('h3')
           heading.className = 'govuk-heading-m survey-question-set-header__heading'
+          const statusTag = document.createElement('span')
+          statusTag.className = 'govuk-tag survey-question-set-header__status govuk-tag--grey'
+          statusTag.textContent = 'Not started'
+          renderedQuestionSetStatusTags.current.set(series, statusTag)
           const questionSetHeader = questionSetHeadersBySeries.get(series)
           const headingButton = document.createElement('button')
           headingButton.className = 'survey-question-set-header__toggle'
@@ -399,7 +474,8 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
             }
           })
           heading.append(headingButton)
-          headingContent.append(heading)
+          headingMeta.append(heading, statusTag)
+          headingContent.append(headingMeta)
           setHeader.append(headingRow)
           headingRow.append(headingContent)
 
@@ -427,6 +503,8 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
           const completionContainer = document.createElement('div')
           completionContainer.className = 'survey-question-set-completion'
           completionContainer.hidden = collapsedSeries.current.has(series)
+          const completionRow = document.createElement('div')
+          completionRow.className = 'sd-row survey-question-set-completion-row'
           const checkbox = document.createElement('input')
           checkbox.className = 'govuk-checkboxes__input'
           checkbox.type = 'checkbox'
@@ -461,7 +539,7 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
               manuallyCompletedSeries.current.delete(series)
               clearCompletionError(completionControl, checkbox)
             }
-            refreshQuestionSetHeaderStyles()
+            refreshQuestionSetHeaderStyles(surveyModel)
             setProgressSummary(getProgressSummary(
               surveyModel,
               pageIndex,
@@ -478,12 +556,17 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
           checkboxGroup.append(checkboxItem)
           completionControl.append(checkboxGroup)
           completionContainer.append(completionControl)
-          setHeader.append(completionContainer)
+          completionRow.append(completionContainer)
           renderedQuestionSetCompletionControls.current.set(series, completionControl)
+          renderedQuestionSetCompletionRows.current.set(series, completionRow)
+
           options.htmlElement.parentElement.insertBefore(setHeader, options.htmlElement)
         }
       }
-      refreshQuestionSetHeaderStyles()
+      refreshQuestionSetHeaderStyles(surveyModel)
+      if (questionSeries) {
+        moveQuestionSetCompletionToEnd(questionSeries)
+      }
       if (options.question.getType() === 'radiogroup') {
         options.htmlElement.addEventListener('keydown', (event) => {
           const target = event.target
@@ -511,12 +594,47 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
           }
         }, true)
       }
-      refreshQuestionSetHeaderStyles()
+      refreshQuestionSetHeaderStyles(surveyModel)
     })
     surveyModel.onValueChanged.add(scheduleCompletedQuestionStyleRefresh)
 
     return surveyModel
   })
+  const toggleAllQuestionSets = (expand) => {
+    const seriesList = [...new Set(
+      [...rootQuestionNames]
+        .map((name) => name.match(/^\d+/)?.[0])
+        .filter(Boolean),
+    )]
+
+    seriesList.forEach((series) => {
+      if (expand) {
+        collapsedSeries.current.delete(series)
+      } else {
+        collapsedSeries.current.add(series)
+      }
+
+      const headerButton = renderedQuestionSetHeaders.current.get(series)?.querySelector('.survey-question-set-header__toggle')
+      if (headerButton instanceof HTMLButtonElement) {
+        headerButton.setAttribute('aria-expanded', String(expand))
+      }
+
+      renderedQuestions.current.forEach((element, name) => {
+        if (name.match(/^\d+/)?.[0] === series) {
+          element.hidden = !expand
+        }
+      })
+
+      const completionContainer = renderedQuestionSetCompletionControls.current.get(series)
+        ?.closest('.survey-question-set-completion')
+      if (completionContainer) {
+        completionContainer.hidden = !expand
+      }
+    })
+
+    refreshQuestionSetHeaderStyles(model)
+  }
+
   const [progressSummary, setProgressSummary] = useState(() => (
     getProgressSummary(
       model,
@@ -631,27 +749,24 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
         dangerouslySetInnerHTML={{ __html: pageDescription }}
       />
       {pageIndex !== 0 && !showNoFiltersMessage && (
-        <section className="survey-progress-panel" aria-label="Survey progress">
-          <strong className="survey-progress-label">Section progress</strong>
-          <div className="survey-progress-item">
-            <strong className="govuk-tag govuk-tag--grey">Filtered</strong>
-            <span className="survey-progress-count">{progressSummary.filteredOutSeriesCount}</span>
-          </div>
-          <div className="survey-progress-item">
-            <strong className="govuk-tag govuk-tag--yellow">Started</strong>
-            <span className="survey-progress-count">{progressSummary.startedCount}/{progressSummary.totalSeriesCount}</span>
-          </div>
-          <div className="survey-progress-item">
-            <strong className="govuk-tag govuk-tag--green">Completed</strong>
-            <span className="survey-progress-count">{progressSummary.completedCount}/{progressSummary.totalSeriesCount}</span>
-          </div>
-          <div className="survey-progress-item">
-            <strong className="govuk-tag govuk-tag--red">Action count</strong>
-            <span className="survey-progress-count">{progressSummary.actionCount}</span>
-          </div>
-
-        </section>
+        <div className="survey-question-set-toggle-controls">
+          <button
+            type="button"
+            className="govuk-button govuk-button--secondary survey-question-set-toggle-button"
+            onClick={() => toggleAllQuestionSets(true)}
+          >
+            Expand all
+          </button>
+          <button
+            type="button"
+            className="govuk-button govuk-button--secondary survey-question-set-toggle-button"
+            onClick={() => toggleAllQuestionSets(false)}
+          >
+            Hide all
+          </button>
+        </div>
       )}
+
       {showNoFiltersMessage ? (
         <div
           className="govuk-error-summary"

@@ -79,7 +79,7 @@
             "Privacy"
           ],
           "title": "You must comply with data privacy and protection law at all times, including: \n•\tUK General Data Protection Regulation (UK GDPR) \n•\tthe Data Protection Act 2018 \n•\tthe Data (Use and Access) Act 2025 \n•\tany other applicable privacy legislation.\n\nYou must consult your organisation's Data Protection Officer (DPO) before initiating any activity which involves collecting, processing, sharing or storage of personal or sensitive data. You should follow all internal policies on data handling, privacy and security.",
-          "visibleIf": "({FILTER} contains 'Option a')"
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "radiogroup",
@@ -120,7 +120,7 @@
             "Safety"
           ],
           "title": "Have you, or do you intend to complete a Data Protection Impact Assessment (DPIA) for this project?",
-          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c')",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')",
           "choices": [
             "Yes, a DPIA has been completed",
             "Yes, a DPIA is planned but has not yet been completed",
@@ -128,7 +128,7 @@
             "Other"
           ],
           "allowClear": false,
-          "resetValueIf": "({FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c')"
+          "resetValueIf": "({FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e' and {FILTER} notcontains 'Option f')"
         },
         {
           "type": "comment",
@@ -170,14 +170,14 @@
           ],
           "title": "Have you, or do you intend to complete an Equality Impact Assessment (EqIA) for this project?",
           "description": "You must comply with relevant laws and assess the equality impact of your project: \n•\tbefore making any decisions to initiate a project, including procuring and development\n•\tduring implementation\n•\tafter implementation.\n\nThere’s no set way for you to record your equality considerations and your organisation may have its own Equality Impact Assessment (EIA) template for you to complete.",
-          "visibleIf": "({FILTER} contains 'Option a')",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')",
           "choices": [
             "Yes, an EqIA has been completed",
-            "Yes, an EIqA is planned but has not yet been completed",
+            "Yes, an EqIA is planned but has not yet been completed",
             "Other"
           ],
           "allowClear": false,
-          "resetValueIf": "({FILTER} notcontains 'Option a')"
+          "resetValueIf": "({FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e' and {FILTER} notcontains 'Option f')"
         },
         {
           "type": "comment",
@@ -204,14 +204,14 @@
             "Safety"
           ],
           "title": "Have you consulted with your organisation’s data and information security teams?",
-          "visibleIf": "({FILTER} contains 'Option a')",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": false,
-          "resetValueIf": "({FILTER} notcontains 'Option a')"
+          "resetValueIf": "({FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e' and {FILTER} notcontains 'Option f')"
         },
         {
           "type": "comment",
@@ -237,14 +237,14 @@
             "Accountability"
           ],
           "title": "Do you have any data sharing agreements in place with other organisations?",
-          "visibleIf": "({FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e')",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')",
           "choices": [
             "Yes",
             "No",
             "Other"
           ],
           "allowClear": false,
-          "resetValueIf": "({FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e')"
+          "resetValueIf": "({FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e' and {FILTER} notcontains 'Option f')"
         },
         {
           "type": "comment",
@@ -271,7 +271,7 @@
           ],
           "title": "How does, or could, your governance structure support the safe and effective development of the project?",
           "description": "·      Data and AI projects should have appropriate and effective governance and oversight. This includes clear roles and responsibilities, clear documentation, and being transparent about the system and the processes around it.\n·      You must set out who is responsible at each stage of the project. This includes naming: senior responsible owners (SROs), data owners, data stewards, data custodians, and AI asset owners. \n·      The Service Manual includes further information about delivery team roles and responsibilities.'",
-          "visibleIf": "({FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e')"
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "comment",
@@ -285,7 +285,7 @@
           ],
           "title": "How are you documenting key project decisions?",
           "description": "·      To ensure AI and data projects can be audited or reviewed, it is advisable to record who is responsible for each part of the project, including suppliers; and to record decisions made during project design. \n·      You should consult your organisation’s information governance team for guidance on project documentation.",
-          "visibleIf": "({FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e')"
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "comment",
@@ -374,24 +374,24 @@
           "name": "12d",
           "startWithNewLine": true,
           "isRoot": true,
-          "questionSetHeader": "Environment impact approach",
+          "questionSetHeader": "Environmental impact approach",
           "themes": [
             "Environmental sustainability"
           ],
           "title": "How are you considering the potential environmental impact and sustainability of your project?",
-          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b')"
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "comment",
           "name": "13d",
           "startWithNewLine": true,
           "isRoot": true,
-          "questionSetHeader": "Environment impact monitoring",
+          "questionSetHeader": "Environmental impact monitoring",
           "themes": [
             "Environmental sustainability"
           ],
           "title": "Briefly describe how you intend to monitor, evaluate and address environmental impact and sustainability challenges.",
-          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b')"
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "expression",
@@ -418,14 +418,14 @@
             "Safety"
           ],
           "title": "Do you have a plan in place to ensure data quality is assessed across the project lifecycle?",
-          "visibleIf": "({FILTER} contains 'Option a')",
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')",
           "choices": [
             "Yes",
             "Not yet",
             "Other"
           ],
           "allowClear": false,
-          "resetValueIf": "({FILTER} notcontains 'Option a')"
+          "resetValueIf": "({FILTER} notcontains 'Option a' and {FILTER} notcontains 'Option b' and {FILTER} notcontains 'Option c' and {FILTER} notcontains 'Option d' and {FILTER} notcontains 'Option e' and {FILTER} notcontains 'Option f')"
         },
         {
           "type": "comment",
@@ -639,7 +639,7 @@
           ],
           "title": "How have you designed and tested human oversight mechanisms? What governance, checks and controls are in place?",
           "description": "You should be clear what human checks exist across the life cycle of your project and who is responsible for them (including role type and senior responsible owners). Test as early as possible whether these checks work in practice – for example, whether users can raise concerns, and if changes can be made quickly when risks are identified.",
-          "visibleIf": "({FILTER} contains 'Option b' or {FILTER} contains 'Option c')"
+          "visibleIf": "({FILTER} contains 'Option a' or {FILTER} contains 'Option b' or {FILTER} contains 'Option c' or {FILTER} contains 'Option d' or {FILTER} contains 'Option e' or {FILTER} contains 'Option f')"
         },
         {
           "type": "comment",
@@ -846,7 +846,7 @@
           "name": "11d",
           "startWithNewLine": true,
           "isRoot": true,
-          "questionSetHeader": "Environment impact monitoring",
+          "questionSetHeader": "Environmental impact monitoring",
           "themes": [
             "Environmental sustainability"
           ],
@@ -856,7 +856,7 @@
         },
         {
           "type": "comment",
-          "name": "#REF!",
+          "name": "12d",
           "startWithNewLine": true,
           "isRoot": true,
           "questionSetHeader": "Hardware management",
