@@ -62,62 +62,6 @@ function getStartedSeries(model, questions, rootQuestionNames) {
   return startedSeries
 }
 
-function getProgressSummary(
-  model,
-  pageIndex,
-  manuallyCompletedSeries = new Set(),
-  rootQuestionNames = new Set(),
-  actionQuestionNames = new Set(),
-) {
-  const page = model.pages[pageIndex]
-  const questions = page?.elements ?? []
-  const startedSeries = getStartedSeries(model, questions, rootQuestionNames)
-  const rootSeries = new Set(
-    [...rootQuestionNames]
-      .map((name) => name.match(/^\d+/)?.[0])
-      .filter(Boolean),
-  )
-  const allSeries = new Set()
-  const filteredOutSeries = new Set()
-  let actionCount = 0
-
-  questions.forEach((question) => {
-    const seriesMatch = question.name?.match(/^\d+/)
-
-    if (
-      seriesMatch
-      && rootSeries.has(seriesMatch[0])
-      && question.getType() === 'radiogroup'
-      && !question.isVisible
-    ) {
-      filteredOutSeries.add(seriesMatch[0])
-    }
-
-    if (!seriesMatch) {
-      return
-    }
-
-    if (question.isVisible) {
-      allSeries.add(seriesMatch[0])
-    }
-
-    if (question.name.endsWith('S') || actionQuestionNames.has(question.name)) {
-      if (question.isVisible) {
-        actionCount += 1
-      }
-      return
-    }
-  })
-
-  return {
-    startedCount: startedSeries.size,
-    actionCount,
-    completedCount: [...manuallyCompletedSeries].filter((series) => allSeries.has(series)).length,
-    totalSeriesCount: allSeries.size,
-    filteredOutSeriesCount: filteredOutSeries.size,
-  }
-}
-
 function renderMarkdownLinks(text) {
   const output = document.createElement('div')
   const linkPattern = /\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)/g
@@ -155,6 +99,18 @@ function renderMarkdownLinks(text) {
   return output.innerHTML
 }
 
+function resizeCommentInput(textarea) {
+  textarea.style.height = 'auto'
+  const borderHeight = textarea.offsetHeight - textarea.clientHeight
+  textarea.style.height = `${Math.ceil(textarea.scrollHeight + borderHeight) + 100}px`
+}
+
+function scheduleCommentInputResize(container) {
+  window.requestAnimationFrame(() => {
+    container.querySelectorAll('textarea').forEach(resizeCommentInput)
+  })
+}
+
 function addTitleMarker(questionTitle, markerClass, markerText, labelClass, labelText) {
   if (questionTitle.querySelector(`.${markerClass}`)) {
     return
@@ -177,7 +133,7 @@ function addTitleMarker(questionTitle, markerClass, markerText, labelClass, labe
   questionTitle.insertBefore(secondBreak, firstBreak.nextSibling)
 }
 
-export default function SurveyPage({ surveyJson, initialData, sharedData, onDataChange, onNavigateToProjectDetail, printableSurveyRef, pageIndex = 0, projectName = '' }) {
+export default function SurveyPage({ surveyJson, initialData, sharedData, onDataChange, completedQuestionSets = [], onCompletedQuestionSetsChange, onNavigateToProjectDetail, printableSurveyRef, expandAllQuestionSetsRef, pageIndex = 0, projectName = '' }) {
   const pageTitle = surveyJson.pages[pageIndex]?.title ?? ''
   const pageDescription = surveyJson.pages[pageIndex]?.description ?? ''
   const pageElements = surveyJson.pages[pageIndex]?.elements ?? []
@@ -232,7 +188,7 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
   const renderedQuestionSetStatusTags = useRef(new Map())
   const renderedQuestionSetCompletionControls = useRef(new Map())
   const renderedQuestionSetCompletionRows = useRef(new Map())
-  const manuallyCompletedSeries = useRef(new Set())
+  const manuallyCompletedSeries = useRef(new Set(completedQuestionSets))
   const collapsedSeries = useRef(new Set(
     [...rootQuestionNames]
       .map((name) => name.match(/^\d+/)?.[0])
@@ -355,13 +311,7 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
           }
         })
         if (completionChanged) {
-          setProgressSummary(getProgressSummary(
-            surveyModel,
-            pageIndex,
-            manuallyCompletedSeries.current,
-            rootQuestionNames,
-            actionQuestionNames,
-          ))
+          onCompletedQuestionSetsChange([...manuallyCompletedSeries.current])
         }
         refreshQuestionSetHeaderStyles(surveyModel)
         refreshFilterErrorState()
@@ -370,6 +320,26 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
 
     surveyModel.onAfterRenderQuestion.add((_, options) => {
       renderedQuestions.current.set(options.question.name, options.htmlElement)
+      if (options.question.getType() === 'comment') {
+        options.htmlElement.querySelectorAll('textarea').forEach((textarea) => {
+          textarea.oninput = () => resizeCommentInput(textarea)
+        })
+        scheduleCommentInputResize(options.htmlElement)
+      }
+      if (options.question.name === 'FILTER') {
+        options.htmlElement.classList.add('survey-filter-question')
+      }
+      const isTriggeredAction = (
+        actionQuestionNames.has(options.question.name)
+        && !contextQuestionNames.has(options.question.name)
+      )
+      const isDocumentField = (
+        options.question.getType() === 'comment'
+        && options.question.name.endsWith('d')
+      )
+      if (isTriggeredAction || isDocumentField) {
+        options.htmlElement.closest('.sd-row')?.classList.add('survey-triggered-row')
+      }
       if (contextQuestionNames.has(options.question.name)) {
         options.htmlElement.classList.add('survey-context')
       }
@@ -465,6 +435,9 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
             renderedQuestions.current.forEach((element, name) => {
               if (name.match(/^\d+/)?.[0] === series) {
                 element.hidden = !isExpanded
+                if (isExpanded) {
+                  scheduleCommentInputResize(element)
+                }
               }
             })
             const completionContainer = renderedQuestionSetCompletionControls.current.get(series)
@@ -534,19 +507,14 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
               } else {
                 manuallyCompletedSeries.current.add(series)
                 clearCompletionError(completionControl, checkbox)
+                onCompletedQuestionSetsChange([...manuallyCompletedSeries.current])
               }
             } else {
               manuallyCompletedSeries.current.delete(series)
               clearCompletionError(completionControl, checkbox)
+              onCompletedQuestionSetsChange([...manuallyCompletedSeries.current])
             }
             refreshQuestionSetHeaderStyles(surveyModel)
-            setProgressSummary(getProgressSummary(
-              surveyModel,
-              pageIndex,
-              manuallyCompletedSeries.current,
-              rootQuestionNames,
-              actionQuestionNames,
-            ))
           })
           const checkboxLabel = document.createElement('label')
           checkboxLabel.className = 'govuk-label govuk-checkboxes__label'
@@ -622,6 +590,9 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
       renderedQuestions.current.forEach((element, name) => {
         if (name.match(/^\d+/)?.[0] === series) {
           element.hidden = !expand
+          if (expand) {
+            element.querySelectorAll('textarea').forEach(resizeCommentInput)
+          }
         }
       })
 
@@ -635,25 +606,15 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
     refreshQuestionSetHeaderStyles(model)
   }
 
-  const [progressSummary, setProgressSummary] = useState(() => (
-    getProgressSummary(
-      model,
-      pageIndex,
-      manuallyCompletedSeries.current,
-      rootQuestionNames,
-      actionQuestionNames,
-    )
-  ))
+  useEffect(() => {
+    expandAllQuestionSetsRef.current = () => toggleAllQuestionSets(true)
+    return () => {
+      expandAllQuestionSetsRef.current = null
+    }
+  }, [expandAllQuestionSetsRef])
 
   useEffect(() => {
     const handleValueChanged = () => {
-      setProgressSummary(getProgressSummary(
-        model,
-        pageIndex,
-        manuallyCompletedSeries.current,
-        rootQuestionNames,
-        actionQuestionNames,
-      ))
       onDataChange(model.data)
     }
     model.onValueChanged.add(handleValueChanged)
@@ -683,6 +644,64 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
 
     document.addEventListener('click', handleDocumentClick)
     return () => document.removeEventListener('click', handleDocumentClick)
+  }, [printableSurveyRef])
+
+  useEffect(() => {
+    const printTextBlocks = new Map()
+    const handleBeforePrint = () => {
+      printTextBlocks.forEach((textBlock, textarea) => {
+        textBlock.remove()
+        textarea.classList.remove('survey-print-textarea-source')
+      })
+      printTextBlocks.clear()
+
+      const styleProperties = [
+        'box-sizing',
+        'font-family',
+        'font-size',
+        'font-style',
+        'font-weight',
+        'line-height',
+        'color',
+        'background-color',
+        'padding',
+        'border',
+        'border-radius',
+        'text-align',
+        'letter-spacing',
+      ]
+
+      printableSurveyRef.current?.querySelectorAll('textarea').forEach((textarea) => {
+        const computedStyle = window.getComputedStyle(textarea)
+        const textBlock = document.createElement('div')
+        textBlock.className = 'survey-print-textarea'
+        textBlock.textContent = textarea.value
+
+        styleProperties.forEach((property) => {
+          textBlock.style.setProperty(property, computedStyle.getPropertyValue(property))
+        })
+        textBlock.style.minHeight = textarea.value ? '0' : computedStyle.minHeight
+
+        textarea.classList.add('survey-print-textarea-source')
+        textarea.after(textBlock)
+        printTextBlocks.set(textarea, textBlock)
+      })
+    }
+    const handleAfterPrint = () => {
+      printTextBlocks.forEach((textBlock, textarea) => {
+        textBlock.remove()
+        textarea.classList.remove('survey-print-textarea-source')
+      })
+      printTextBlocks.clear()
+    }
+
+    window.addEventListener('beforeprint', handleBeforePrint)
+    window.addEventListener('afterprint', handleAfterPrint)
+    return () => {
+      window.removeEventListener('beforeprint', handleBeforePrint)
+      window.removeEventListener('afterprint', handleAfterPrint)
+      handleAfterPrint()
+    }
   }, [printableSurveyRef])
 
   useEffect(() => {

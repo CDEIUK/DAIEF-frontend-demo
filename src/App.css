@@ -157,36 +157,6 @@
 	outline-offset: 0;
 }
 
-.app-shell .survey-progress-panel {
-	display: flex;
-	align-items: center;
-	flex-wrap: wrap;
-	gap: 16px 32px;
-	margin: 0 0 0px;
-	padding: 16px 20px;
-	background: #ffffff;
-	border-bottom: 2px solid 	#cecece;
-}
-
-.app-shell .survey-progress-label {
-	font-family: "GDS Transport", arial, sans-serif;
-	font-size: 18px;
-	font-weight: 700;
-}
-
-.app-shell .survey-progress-item {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-}
-
-.app-shell .survey-progress-count {
-	font-family: "GDS Transport", arial, sans-serif;
-	font-size: 18px;
-	font-weight: 500;
-	line-height: 1;
-}
-
 .app-shell .govuk-service-navigation > .govuk-width-container {
 	max-width: none;
 	margin-right: 15px;
@@ -423,7 +393,7 @@
 	display: block !important;
 	justify-content: flex-start;
 	width: 100%;
-	margin-top: 0px;
+	margin-top: 12px;
 	margin-bottom: 24px;
 	padding-bottom: 0px;
 	padding-left: 26px;
@@ -526,6 +496,12 @@
 	font-weight: 700;
 }
 
+.app-shell .survey-form .sd-row--enter.survey-triggered-row {
+	animation-name: fadeIn;
+	height: auto;
+	min-height: unset !important;
+}
+
 .app-shell .sd-question__description {
 	color: #505a5f;
 	font-size: 16px;
@@ -596,13 +572,13 @@
 
 .app-shell .sd-radio__decorator {
 	border-radius: 50%;
-	box-shadow: inset 0 0 0 1px #0b0c0c;
+	box-shadow: inset 0 0 0 2px #0b0c0c;
 }
 
 .app-shell .sd-checkbox--checked .sd-checkbox__decorator {
 	border-color: #0b0c0c;
 	background: #fff;
-	box-shadow: inset 0 0 0 1px #0b0c0c;
+	box-shadow: inset 0 0 0 2px #0b0c0c;
 }
 
 .app-shell .sd-checkbox--checked .sd-checkbox__svg use {
@@ -611,7 +587,7 @@
 
 .app-shell .sd-radio--checked .sd-radio__decorator {
 	background: #fff;
-	box-shadow: inset 0 0 0 1px #0b0c0c;
+	box-shadow: inset 0 0 0 2px #0b0c0c;
 }
 
 .app-shell .sd-radio--checked .sd-radio__svg use {
@@ -623,8 +599,12 @@
 .app-shell .sd-radio--allowhover.sd-radio--checked:not(.sd-radio--readonly) .sd-selectbase__label:hover .sd-radio__decorator,
 .app-shell .sd-radio--allowhover.sd-radio--checked:not(.sd-radio--readonly).sd-matrix__label:hover .sd-radio__decorator {
 	background: #fff;
-	box-shadow: inset 0 0 0 1px #0b0c0c;
+	box-shadow: inset 0 0 0 2px #0b0c0c;
 	outline: none;
+}
+
+.app-shell .sd-checkbox__decorator {
+	box-shadow: inset 0 0 0 2px #0b0c0c;
 }
 
 .app-shell .sd-checkbox--allowhover:not(.sd-checkbox--readonly) .sd-selectbase__label:hover .sd-checkbox__decorator,
@@ -632,8 +612,15 @@
 .app-shell .sd-checkbox--allowhover.sd-checkbox--checked:not(.sd-checkbox--readonly) .sd-selectbase__label:hover .sd-checkbox__decorator,
 .app-shell .sd-checkbox--allowhover.sd-checkbox--checked:not(.sd-checkbox--readonly).sd-matrix__label:hover .sd-checkbox__decorator {
 	background: #fff;
-	box-shadow: inset 0 0 0 1px #0b0c0c;
+	box-shadow: inset 0 0 0 2px #0b0c0c;
 	outline: none;
+}
+
+.app-shell .survey-form--project-detail .survey-filter-question .sd-checkbox--allowhover:not(.sd-checkbox--readonly) .sd-selectbase__label:hover .sd-item__control:focus + .sd-checkbox__decorator,
+.app-shell .survey-form--project-detail .survey-filter-question .sd-checkbox--allowhover:not(.sd-checkbox--readonly).sd-matrix__label:hover .sd-item__control:focus + .sd-checkbox__decorator {
+	outline: 3px solid transparent;
+	outline-offset: 0;
+	box-shadow: inset 0 0 0 2px #0b0c0c, 0 0 0 4px #ffdd00;
 }
 
 .app-shell .sd-item__control:focus-visible + .sd-checkbox__decorator,
@@ -655,6 +642,13 @@
 }
 
 .app-shell .sd-item__control:focus + .sd-radio__decorator {
+	outline: 3px solid transparent;
+	outline-offset: 0;
+	box-shadow: inset 0 0 0 2px #0b0c0c, 0 0 0 4px #ffdd00;
+}
+
+.app-shell .sd-radio--allowhover:not(.sd-radio--readonly) .sd-selectbase__label:hover .sd-item__control:focus + .sd-radio__decorator,
+.app-shell .sd-radio--allowhover:not(.sd-radio--readonly).sd-matrix__label:hover .sd-item__control:focus + .sd-radio__decorator {
 	outline: 3px solid transparent;
 	outline-offset: 0;
 	box-shadow: inset 0 0 0 2px #0b0c0c, 0 0 0 4px #ffdd00;
@@ -805,30 +799,36 @@
 		display: block !important;
 		width: 100%;
 		background: #fff;
-		color: #000;
+		color: #0b0c0c;
 		-webkit-print-color-adjust: exact;
 		print-color-adjust: exact;
 	}
 
-	.app-shell .printable-survey .sd-checkbox--checked .sd-checkbox__decorator,
-	.app-shell .printable-survey .sd-radio--checked .sd-radio__decorator {
-		border-color: #1d70b8 !important;
-		background-color: #1d70b8 !important;
-	}
-
 	.app-shell .printable-survey .sd-question:has(.sd-expression):not(.survey-context) {
-		background-color: #fde2e2 !important;
+		background-color: #f4d7d7 !important;
 	}
 
 	.app-shell .printable-survey .sd-question.survey-context {
-		background-color: #f3f2f1 !important;
+		background-color: #f3f3f3 !important;
 	}
 
-	.app-shell .printable-survey .sd-question:has(.sd-text) {
-		background-color: #e0f0ff !important;
+	.app-shell .printable-survey textarea {
+		display: none !important;
 	}
 
-	.app-shell .survey-progress-panel,
+	.app-shell .printable-survey .survey-print-textarea {
+		display: block !important;
+		width: 100% !important;
+		min-width: 0 !important;
+		min-height: 0 !important;
+		height: auto !important;
+		max-height: none !important;
+		overflow: visible !important;
+		white-space: pre-wrap !important;
+		overflow-wrap: anywhere !important;
+		resize: none !important;
+	}
+
 	.app-shell .sd-question {
 		break-inside: avoid;
 	}

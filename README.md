@@ -14,6 +14,10 @@ npm run dev
 
 The survey definition is bundled from `daief-survey.json`, so no API server is required.
 
+### Saved progress files
+
+Saved progress JSON files contain the current `formVersion`, survey responses in `stageData` and completed question set IDs in `completedQuestionSets`, grouped by stage. Only files saved with the current form version can be restored. Older files without `completedQuestionSets` can still be restored if their form version matches; their question sets will start as incomplete.
+
 ### Links in survey text
 
 Use a Markdown link in the field text or hint text, for example:

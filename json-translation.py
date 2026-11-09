@@ -55,6 +55,8 @@ def options_for_row(row):
         if row.get(option, "").strip()
     ]
     if option_labels:
+        if row.get("Reference", "").strip().casefold() == "filter":
+            return [(label, label) for _, label in option_labels]
         return option_labels
 
     labels = []
@@ -64,6 +66,8 @@ def options_for_row(row):
             for label in line.split(";")
             if label.strip()
         )
+    if row.get("Reference", "").strip().casefold() == "filter":
+        return [(label, label) for label in labels]
     return [
         (f"Option {chr(ord('a') + index)}", label)
         for index, label in enumerate(labels)

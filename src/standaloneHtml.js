@@ -131,10 +131,15 @@ function copyFormControlValues(source, clone) {
     const clonedControl = cloneControls[index]
     if (control instanceof HTMLInputElement) {
       clonedControl.setAttribute('value', control.value)
+      clonedControl.checked = control.checked
       if (control.checked) {
         clonedControl.setAttribute('checked', '')
       } else {
         clonedControl.removeAttribute('checked')
+      }
+      if (control.type === 'radio') {
+        clonedControl.closest('.sd-radio')?.classList.toggle('sd-radio--checked', control.checked)
+        clonedControl.closest('.sd-item')?.classList.toggle('sd-item--checked', control.checked)
       }
     } else if (control instanceof HTMLTextAreaElement) {
       clonedControl.textContent = control.value
@@ -151,6 +156,34 @@ function copyFormControlValues(source, clone) {
   })
 }
 
+function syncExportedRadioIndicators(source, clone) {
+  const sourceRadios = source.querySelectorAll('input[type="radio"]')
+  const clonedRadios = clone.querySelectorAll('input[type="radio"]')
+
+  sourceRadios.forEach((radio, index) => {
+    const indicator = clonedRadios[index]?.closest('.sd-radio')
+      ?.querySelector('.sd-radio__svg use')
+    indicator?.style.setProperty(
+      'fill',
+      radio.checked ? '#0b0c0c' : 'transparent',
+      'important',
+    )
+  })
+}
+
+function fitExportedTextareas(source, clone) {
+  const sourceTextareas = source.querySelectorAll('textarea')
+  const clonedTextareas = clone.querySelectorAll('textarea')
+
+  sourceTextareas.forEach((textarea, index) => {
+    const clonedTextarea = clonedTextareas[index]
+    clonedTextarea.style.setProperty('height', `${textarea.scrollHeight}px`, 'important')
+    clonedTextarea.style.setProperty('max-height', 'none', 'important')
+    clonedTextarea.style.setProperty('overflow', 'hidden', 'important')
+    clonedTextarea.style.setProperty('resize', 'none', 'important')
+  })
+}
+
 export async function createStandaloneSectionHtml(section, title) {
   if (!section) {
     throw new Error('The active section could not be found for the HTML export.')
@@ -160,6 +193,8 @@ export async function createStandaloneSectionHtml(section, title) {
   copyFormControlValues(section, clone)
   const assetCache = new Map()
   const renderedStyles = await inlineRenderedStyles(section, clone, assetCache)
+  syncExportedRadioIndicators(section, clone)
+  fitExportedTextareas(section, clone)
 
   const stylesheets = await Promise.all(Array.from(document.styleSheets)
     .filter((styleSheet) => !styleSheet.disabled)

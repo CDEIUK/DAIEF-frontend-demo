@@ -28,11 +28,15 @@ const projectDetailQuestionNames = new Set(
 function App() {
   const [activePageId, setActivePageId] = useState('about')
   const [stageData, setStageData] = useState({})
+  const [completedQuestionSets, setCompletedQuestionSets] = useState({})
+  const [uploadedFileName, setUploadedFileName] = useState('')
+  const [uploadError, setUploadError] = useState(null)
   const [surveyVersion, setSurveyVersion] = useState(0)
   const [filenameDialogOpen, setFilenameDialogOpen] = useState(false)
   const [printFormatDialogOpen, setPrintFormatDialogOpen] = useState(false)
   const [filenameInput, setFilenameInput] = useState('')
   const printableSurveyRef = useRef(null)
+  const expandAllQuestionSetsRef = useRef(null)
 
   const currentStage = stages.find((stage) => stage.id === activePageId)
   const currentStageIndex = stages.findIndex((stage) => stage.id === activePageId)
@@ -59,6 +63,13 @@ function App() {
     }))
   }
 
+  function handleCompletedQuestionSetsChange(series) {
+    setCompletedQuestionSets((currentSets) => ({
+      ...currentSets,
+      [activePageId]: series,
+    }))
+  }
+
   async function handleFileUpload(event) {
     const [file] = event.target.files
     event.target.value = ''
@@ -67,18 +78,50 @@ function App() {
       return
     }
 
+    setUploadedFileName('')
+    setUploadError(null)
+
     try {
       const importedData = JSON.parse(await file.text())
+
+      if (!importedData || typeof importedData !== 'object' || Array.isArray(importedData)) {
+        throw new Error('The uploaded file must contain survey responses.')
+      }
+      if (importedData.formVersion !== surveyJson.formVersion) {
+        const uploadedVersion = importedData.formVersion ?? 'not specified'
+        throw new Error(
+          `This file is for form version ${uploadedVersion}; the current form version is ${surveyJson.formVersion}.`,
+        )
+      }
+
       const responseData = importedData.stageData ?? importedData
+      const importedCompletedQuestionSets = importedData.completedQuestionSets ?? {}
 
       if (!responseData || typeof responseData !== 'object' || Array.isArray(responseData)) {
         throw new Error('The uploaded file must contain survey responses.')
       }
+      if (
+        !importedCompletedQuestionSets
+        || typeof importedCompletedQuestionSets !== 'object'
+        || Array.isArray(importedCompletedQuestionSets)
+        || Object.values(importedCompletedQuestionSets).some((series) => (
+          !Array.isArray(series) || series.some((value) => typeof value !== 'string')
+        ))
+      ) {
+        throw new Error('The uploaded file contains invalid completed question set data.')
+      }
 
       setStageData(responseData)
+      setCompletedQuestionSets(importedCompletedQuestionSets)
       setSurveyVersion((version) => version + 1)
+      setUploadedFileName(file.name)
     } catch (error) {
-      window.alert(error instanceof SyntaxError ? 'The uploaded file is not valid JSON.' : error.message)
+      setUploadError({
+        fileName: file.name,
+        message: error instanceof SyntaxError
+          ? 'The uploaded file is not valid JSON.'
+          : error.message,
+      })
     }
   }
 
@@ -110,7 +153,11 @@ function App() {
       ? safeFileName
       : `${safeFileName}.json`
     const responseFile = new Blob([
-      JSON.stringify({ stageData }, null, 2),
+      JSON.stringify({
+        formVersion: surveyJson.formVersion,
+        stageData,
+        completedQuestionSets,
+      }, null, 2),
     ], { type: 'application/json' })
 
     if (window.showSaveFilePicker) {
@@ -149,6 +196,7 @@ function App() {
       return
     }
 
+    expandAllQuestionSetsRef.current()
     setPrintFormatDialogOpen(false)
     window.print()
   }
@@ -171,6 +219,8 @@ function App() {
 
     let saveFilePickerPromise
     try {
+      expandAllQuestionSetsRef.current()
+
       if (window.showSaveFilePicker) {
         saveFilePickerPromise = window.showSaveFilePicker({
           suggestedName: fileName,
@@ -235,7 +285,7 @@ function App() {
             Private Beta
           </strong>
           <span class="govuk-phase-banner__text">
-            This is a new application – your <a class="govuk-link" href="mailto: GDS-Responsible-Data-AI@dsit.gov.uk" target="_blank" rel="noopener noreferrer">feedback</a> will help us to improve it.
+            This application is under development – your <a class="govuk-link" href="https://forms.cloud.microsoft/e/CKsNHmm3rC" target="_blank" rel="noopener noreferrer">feedback</a> will help us to improve it.
           </span>
         </p>
       </div> 
@@ -274,6 +324,66 @@ function App() {
                   </button>
                 </div>
               </div>
+            {uploadedFileName && (
+              <div className="filename-dialog-backdrop">
+                <section
+                  className="filename-dialog"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="upload-success-dialog-title"
+                >
+                  <div className="govuk-panel govuk-panel--confirmation">
+                    <h2 id="upload-success-dialog-title" className="govuk-panel__title">
+                      Upload successful
+                    </h2>
+                    <div className="govuk-panel__body">
+                      {uploadedFileName} has been uploaded.
+                    </div>
+                  </div>
+                  <div className="filename-dialog__actions">
+                    <button
+                      autoFocus
+                      type="button"
+                      className="govuk-button"
+                      onClick={() => setUploadedFileName('')}
+                    >
+                      Close
+                    </button>
+                  </div>
+                </section>
+              </div>
+            )}
+            {uploadError && (
+              <div className="filename-dialog-backdrop">
+                <section
+                  className="filename-dialog"
+                  role="dialog"
+                  aria-modal="true"
+                  aria-labelledby="upload-error-dialog-title"
+                >
+                  <div className="govuk-error-summary" role="alert">
+                    <h2 id="upload-error-dialog-title" className="govuk-error-summary__title">
+                      Upload unsuccessful
+                    </h2>
+                    <div className="govuk-error-summary__body">
+                      <p className="govuk-body">
+                        {uploadError.fileName} could not be uploaded. {uploadError.message}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="filename-dialog__actions">
+                    <button
+                      autoFocus
+                      type="button"
+                      className="govuk-button"
+                      onClick={() => setUploadError(null)}
+                    >
+                      Close
+                    </button>
+                  </div>
+                </section>
+              </div>
+            )}
             {filenameDialogOpen && (
               <div className="filename-dialog-backdrop">
                 <section
@@ -383,10 +493,13 @@ function App() {
                   initialData={stageData[activePageId]}
                   sharedData={activePageId === 'project-detail' ? undefined : stageData['project-detail']}
                   onDataChange={handleDataChange}
+                  completedQuestionSets={completedQuestionSets[activePageId] ?? []}
+                  onCompletedQuestionSetsChange={handleCompletedQuestionSetsChange}
                   onNavigateToProjectDetail={() => handlePageChange('project-detail')}
                   pageIndex={currentStage.pageIndex}
                   projectName={stageData['project-detail']?.NAME}
                   printableSurveyRef={printableSurveyRef}
+                  expandAllQuestionSetsRef={expandAllQuestionSetsRef}
                 />
                 <nav className="app-section-navigation" aria-label="Form section navigation">
                   {previousStage && (
@@ -426,7 +539,7 @@ function App() {
               </h2>
               <div className="govuk-feedback__body">
                 <p className="govuk-body">
-                  Tell us about your experience using this website. <a href="#" className="govuk-link">Give us your feedback</a>
+                  Tell us about your experience using this website. <a href="https://forms.cloud.microsoft/e/CKsNHmm3rC" className="govuk-link" target="_blank" rel="noopener noreferrer">Give us your feedback</a>
                 </p>
               </div>
             </div>
