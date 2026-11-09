@@ -423,10 +423,10 @@
 	display: block !important;
 	justify-content: flex-start;
 	width: 100%;
-	margin-top: 8px;
-	margin-bottom: 12px;
-	padding-bottom: 12px;
-	padding-left: 24px;
+	margin-top: 0px;
+	margin-bottom: 24px;
+	padding-bottom: 0px;
+	padding-left: 26px;
 	visibility: visible !important;
 	opacity: 1 !important;
 }
@@ -596,16 +596,47 @@
 
 .app-shell .sd-radio__decorator {
 	border-radius: 50%;
+	box-shadow: inset 0 0 0 1px #0b0c0c;
 }
 
-.app-shell .sd-checkbox--checked .sd-checkbox__decorator,
+.app-shell .sd-checkbox--checked .sd-checkbox__decorator {
+	border-color: #0b0c0c;
+	background: #fff;
+	box-shadow: inset 0 0 0 1px #0b0c0c;
+}
+
+.app-shell .sd-checkbox--checked .sd-checkbox__svg use {
+	fill: #0b0c0c;
+}
+
 .app-shell .sd-radio--checked .sd-radio__decorator {
-	border-color: #1d70b8;
-	background: #1d70b8;
+	background: #fff;
+	box-shadow: inset 0 0 0 1px #0b0c0c;
+}
+
+.app-shell .sd-radio--checked .sd-radio__svg use {
+	fill: #0b0c0c;
+}
+
+.app-shell .sd-radio--allowhover:not(.sd-radio--readonly) .sd-selectbase__label:hover .sd-radio__decorator,
+.app-shell .sd-radio--allowhover:not(.sd-radio--readonly).sd-matrix__label:hover .sd-radio__decorator,
+.app-shell .sd-radio--allowhover.sd-radio--checked:not(.sd-radio--readonly) .sd-selectbase__label:hover .sd-radio__decorator,
+.app-shell .sd-radio--allowhover.sd-radio--checked:not(.sd-radio--readonly).sd-matrix__label:hover .sd-radio__decorator {
+	background: #fff;
+	box-shadow: inset 0 0 0 1px #0b0c0c;
+	outline: none;
+}
+
+.app-shell .sd-checkbox--allowhover:not(.sd-checkbox--readonly) .sd-selectbase__label:hover .sd-checkbox__decorator,
+.app-shell .sd-checkbox--allowhover:not(.sd-checkbox--readonly).sd-matrix__label:hover .sd-checkbox__decorator,
+.app-shell .sd-checkbox--allowhover.sd-checkbox--checked:not(.sd-checkbox--readonly) .sd-selectbase__label:hover .sd-checkbox__decorator,
+.app-shell .sd-checkbox--allowhover.sd-checkbox--checked:not(.sd-checkbox--readonly).sd-matrix__label:hover .sd-checkbox__decorator {
+	background: #fff;
+	box-shadow: inset 0 0 0 1px #0b0c0c;
+	outline: none;
 }
 
 .app-shell .sd-item__control:focus-visible + .sd-checkbox__decorator,
-.app-shell .sd-item__control:focus-visible + .sd-radio__decorator,
 .app-shell .sd-action:focus-visible,
 .app-shell .sd-progress-buttons__button:focus-visible {
 	outline: 3px solid #ffdd00;
@@ -613,10 +644,24 @@
 	box-shadow: 0 0 0 3px #0b0c0c;
 }
 
-.app-shell .sd-radio.sd-radio--allowhover:not(.sd-radio--readonly):not(.sd-radio--disabled) .sd-item__control:focus-visible + .sd-radio__decorator {
-	outline: 3px solid #ffdd00;
+.app-shell .sd-item__control:focus + .sd-checkbox__decorator {
+	outline: 3px solid transparent;
 	outline-offset: 0;
-	box-shadow: 0 0 0 3px #0b0c0c;
+	box-shadow: inset 0 0 0 2px #0b0c0c, 0 0 0 4px #ffdd00;
+}
+
+.app-shell .sd-item__control:focus-visible + .sd-checkbox__decorator::before {
+	box-shadow: none;
+}
+
+.app-shell .sd-item__control:focus + .sd-radio__decorator {
+	outline: 3px solid transparent;
+	outline-offset: 0;
+	box-shadow: inset 0 0 0 2px #0b0c0c, 0 0 0 4px #ffdd00;
+}
+
+.app-shell .sd-item__control:focus-visible + .sd-radio__decorator::before {
+	box-shadow: none;
 }
 
 .app-shell .sd-action {
@@ -683,10 +728,6 @@
 	font-weight: 700;
 }
 
-.app-shell .sd-question:has(.sd-text) {
-	background-color: #e0f0ff;
-	border-radius: 4px;
-}
 
 .app-shell .survey-form--project-detail .sd-question,
 .app-shell .survey-form--project-detail .sd-question__content {
