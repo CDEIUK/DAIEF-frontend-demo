@@ -171,16 +171,28 @@ function syncExportedRadioIndicators(source, clone) {
   })
 }
 
-function fitExportedTextareas(source, clone) {
+function replaceExportedTextareas(source, clone) {
   const sourceTextareas = source.querySelectorAll('textarea')
   const clonedTextareas = clone.querySelectorAll('textarea')
 
   sourceTextareas.forEach((textarea, index) => {
     const clonedTextarea = clonedTextareas[index]
-    clonedTextarea.style.setProperty('height', `${textarea.scrollHeight}px`, 'important')
-    clonedTextarea.style.setProperty('max-height', 'none', 'important')
-    clonedTextarea.style.setProperty('overflow', 'hidden', 'important')
-    clonedTextarea.style.setProperty('resize', 'none', 'important')
+    const textBlock = document.createElement('div')
+    textBlock.className = 'survey-export-textarea'
+    textBlock.textContent = textarea.value
+    textBlock.style.cssText = clonedTextarea.style.cssText
+    textBlock.style.setProperty('display', 'block', 'important')
+    textBlock.style.setProperty('box-sizing', 'border-box', 'important')
+    textBlock.style.setProperty('width', '100%', 'important')
+    textBlock.style.setProperty('min-width', '0', 'important')
+    textBlock.style.setProperty('height', 'auto', 'important')
+    textBlock.style.setProperty('min-height', textarea.value ? '0' : getComputedStyle(textarea).minHeight, 'important')
+    textBlock.style.setProperty('max-height', 'none', 'important')
+    textBlock.style.setProperty('overflow', 'visible', 'important')
+    textBlock.style.setProperty('resize', 'none', 'important')
+    textBlock.style.setProperty('white-space', 'pre-wrap', 'important')
+    textBlock.style.setProperty('overflow-wrap', 'anywhere', 'important')
+    clonedTextarea.replaceWith(textBlock)
   })
 }
 
@@ -194,7 +206,7 @@ export async function createStandaloneSectionHtml(section, title) {
   const assetCache = new Map()
   const renderedStyles = await inlineRenderedStyles(section, clone, assetCache)
   syncExportedRadioIndicators(section, clone)
-  fitExportedTextareas(section, clone)
+  replaceExportedTextareas(section, clone)
 
   const stylesheets = await Promise.all(Array.from(document.styleSheets)
     .filter((styleSheet) => !styleSheet.disabled)

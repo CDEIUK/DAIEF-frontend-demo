@@ -620,7 +620,7 @@
 .app-shell .survey-form--project-detail .survey-filter-question .sd-checkbox--allowhover:not(.sd-checkbox--readonly).sd-matrix__label:hover .sd-item__control:focus + .sd-checkbox__decorator {
 	outline: 3px solid transparent;
 	outline-offset: 0;
-	box-shadow: inset 0 0 0 2px #0b0c0c, 0 0 0 4px #ffdd00;
+	box-shadow: inset 0 0 0 3px #0b0c0c, 0 0 0 4px #ffdd00;
 }
 
 .app-shell .sd-item__control:focus-visible + .sd-checkbox__decorator,

@@ -21,8 +21,8 @@ export default function HowToUse({ onNavigateToFirstSection }) {
     <div className="govuk-grid-row">
       <div className="govuk-grid-column-full">
         <h2 className="govuk-heading-l">About</h2>
-        <p className="govuk-body">The Interactive Guidance is for people who work in government and other public sector organisations. It is aimed at individuals or teams working with data, data-driven systems, algorithmic systems or AI as part of delivering a project or service.</p>
-        <p className="govuk-body">This online tool is designed to help you to apply the <a href="https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework" target="_blank" rel="noreferrer">Data and AI Ethics Framework</a> to your own project. It guides you through a series of questions that encourage you to think practically about the following ethical principles:</p>
+        <p className="govuk-body">The <a href="https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework" target="_blank" rel="noreferrer">Data and AI Ethics Framework</a> provides guidance for public sector organisations on how to use data and data-driven technologies responsibly. It helps public servants working with data, data-driven tools, algorithmic tools or AI address ethical risks within in their work.</p>
+        <p className="govuk-body">This interactive self-assessment tool is designed to help you to apply the framework to your own data or AI project. It guides you through a series of questions and prompts that encourage you to think practically about the following ethical principles:</p>
         <ul className="govuk-list govuk-list--bullet govuk-!-padding-left-7">
           <li><a href="https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework#transparency-section" target="_blank" rel="noreferrer">Transparency</a></li>
           <li><a href="https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework#accountability-section" target="_blank" rel="noreferrer">Accountability</a></li>
@@ -45,7 +45,7 @@ export default function HowToUse({ onNavigateToFirstSection }) {
             onNavigateToFirstSection()
           }}
         >
-          Start using the tool
+          Start the self-assessment
           <svg className="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
             <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
           </svg>
@@ -63,20 +63,42 @@ export default function HowToUse({ onNavigateToFirstSection }) {
               </h2>
             </div>
             <div id="accordion-default-content-1" className="govuk-accordion__section-content">
-              <p className="govuk-body">The Interactive Guidance is an intelligent form split into five sections:</p>
+              <p className="govuk-body">The self-assessment is an intelligent form split into five sections:</p>
               <ul className="govuk-list govuk-list--bullet govuk-!-padding-left-7">
                 <li><a>The Project Detail section allows you to enter key information about your project and control the questions that you see using filters.</a></li>
                 <li><a>The Discovery, Alpha, Beta and Live sections ask you questions about your ethical delivery approach at four different stages of the project life cycle.</a></li>
               </ul>
-              <p className="govuk-body">Each form section contains several question sets to work through. Question sets are composed of three elements:</p>
-              <ul className="govuk-list govuk-list--bullet govuk-!-padding-left-7">
-                <li><a>Radio questions (white): single choice questions that trigger further questions, fields and actions.</a></li>
-                <li><a>Document fields (blue): text boxes for documenting key ethical information about your project.</a></li>
-                <li><a>Actions (red): advice and suggestions for you to follow up on where applicable.</a></li>
+              <p className="govuk-body">
+                Each form section contains several question sets to work through. Question sets are composed of four elements:</p>              
+                <ul className="govuk-list govuk-list--bullet govuk-!-padding-left-7">
+                <li><a>Radio questions: single choice questions that trigger further questions, fields and actions.</a></li>
+                <li><a>Document fields: text boxes for documenting key ethical information about your project.</a></li>
+                <li><a>Actions: advice and suggestions for you to follow up on where applicable.</a></li>
+                <li><a>Info: additional information and context for each question.</a></li>
               </ul>
-              <p className="govuk-body">Use the “Mark as complete” checkbox above a question set to mark it complete and turn its radio and comment questions green. The section progress panels display how many sets have been filtered, started, completed and how many actions remain within the section.</p>
-              <p className="govuk-body">The form is intended to offer helpful guidance and prompt you to reflect on how your project is meeting ethical best practice. It is not intended to provide assurance or sign-off for a project.</p>
+              <p className="govuk-body">
+                Question sets are tagged with the most relevant ethical principles from the framework and a status indicator to show your progress through the form.</p>
+              <p className="govuk-body">
+                The form is intended to offer helpful guidance and prompt you to reflect on how your project is meeting ethical best practice. It is not intended to provide assurance or sign-off for a project.</p>
               </div>
+          </div>
+          <div className="govuk-accordion__section">
+            <div className="govuk-accordion__section-header">
+              <h2 className="govuk-accordion__section-heading">
+                <span className="govuk-accordion__section-button" id="accordion-default-heading-3">
+                  How to use the tool
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-3" className="govuk-accordion__section-content">
+              <p className="govuk-body">The self-assessment provides a structured way of considering the ethical dimensions of your data and AI project and is intended to support your other management processes. Here are some key tips for using the tool:</p>
+              <ul className="govuk-list govuk-list--bullet govuk-!-padding-left-7">
+                <li>Capturing information: use document fields to record information that could be used to support governance, assurance and project management decision-making.</li>
+                <li>Marking progress: use the “Mark set as complete” checkboxes at the bottom of each question set to indicate when you are happy that a question set has been fully answered.</li>
+                <li>Saving: use the Save button to download the form data as a JSON file. Use the Restore button to reupload previously saved JSON files to continue where you left off.</li>
+                <li>Sharing: use the Export button render the active section as a formatted document to be read by other parties. You have the option to save as an HTML page (recommended) or a PDF.</li>
+              </ul>
+            </div>
           </div>
           <div className="govuk-accordion__section">
             <div className="govuk-accordion__section-header">
@@ -89,23 +111,10 @@ export default function HowToUse({ onNavigateToFirstSection }) {
             <div id="accordion-default-content-2" className="govuk-accordion__section-content">
               <p className="govuk-body">You can enter information into individual sections at different phases of your project over its entire duration. Refer to the section descriptions for more information about the Discovery, Alpha, Beta and Live project phases.</p>
               <p className="govuk-body">The tool is designed to be used iteratively. You can return to the form at any time to update your answers and add new information as your project progresses. You may wish to revisit the form after responding to suggested actions.</p>
-              <p className="govuk-body">Throughout, we suggest that you retain the completed sections locally for future reference or to make available to colleagues working on the project.</p>
+              <p className="govuk-body">Throughout, we suggest that you retain the completed sections as JSON, HTML or PDF files for future reference or for others who might require the information.</p>
             </div>
           </div>
-          <div className="govuk-accordion__section">
-            <div className="govuk-accordion__section-header">
-              <h2 className="govuk-accordion__section-heading">
-                <span className="govuk-accordion__section-button" id="accordion-default-heading-3">
-                  How to use the tool
-                </span>
-              </h2>
-            </div>
-            <div id="accordion-default-content-3" className="govuk-accordion__section-content">
-              <p className="govuk-body">The tool helps guide and document your project throughout the assessment.</p>
-              <p className="govuk-body">Document fields let you record information for sharing and for governance, assurance and project management processes.</p>
-              <p className="govuk-body">Form sections can be exported as formatted documents at any time using the export button. You have the option to save as an HTML page (recommended) or a PDF.</p>
-            </div>
-          </div>
+          
           <div className="govuk-accordion__section">
             <div className="govuk-accordion__section-header">
               <h2 className="govuk-accordion__section-heading">
@@ -115,8 +124,7 @@ export default function HowToUse({ onNavigateToFirstSection }) {
               </h2>
             </div>
             <div id="accordion-default-content-4" className="govuk-accordion__section-content">
-              <p className="govuk-body">Information that you enter into the form is stored temporarily in your browser’s session memory. Data will remain intact when switching between form sections. However, data will be lost when you refresh the page, close the website or your browser session ends.</p>
-              <p className="govuk-body">You may save your form data locally to your computer as a JSON file. These data can be uploaded back to the site in a new session for you to continue the form where you left off.</p>
+              <p className="govuk-body">Information that you enter into the form is stored temporarily in your browser’s session memory. Data will remain intact when switching between form sections. However, data will be lost when you close the website or your browser session ends. Use the save function to retain any form data that you want to keep.</p>
               <p className="govuk-body">Your data is not currently stored in any permanent database and is not processed by any other party.</p>
             </div>
           </div>
