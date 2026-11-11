@@ -34,4 +34,4 @@ When generating the survey JSON, the script reads `schema-input.csv`. It accepts
 
 The `main` branch deploys automatically to GitHub Pages at:
 
-https://cdeiuk.github.io/DAIEF-frontend-demo/
+https://cdeiuk.github.io/DAIEF-self-assessment-test-site/

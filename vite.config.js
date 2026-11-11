@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: process.env.GITHUB_ACTIONS ? '/DAIEF-frontend-demo/' : '/',
+  base: process.env.GITHUB_ACTIONS ? '/DAIEF-self-assessment-test-site/' : '/',
   css: {
     lightningcss: {
       errorRecovery: true,
