@@ -335,7 +335,7 @@ export default function SurveyPage({ surveyJson, initialData, sharedData, onData
       )
       const isDocumentField = (
         options.question.getType() === 'comment'
-        && options.question.name.endsWith('d')
+        && /^\d+d\d*$/.test(options.question.name)
       )
       if (isTriggeredAction || isDocumentField) {
         options.htmlElement.closest('.sd-row')?.classList.add('survey-triggered-row')

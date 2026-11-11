@@ -517,10 +517,17 @@ def csv_to_survey(
                         for option, label in option_labels
                     ]
                 else:
+                    has_other_choice = any(
+                        label.casefold() == "other"
+                        for _, label in option_labels
+                    )
                     element["choices"] = [
                         label for _, label in option_labels
+                        if label.casefold() != "other"
                     ]
                     element["allowClear"] = False
+                    if has_other_choice:
+                        element["showOtherItem"] = True
                     reset_conditions = [
                         condition["resetValueIf"]
                         for condition in (context_condition, trigger_condition)

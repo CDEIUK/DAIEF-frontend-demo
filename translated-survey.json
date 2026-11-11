@@ -72,14 +72,15 @@
           "name": "1i",
           "startWithNewLine": true,
           "isRoot": true,
-          "questionSetHeader": "Data protection approach",
+          "questionSetHeader": "Data protection",
           "isContext": true,
           "themes": [
             "Accountability",
-            "Privacy"
+            "Privacy",
+            "Safety"
           ],
-          "title": "You must comply with data privacy and protection law at all times, including: \n• UK General Data Protection Regulation (UK GDPR) \n• the Data Protection Act 2018 \n• the Data (Use and Access) Act 2025 \n• any other applicable privacy legislation.\n\nYou must consult your organisation's Data Protection Officer (DPO) before initiating any activity which involves collecting, processing, sharing or storage of personal or sensitive data. You should follow all internal policies on data handling, privacy and security.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "title": "You must comply with data privacy and protection law at all times, including: \n• the [UK General Data Protection Regulation (UK GDPR)](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/)\n• the [Data Protection Act 2018](https://www.gov.uk/government/collections/data-protection-act-2018) \n• the [Data (Use and Access) Act 2025](https://www.gov.uk/guidance/equality-act-2010-guidance) \n• any other applicable privacy legislation that applies to your context.\n\nYou must consult your organisation's [Data Protection Officer (DPO)](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/data-protection-officers/) before initiating any activity which involves collecting, processing, sharing or storage of [personal data](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/personal-information-what-is-it/what-is-personal-data/what-is-personal-data/). You should follow all internal policies on data handling, privacy and security.",
+          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use or processing of personal data')"
         },
         {
           "type": "radiogroup",
@@ -104,96 +105,87 @@
           "type": "expression",
           "name": "1a",
           "startWithNewLine": true,
-          "title": "If your project uses personal data, you must meet your legal duties under the UK General Data Protection Regulation (UK GDPR).\n\nYour organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.\n\nYou must comply with the Public Sector Equality Duty and Equality Act 2010. This means you need to carefully consider and document the equality impact of processing personal data where it can be used to identify individuals as having a protected characteristic. This document is often referred to as an Equality Impact Assessment (EIA). For more information, consult the EHRC guidance on the Public Sector Equality Duty.",
+          "title": "If your project uses personal data, you must meet your legal duties under the [UK General Data Protection Regulation (UK GDPR)](https://www.legislation.gov.uk/eur/2016/679/contents).\n\nYour organisation’s DPO or information assurance team should be able to advise on your data protection obligations.",
           "visibleIf": "({1r} = 'No' or {1r} = 'Unsure')"
+        },
+        {
+          "type": "radiogroup",
+          "name": "1r2",
+          "startWithNewLine": true,
+          "title": "Have you or do you intend to complete a Data Protection Impact Assessment (DPIA) for this project?",
+          "choices": [
+            "Yes, a DPIA has been completed",
+            "Yes, a DPIA is planned but has not yet been completed",
+            "No"
+          ],
+          "allowClear": false,
+          "showOtherItem": true
+        },
+        {
+          "type": "comment",
+          "name": "1d2",
+          "startWithNewLine": true,
+          "title": "Provide a summary or link to your completed DPIA, including any identified risks.",
+          "visibleIf": "({1r2} = 'Yes, a DPIA has been completed')"
+        },
+        {
+          "type": "comment",
+          "name": "1d3",
+          "startWithNewLine": true,
+          "title": "Briefly explain your plans for completing the DPIA, including when you expect to do this.",
+          "visibleIf": "({1r2} = 'Yes, a DPIA is planned but has not yet been completed')"
+        },
+        {
+          "type": "expression",
+          "name": "1a2",
+          "startWithNewLine": true,
+          "title": "Where personal data is being processed, you must comply with relevant laws.\n\nYou need to carry out a [Data Protection Impact Assessment (DPIA)](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/data-protection-impact-assessments-dpias/) before you process personal data when the processing is likely to result in a high risk to the rights and freedoms of individuals. It’s good practice to publish your completed DPIA to demonstrate that you’re taking the appropriate precautions to protect personal data and ensure your system is fair.\n\nYour organisation’s DPO or information assurance team should be able to advise on your data protection obligations.",
+          "visibleIf": "({1r2} = 'No')"
         },
         {
           "type": "expression",
           "name": "2i",
           "startWithNewLine": true,
           "isRoot": true,
-          "questionSetHeader": "Data Protection Impact Assessment",
+          "questionSetHeader": "Equality Impact Assessment",
           "isContext": true,
           "themes": [
-            "Accountability",
-            "Privacy",
-            "Safety"
+            "Fairness",
+            "Societal Impact"
           ],
-          "title": "You must comply with equality legislation at all times, including: \nthe Equality Act 2010 \nthe Public Sector Equality Duty \nany other applicable equality legislation. \n\nThe Public Sector Equality Duty requires that you show ‘due regard’ for the aims of the duty fulfilled before, and at the time that a particular policy or operational activity that will or might impact people with protected characteristics is under consideration, as well as at the time a decision is taken. Assessing impact is an integral part of this duty, and the completion of an Equality Impact Assessment (EIA) is an effective means of fulfilling this.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "title": "You must comply with equality legislation at all times, including: \n• the [Equality Act 2010](https://www.gov.uk/guidance/equality-act-2010-guidance)\n• the [Public Sector Equality Duty](https://www.gov.uk/government/publications/public-sector-equality-duty-guidance-for-public-authorities/public-sector-equality-duty-guidance-for-public-authorities)\n• any other applicable equality legislation. \n\nThe Public Sector Equality Duty requires that you show ‘due regard’ for the aims of the duty fulfilled before, and at the time that a particular policy or operational activity that will or might impact people with protected characteristics is under consideration, as well as at the time a decision is taken. Assessing impact is an integral part of this duty, and the completion of an [Equality Impact Assessment (EIA)](https://www.gov.uk/government/consultations/emergency-evacuation-information-sharing/equality-impact-assessment) is an effective means of fulfilling this.",
+          "visibleIf": "({FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
         },
         {
           "type": "radiogroup",
           "name": "2r",
           "startWithNewLine": true,
-          "title": "Have you, or do you intend to complete a Data Protection Impact Assessment (DPIA) for this project?",
+          "title": "Have you, or do you intend to complete an Equality Impact Assessment (EIA) for this project?",
+          "description": "You must assess the equality impact of your project before making any decisions to initiate a project, including procuring and development. \n\nThere’s no set way for you to record your equality considerations and your organisation may have its own EIA template for you to complete.",
           "choices": [
-            "Yes, a DPIA has been completed",
-            "Yes, a DPIA is planned but has not yet been completed",
-            "No",
-            "Other"
+            "Yes, an EIA has been completed",
+            "Yes, an EIA is planned but has not yet been completed"
           ],
-          "allowClear": false
+          "allowClear": false,
+          "showOtherItem": true
         },
         {
           "type": "comment",
           "name": "2d",
           "startWithNewLine": true,
-          "title": "Provide a summary or link to your completed DPIA, including any identified risks.",
-          "visibleIf": "({2r} = 'Yes, a DPIA has been completed')"
+          "title": "Provide a summary or link to your completed EIA, including any identified risks.",
+          "visibleIf": "({2r} = 'Yes, an EIA has been completed')"
         },
         {
           "type": "comment",
           "name": "2d2",
           "startWithNewLine": true,
-          "title": "Briefly explain your plans for completing the DPIA, including when you expect to do this.",
-          "visibleIf": "({2r} = 'Yes, a DPIA is planned but has not yet been completed')"
-        },
-        {
-          "type": "expression",
-          "name": "2a",
-          "startWithNewLine": true,
-          "title": "Where personal data is being processed, you must comply with relevant laws.\n\nYou need to carry out a Data Protection Impact Assessment (DPIA) before you process personal data when the processing is likely to result in a high risk to the rights and freedoms of individuals. It’s good practice to publish your completed DPIA to demonstrate that you’re taking the appropriate precautions to protect personal data and ensure your system is fair.\n\nYour organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.",
-          "visibleIf": "({2r} = 'No')"
+          "title": "Briefly explain your plans for completing the EIA, including when you expect to do this.",
+          "visibleIf": "({2r} = 'Yes, an EIA is planned but has not yet been completed')"
         },
         {
           "type": "radiogroup",
           "name": "3r",
-          "startWithNewLine": true,
-          "isRoot": true,
-          "questionSetHeader": "Equality Impact Assesssment",
-          "themes": [
-            "Fairness",
-            "Societal Impact"
-          ],
-          "title": "Have you, or do you intend to complete an Equality Impact Assessment (EqIA) for this project?",
-          "description": "You must comply with relevant laws and assess the equality impact of your project: \n• before making any decisions to initiate a project, including procuring and development\n• during implementation\n• after implementation.\n\nThere’s no set way for you to record your equality considerations and your organisation may have its own Equality Impact Assessment (EIA) template for you to complete.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')",
-          "choices": [
-            "Yes, an EqIA has been completed",
-            "Yes, an EqIA is planned but has not yet been completed",
-            "Other"
-          ],
-          "allowClear": false,
-          "resetValueIf": "({FILTER} notcontains 'My project involves the collection, use, or sharing of data' and {FILTER} notcontains 'My project involves the use of AI or broader algorithmic tools' and {FILTER} notcontains 'My project involves the use or processing of personal data' and {FILTER} notcontains 'My project involves direct interaction with the public' and {FILTER} notcontains 'My project involves making decisions with a significant or legal effects' and {FILTER} notcontains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
-        },
-        {
-          "type": "comment",
-          "name": "3d",
-          "startWithNewLine": true,
-          "title": "Provide a summary or link to your completed EqIA, including any identified risks.",
-          "visibleIf": "({3r} = 'Yes, an EqIA has been completed')"
-        },
-        {
-          "type": "comment",
-          "name": "3d2",
-          "startWithNewLine": true,
-          "title": "Briefly explain your plans for completing the EqIA, including when you expect to do this.",
-          "visibleIf": "({3r} = 'Yes, an EqIA is planned but has not yet been completed')"
-        },
-        {
-          "type": "radiogroup",
-          "name": "4r",
           "startWithNewLine": true,
           "isRoot": true,
           "questionSetHeader": "Information security approach",
@@ -202,78 +194,92 @@
             "Safety"
           ],
           "title": "Have you consulted with your organisation’s data and information security teams?",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')",
+          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data')",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": false,
-          "resetValueIf": "({FILTER} notcontains 'My project involves the collection, use, or sharing of data' and {FILTER} notcontains 'My project involves the use of AI or broader algorithmic tools' and {FILTER} notcontains 'My project involves the use or processing of personal data' and {FILTER} notcontains 'My project involves direct interaction with the public' and {FILTER} notcontains 'My project involves making decisions with a significant or legal effects' and {FILTER} notcontains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "resetValueIf": "({FILTER} notcontains 'My project involves the collection, use, or sharing of data' and {FILTER} notcontains 'My project involves the use of AI or broader algorithmic tools' and {FILTER} notcontains 'My project involves the use or processing of personal data')"
+        },
+        {
+          "type": "comment",
+          "name": "3d",
+          "startWithNewLine": true,
+          "title": "What were the key recommendations you received? Were any risks identified?",
+          "visibleIf": "({3r} = 'Yes')"
+        },
+        {
+          "type": "expression",
+          "name": "3a",
+          "startWithNewLine": false,
+          "title": "You should involve data and information security teams early in the project design process.\n\nYour organisation’s data and information security team should be able to advise on security requirements and risks. \n\nRefer to the government’s [personal data security principles](https://www.gov.uk/guidance/principles-for-securing-personal-data-in-government-services) when processing and sharing personal data.\n\nIf you’re working with any third-party suppliers to store, collect or process data, make sure they comply with the security requirements of your project.",
+          "visibleIf": "({3r} = 'No' or {3r} = 'Unsure')"
+        },
+        {
+          "type": "expression",
+          "name": "4i",
+          "startWithNewLine": true,
+          "isRoot": true,
+          "questionSetHeader": "Data sharing agreements",
+          "isContext": true,
+          "themes": [
+            "Accountability"
+          ],
+          "title": "If you plan to send data to or receive data from other parties, establishing data sharing agreements in advance is good practice. Refer to the ICO's [data sharing agreements guidance](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/data-sharing-a-code-of-practice/data-sharing-agreements/) for more information about the benefits, what should be included and when to review arrangements.",
+          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data')"
+        },
+        {
+          "type": "radiogroup",
+          "name": "4r",
+          "startWithNewLine": true,
+          "title": "Have you or do you intend to establish any data sharing agreements with other organisations?",
+          "choices": [
+            "Yes, data sharing agreements have been established",
+            "Yes, data sharing agreements are planned but have not yet been established",
+            "No, we will not send data to or receive data from other parties"
+          ],
+          "allowClear": false,
+          "showOtherItem": true
         },
         {
           "type": "comment",
           "name": "4d",
           "startWithNewLine": true,
-          "title": "What were the key recommendations you received? Were any risks identified?",
-          "visibleIf": "({4r} = 'Yes')"
+          "title": "Provide summaries or links to your completed data sharing agreements.",
+          "visibleIf": "({4r} = 'Yes, data sharing agreements have been established')"
         },
         {
-          "type": "expression",
-          "name": "4a",
-          "startWithNewLine": false,
-          "title": "You should involve data and information security teams early in the project design process.\n\nYour organisation’s data and information security team should be able to advise on security requirements and risks. \n\nRefer to the government’s personal data security principles when processing and sharing personal data.\n\nIf you’re working with any third-party suppliers to store, collect or process data, make sure they comply with the security requirements of your project.",
-          "visibleIf": "({4r} = 'No' or {4r} = 'Unsure')"
-        },
-        {
-          "type": "radiogroup",
-          "name": "5r",
+          "type": "comment",
+          "name": "4d2",
           "startWithNewLine": true,
-          "isRoot": true,
-          "questionSetHeader": "Data sharing agreements",
-          "themes": [
-            "Accountability"
-          ],
-          "title": "Do you have any data sharing agreements in place with other organisations?",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')",
-          "choices": [
-            "Yes",
-            "No",
-            "Other"
-          ],
-          "allowClear": false,
-          "resetValueIf": "({FILTER} notcontains 'My project involves the collection, use, or sharing of data' and {FILTER} notcontains 'My project involves the use of AI or broader algorithmic tools' and {FILTER} notcontains 'My project involves the use or processing of personal data' and {FILTER} notcontains 'My project involves direct interaction with the public' and {FILTER} notcontains 'My project involves making decisions with a significant or legal effects' and {FILTER} notcontains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "title": "Briefly explain your plans for your data sharing agreement(s), including when you expect to do this.",
+          "visibleIf": "({4r} = 'Yes, data sharing agreements are planned but have not yet been established')"
         },
         {
           "type": "comment",
           "name": "5d",
-          "startWithNewLine": true,
-          "title": "Briefly explain how this data sharing achieves a benefit and is necessary.",
-          "visibleIf": "({5r} = 'Yes')"
-        },
-        {
-          "type": "comment",
-          "name": "5d2",
-          "startWithNewLine": true,
-          "title": "Briefly explain why this is not applicable to your project.",
-          "visibleIf": "({5r} = 'No')"
-        },
-        {
-          "type": "comment",
-          "name": "6d",
           "startWithNewLine": true,
           "isRoot": true,
           "questionSetHeader": "Governance and oversight",
           "themes": [
             "Accountability"
           ],
-          "title": "How does, or could, your governance structure support the safe and effective development of the project?",
+          "title": "How will your governance structure support the safe and effective development of the project?",
           "description": "Data and AI projects should have appropriate and effective governance and oversight. This includes clear roles and responsibilities, clear documentation, and being transparent about the system and the processes around it.\n\nYou must set out who is responsible at each stage of the project. This includes naming: senior responsible owners (SROs), data owners, data stewards, data custodians, and AI asset owners. \n\nThe Service Manual includes further information about delivery team roles and responsibilities.'",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "visibleIf": "({FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
         },
         {
           "type": "comment",
-          "name": "7d",
+          "name": "5d2",
+          "startWithNewLine": true,
+          "title": "How have you assigned responsibility for the project’s outcomes? Are the responsible owners able to make necessary changes?",
+          "description": "Consider whether those responsible for the project have the authority, time and information they need to implement changes. You should also think about whether the organisation embodies a ‘culture of change’ and continuous improvement, where concerns are raised, decisions made and changes followed through."
+        },
+        {
+          "type": "comment",
+          "name": "6d",
           "startWithNewLine": true,
           "isRoot": true,
           "questionSetHeader": "Process documentation",
@@ -281,26 +287,13 @@
             "Transparency",
             "Accountability"
           ],
-          "title": "How are you documenting key project decisions?",
+          "title": "How will you document key project decisions?",
           "description": "To ensure AI and data projects can be audited or reviewed, it is advisable to record who is responsible for each part of the project, including suppliers; and to record decisions made during project design. \n\nYou should consult your organisation’s information governance team for guidance on project documentation.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
-        },
-        {
-          "type": "comment",
-          "name": "8d",
-          "startWithNewLine": true,
-          "isRoot": true,
-          "questionSetHeader": "Responsible ownership",
-          "themes": [
-            "Accountability"
-          ],
-          "title": "How have you assigned responsibility for the project’s outcomes? Are the responsible owners able to make necessary changes?",
-          "description": "Consider whether those responsible for the project have the authority, time and information they need to implement changes. You should also think about whether the organisation embodies a ‘culture of change’ and continuous improvement, where concerns are raised, decisions made and changes followed through.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "visibleIf": "({FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
         },
         {
           "type": "radiogroup",
-          "name": "9r",
+          "name": "7r",
           "startWithNewLine": true,
           "isRoot": true,
           "questionSetHeader": "Research",
@@ -309,7 +302,7 @@
             "Societal Impact"
           ],
           "title": "Will you conduct research as part of your project?",
-          "description": "When designing a government tool or service, you should always start by learning about the people who will use it. If you don’t understand users or what they need from your service, you cannot build the right thing.",
+          "description": "When designing a government system or service, you should always start by learning about the people who will use it. If you don’t understand users or what they need from your service, you cannot build the right thing.",
           "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')",
           "choices": [
             "Yes",
@@ -321,43 +314,43 @@
         },
         {
           "type": "comment",
-          "name": "9d",
+          "name": "7d",
           "startWithNewLine": true,
           "title": "Describe the measures you will take to protect research particpants.",
           "description": "You must take steps to protect both researchers and research participants. This applies to your team and to any third-party researchers you work with.\n\nThe Service Manual has guidance on managing user research data and participant privacy and researching emotionally sensitive subjects.\nThe Government Analysis Function also provides a list of resources related to conducting research and analysis in government.",
-          "visibleIf": "({9r} = 'Yes')"
+          "visibleIf": "({7r} = 'Yes')"
         },
         {
           "type": "expression",
-          "name": "9a",
+          "name": "7a",
           "startWithNewLine": false,
-          "title": "You should involve diverse stakeholders in the design and testing process and undertake thorough user research to ensure you’re including the views of those that may be impacted or digitally excluded.\n\nThe Service Manual has guidance on managing user research data and participant privacy and researching emotionally sensitive subjects.\n\nThe Government Analysis Function also provides a list of resources related to conducting research and analysis in government.",
-          "visibleIf": "({9r} = 'No' or {9r} = 'Unsure')"
+          "title": "You should involve diverse stakeholders in the design and testing process and undertake thorough user research to ensure you’re including the views of those that may be impacted or digitally excluded.\n\nThe Service Manual has [guidance on managing user research data and participant privacy](https://www.gov.uk/service-manual/user-research/managing-user-research-data-participant-privacy) and [researching emotionally sensitive subjects](https://www.gov.uk/service-manual/user-research/researching-emotionally-sensitive-subjects).\n\nThe Government Analysis Function also provides a [list of resources](https://analysisfunction.civilservice.gov.uk/policy-store/) related to conducting research and analysis in government.",
+          "visibleIf": "({7r} = 'No' or {7r} = 'Unsure')"
         },
         {
-          "type": "comment",
-          "name": "10d",
+          "type": "expression",
+          "name": "8i",
           "startWithNewLine": true,
           "isRoot": true,
           "questionSetHeader": "Diverse participation",
+          "isContext": true,
           "themes": [
             "Fairness",
             "Societal Impact"
           ],
-          "title": "How are you ensuring that you’re capturing diverse views?",
-          "description": "Having a diverse and multidisciplinary team can provide a strong foundation for building fairer tools and services.\n\nYou should include stakeholder perspectives by engaging with civil society groups, affected communities and wider public sector to understand potential benefits and impacts.\n\nYou must understand and comply with your legal obligations and duties. Refer to the Public Sector Equality Duty (PSED) and the Equality Act 2010.\n\nYou should continually revisit user needs throughout your project. The Service Manual explains more about understanding user needs.",
+          "title": "You should engage with different stakeholder groups across the project life cycle, including civil society groups, domain experts and affected communities. This is important to: \t\t\t\t\n• ensure you are building systems and services which serve a real user need \t\t\t\t\n• identify areas of potential harm and exclusion \t\t\t\t\n• understand the context in which your system or service might be used.\t\t\t\t\n\t\t\t\t\nYou should continually revisit user needs throughout your project. The Service Manual explains more about [user needs](https://www.gov.uk/service-manual/service-standard/point-1-understand-user-needs).",
           "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
         },
         {
-          "type": "expression",
-          "name": "10i",
+          "type": "comment",
+          "name": "8d",
           "startWithNewLine": true,
-          "isContext": true,
-          "title": "Engaging with stakeholders and affected groups \t\t\t\t\n\t\t\t\t\nYou should engage with different stakeholder groups across the project life cycle, including civil society groups, domain experts and affected communities. This is important to: \t\t\t\t\n• ensure you are building tools and services which serve a real user need \t\t\t\t\n• identify areas of potential harm and exclusion \t\t\t\t\nunderstand the context in which your tool or service might be used.\t\t\t\t\n\t\t\t\t\nYou should continually revisit user needs throughout your project. The Service Manual explains more about user needs."
+          "title": "How are you ensuring that you’re capturing diverse views?",
+          "description": "Capturing and integrating diverse views can help you to identify risks and opportunities that otherwise would have been blind spots in your project.\n\nHaving a diverse and multidisciplinary team can provide a strong foundation for building fairer systems and services.\n\nYou should include stakeholder perspectives by engaging with civil society groups, affected communities and wider public sector to understand potential benefits and impacts.\n\nYou must understand and comply with your legal obligations and duties. Refer to the Public Sector Equality Duty (PSED) and the Equality Act 2010.\n\nYou should continually revisit user needs throughout your project. The Service Manual explains more about understanding user needs."
         },
         {
           "type": "comment",
-          "name": "11d",
+          "name": "9d",
           "startWithNewLine": true,
           "isRoot": true,
           "questionSetHeader": "Communicating with stakeholders",
@@ -368,36 +361,29 @@
           "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
         },
         {
-          "type": "comment",
-          "name": "12d",
-          "startWithNewLine": true,
-          "isRoot": true,
-          "questionSetHeader": "Environmental impact approach",
-          "themes": [
-            "Environmental sustainability"
-          ],
-          "title": "How are you considering the potential environmental impact and sustainability of your project?",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
-        },
-        {
-          "type": "comment",
-          "name": "13d",
+          "type": "expression",
+          "name": "10i",
           "startWithNewLine": true,
           "isRoot": true,
           "questionSetHeader": "Environmental impact monitoring",
+          "isContext": true,
           "themes": [
             "Environmental sustainability"
           ],
-          "title": "Briefly describe how you intend to monitor, evaluate and address environmental impact and sustainability challenges.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "title": "Before you begin building a system, you should develop a plan to monitor and evaluate the environmental impact. There are various environmental factors that you should monitor and manage across the lifecycle of your project. This can be a complex task but it’s vital for ensuring proper stewardship of data and AI projects. Considering environmental sustainability and impact from the start of your project can influence your choices about tools, suppliers and infrastructure.\n \nYou should select appropriate metrics and key performance indicators (KPIs) that can be tracked over time – such as carbon footprint, energy consumption or compute efficiency. You may need to consider more than one metric to understand the project’s broader impact.\n\nThe [environmental sustainability](https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework#environmental-sustainability-section) chapter in the Data and AI Ethics Framework provides further guidance on how to do this.  \n\nThe Service Manual has guidance on how to build more [environmentally sustainable digital services](https://www.gov.uk/service-manual/design/environmentally-sustainable-services) in government.",
+          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools')"
         },
         {
-          "type": "expression",
-          "name": "13i",
+          "type": "comment",
+          "name": "10d",
           "startWithNewLine": true,
-          "isContext": true,
-          "title": "Before you begin building a tool or system, you should develop a plan to monitor and evaluate the environmental impact. There are various environmental factors that you should monitor and manage across the lifecycle of your project. This can be a complex task but it’s vital for ensuring proper stewardship of data and AI projects. \n \nYou should select appropriate metrics and key performance indicators (KPIs) that can be tracked over time – such as carbon footprint, energy consumption or compute efficiency. You may need to consider more than one metric to understand the project’s broader impact.\n\nThe sustainability chapter in the Data and AI Ethics Framework provides further guidance on how to do this.  \n\nThe Service Manual has guidance on how to build more environmentally sustainable digital services in government.",
-          "description": "It’s important to consider environmental sustainability and impact from the start of your project, as it can influence your choices about tools, suppliers and infrastructure."
+          "title": "How are you considering the potential environmental impact and sustainability of your project?"
+        },
+        {
+          "type": "comment",
+          "name": "10d2",
+          "startWithNewLine": true,
+          "title": "How do you intend to monitor, evaluate the environmental impact and sustainability aspects of your project, and how might you address any challenges?"
         }
       ]
     },
@@ -416,14 +402,14 @@
             "Safety"
           ],
           "title": "Do you have a plan in place to ensure data quality is assessed across the project lifecycle?",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')",
+          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data')",
           "choices": [
             "Yes",
-            "Not yet",
-            "Other"
+            "Not yet"
           ],
           "allowClear": false,
-          "resetValueIf": "({FILTER} notcontains 'My project involves the collection, use, or sharing of data' and {FILTER} notcontains 'My project involves the use of AI or broader algorithmic tools' and {FILTER} notcontains 'My project involves the use or processing of personal data' and {FILTER} notcontains 'My project involves direct interaction with the public' and {FILTER} notcontains 'My project involves making decisions with a significant or legal effects' and {FILTER} notcontains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "showOtherItem": true,
+          "resetValueIf": "({FILTER} notcontains 'My project involves the collection, use, or sharing of data')"
         },
         {
           "type": "comment",
@@ -436,7 +422,7 @@
           "type": "expression",
           "name": "1a",
           "startWithNewLine": false,
-          "title": "The Government Data Quality Framework sets out principles and practices to assess, communicate and improve the quality of data in government. Linked with this, there’s guidance on implementing a data quality action plan.",
+          "title": "The [Government Data Quality Framework](https://www.gov.uk/government/publications/the-government-data-quality-framework) sets out principles and practices to assess, communicate and improve the quality of data in government. Linked with this, there’s guidance on implementing a data quality action plan.",
           "visibleIf": "({1r} = 'Not yet')"
         },
         {
@@ -449,9 +435,9 @@
             "Privacy",
             "Safety"
           ],
-          "title": "How are you integrating privacy-enhancing technologies (PETs) into your project?",
-          "description": "Privacy enhancing technologies (PETs) can help to achieve a privacy-by-design approach - making design and development decisions from the very start that enhance privacy objectives.\n\nYou should use PETs where possible, applying techniques such as anonymisation or the use of synthetic data.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "title": "How are you integrating encryption, de-identification or other forms of privacy-enhancing technologies (PETs) into your project?",
+          "description": "Privacy enhancing technologies (PETs) can help to achieve a privacy-by-design approach - making design and development decisions from the very start that enhance privacy objectives.",
+          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data')"
         },
         {
           "type": "comment",
@@ -463,7 +449,7 @@
             "Transparency",
             "Accountability"
           ],
-          "title": "How are you communicating the project information and purpose to relevant stakeholders?",
+          "title": "How are you communicating the project information to relevant stakeholders?",
           "description": "You should proactively communicate the project's purpose, design and intended outcomes to relevant stakeholders. \n\nEarly and ongoing engagement can help build trust, improve understanding, and identify concerns before the project progresses further.",
           "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
         },
@@ -472,29 +458,17 @@
           "name": "4d",
           "startWithNewLine": true,
           "isRoot": true,
-          "questionSetHeader": "Accessibility",
-          "themes": [
-            "Fairness"
-          ],
-          "title": "How are you ensuring the tool or service is accessible for all users?",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
-        },
-        {
-          "type": "comment",
-          "name": "5d",
-          "startWithNewLine": true,
-          "isRoot": true,
           "questionSetHeader": "Fairness testing",
           "themes": [
             "Fairness"
           ],
           "title": "How are you testing and monitoring for fairness risks?",
           "description": "As you develop your approach to fairness testing and evaluation, you should:\n• Consider which individuals or groups could benefit from, be disadvantaged by, or be particularly vulnerable to harms from the project.\n• Identify appropriate measures or metrics for assessing fairness, including how you will assess whether your data is sufficiently representative and whether the system produces unfair outcomes.\n\nYou must review the accessibility needs of your users and identify any barriers that could prevent people from accessing, using or benefiting from your project. You should make changes where needed to ensure your project is accessible and inclusive. The Service Manual includes guidance on accessibility and assisted digital.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "visibleIf": "({FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects')"
         },
         {
           "type": "comment",
-          "name": "6d",
+          "name": "5d",
           "startWithNewLine": true,
           "isRoot": true,
           "questionSetHeader": "Societal impact approach",
@@ -502,25 +476,25 @@
             "Societal Impact"
           ],
           "title": "What are the potential societal impacts of your project? What steps will you take to address these impacts, if any?",
-          "description": "Societal impacts are the broader positive or negative effects that data and AI can have on people, communities, society and the economy. These impacts may be direct or indirect and may affect different groups in different ways.\n\nYou should engage with a diverse group of stakeholders, including staff, to understand the potential wider societal impact of implementing the project.\n\nTo adopt AI safely and effectively, teams should have:\no      suitable training and resources\no      a working environment that considers and prioritises broader ‘human’ factors – including cultural shifts, organisational change and skill development.\nTo learn more, refer to the guidance on a human-centred approach to scaling AI tools,",
+          "description": "Societal impacts are the broader positive or negative effects that data and AI can have on people, communities, society and the economy. These impacts may be direct or indirect and may affect different groups in different ways.\n\nYou should engage with a diverse group of stakeholders, including staff, to understand the potential wider societal impact of implementing the project.\n\nTo adopt AI safely and effectively, teams should have suitable training and resources and a working environment that considers and prioritises broader ‘human’ factors – including cultural shifts, organisational change and skill development.\n\nTo learn more, refer to the guidance on a human-centred approach to scaling AI systems.",
           "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
         },
         {
           "type": "comment",
-          "name": "7d",
+          "name": "6d",
           "startWithNewLine": true,
           "isRoot": true,
           "questionSetHeader": "Trade-offs",
           "themes": [
             "Societal Impact"
           ],
-          "title": "How are you managing any trade-offs between ethical principles and project or organisational goals?",
+          "title": "What trade-offs have you identified between your project goals and ethical principles, if any? How will you manage these trade-offs going forward?",
           "description": "Ethical trade-offs are complex, and you must treat them with care. Sometimes project goals, such as improving efficiency or reducing costs, may come into tension with ethical considerations such as fairness or privacy. Identifying these tensions early can help you make informed and responsible decisions.",
           "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
         },
         {
           "type": "comment",
-          "name": "8d",
+          "name": "7d",
           "startWithNewLine": true,
           "isRoot": true,
           "questionSetHeader": "Governance and oversight",
@@ -534,49 +508,49 @@
         },
         {
           "type": "radiogroup",
-          "name": "9r",
+          "name": "8r",
           "startWithNewLine": true,
           "isRoot": true,
           "questionSetHeader": "Algorithmic transparency",
           "themes": [
             "Transparency"
           ],
-          "title": "Is your tool within scope of the Algorithmic Transparency Recording Standard (ATRS)?",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')",
+          "title": "Is your system within scope of the Algorithmic Transparency Recording Standard (ATRS)?",
+          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects')",
           "choices": [
             "Yes",
             "No",
             "Unsure"
           ],
           "allowClear": false,
-          "resetValueIf": "({FILTER} notcontains 'My project involves the collection, use, or sharing of data' and {FILTER} notcontains 'My project involves the use of AI or broader algorithmic tools' and {FILTER} notcontains 'My project involves the use or processing of personal data' and {FILTER} notcontains 'My project involves direct interaction with the public' and {FILTER} notcontains 'My project involves making decisions with a significant or legal effects' and {FILTER} notcontains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "resetValueIf": "({FILTER} notcontains 'My project involves the collection, use, or sharing of data' and {FILTER} notcontains 'My project involves the use of AI or broader algorithmic tools' and {FILTER} notcontains 'My project involves the use or processing of personal data' and {FILTER} notcontains 'My project involves direct interaction with the public' and {FILTER} notcontains 'My project involves making decisions with a significant or legal effects')"
         },
         {
           "type": "expression",
-          "name": "9i",
+          "name": "8i",
           "startWithNewLine": true,
           "isContext": true,
-          "title": "The ATRS establishes a standardised way for public sector organisations to publish information about how and why they are using algorithmic tools. The ATRS is mandatory for: \t\t\t\t\n• All government departments, and for ALBs which deliver public or frontline services, or directly interact with the general public.\t\t\t\t\n• Algorithmic tools which have a significant influence on a decision-making process with public effect or directly interact with the general public.\t\t\t\t\n\t\t\t\t\nIf your organisation and tools fall within the mandatory scope of the ATRS, you are required to complete and openly publish an ATRS record once your project reaches public beta.\t\t\t\t\n\t\t\t\t\nThe ATRS template, guidance for completing a record, and the repository of published records are all hosted on the ATRS Hub on GOV.UK. You can reach the ATRS team at algorithmic-transparency@dsit.gov.uk."
+          "title": "The Algorithmic Transparency Recording Standard (ATRS) establishes a standardised way for public sector organisations to publish information about how and why they are using algorithmic tools. The ATRS is mandatory for: \t\t\t\t\n• All government departments, and for ALBs which deliver public or frontline services, or directly interact with the general public.\t\t\t\t\n• Algorithmic tools which have a significant influence on a decision-making process with public effect or directly interact with the general public.\t\t\t\t\n\t\t\t\t\nIf your organisation and tools fall within the mandatory scope of the ATRS, you are required to complete and openly publish an ATRS record once your project reaches public beta.\t\t\t\t\n\t\t\t\t\nThe [ATRS template](https://www.gov.uk/government/publications/algorithmic-transparency-template), [guidance for completing a record](https://www.gov.uk/government/publications/guidance-for-organisations-using-the-algorithmic-transparency-recording-standard), and the [repository of published records](https://www.gov.uk/algorithmic-transparency-records) are all hosted on the [ATRS Hub](https://www.gov.uk/algorithmic-transparency-records) on GOV.UK. You can reach the ATRS team at algorithmic-transparency@dsit.gov.uk."
         },
         {
           "type": "expression",
-          "name": "9a",
+          "name": "8a",
           "startWithNewLine": true,
-          "title": "You should check if your tool is in scope of the Algorithmic Transparency Recording Standard (ATRS). \n\nThe ATRS is mandatory for: \n•\tAll government departments, and for ALBs which deliver public or frontline services, or directly interact with the general public.\n•\tAlgorithmic tools which have a significant influence on a decision-making process with public effect or directly interact with the general public.\n\nThe mandatory requirement to publish an ATRS record applies to tools that are in Beta/Pilot or Production phase.\nIt is recommended best practice to publish an ATRS record even if your tool is not within mandatory scope.",
-          "visibleIf": "({9r} = 'Unsure')"
+          "title": "You should check if your system is in scope of the [Algorithmic Transparency Recording Standard (ATRS)](https://www.gov.uk/government/collections/algorithmic-transparency-recording-standard-hub). \n\nThe ATRS is mandatory for: \n•\tAll government departments, and for ALBs which deliver public or frontline services, or directly interact with the general public.\n•\tAlgorithmic systems which have a significant influence on a decision-making process with public effect or directly interact with the general public.\n\nThe mandatory requirement to publish an ATRS record applies to systems that are in Beta/Pilot or Production phase. The [scope and exemptions policy](https://www.gov.uk/government/publications/algorithmic-transparency-recording-standard-mandatory-scope-and-exemptions-policy) is published on GOV.UK.\nIt is recommended best practice to publish an ATRS record even if your system is not within mandatory scope.",
+          "visibleIf": "({9} = 'Unsure')"
         },
         {
           "type": "comment",
-          "name": "10d",
+          "name": "9d",
           "startWithNewLine": true,
           "isRoot": true,
-          "questionSetHeader": "Sustainability monitoring",
+          "questionSetHeader": "Environmental impact monitoring",
           "themes": [
             "Environmental sustainability"
           ],
           "title": "How are you ensuring the project has measurable environmental sustainability goals?",
           "description": "Setting clear sustainability objectives and using greener software practices will help make sustainability a core part of your project design.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools')"
         }
       ]
     },
@@ -597,8 +571,8 @@
             "Privacy"
           ],
           "title": "How are you ensuring that the data used by the project remains appropriate and of sufficient quality for its intended purpose?",
-          "description": "Data quality should be checked and validated across the data life cycle.\n\nYou should disclose any limitations of the data, such as quality issues, missing or incomplete data, gaps in representativeness, or known errors. Tools such as data sheets or data set cards can be helpful in documenting information about data quality.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "description": "Data quality should be checked and validated across the data life cycle.\n\nYou should record any limitations of the data, such as quality issues, missing or incomplete data, gaps in representativeness, or known errors. Tools such as data sheets or data set cards can be helpful in documenting information about data quality.",
+          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools')"
         },
         {
           "type": "comment",
@@ -610,8 +584,8 @@
             "Fairness"
           ],
           "title": "How are you ensuring accessibility for all users?",
-          "description": "Before going live, you must test your tool or project with real users, including users with accessibility needs and those who use assistive technologies.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "description": "Before going live, you must test your system or project with real users, including users with accessibility needs and those who use assistive technologies.",
+          "visibleIf": "({FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects')"
         },
         {
           "type": "comment",
@@ -624,7 +598,7 @@
             "Societal Impact"
           ],
           "title": "How are you testing the project's impact on different groups? What have you learnt so far?",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "visibleIf": "({FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
         },
         {
           "type": "comment",
@@ -635,7 +609,7 @@
           "themes": [
             "Accountability"
           ],
-          "title": "How have you designed and tested human oversight mechanisms? What governance, checks and controls are in place?",
+          "title": "What governance, checks and controls are in place to ensure the success of your project?",
           "description": "You should be clear what human checks exist across the life cycle of your project and who is responsible for them (including role type and senior responsible owners). Test as early as possible whether these checks work in practice – for example, whether users can raise concerns, and if changes can be made quickly when risks are identified.",
           "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
         },
@@ -664,28 +638,28 @@
           ],
           "title": "Have you established ‘go’ or ‘no-go’ criteria prior to the system going live?",
           "description": "Before going live, you should consider what an acceptable threshold for your project looks like as a whole. This should consider ethical themes and parameters holistically, rather than in isolation. Think about what person(s) have the authority to make this decision and what information they need to ensure their decision is informed.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')",
+          "visibleIf": "({FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')",
           "choices": [
             "Yes",
-            "Not yet",
-            "Other"
+            "Not yet"
           ],
           "allowClear": false,
-          "resetValueIf": "({FILTER} notcontains 'My project involves the collection, use, or sharing of data' and {FILTER} notcontains 'My project involves the use of AI or broader algorithmic tools' and {FILTER} notcontains 'My project involves the use or processing of personal data' and {FILTER} notcontains 'My project involves direct interaction with the public' and {FILTER} notcontains 'My project involves making decisions with a significant or legal effects' and {FILTER} notcontains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "showOtherItem": true,
+          "resetValueIf": "({FILTER} notcontains 'My project involves direct interaction with the public' and {FILTER} notcontains 'My project involves making decisions with a significant or legal effects' and {FILTER} notcontains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
         },
         {
           "type": "comment",
           "name": "6d",
           "startWithNewLine": true,
           "title": "Briefly describe the criteria or plan you have in place.",
-          "visibleIf": "({7} = 'Yes')"
+          "visibleIf": "({6r} = 'Yes')"
         },
         {
           "type": "comment",
           "name": "6d2",
           "startWithNewLine": true,
           "title": "Briefly describe how you plan on establishing a go/no-go criteria prior to deployment.",
-          "visibleIf": "({7} = 'Not yet')"
+          "visibleIf": "({6r} = 'Not yet')"
         },
         {
           "type": "comment",
@@ -732,7 +706,7 @@
           ],
           "title": "How will you respond if the system performance degrades or becomes unsafe?",
           "description": "Consider also how you can respond to any alerts or crossed thresholds, such as options to roll back or use fallback systems, your ability to triage and fix different issues, and how you communicate this with users.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "visibleIf": "({FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
         },
         {
           "type": "comment",
@@ -744,7 +718,7 @@
             "Transparency",
             "Safety"
           ],
-          "title": "What mechanisms are in place for users to submit feedback on system or tool performance?",
+          "title": "What mechanisms are in place for users to submit feedback on system performance?",
           "description": "Consider different groups' needs when providing feedback mechanisms. This could include colleagues across government departments and the public. Mechanisms may include surveys, feedback forms and consultation responses.",
           "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
         },
@@ -759,7 +733,7 @@
             "Safety"
           ],
           "title": "How are you actioning user feedback to improve the project?",
-          "description": "Consider how feedback is triaged, how you identify recurring issues, how you make changes and communicate with users when changes are integrated.",
+          "description": "Consider how feedback is triaged, how you identify recurring issues, how quickly a change needs to be implemented to mitigate the risk of harm, how you make changes and communicate with users when changes are integrated.",
           "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
         },
         {
@@ -772,8 +746,8 @@
             "Transparency"
           ],
           "title": "Can the rationale for outputs be explained to users and affected individuals in a way that is easily understandable?",
-          "description": "If you’re building an AI system, you should take steps to ensure that the system is explainable. For example, you can explain why a model or algorithmic tool has produced a particular outcome.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "description": "If you’re building an AI system, you should take steps to ensure that the system is explainable. For example, can you explain why a model or algorithmic tool has produced a particular outcome?",
+          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools')"
         },
         {
           "type": "comment",
@@ -785,8 +759,8 @@
             "Transparency"
           ],
           "title": "How are you notifying users that they are using or interacting with an AI system rather than a human?",
-          "description": "You should consider how different groups, particularly groups such as children, the elderly and vulnerable persons, can recognise and identify whether they are interacting with an AI system or a human. \n\nSystems for notification may include explicit opening statements and persistent labels (for example, stating that the system is ‘powered by AI’), distinct visual cues such as robotic icons, or watermarking on AI-generated text, and reminders in conversation flows. Consider how effective these notifications are in practice for different user groups and in different situations.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "description": "You should consider how different groups are able to identify that they are interacting with an AI system. Particular attention may be paid to groups that may be less able to recognise that they are interacting with AI, including certain demographic groups like children.\n\nSystems for notification may include explicit opening statements and persistent labels (for example, stating that the system is ‘powered by AI’), distinct visual cues such as robotic icons, or watermarking on AI-generated text, and reminders in conversation flows. Consider how effective these notifications are in practice for different user groups and in different situations.",
+          "visibleIf": "({FILTER} contains 'My project involves the use of AI or broader algorithmic tools')"
         },
         {
           "type": "comment",
@@ -799,7 +773,7 @@
           ],
           "title": "How long will data be retained, and what are the justifications for this period?",
           "description": "Continually evaluate your data retention policy to ensure that privacy risks do not grow over the project’s life cycle.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data')"
         },
         {
           "type": "comment",
@@ -810,9 +784,9 @@
           "themes": [
             "Safety"
           ],
-          "title": "What monitoring and interventions are in place to detect and prevent misuse of the system?",
-          "description": "You should remain vigilant of growing capabilities for intentional misuse of the system, as well as the potential for well-intentioned users to push the system beyond its intended parameters.\n \nBe clear who is responsible for monitoring and responding to protected use, including outside of standard working hours and who can authorise changes to mitigate emerging issues.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "title": "What monitoring and interventions are in place to detect and prevent misuse of your system?",
+          "description": "You should remain vigilant of new, emerging or otherwise previously unidentified intentional misuse of the system, as well as the potential for well-intentioned users to push the system beyond its intended parameters.\n\nBe clear who is responsible for monitoring and responding to protected use, including outside of standard working hours and who can authorise changes to mitigate emerging issues.",
+          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools')"
         },
         {
           "type": "comment",
@@ -850,7 +824,7 @@
           ],
           "title": "How will you monitor the environmental impact of the project post-deployment? How can you respond if this increases over time and exceeds acceptable thresholds defined by your project's context, risks and benefits?",
           "description": "Your project’s environmental impact can change during its life due to factors such as changing traffic, updates to model architecture, storage requirements and more.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools')"
         },
         {
           "type": "comment",
@@ -863,7 +837,7 @@
           ],
           "title": "What measures are in place to responsibly manage or recycle hardware and infrastructure associated with the project or system?",
           "description": "You should consider a wide range of hardware that may be required during the life cycle of your project – from hardware owned by cloud providers and other third-party organisations, to edge devices that may be involved in data collection or service delivery, to user devices.",
-          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools' or {FILTER} contains 'My project involves the use or processing of personal data' or {FILTER} contains 'My project involves direct interaction with the public' or {FILTER} contains 'My project involves making decisions with a significant or legal effects' or {FILTER} contains 'My project involves work in a safety-critical area (e.g. policing, healthcare, working with vulnerable people)')"
+          "visibleIf": "({FILTER} contains 'My project involves the collection, use, or sharing of data' or {FILTER} contains 'My project involves the use of AI or broader algorithmic tools')"
         }
       ]
     }

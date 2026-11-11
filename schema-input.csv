@@ -10,190 +10,203 @@ My project involves work in a safety-critical area (e.g. policing, healthcare, w
 Project Detail,PROB,None,Describe the problem you’re trying to solve in simple terms.,document,y,0,0,0,,0,0
 Project Detail,PURP,None,Describe how your solution solves this problem.,document,y,0,0,0,,0,0
 Discovery,1i,None,"You must comply with data privacy and protection law at all times, including: 
-• UK General Data Protection Regulation (UK GDPR) 
-• the Data Protection Act 2018 
-• the Data (Use and Access) Act 2025 
-• any other applicable privacy legislation.
+• the [UK General Data Protection Regulation (UK GDPR)]
+• the [Data Protection Act 2018] 
+• the [Data (Use and Access) Act 2025] 
+• any other applicable privacy legislation that applies to your context.
 
-You must consult your organisation's Data Protection Officer (DPO) before initiating any activity which involves collecting, processing, sharing or storage of personal or sensitive data. You should follow all internal policies on data handling, privacy and security.",info,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Data protection approach,"Accountability, Privacy",,0,0
+You must consult your organisation's [Data Protection Officer (DPO)] before initiating any activity which involves collecting, processing, sharing or storage of [personal data]. You should follow all internal policies on data handling, privacy and security.",info,y,FILTER=data OR personal,Data protection,"Accountability, Privacy, Safety",,"https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/
+https://www.gov.uk/government/collections/data-protection-act-2018
+https://www.gov.uk/guidance/equality-act-2010-guidance
+https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/data-protection-officers/
+https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/personal-information-what-is-it/what-is-personal-data/what-is-personal-data/",0
 Discovery,1r,None,Have you consulted your organisation’s Data Protection Officer (DPO) about your project?,radios,,0,0,0,"Yes;
 No;
 Unsure",0,0
-Discovery,1d,1=Yes,What were the key recommendations you received? Were any risks identified?,document,,0,0,0,,0,0
-Discovery,1a,1=No OR Unsure,"If your project uses personal data, you must meet your legal duties under the UK General Data Protection Regulation (UK GDPR).
+Discovery,1d,1r=Yes,What were the key recommendations you received? Were any risks identified?,document,,0,0,0,,0,0
+Discovery,1a,1=No OR Unsure,"If your project uses personal data, you must meet your legal duties under the [UK General Data Protection Regulation (UK GDPR)].
 
-Your organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.
-
-You must comply with the Public Sector Equality Duty and Equality Act 2010. This means you need to carefully consider and document the equality impact of processing personal data where it can be used to identify individuals as having a protected characteristic. This document is often referred to as an Equality Impact Assessment (EIA). For more information, consult the EHRC guidance on the Public Sector Equality Duty.",action,,0,0,0,,0,0
-Discovery,2i,None,"You must comply with equality legislation at all times, including: 
-• the Equality Act 2010 
-• the Public Sector Equality Duty 
-• any other applicable equality legislation. 
-
-The Public Sector Equality Duty requires that you show ‘due regard’ for the aims of the duty fulfilled before, and at the time that a particular policy or operational activity that will or might impact people with protected characteristics is under consideration, as well as at the time a decision is taken. Assessing impact is an integral part of this duty, and the completion of an Equality Impact Assessment (EIA) is an effective means of fulfilling this.",info,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Data Protection Impact Assessment,"Accountability, Privacy, Safety",,0,0
-Discovery,2r,None,"Have you, or do you intend to complete a Data Protection Impact Assessment (DPIA) for this project?",radios,0,0,0,0,"Yes, a DPIA has been completed;
+Your organisation’s DPO or information assurance team should be able to advise on your data protection obligations.",action,,0,0,0,,https://www.legislation.gov.uk/eur/2016/679/contents,0
+Discovery,1r2,None,Have you or do you intend to complete a Data Protection Impact Assessment (DPIA) for this project?,radios,0,0,0,0,"Yes, a DPIA has been completed;
 Yes, a DPIA is planned but has not yet been completed;
 No;
 Other",0,0
-Discovery,2d,"2=Yes, a DPIA has been completed","Provide a summary or link to your completed DPIA, including any identified risks.",document,,0,0,0,,0,0
-Discovery,2d2,"2=Yes, a DPIA is planned but has not yet been completed","Briefly explain your plans for completing the DPIA, including when you expect to do this.",document,,0,0,0,,0,0
-Discovery,2a,2=No,"Where personal data is being processed, you must comply with relevant laws.
+Discovery,1d2,"1r2=Yes, a DPIA has been completed","Provide a summary or link to your completed DPIA, including any identified risks.",document,,0,0,0,,0,0
+Discovery,1d3,"1r2=Yes, a DPIA is planned but has not yet been completed","Briefly explain your plans for completing the DPIA, including when you expect to do this.",document,,0,0,0,,0,0
+Discovery,1a2,1r2=No,"Where personal data is being processed, you must comply with relevant laws.
 
-You need to carry out a Data Protection Impact Assessment (DPIA) before you process personal data when the processing is likely to result in a high risk to the rights and freedoms of individuals. It’s good practice to publish your completed DPIA to demonstrate that you’re taking the appropriate precautions to protect personal data and ensure your system is fair.
+You need to carry out a [Data Protection Impact Assessment (DPIA)] before you process personal data when the processing is likely to result in a high risk to the rights and freedoms of individuals. It’s good practice to publish your completed DPIA to demonstrate that you’re taking the appropriate precautions to protect personal data and ensure your system is fair.
 
-Your organisation’s data protection officer (DPO) or information assurance team should be able to advise on your data protection obligations.",action,,0,0,0,,https://www.gov.uk/guidance/principles-for-securing-personal-data-in-government-services,0
-Discovery,3r,None,"Have you, or do you intend to complete an Equality Impact Assessment (EqIA) for this project?",radios,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Equality Impact Assessment,"Fairness, Societal Impact","Yes, an EqIA has been completed;
-Yes, an EqIA is planned but has not yet been completed;
-Other",0,"You must comply with relevant laws and assess the equality impact of your project: 
-• before making any decisions to initiate a project, including procuring and development
-• during implementation
-• after implementation.
+Your organisation’s DPO or information assurance team should be able to advise on your data protection obligations.",action,,0,0,0,,https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/data-protection-impact-assessments-dpias/,0
+Discovery,2i,None,"You must comply with equality legislation at all times, including: 
+• the [Equality Act 2010]
+• the [Public Sector Equality Duty]
+• any other applicable equality legislation. 
 
-There’s no set way for you to record your equality considerations and your organisation may have its own Equality Impact Assessment (EIA) template for you to complete."
-Discovery,3d,"3=Yes, an EqIA has been completed","Provide a summary or link to your completed EqIA, including any identified risks.",document,,0,0,0,,0,0
-Discovery,3d2,"3=Yes, an EqIA is planned but has not yet been completed","Briefly explain your plans for completing the EqIA, including when you expect to do this.",document,,0,0,0,,0,0
-Discovery,4r,None,Have you consulted with your organisation’s data and information security teams?,radios,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Information security approach,"Privacy, Safety","Yes;
+The Public Sector Equality Duty requires that you show ‘due regard’ for the aims of the duty fulfilled before, and at the time that a particular policy or operational activity that will or might impact people with protected characteristics is under consideration, as well as at the time a decision is taken. Assessing impact is an integral part of this duty, and the completion of an [Equality Impact Assessment (EIA)] is an effective means of fulfilling this.",info,y,FILTER=personal OR public OR decision OR critical,Equality Impact Assessment,"Fairness, Societal Impact",,"https://www.gov.uk/guidance/equality-act-2010-guidance
+https://www.gov.uk/government/publications/public-sector-equality-duty-guidance-for-public-authorities/public-sector-equality-duty-guidance-for-public-authorities
+https://www.gov.uk/government/consultations/emergency-evacuation-information-sharing/equality-impact-assessment",0
+Discovery,2r,None,"Have you, or do you intend to complete an Equality Impact Assessment (EIA) for this project?",radios,0,0,0,0,"Yes, an EIA has been completed;
+Yes, an EIA is planned but has not yet been completed;
+Other",0,"You must assess the equality impact of your project before making any decisions to initiate a project, including procuring and development. 
+
+There’s no set way for you to record your equality considerations and your organisation may have its own EIA template for you to complete."
+Discovery,2d,"2r=Yes, an EIA has been completed","Provide a summary or link to your completed EIA, including any identified risks.",document,,0,0,0,,0,0
+Discovery,2d2,"2r=Yes, an EIA is planned but has not yet been completed","Briefly explain your plans for completing the EIA, including when you expect to do this.",document,,0,0,0,,0,0
+Discovery,3r,None,Have you consulted with your organisation’s data and information security teams?,radios,y,FILTER=data OR ai OR personal,Information security approach,"Privacy, Safety","Yes;
 No;
 Unsure",0,0
-Discovery,4d,4=Yes,What were the key recommendations you received? Were any risks identified?,document,,0,0,0,,0,0
-Discovery,4a,4=No OR Unsure,"You should involve data and information security teams early in the project design process.
+Discovery,3d,3r=Yes,What were the key recommendations you received? Were any risks identified?,document,,0,0,0,,0,0
+Discovery,3a,3r=No OR Unsure,"You should involve data and information security teams early in the project design process.
 
 Your organisation’s data and information security team should be able to advise on security requirements and risks. 
 
-Refer to the government’s personal data security principles when processing and sharing personal data.
+Refer to the government’s [personal data security principles] when processing and sharing personal data.
 
-If you’re working with any third-party suppliers to store, collect or process data, make sure they comply with the security requirements of your project.",action,,0,0,0,,https://www.gov.uk/government/publications/essential-shared-data-assets-and-data-ownership-in-government/essential-shared-data-assets-esdas-guidance-for-departments-html,0
-Discovery,5r,None,Do you have any data sharing agreements in place with other organisations?,radios,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Data sharing agreements,Accountability,"Yes;
-No;
+If you’re working with any third-party suppliers to store, collect or process data, make sure they comply with the security requirements of your project.",action,,0,0,0,,https://www.gov.uk/guidance/principles-for-securing-personal-data-in-government-services,0
+Discovery,4i,0,"If you plan to send data to or receive data from other parties, establishing data sharing agreements in advance is good practice. Refer to the ICO's [data sharing agreements guidance] for more information about the benefits, what should be included and when to review arrangements.",info,y,FILTER=data,Data sharing agreements,Accountability,0,https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-sharing/data-sharing-a-code-of-practice/data-sharing-agreements/,0
+Discovery,4r,None,Have you or do you intend to establish any data sharing agreements with other organisations?,radios,0,0,0,0,"Yes, data sharing agreements have been established;
+Yes, data sharing agreements are planned but have not yet been established;
+No, we will not send data to or receive data from other parties;
 Other",0,0
-Discovery,5d,5=Yes,Briefly explain how this data sharing achieves a benefit and is necessary. ,document,,0,0,0,0,0,0
-Discovery,5d2,5=No,Briefly explain why this is not applicable to your project.,document,,0,0,0,,0,0
-Discovery,6d,None,"How does, or could, your governance structure support the safe and effective development of the project?",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Governance and oversight,Accountability,0,0,"Data and AI projects should have appropriate and effective governance and oversight. This includes clear roles and responsibilities, clear documentation, and being transparent about the system and the processes around it.
+Discovery,4d,"4r=Yes, data sharing agreements have been established",Provide summaries or links to your completed data sharing agreements.,document,,0,0,0,0,0,0
+Discovery,4d2,"4r=Yes, data sharing agreements are planned but have not yet been established","Briefly explain your plans for your data sharing agreement(s), including when you expect to do this.",document,0,0,0,0,0,0,0
+Discovery,5d,None,How will your governance structure support the safe and effective development of the project?,document,y,FILTER=public OR decision OR critical,Governance and oversight,Accountability,0,0,"Data and AI projects should have appropriate and effective governance and oversight. This includes clear roles and responsibilities, clear documentation, and being transparent about the system and the processes around it.
 
 You must set out who is responsible at each stage of the project. This includes naming: senior responsible owners (SROs), data owners, data stewards, data custodians, and AI asset owners. 
 
 The Service Manual includes further information about delivery team roles and responsibilities.'"
-Discovery,7d,None,How are you documenting key project decisions?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Process documentation,"Transparency, Accountability",0,0,"To ensure AI and data projects can be audited or reviewed, it is advisable to record who is responsible for each part of the project, including suppliers; and to record decisions made during project design. 
+Discovery,5d2,None,How have you assigned responsibility for the project’s outcomes? Are the responsible owners able to make necessary changes?,document,0,0,0,0,0,0,"Consider whether those responsible for the project have the authority, time and information they need to implement changes. You should also think about whether the organisation embodies a ‘culture of change’ and continuous improvement, where concerns are raised, decisions made and changes followed through."
+Discovery,6d,None,How will you document key project decisions?,document,y,FILTER=public OR decision OR critical,Process documentation,"Transparency, Accountability",0,0,"To ensure AI and data projects can be audited or reviewed, it is advisable to record who is responsible for each part of the project, including suppliers; and to record decisions made during project design. 
 
 You should consult your organisation’s information governance team for guidance on project documentation."
-Discovery,8d,None,How have you assigned responsibility for the project’s outcomes? Are the responsible owners able to make necessary changes?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Responsible ownership,Accountability,0,0,"Consider whether those responsible for the project have the authority, time and information they need to implement changes. You should also think about whether the organisation embodies a ‘culture of change’ and continuous improvement, where concerns are raised, decisions made and changes followed through."
-Discovery,9r,None,Will you conduct research as part of your project?,radios,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Research,"Fairness, Societal Impact","Yes;
+Discovery,7r,None,Will you conduct research as part of your project?,radios,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Research,"Fairness, Societal Impact","Yes;
 No;
-Unsure",0,"When designing a government tool or service, you should always start by learning about the people who will use it. If you don’t understand users or what they need from your service, you cannot build the right thing."
-Discovery,9d,9=Yes,Describe the measures you will take to protect research particpants.,document,,0,0,0,0,0,"You must take steps to protect both researchers and research participants. This applies to your team and to any third-party researchers you work with.
+Unsure",0,"When designing a government system or service, you should always start by learning about the people who will use it. If you don’t understand users or what they need from your service, you cannot build the right thing."
+Discovery,7d,7r=Yes,Describe the measures you will take to protect research particpants.,document,,0,0,0,0,0,"You must take steps to protect both researchers and research participants. This applies to your team and to any third-party researchers you work with.
 
 The Service Manual has guidance on managing user research data and participant privacy and researching emotionally sensitive subjects.
 The Government Analysis Function also provides a list of resources related to conducting research and analysis in government.
 "
-Discovery,9a,9=No OR Unsure,"You should involve diverse stakeholders in the design and testing process and undertake thorough user research to ensure you’re including the views of those that may be impacted or digitally excluded.
+Discovery,7a,7r=No OR Unsure,"You should involve diverse stakeholders in the design and testing process and undertake thorough user research to ensure you’re including the views of those that may be impacted or digitally excluded.
 
-The Service Manual has guidance on managing user research data and participant privacy and researching emotionally sensitive subjects.
+The Service Manual has [guidance on managing user research data and participant privacy] and [researching emotionally sensitive subjects].
 
-The Government Analysis Function also provides a list of resources related to conducting research and analysis in government.",action,,0,0,0,0,0,0
-Discovery,10d,None,How are you ensuring that you’re capturing diverse views?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Diverse participation,"Fairness, Societal Impact",0,0,"Having a diverse and multidisciplinary team can provide a strong foundation for building fairer tools and services.
+The Government Analysis Function also provides a [list of resources] related to conducting research and analysis in government.",action,,0,0,0,0,"https://www.gov.uk/service-manual/user-research/managing-user-research-data-participant-privacy
+
+https://www.gov.uk/service-manual/user-research/researching-emotionally-sensitive-subjects
+
+https://analysisfunction.civilservice.gov.uk/policy-store/",0
+Discovery,8i,None,"You should engage with different stakeholder groups across the project life cycle, including civil society groups, domain experts and affected communities. This is important to: 				
+• ensure you are building systems and services which serve a real user need 				
+• identify areas of potential harm and exclusion 				
+• understand the context in which your system or service might be used.				
+				
+You should continually revisit user needs throughout your project. The Service Manual explains more about [user needs].",info,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Diverse participation,"Fairness, Societal Impact",0,https://www.gov.uk/service-manual/service-standard/point-1-understand-user-needs,0
+Discovery,8d,None,How are you ensuring that you’re capturing diverse views?,document,0,0,0,0,0,0,"Capturing and integrating diverse views can help you to identify risks and opportunities that otherwise would have been blind spots in your project.
+
+Having a diverse and multidisciplinary team can provide a strong foundation for building fairer systems and services.
 
 You should include stakeholder perspectives by engaging with civil society groups, affected communities and wider public sector to understand potential benefits and impacts.
 
 You must understand and comply with your legal obligations and duties. Refer to the Public Sector Equality Duty (PSED) and the Equality Act 2010.
 
 You should continually revisit user needs throughout your project. The Service Manual explains more about understanding user needs."
-Discovery,10i,None,"Engaging with stakeholders and affected groups 				
-				
-You should engage with different stakeholder groups across the project life cycle, including civil society groups, domain experts and affected communities. This is important to: 				
-• ensure you are building tools and services which serve a real user need 				
-• identify areas of potential harm and exclusion 				
-understand the context in which your tool or service might be used.				
-				
-You should continually revisit user needs throughout your project. The Service Manual explains more about user needs.				",info,,0,0,0,0,0,0
-Discovery,11d,None,"Do you have a plan to communicate project purpose, design and intended outcomes to users and relevant stakeholders?",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Communicating with stakeholders,Transparency,0,0,0
-Discovery,12d,None,How are you considering the potential environmental impact and sustainability of your project?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Environmental impact approach,Environmental sustainability,0,0,0
-Discovery,13d,None,"Briefly describe how you intend to monitor, evaluate and address environmental impact and sustainability challenges.",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Environmental impact monitoring,Environmental sustainability,0,0,0
-Discovery,13i,None,"Before you begin building a tool or system, you should develop a plan to monitor and evaluate the environmental impact. There are various environmental factors that you should monitor and manage across the lifecycle of your project. This can be a complex task but it’s vital for ensuring proper stewardship of data and AI projects. 
+Discovery,9d,None,"Do you have a plan to communicate project purpose, design and intended outcomes to users and relevant stakeholders?",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Communicating with stakeholders,Transparency,0,0,0
+Discovery,10i,None,"Before you begin building a system, you should develop a plan to monitor and evaluate the environmental impact. There are various environmental factors that you should monitor and manage across the lifecycle of your project. This can be a complex task but it’s vital for ensuring proper stewardship of data and AI projects. Considering environmental sustainability and impact from the start of your project can influence your choices about tools, suppliers and infrastructure.
  
 You should select appropriate metrics and key performance indicators (KPIs) that can be tracked over time – such as carbon footprint, energy consumption or compute efficiency. You may need to consider more than one metric to understand the project’s broader impact.
 
-The sustainability chapter in the Data and AI Ethics Framework provides further guidance on how to do this.  
+The [environmental sustainability] chapter in the Data and AI Ethics Framework provides further guidance on how to do this.  
 
-The Service Manual has guidance on how to build more environmentally sustainable digital services in government.",info,,0,0,0,0,0," It’s important to consider environmental sustainability and impact from the start of your project, as it can influence your choices about tools, suppliers and infrastructure."
-Alpha,1r,None,Do you have a plan in place to ensure data quality is assessed across the project lifecycle?,radios,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Data quality,Safety,"Yes;
+The Service Manual has guidance on how to build more [environmentally sustainable digital services] in government.",info,y,FILTER=data OR ai,Environmental impact monitoring,Environmental sustainability,0,"https://www.gov.uk/government/publications/data-ethics-framework/data-and-ai-ethics-framework#environmental-sustainability-section
+
+https://www.gov.uk/service-manual/design/environmentally-sustainable-services",0
+Discovery,10d,None,How are you considering the potential environmental impact and sustainability of your project?,document,0,0,0,0,0,0,0
+Discovery,10d2,None,"How do you intend to monitor, evaluate the environmental impact and sustainability aspects of your project, and how might you address any challenges?",document,0,0,0,0,0,0,0
+Alpha,1r,None,Do you have a plan in place to ensure data quality is assessed across the project lifecycle?,radios,y,FILTER=data,Data quality,Safety,"Yes;
 Not yet;
 Other",0,0
-Alpha,1d,1=Yes,Briefly describe how you will check for and maintain data quality.,document,,0,0,0,0,0,0
-Alpha,1a,1=Not yet,"The Government Data Quality Framework sets out principles and practices to assess, communicate and improve the quality of data in government. Linked with this, there’s guidance on implementing a data quality action plan.",action,,0,0,0,0,0,0
-Alpha,2d,None,How are you integrating privacy-enhancing technologies (PETs) into your project?  ,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Privacy-enhancing technologies,"Privacy, Safety",0,0,Privacy enhancing technologies (PETs) can help to achieve a privacy-by-design approach - making design and development decisions from the very start that enhance privacy objectives.
-Alpha,3d,None,How are you communicating the project information and purpose to relevant stakeholders?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Communicating with stakeholders,"Transparency, Accountability",0,0,"You should proactively communicate the project's purpose, design and intended outcomes to relevant stakeholders. 
+Alpha,1d,1r=Yes,Briefly describe how you will check for and maintain data quality.,document,,0,0,0,0,0,0
+Alpha,1a,1r=Not yet,"The [Government Data Quality Framework] sets out principles and practices to assess, communicate and improve the quality of data in government. Linked with this, there’s guidance on implementing a data quality action plan.",action,,0,0,0,0,https://www.gov.uk/government/publications/the-government-data-quality-framework,0
+Alpha,2d,None,"How are you integrating encryption, de-identification or other forms of privacy-enhancing technologies (PETs) into your project?",document,y,FILTER=data OR ai OR personal,Privacy-enhancing technologies,"Privacy, Safety",0,0,Privacy enhancing technologies (PETs) can help to achieve a privacy-by-design approach - making design and development decisions from the very start that enhance privacy objectives.
+Alpha,3d,None,How are you communicating the project information to relevant stakeholders?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Communicating with stakeholders,"Transparency, Accountability",0,0,"You should proactively communicate the project's purpose, design and intended outcomes to relevant stakeholders. 
 
 Early and ongoing engagement can help build trust, improve understanding, and identify concerns before the project progresses further."
-Alpha,4d,None,How are you ensuring the tool or service is accessible for all users?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Accessibility,Fairness,0,0,0
-Alpha,5d,None,How are you testing and monitoring for fairness risks? ,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Fairness testing,Fairness,0,0,"As you develop your approach to fairness testing and evaluation, you should:
+Alpha,4d,None,How are you testing and monitoring for fairness risks? ,document,y,FILTER=personal OR public OR decision,Fairness testing,Fairness,0,0,"As you develop your approach to fairness testing and evaluation, you should:
 • Consider which individuals or groups could benefit from, be disadvantaged by, or be particularly vulnerable to harms from the project.
 • Identify appropriate measures or metrics for assessing fairness, including how you will assess whether your data is sufficiently representative and whether the system produces unfair outcomes.
 
 You must review the accessibility needs of your users and identify any barriers that could prevent people from accessing, using or benefiting from your project. You should make changes where needed to ensure your project is accessible and inclusive. The Service Manual includes guidance on accessibility and assisted digital."
-Alpha,6d,None,"What are the potential societal impacts of your project? What steps will you take to address these impacts, if any?",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Societal impact approach,Societal Impact,0,0,"Societal impacts are the broader positive or negative effects that data and AI can have on people, communities, society and the economy. These impacts may be direct or indirect and may affect different groups in different ways.
+Alpha,5d,None,"What are the potential societal impacts of your project? What steps will you take to address these impacts, if any?",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Societal impact approach,Societal Impact,0,0,"Societal impacts are the broader positive or negative effects that data and AI can have on people, communities, society and the economy. These impacts may be direct or indirect and may affect different groups in different ways.
 
 You should engage with a diverse group of stakeholders, including staff, to understand the potential wider societal impact of implementing the project.
 
-To adopt AI safely and effectively, teams should have:
-o      suitable training and resources
-o      a working environment that considers and prioritises broader ‘human’ factors – including cultural shifts, organisational change and skill development.
-To learn more, refer to the guidance on a human-centred approach to scaling AI tools,"
-Alpha,7d,None,How are you managing any trade-offs between ethical principles and project or organisational goals?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Trade-offs,Societal Impact,0,0,"Ethical trade-offs are complex, and you must treat them with care. Sometimes project goals, such as improving efficiency or reducing costs, may come into tension with ethical considerations such as fairness or privacy. Identifying these tensions early can help you make informed and responsible decisions."
-Alpha,8d,None,How are you ensuring there is sufficient human oversight of the system?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Governance and oversight,"Safety, Accountability",0,0,"Human oversight of AI systems can help to maintain accountability and correct any erroneous or potentially harmful impacts.
+To adopt AI safely and effectively, teams should have suitable training and resources and a working environment that considers and prioritises broader ‘human’ factors – including cultural shifts, organisational change and skill development.
+
+To learn more, refer to the guidance on a human-centred approach to scaling AI systems."
+Alpha,6d,None,"What trade-offs have you identified between your project goals and ethical principles, if any? How will you manage these trade-offs going forward?",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Trade-offs,Societal Impact,0,0,"Ethical trade-offs are complex, and you must treat them with care. Sometimes project goals, such as improving efficiency or reducing costs, may come into tension with ethical considerations such as fairness or privacy. Identifying these tensions early can help you make informed and responsible decisions."
+Alpha,7d,None,How are you ensuring there is sufficient human oversight of the system?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Governance and oversight,"Safety, Accountability",0,0,"Human oversight of AI systems can help to maintain accountability and correct any erroneous or potentially harmful impacts.
 
 Identify where human oversight is needed and put mechanisms in place so that a person can meaningfully review, question or intervene in the AI system’s outputs or decisions where appropriate. You should test these mechanisms across the project lifecycle to make sure they work as intended.
 
 Where appropriate, you should engage with civil society organisations for guidance on how to design and integrate feedback and redress mechanisms for your AI project or system."
-Alpha,9r,None,Is your tool within scope of the Algorithmic Transparency Recording Standard (ATRS)?,radios,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Algorithmic transparency,Transparency,"Yes;
+Alpha,8r,None,Is your system within scope of the Algorithmic Transparency Recording Standard (ATRS)?,radios,y,FILTER=data OR ai OR personal OR public OR decision,Algorithmic transparency,Transparency,"Yes;
 No;
 Unsure",0,0
-Alpha,9i,None,"The ATRS establishes a standardised way for public sector organisations to publish information about how and why they are using algorithmic tools. The ATRS is mandatory for: 				
+Alpha,8i,None,"The Algorithmic Transparency Recording Standard (ATRS) establishes a standardised way for public sector organisations to publish information about how and why they are using algorithmic tools. The ATRS is mandatory for: 				
 • All government departments, and for ALBs which deliver public or frontline services, or directly interact with the general public.				
 • Algorithmic tools which have a significant influence on a decision-making process with public effect or directly interact with the general public.				
 				
 If your organisation and tools fall within the mandatory scope of the ATRS, you are required to complete and openly publish an ATRS record once your project reaches public beta.				
 				
-The ATRS template, guidance for completing a record, and the repository of published records are all hosted on the ATRS Hub on GOV.UK. You can reach the ATRS team at algorithmic-transparency@dsit.gov.uk. 				",info,,0,0,0,0,0,0
-Alpha,9a,9=Unsure,"You should check if your tool is in scope of the Algorithmic Transparency Recording Standard (ATRS). 
+The [ATRS template], [guidance for completing a record], and the [repository of published records] are all hosted on the [ATRS Hub] on GOV.UK. You can reach the ATRS team at algorithmic-transparency@dsit.gov.uk. ",info,,0,0,0,0,"https://www.gov.uk/government/publications/algorithmic-transparency-template
+
+https://www.gov.uk/government/publications/guidance-for-organisations-using-the-algorithmic-transparency-recording-standard
+
+https://www.gov.uk/algorithmic-transparency-records",0
+Alpha,8a,9=Unsure,"You should check if your system is in scope of the [Algorithmic Transparency Recording Standard (ATRS)]. 
 
 The ATRS is mandatory for: 
 •	All government departments, and for ALBs which deliver public or frontline services, or directly interact with the general public.
-•	Algorithmic tools which have a significant influence on a decision-making process with public effect or directly interact with the general public.
+•	Algorithmic systems which have a significant influence on a decision-making process with public effect or directly interact with the general public.
 
-The mandatory requirement to publish an ATRS record applies to tools that are in Beta/Pilot or Production phase.
-It is recommended best practice to publish an ATRS record even if your tool is not within mandatory scope. ",action,,0,0,0,0,0,0
-Alpha,10d,None,How are you ensuring the project has measurable environmental sustainability goals?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Sustainability monitoring,Environmental sustainability,0,0,Setting clear sustainability objectives and using greener software practices will help make sustainability a core part of your project design.  
-Beta,1d,None,How are you ensuring that the data used by the project remains appropriate and of sufficient quality for its intended purpose?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Data quality,"Safety, Fairness, Privacy",0,0,"Data quality should be checked and validated across the data life cycle.
+The mandatory requirement to publish an ATRS record applies to systems that are in Beta/Pilot or Production phase. The [scope and exemptions policy] is published on GOV.UK.
+It is recommended best practice to publish an ATRS record even if your system is not within mandatory scope. ",action,,0,0,0,0,"https://www.gov.uk/government/collections/algorithmic-transparency-recording-standard-hub
 
-You should disclose any limitations of the data, such as quality issues, missing or incomplete data, gaps in representativeness, or known errors. Tools such as data sheets or data set cards can be helpful in documenting information about data quality."
-Beta,2d,None,How are you ensuring accessibility for all users?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Accessibility,Fairness,0,0,"Before going live, you must test your tool or project with real users, including users with accessibility needs and those who use assistive technologies."
-Beta,3d,None,How are you testing the project's impact on different groups? What have you learnt so far?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Equality impact,"Fairness, Societal Impact",0,0,0
-Beta,4d,None,"How have you designed and tested human oversight mechanisms? What governance, checks and controls are in place? ",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Governance and oversight,Accountability,0,0,"You should be clear what human checks exist across the life cycle of your project and who is responsible for them (including role type and senior responsible owners). Test as early as possible whether these checks work in practice – for example, whether users can raise concerns, and if changes can be made quickly when risks are identified."
+https://www.gov.uk/government/publications/algorithmic-transparency-recording-standard-mandatory-scope-and-exemptions-policy",0
+Alpha,9d,None,How are you ensuring the project has measurable environmental sustainability goals?,document,y,FILTER=data OR ai,Environmental impact monitoring,Environmental sustainability,0,0,Setting clear sustainability objectives and using greener software practices will help make sustainability a core part of your project design.  
+Beta,1d,None,How are you ensuring that the data used by the project remains appropriate and of sufficient quality for its intended purpose?,document,y,FILTER=data OR ai,Data quality,"Safety, Fairness, Privacy",0,0,"Data quality should be checked and validated across the data life cycle.
+
+You should record any limitations of the data, such as quality issues, missing or incomplete data, gaps in representativeness, or known errors. Tools such as data sheets or data set cards can be helpful in documenting information about data quality."
+Beta,2d,None,How are you ensuring accessibility for all users?,document,y,FILTER=personal OR public OR decision,Accessibility,Fairness,0,0,"Before going live, you must test your system or project with real users, including users with accessibility needs and those who use assistive technologies."
+Beta,3d,None,How are you testing the project's impact on different groups? What have you learnt so far?,document,y,FILTER=personal OR public OR decision OR critical,Equality impact,"Fairness, Societal Impact",0,0,0
+Beta,4d,None,"What governance, checks and controls are in place to ensure the success of your project?",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Governance and oversight,Accountability,0,0,"You should be clear what human checks exist across the life cycle of your project and who is responsible for them (including role type and senior responsible owners). Test as early as possible whether these checks work in practice – for example, whether users can raise concerns, and if changes can be made quickly when risks are identified."
 Beta,5d,None,"What documentation is available so that your process, results and outputs can be replicated by others using the same data and environment?",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Process documentation,"Transparency, Accountability",0,0,"Documentation is relevant to both data and AI projects, and should cover data sources, preprocessing, model choice, training parameters, evaluation metrics and more where appropriate."
-Beta,6r,None,Have you established ‘go’ or ‘no-go’ criteria prior to the system going live?,radios,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Release thresholds,Safety,"Yes;
+Beta,6r,None,Have you established ‘go’ or ‘no-go’ criteria prior to the system going live?,radios,y,FILTER=public OR decision OR critical,Release thresholds,Safety,"Yes;
 Not yet;
 Other",0,"Before going live, you should consider what an acceptable threshold for your project looks like as a whole. This should consider ethical themes and parameters holistically, rather than in isolation. Think about what person(s) have the authority to make this decision and what information they need to ensure their decision is informed."
-Beta,6d,7=Yes,Briefly describe the criteria or plan you have in place.,document,,0,0,0,0,0,0
-Beta,6d2,7=Not yet,Briefly describe how you plan on establishing a go/no-go criteria prior to deployment. ,document,,0,0,0,0,0,0
+Beta,6d,6r=Yes,Briefly describe the criteria or plan you have in place.,document,,0,0,0,0,0,0
+Beta,6d2,6r=Not yet,Briefly describe how you plan on establishing a go/no-go criteria prior to deployment. ,document,,0,0,0,0,0,0
 Beta,7d,None,"How will you safely and responsibly transition from development to live? Who will own the system during ‘business-as-usual’ deployment, and how will handover be managed?",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Transitioning to live,"Accountability, Safety",0,0,"You should consider whether the future owners of the system have the capability and resources to effectively, safely and responsibly manage the project over time."
 Live,1d,None,How are you measuring and monitoring system performance post-deployment?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Performance monitoring,Safety,0,0,"Once your project is live you should be actively monitoring performance in the real world. Key Performance Indicators (KPIs) that you track may include reliability and accuracy indicators (for example, error rates, latency, uptime), model drift, and monitoring of potentially harmful and unsafe behaviour (for example, misclassification, unsafe recommendations or inappropriate generated content)."
-Live,2d,None,How will you respond if the system performance degrades or becomes unsafe?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Performance mitigations,Safety,0,0,"Consider also how you can respond to any alerts or crossed thresholds, such as options to roll back or use fallback systems, your ability to triage and fix different issues, and how you communicate this with users."
-Live,3d,None,What mechanisms are in place for users to submit feedback on system or tool performance? ,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Feedback mechanisms,"Transparency, Safety",0,0,"Consider different groups' needs when providing feedback mechanisms. This could include colleagues across government departments and the public. Mechanisms may include surveys, feedback forms and consultation responses."
-Live,4d,None,How are you actioning user feedback to improve the project?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Feedback integration,"Transparency, Safety",0,0,"Consider how feedback is triaged, how you identify recurring issues, how you make changes and communicate with users when changes are integrated."
-Live,5d,None,Can the rationale for outputs be explained to users and affected individuals in a way that is easily understandable? ,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Explainability,Transparency,0,0,"If you’re building an AI system, you should take steps to ensure that the system is explainable. For example, you can explain why a model or algorithmic tool has produced a particular outcome. "
-Live,6d,None,How are you notifying users that they are using or interacting with an AI system rather than a human?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Algorithmic transparency,Transparency,0,0,"You should consider how different groups, particularly groups such as children, the elderly and vulnerable persons, can recognise and identify whether they are interacting with an AI system or a human. 
+Live,2d,None,How will you respond if the system performance degrades or becomes unsafe?,document,y,FILTER=personal OR public OR decision OR critical,Performance mitigations,Safety,0,0,"Consider also how you can respond to any alerts or crossed thresholds, such as options to roll back or use fallback systems, your ability to triage and fix different issues, and how you communicate this with users."
+Live,3d,None,What mechanisms are in place for users to submit feedback on system performance? ,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Feedback mechanisms,"Transparency, Safety",0,0,"Consider different groups' needs when providing feedback mechanisms. This could include colleagues across government departments and the public. Mechanisms may include surveys, feedback forms and consultation responses."
+Live,4d,None,How are you actioning user feedback to improve the project?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Feedback integration,"Transparency, Safety",0,0,"Consider how feedback is triaged, how you identify recurring issues, how quickly a change needs to be implemented to mitigate the risk of harm, how you make changes and communicate with users when changes are integrated."
+Live,5d,None,Can the rationale for outputs be explained to users and affected individuals in a way that is easily understandable? ,document,y,FILTER=data OR ai,Explainability,Transparency,0,0,"If you’re building an AI system, you should take steps to ensure that the system is explainable. For example, can you explain why a model or algorithmic tool has produced a particular outcome?"
+Live,6d,None,How are you notifying users that they are using or interacting with an AI system rather than a human?,document,y,FILTER=ai,Algorithmic transparency,Transparency,0,0,"You should consider how different groups are able to identify that they are interacting with an AI system. Particular attention may be paid to groups that may be less able to recognise that they are interacting with AI, including certain demographic groups like children.
 
 Systems for notification may include explicit opening statements and persistent labels (for example, stating that the system is ‘powered by AI’), distinct visual cues such as robotic icons, or watermarking on AI-generated text, and reminders in conversation flows. Consider how effective these notifications are in practice for different user groups and in different situations."
-Live,7d,None,"How long will data be retained, and what are the justifications for this period?  ",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Data retention,Privacy,0,0,Continually evaluate your data retention policy to ensure that privacy risks do not grow over the project’s life cycle.
-Live,8d,None,What monitoring and interventions are in place to detect and prevent misuse of the system?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,System misuse,Safety,0,0,"You should remain vigilant of growing capabilities for intentional misuse of the system, as well as the potential for well-intentioned users to push the system beyond its intended parameters.
- 
+Live,7d,None,"How long will data be retained, and what are the justifications for this period?  ",document,y,FILTER=data,Data retention,Privacy,0,0,Continually evaluate your data retention policy to ensure that privacy risks do not grow over the project’s life cycle.
+Live,8d,None,What monitoring and interventions are in place to detect and prevent misuse of your system?,document,y,FILTER=data OR ai,System misuse,Safety,0,0,"You should remain vigilant of new, emerging or otherwise previously unidentified intentional misuse of the system, as well as the potential for well-intentioned users to push the system beyond its intended parameters.
+
 Be clear who is responsible for monitoring and responding to protected use, including outside of standard working hours and who can authorise changes to mitigate emerging issues."
 Live,9d,None,Will the people affected by the system being shut down – and possibly replaced – be told about it? ,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,End-of-life communication,Transparency,0,0,"A system may be retired at the end of its intended life, or potentially before if other risks are unable to be adequately mitigated during its lifetime. Consider how you will inform users if and when this happens, and what groups may be at risk or disproportionally impacted by system retirement."
 Live,10d,None,What would the broader societal or public service impacts be of retiring the system? Are you able to evaluate and communicate this? ,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,End-of-life impact,Societal Impact,0,0,0
-Live,11d,None,"How will you monitor the environmental impact of the project post-deployment? How can you respond if this increases over time and exceeds acceptable thresholds defined by your project's context, risks and benefits? ",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Environmental impact monitoring,Environmental sustainability,0,0,"Your project’s environmental impact can change during its life due to factors such as changing traffic, updates to model architecture, storage requirements and more. "
+Live,11d,None,"How will you monitor the environmental impact of the project post-deployment? How can you respond if this increases over time and exceeds acceptable thresholds defined by your project's context, risks and benefits? ",document,y,FILTER=data OR ai,Environmental impact monitoring,Environmental sustainability,0,0,"Your project’s environmental impact can change during its life due to factors such as changing traffic, updates to model architecture, storage requirements and more. "
 Live,12d,None,"What measures are in place to responsibly manage or recycle hardware and infrastructure associated with the project or system?
 
-",document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Hardware management,Environmental sustainability,0,0,"You should consider a wide range of hardware that may be required during the life cycle of your project – from hardware owned by cloud providers and other third-party organisations, to edge devices that may be involved in data collection or service delivery, to user devices."
+",document,y,FILTER=data OR ai,Hardware management,Environmental sustainability,0,0,"You should consider a wide range of hardware that may be required during the life cycle of your project – from hardware owned by cloud providers and other third-party organisations, to edge devices that may be involved in data collection or service delivery, to user devices."
 ,,,,,,,,,,,
 ,,,,,,,,,,,
 ,,,,,,,,,,,

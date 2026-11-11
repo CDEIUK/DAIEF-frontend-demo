@@ -58,12 +58,12 @@ export default function HowToUse({ onNavigateToFirstSection }) {
             <div className="govuk-accordion__section-header">
               <h2 className="govuk-accordion__section-heading">
                 <span className="govuk-accordion__section-button" id="accordion-default-heading-1">
-                  How the tool works
+                  How self-assessment works
                 </span>
               </h2>
             </div>
             <div id="accordion-default-content-1" className="govuk-accordion__section-content">
-              <p className="govuk-body">The self-assessment is an intelligent form split into five sections:</p>
+              <p className="govuk-body">The self-assessment tool is an intelligent form split into five sections:</p>
               <ul className="govuk-list govuk-list--bullet govuk-!-padding-left-7">
                 <li><a>The Project Detail section allows you to enter key information about your project and control the questions that you see using filters.</a></li>
                 <li><a>The Discovery, Alpha, Beta and Live sections ask you questions about your ethical delivery approach at four different stages of the project life cycle.</a></li>
@@ -73,13 +73,13 @@ export default function HowToUse({ onNavigateToFirstSection }) {
                 <ul className="govuk-list govuk-list--bullet govuk-!-padding-left-7">
                 <li><a>Radio questions: single choice questions that trigger further questions, fields and actions.</a></li>
                 <li><a>Document fields: text boxes for documenting key ethical information about your project.</a></li>
-                <li><a>Actions: advice and suggestions for you to follow up on where applicable.</a></li>
-                <li><a>Info: additional information and context for each question.</a></li>
+                <li><a>Action boxes: advice and suggestions for you to follow up on where applicable.</a></li>
+                <li><a>Info boxes: additional information and context for each question.</a></li>
               </ul>
               <p className="govuk-body">
-                Question sets are tagged with the most relevant ethical principles from the framework and a status indicator to show your progress through the form.</p>
+                Question sets are tagged with relevant ethical principles from the framework and a status indicator to show your progress through the form.</p>
               <p className="govuk-body">
-                The form is intended to offer helpful guidance and prompt you to reflect on how your project is meeting ethical best practice. It is not intended to provide assurance or sign-off for a project.</p>
+                Self-assessment is voluntary and is intended to offer helpful guidance and prompt you to reflect on how your project is meeting ethical best practice. It is not intended to provide assurance or sign-off for a project.</p>
               </div>
           </div>
           <div className="govuk-accordion__section">
@@ -91,12 +91,13 @@ export default function HowToUse({ onNavigateToFirstSection }) {
               </h2>
             </div>
             <div id="accordion-default-content-3" className="govuk-accordion__section-content">
-              <p className="govuk-body">The self-assessment provides a structured way of considering the ethical dimensions of your data and AI project and is intended to support your other management processes. Here are some key tips for using the tool:</p>
+              <p className="govuk-body">The self-assessment provides a structured, practical way of addressing the ethical dimensions of your data and AI project. This tool will allow you to:</p>
               <ul className="govuk-list govuk-list--bullet govuk-!-padding-left-7">
-                <li>Capturing information: use document fields to record information that could be used to support governance, assurance and project management decision-making.</li>
-                <li>Marking progress: use the “Mark set as complete” checkboxes at the bottom of each question set to indicate when you are happy that a question set has been fully answered.</li>
-                <li>Saving: use the Save button to download the form data as a JSON file. Use the Restore button to reupload previously saved JSON files to continue where you left off.</li>
-                <li>Sharing: use the Export button render the active section as a formatted document to be read by other parties. You have the option to save as an HTML page (recommended) or a PDF.</li>
+                <li>Capture information: use document fields to record information that could be used to support decision-making in governance, assurance and project management processes.</li>
+                <li>Identify gaps and risks: make note of the progress markers and suggested actions to identify where and how to address ethical risks in your project.</li>
+                <li>Mark progress: use the “Mark set as complete” checkboxes at the bottom of each question set to indicate when you are happy that a question set has been fully answered.</li>
+                <li>Save your work: use the "Save progress" button to download the form data as a JSON file. Use the "Restore progress" button to upload previously saved JSON files and continue where you left off.</li>
+                <li>Create reports: use the "Export active section" button render the section you are viewing as a formatted document to be read by other parties. You have the option to save as an HTML file (recommended) or a PDF.</li>
               </ul>
             </div>
           </div>
@@ -137,10 +138,10 @@ export default function HowToUse({ onNavigateToFirstSection }) {
               </h2>
             </div>
             <div id="accordion-default-content-4" className="govuk-accordion__section-content">
-              <p className="govuk-body">The tool is designed and maintained by the Responsible Data and AI Team in GDS.</p>
-              <p className="govuk-body">If you have feedback on the tool… [feedback option]</p>
-              <p className="govuk-body">If you require more direct support from the Responsible AI and Data Team, please email us at 
-          <a href="mailto:GDS-Responsible-Data-AI@dsit.gov.uk" className="govuk-link" target="_blank" rel="noreferrer"> GDS-Responsible-Data-AI@dsit.gov.uk</a>.</p>
+              <p className="govuk-body">The tool is designed and maintained by the Responsible Data and AI team in GDS.</p>
+              <p className="govuk-body">If you have feedback on the tool, please use the <a class="govuk-link" href="https://forms.cloud.microsoft/e/CKsNHmm3rC" target="_blank" rel="noopener noreferrer">feedback form</a> to voice your thoughts.</p>
+              <p className="govuk-body">If you require more direct support from the Responsible AI and Data team, please email us at 
+          <a href="mailto:-Responsible-Data-AI@dsit.gov.uk" className="govuk-link" target="_blank" rel="noreferrer"> gds-responsible-data-ai@dsit.gov.uk</a>.</p>
 
             </div>
           </div>

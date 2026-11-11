@@ -137,10 +137,6 @@ function copyFormControlValues(source, clone) {
       } else {
         clonedControl.removeAttribute('checked')
       }
-      if (control.type === 'radio') {
-        clonedControl.closest('.sd-radio')?.classList.toggle('sd-radio--checked', control.checked)
-        clonedControl.closest('.sd-item')?.classList.toggle('sd-item--checked', control.checked)
-      }
     } else if (control instanceof HTMLTextAreaElement) {
       clonedControl.textContent = control.value
     } else if (control instanceof HTMLSelectElement) {
@@ -159,15 +155,35 @@ function copyFormControlValues(source, clone) {
 function syncExportedRadioIndicators(source, clone) {
   const sourceRadios = source.querySelectorAll('input[type="radio"]')
   const clonedRadios = clone.querySelectorAll('input[type="radio"]')
+  const overriddenDecoratorProperties = [
+    'border-color',
+    'border-radius',
+    'background',
+    'background-color',
+    'box-shadow',
+  ]
 
   sourceRadios.forEach((radio, index) => {
-    const indicator = clonedRadios[index]?.closest('.sd-radio')
-      ?.querySelector('.sd-radio__svg use')
-    indicator?.style.setProperty(
-      'fill',
-      radio.checked ? '#0b0c0c' : 'transparent',
-      'important',
-    )
+    const clonedRadio = clonedRadios[index]
+    if (!clonedRadio) {
+      return
+    }
+
+    clonedRadio.checked = radio.checked
+    if (radio.checked) {
+      clonedRadio.setAttribute('checked', '')
+    } else {
+      clonedRadio.removeAttribute('checked')
+    }
+
+    clonedRadio.closest('.sd-radio')?.classList.toggle('sd-radio--checked', radio.checked)
+    clonedRadio.closest('.sd-item')?.classList.toggle('sd-item--checked', radio.checked)
+    const decorator = clonedRadio.closest('.sd-radio')?.querySelector('.sd-radio__decorator')
+    overriddenDecoratorProperties.forEach((property) => {
+      decorator?.style.removeProperty(property)
+    })
+    clonedRadio.closest('.sd-radio')?.querySelector('.sd-radio__svg use')
+      ?.style.removeProperty('fill')
   })
 }
 
@@ -227,8 +243,27 @@ export async function createStandaloneSectionHtml(section, title) {
 <title>${safeTitle}</title>
 <style>${cssText}</style>
 ${renderedStyles}
+<style>
+body.survey-html-export .sd-radio__decorator {
+  border-color: var(--sjs2-color-component-radio-false-default-border) !important;
+  border-radius: var(--sjs2-radius-component-radio) !important;
+  background: var(--sjs2-color-component-radio-false-default-bg) !important;
+  box-shadow: var(--sjs2-border-effect-component-radio-false-default) !important;
+}
+body.survey-html-export .sd-radio--checked .sd-radio__decorator {
+  border-color: var(--sjs2-color-component-radio-true-default-border) !important;
+  background: var(--sjs2-color-component-radio-true-default-bg) !important;
+  box-shadow: var(--sjs2-border-effect-component-radio-true-default) !important;
+}
+body.survey-html-export .sd-radio__svg use {
+  fill: transparent !important;
+}
+body.survey-html-export .sd-radio--checked .sd-radio__svg use {
+  fill: var(--sjs2-color-component-radio-true-default-icon) !important;
+}
+</style>
 </head>
-<body class="govuk-template__body app-shell">
+<body class="govuk-template__body app-shell survey-html-export">
 ${clone.outerHTML}
 </body>
 </html>`
