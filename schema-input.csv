@@ -10,6 +10,7 @@ My project involves work in a safety-critical area (e.g. policing, healthcare, w
 Project Detail,PROB,None,Describe the problem you’re trying to solve in simple terms.,document,y,0,0,0,,0,0
 Project Detail,PURP,None,Describe how your solution solves this problem.,document,y,0,0,0,,0,0
 Discovery,1i,None,"You must comply with data privacy and protection law at all times, including: 
+
 • the [UK General Data Protection Regulation (UK GDPR)]
 • the [Data Protection Act 2018] 
 • the [Data (Use and Access) Act 2025] 
@@ -39,6 +40,7 @@ You need to carry out a [Data Protection Impact Assessment (DPIA)] before you pr
 
 Your organisation’s DPO or information assurance team should be able to advise on your data protection obligations.",action,,0,0,0,,https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/data-protection-impact-assessments-dpias/,0
 Discovery,2i,None,"You must comply with equality legislation at all times, including: 
++E31
 • the [Equality Act 2010]
 • the [Public Sector Equality Duty]
 • any other applicable equality legislation. 
@@ -97,8 +99,9 @@ The Government Analysis Function also provides a [list of resources] related to 
 https://www.gov.uk/service-manual/user-research/researching-emotionally-sensitive-subjects
 
 https://analysisfunction.civilservice.gov.uk/policy-store/",0
-Discovery,8i,None,"You should engage with different stakeholder groups across the project life cycle, including civil society groups, domain experts and affected communities. This is important to: 				
-• ensure you are building systems and services which serve a real user need 				
+Discovery,8i,None,"You should engage with different stakeholder groups across the project life cycle, including civil society groups, domain experts and affected communities. This is important to: 
++M42
+• ensure you are building systems and services which serve a real user need 
 • identify areas of potential harm and exclusion 				
 • understand the context in which your system or service might be used.				
 				
@@ -127,13 +130,14 @@ Discovery,10d2,None,"How do you intend to monitor, evaluate the environmental im
 Alpha,1r,None,Do you have a plan in place to ensure data quality is assessed across the project lifecycle?,radios,y,FILTER=data,Data quality,Safety,"Yes;
 Not yet;
 Other",0,0
-Alpha,1d,1r=Yes,Briefly describe how you will check for and maintain data quality.,document,,0,0,0,0,0,0
+Alpha,1d,1r=Yes,Briefly describe how you will check for and maintain data quality.,document,0,0,0,0,0,0,0
 Alpha,1a,1r=Not yet,"The [Government Data Quality Framework] sets out principles and practices to assess, communicate and improve the quality of data in government. Linked with this, there’s guidance on implementing a data quality action plan.",action,,0,0,0,0,https://www.gov.uk/government/publications/the-government-data-quality-framework,0
 Alpha,2d,None,"How are you integrating encryption, de-identification or other forms of privacy-enhancing technologies (PETs) into your project?",document,y,FILTER=data OR ai OR personal,Privacy-enhancing technologies,"Privacy, Safety",0,0,Privacy enhancing technologies (PETs) can help to achieve a privacy-by-design approach - making design and development decisions from the very start that enhance privacy objectives.
 Alpha,3d,None,How are you communicating the project information to relevant stakeholders?,document,y,FILTER=data OR ai OR personal OR public OR decision OR critical,Communicating with stakeholders,"Transparency, Accountability",0,0,"You should proactively communicate the project's purpose, design and intended outcomes to relevant stakeholders. 
 
 Early and ongoing engagement can help build trust, improve understanding, and identify concerns before the project progresses further."
 Alpha,4d,None,How are you testing and monitoring for fairness risks? ,document,y,FILTER=personal OR public OR decision,Fairness testing,Fairness,0,0,"As you develop your approach to fairness testing and evaluation, you should:
++E47
 • Consider which individuals or groups could benefit from, be disadvantaged by, or be particularly vulnerable to harms from the project.
 • Identify appropriate measures or metrics for assessing fairness, including how you will assess whether your data is sufficiently representative and whether the system produces unfair outcomes.
 
@@ -151,10 +155,11 @@ Alpha,7d,None,How are you ensuring there is sufficient human oversight of the sy
 Identify where human oversight is needed and put mechanisms in place so that a person can meaningfully review, question or intervene in the AI system’s outputs or decisions where appropriate. You should test these mechanisms across the project lifecycle to make sure they work as intended.
 
 Where appropriate, you should engage with civil society organisations for guidance on how to design and integrate feedback and redress mechanisms for your AI project or system."
-Alpha,8r,None,Is your system within scope of the Algorithmic Transparency Recording Standard (ATRS)?,radios,y,FILTER=data OR ai OR personal OR public OR decision,Algorithmic transparency,Transparency,"Yes;
+Alpha,8r,None,Is your system within scope of the [Algorithmic Transparency Recording Standard (ATRS)]?,radios,y,FILTER=data OR ai OR personal OR public OR decision,Algorithmic transparency,Transparency,"Yes;
 No;
-Unsure",0,0
-Alpha,8i,None,"The Algorithmic Transparency Recording Standard (ATRS) establishes a standardised way for public sector organisations to publish information about how and why they are using algorithmic tools. The ATRS is mandatory for: 				
+Unsure",https://www.gov.uk/government/collections/algorithmic-transparency-recording-standard-hub,0
+Alpha,8i,None,"The Algorithmic Transparency Recording Standard (ATRS) establishes a standardised way for public sector organisations to publish information about how and why they are using algorithmic tools. The ATRS is mandatory for:
+			
 • All government departments, and for ALBs which deliver public or frontline services, or directly interact with the general public.				
 • Algorithmic tools which have a significant influence on a decision-making process with public effect or directly interact with the general public.				
 				

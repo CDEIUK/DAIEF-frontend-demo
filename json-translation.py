@@ -420,6 +420,7 @@ def csv_to_survey(
                 or ""
             ).strip()
             field_text = add_field_text_hyperlinks(field_text, link_text)
+            field_text = re.sub(r"(?m)^[ \t]*(?=[•*-]\s)", "  ", field_text)    
             component_type = row["Component type"].strip().lower()
             trigger = row["Trigger"].strip()
             if trigger.lower() == "none":
